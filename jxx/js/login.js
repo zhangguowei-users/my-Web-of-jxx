@@ -26,6 +26,18 @@ $("#input").mouseover(function () {
 $("#input").mouseout(function(){
     $(this).css({"background":"url(./img/login__14.png) no-repeat","background-size":"350px 45px"});
 });
-
+$("#input").click(function () {
+    var name = $("#name").html();
+    var value = $("#value").html();
+   $.ajax({
+       url:config.ip + "",
+       type: "POST",
+       data: {cmd:"login",name:name,value:value},
+       success:function (data) {
+           if(data.login ==success){window.location.href = "./welcome.html"}
+           else{alert("用户名密码错误!!!")};
+       }
+   });
+})
 
 
