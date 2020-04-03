@@ -3,6 +3,9 @@
     margin:0;
     border: 0;
 }
+html{
+    height: 100%;
+}
 body {
     font-family : Helvetica, Arial, Sans-Serif;
     -webkit-user-select: none;
@@ -10,12 +13,13 @@ body {
     -o-user-select: none;
     user-select: none;
     /* overflow-x: hidden; */
-    background: url(../img/login_bg_02.png);
+    background: url(../img/login_bg_02.png) no-repeat;
+    height: 100%;
 }
 .name{
     display: inline-block;
     height: 59px;
-    width: 435px;
+    width: 440px;
     background: url(../img/login__03.png) no-repeat;
     position: absolute;
     top:370px;
@@ -54,9 +58,9 @@ body {
 }
 .value{
     display: inline-block;
-    height: 59px;
-    width: 435px;
-    background: url(../img/login__03.png) no-repeat;
+    height: 60px;
+    width: 440px;
+    background: url(../img/login__09.png) no-repeat;
     position: absolute;
     top:470px;
     left:790px;
@@ -82,4 +86,9 @@ body {
     top:590px;
     left:783.5px;
     outline: none;
+}
+.body{
+    display: inline-block;
+    height:100%;
+    width: 100%;
 }
