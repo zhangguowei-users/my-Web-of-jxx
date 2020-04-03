@@ -25,4 +25,4 @@ $("#input").mouseover(function () {
 });
 $("#input").mouseout(function(){
     $(this).css({"background":"url(./img/login__14.png) no-repeat","background-size":"350px 45px"});
-})
+});
