@@ -17,7 +17,6 @@ body {
     height: 59px;
     width: 435px;
     background: url(../img/login__03.png) no-repeat;
-    /* background-size: 385px 36px; */
     position: absolute;
     top:370px;
     left:790px;
@@ -42,4 +41,45 @@ body {
     white-space: nowrap;
     overflow: hidden;
     font-size: larger;
+}
+.mm{
+    display: inline-block;
+    color: #333333;
+    font-size: x-large;
+    position: absolute;
+    top:470px;
+    left:690px;
+    height:59px;
+    line-height: 59px;
+}
+.value{
+    display: inline-block;
+    height: 59px;
+    width: 435px;
+    background: url(../img/login__03.png) no-repeat;
+    position: absolute;
+    top:470px;
+    left:790px;
+}
+#value{
+    height: 53px;
+    width: 347px;
+    margin-top: 4px;
+    margin-left: 73px;
+    outline: none;
+    line-height: 53px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: larger;
+}
+#input{
+    display: inline-block;
+    width:350px;
+    height:45px;
+    background: url(../img/login__14.png) no-repeat;
+    background-size: 350px 45px;
+    position: absolute;
+    top:590px;
+    left:783.5px;
+    outline: none;
 }

@@ -6,6 +6,7 @@ $("#login").click(function(){
 $(".control").click(function(){
     $.ajax({
         url:ip + "",
+
         type: "POST",
         data: "requestSession",
         success: function(data){
@@ -29,5 +30,4 @@ $("#log").click(function(){
 });
 $("#del").click(function(){
     sessionStorage.removeItem("key");
-    
 });
