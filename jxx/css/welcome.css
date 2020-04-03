@@ -30,3 +30,23 @@ body {
     top:32px;
     cursor: pointer;
 }
+.text{
+    display: inline-block;
+    width: 447px;
+    height:50px;
+    background: url("../img/home__08.png") no-repeat;
+    background-size: 447px 50px;
+    position: absolute;
+    top:20px;
+    left:80px;
+}
+.logo{
+    display: inline-block;
+    width: 60px;
+    height: 50px;
+    background: url("../img/home__07.png") no-repeat;
+    background-size: 60px 50px;
+    position: absolute;
+    top:20px;
+    left:20px;
+}
