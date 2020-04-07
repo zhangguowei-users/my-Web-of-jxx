@@ -6,7 +6,7 @@ setInterval(function () {
         data: {cmd:"requestSession"},
         success:function(data) {
             if (data.session == success) {
-                $("#login").html("已登录");
+                $("#login").css("display","none");
                 $(".control").click(function () {
                     if (this.className == "control one") {
                         window.location.href = "./welcome.html";

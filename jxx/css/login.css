@@ -12,7 +12,6 @@ body {
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
-    /* overflow-x: hidden; */
     background: url(../img/login_bg_02.png) no-repeat;
     height: 100%;
 }
@@ -86,6 +85,7 @@ body {
     top:590px;
     left:783.5px;
     outline: none;
+    cursor: pointer;
 }
 .body{
     display: inline-block;
@@ -119,4 +119,25 @@ body {
     bottom: 50px;
     left:775px;
     color: white;
+}
+#zc{
+    display: inline-block;
+    position: absolute;
+    top:650px;
+    left:925px;
+    color: blue;
+    text-decoration:underline;
+    cursor: pointer;
+}
+#dl1{
+    display: inline-block;
+}
+#zc1,#zh1,#zh2,#mm1,#mm2,#bm1,#bm,#gw,#gw1,#js,js1{
+    display: inline-block;
+}
+#zc1{
+    /*display: none;*/
+    font-size: larger;
+    color: #333333;
+    position: absolute;
 }

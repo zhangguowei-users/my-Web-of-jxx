@@ -41,6 +41,9 @@ $("#input").click(function () {
            else{alert("用户名密码错误!!!")};
        }
    });
+});
+$("#zc").click(function () {
+
 })
 
 
