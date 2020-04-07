@@ -3,6 +3,9 @@
     margin:0;
     border: 0;
 }
+html{
+    height:100%;
+}
 body {
     font-family : Helvetica, Arial, Sans-Serif;
     -webkit-user-select: none;
@@ -10,6 +13,7 @@ body {
     -o-user-select: none;
     user-select: none;
     background: url(../img/background.png) no-repeat;
+    height:90%;
 }
 #top{
     margin-top: 3px;
@@ -74,11 +78,19 @@ body {
     color: white;
     font-size: xx-large;
 }
+.one{
+    background: #01b6e2;
+}
 .two,.three,.four,.five{
     margin-left: 70px;
 }
 .dh{
     display: inline-block;
+    height: 48px;
+    line-height: 48px;
+    width:140px;
+    text-align: center;
+    cursor: pointer;
 }
 #log2{
     text-align: center;
@@ -101,4 +113,28 @@ body {
     position: absolute;
     top:55%;
     left:24%;
+}
+#middle{
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    width: 68px;
+    height:88.2%;
+    background: #22bef6;
+}
+.dh-bottom{
+    display: inline-block;
+    width:1849px;
+    height:823px;
+    position: absolute;
+    left:68px;
+}
+.one1{
+    color: white;
+    font-size: 80px;
+    line-height: 700px;
+    text-align: center;
+}
+.two2,.three3,.four4,.five5{
+    display: none;
 }

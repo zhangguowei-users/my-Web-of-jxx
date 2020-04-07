@@ -33,7 +33,10 @@ $("#input").click(function () {
        data: {cmd:"login",name:name,value:value},
        success:function (data) {
            if(data.login ==success){
-               window.location.href = "./welcome.html";
+               window.location.href = "./go.html";
+               setTimeout(function () {
+                   window.location.href = "./welcome.html";
+               },1000);
            }
            else{alert("用户名密码错误!!!")};
        }
