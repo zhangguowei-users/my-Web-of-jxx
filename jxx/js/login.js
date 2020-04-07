@@ -4,13 +4,15 @@ $(document).click(function(){
 });
 $(".name").click(function(event){
         $(".name").css("background","url(./img/login__05.png) no-repeat");
+        $(".value").css("background","url(./img/login__09.png) no-repeat");
         event.stopPropagation();
 });
 });
 $(function value(){
     $(".value").click(function(event){
         event.stopPropagation();
-        $(".value").css("background","url(./img/login__10.png) no-repeat")
+        $(".value").css("background","url(./img/login__10.png) no-repeat");
+        $(".name").css("background","url(./img/login__03.png) no-repeat");
     });
     $(document).click(function(){
         $(".value").css("background","url(./img/login__09.png) no-repeat");
@@ -30,7 +32,9 @@ $("#input").click(function () {
        type: "POST",
        data: {cmd:"login",name:name,value:value},
        success:function (data) {
-           if(data.login ==success){window.location.href = "./welcome.html"}
+           if(data.login ==success){
+               window.location.href = "./welcome.html";
+           }
            else{alert("用户名密码错误!!!")};
        }
    });

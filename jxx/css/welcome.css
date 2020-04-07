@@ -9,6 +9,7 @@ body {
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
+    background: url(../img/background.png) no-repeat;
 }
 #top{
     margin-top: 3px;
@@ -17,18 +18,33 @@ body {
 }
 #login{
     display: inline-block;
-    text-align: center;
-    height:29px;
-    width:95px;
-    line-height: 29px;
-    border-radius: 31px;
-    border:0;
-    background: #4ab9e8;
-    color: white;
-    position: absolute;
-    right:302px;
-    top:32px;
+    height:60px;
+    width:170px;
     cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top:40px;
+}
+#inf-namenow{
+    display: inline-block;
+    height: 60px;
+    width: 65px;
+    vertical-align: top;
+}
+#inf-namenow-name{
+    color: white;
+}
+#inf-namenow-time{
+    color: white;
+    font-size: xx-small;
+}
+#img-usernow{
+    display: inline-block;
+    height: 60px;
+    width: 65px;
+    margin-left: 20px;
+    background: url(../img/t.jpg);
+    background-size: 60px 60px;
 }
 .text{
     display: inline-block;
@@ -49,4 +65,40 @@ body {
     position: absolute;
     top:20px;
     left:20px;
+}
+#dh{
+    display: inline-block;
+    position: absolute;
+    top:60px;
+    left:600px;
+    color: white;
+    font-size: xx-large;
+}
+.two,.three,.four,.five{
+    margin-left: 70px;
+}
+.dh{
+    display: inline-block;
+}
+#log2{
+    text-align: center;
+    position: absolute;
+    top:25%;
+    left:20%;
+}
+#load{
+    position: absolute;
+    top:40%;
+    left:40%;
+}
+#load-inf{
+    color: white;
+    position: absolute;
+    top:47%;
+    left:39%;
+}
+#load-img{
+    position: absolute;
+    top:55%;
+    left:24%;
 }
