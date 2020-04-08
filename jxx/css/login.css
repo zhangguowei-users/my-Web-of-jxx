@@ -130,14 +130,60 @@ body {
     cursor: pointer;
 }
 #dl1{
-    display: inline-block;
+    /*display: inline-block;*/
+    display: none;
 }
-#zc1,#zh1,#zh2,#mm1,#mm2,#bm1,#bm,#gw,#gw1,#js,js1{
+#zc1,#zh1,#zh2,#mm1,#mm2,#bm1,#bm,#gw,#gw1,#js,#js1,#tj,#cz{
     display: inline-block;
+    font-size: larger;
+    outline: none;
 }
 #zc1{
     /*display: none;*/
+    display: inline-block;
     font-size: larger;
     color: #333333;
     position: absolute;
+    top:370px;
+    left:750px;
+}
+#tj{
+    margin-left: 60px;
+}
+#cz{
+    margin-left: 100px;
+}
+#tj,#cz{
+    width:80px;
+    border-radius: 80px;
+    background: #10c1b4;
+    color:white;
+}
+#zh2,#mm2,#bm1,#gw1,#js1{
+   border: 1px #d8d6d6 solid;
+}
+.fh{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-right-color: #10c1b4;
+    border-left:0;
+}
+.fhdl{
+    display: inline-block;
+    height:30px;
+    width: 100px;
+    line-height: 25px;
+    position: absolute;
+    top:-80px;
+    left:-125px;
+}
+.fh-text{
+    display: inline-block;
+    height: 30px;
+    color:#333333;
+    vertical-align:top;
+    line-height: 30px;
+    text-decoration:underline;
 }
