@@ -130,8 +130,7 @@ body {
     cursor: pointer;
 }
 #dl1{
-    /*display: inline-block;*/
-    display: none;
+    display: inline-block;
 }
 #zc1,#zh1,#zh2,#mm1,#mm2,#bm1,#bm,#gw,#gw1,#js,#js1,#tj,#cz{
     display: inline-block;
@@ -139,8 +138,7 @@ body {
     outline: none;
 }
 #zc1{
-    /*display: none;*/
-    display: inline-block;
+    display: none;
     font-size: larger;
     color: #333333;
     position: absolute;
@@ -158,6 +156,7 @@ body {
     border-radius: 80px;
     background: #10c1b4;
     color:white;
+    cursor: pointer;
 }
 #zh2,#mm2,#bm1,#gw1,#js1{
    border: 1px #d8d6d6 solid;
@@ -178,6 +177,7 @@ body {
     position: absolute;
     top:-80px;
     left:-125px;
+    cursor: pointer;
 }
 .fh-text{
     display: inline-block;

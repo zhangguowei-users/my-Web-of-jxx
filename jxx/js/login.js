@@ -43,7 +43,12 @@ $("#input").click(function () {
    });
 });
 $("#zc").click(function () {
-
+      $("#dl1").css("display","none");
+      $("#zc1").css("display","inline-block");
+});
+$(".fhdl").click(function () {
+    $("#zc1").css("display","none");
+    $("#dl1").css("display","inline-block");
 })
 
 
