@@ -131,7 +131,7 @@ body {
 }
 .caidan{
     display: inline-block;
-    height:90.6%;
+    height:93.6%;
     width: 400px;
     background:#cfe1ef;
     border: 1px #9fccf0 solid;
@@ -140,7 +140,7 @@ body {
 }
 .xianshi{
     display: inline-block;
-    height:90.6%;
+    height:93.6%;
     width:1518px;
     background:#ffffff;
     border: 1px #9fccf0 solid;
@@ -150,7 +150,7 @@ body {
 }
 .middle{
     display: inline-block;
-    height:9%;
+    height:6%;
     width:400px;
     border: 1px #9fccf0 solid;
     background: #bcd6ee;
@@ -158,7 +158,7 @@ body {
 }
 .middle1{
     display: inline-block;
-    height:9%;
+    height:6%;
     width: 1518px;
     border: 1px #9fccf0 solid;
     background: #bcd6ee;
@@ -167,9 +167,23 @@ body {
 }
 .middle-s{
     display: inline-block;
-    height: 50%;
-    width: 60%;
+    height: 90%;
+    width: 80%;
     background:url(../img/search_bg.png) no-repeat;
     margin-left: 20%;
-    margin-top: 5%;
+    margin-top: 1%;
+}
+.ser-c{
+    margin-left: 15px;
+    font-size: large;
+    width: 180px;
+    outline: none;
+    position: relative;
+    bottom: 15px;
+}
+.ser-b{
+    width:45px;
+    height:38px;
+    background:transparent;
+    outline: none;
 }
