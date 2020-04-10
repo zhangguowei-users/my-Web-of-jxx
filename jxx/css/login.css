@@ -132,7 +132,7 @@ body {
 #dl1{
     display: inline-block;
 }
-#zc1,#zh1,#zh2,#mm1,#mm2,#bm1,#bm,#gw,#gw1,#js,#js1,#tj,#cz{
+#zc1,#zh1,#zh2,#mm1,#mm2,#bm1,#bm,#gw,#gw1,#js,#js1,#tj,#cz,#xb1,#xb,#xm1,#xm2{
     display: inline-block;
     font-size: larger;
     outline: none;
@@ -142,7 +142,7 @@ body {
     font-size: larger;
     color: #333333;
     position: absolute;
-    top:370px;
+    top:350px;
     left:750px;
 }
 #tj{
@@ -158,7 +158,7 @@ body {
     color:white;
     cursor: pointer;
 }
-#zh2,#mm2,#bm1,#gw1,#js1{
+#zh2,#mm2,#bm1,#gw1,#js1,#xm2,#xb1{
    border: 1px #d8d6d6 solid;
 }
 .fh{
