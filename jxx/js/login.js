@@ -24,15 +24,23 @@ $("#input").mouseover(function () {
 $("#input").mouseout(function(){
         $(this).css({"background":"url(./img/login__14.png) no-repeat","background-size":"350px 45px"});
 });
+$("#zc").click(function () {
+    $("#dl1").css("display","none");
+    $("#zc1").css("display","inline-block");
+});
+$(".fhdl").click(function () {
+    $("#zc1").css("display","none");
+    $("#dl1").css("display","inline-block");
+});
 $("#input").click(function () {
        var name = $("#name").html();
        var value = $("#value").html();
    $.ajax({
-       url:config.ip + "",
+       url:config.ip + "/login",
        type: "POST",
-       data: {cmd:"login",name:name,value:value},
+       data: {uesrname:name,password:value},
        success:function (data) {
-           if(data.login ==success){
+           if(data.result == success){
                window.location.href = "./go.html";
                setTimeout(function () {
                    window.location.href = "./welcome.html";
@@ -42,14 +50,7 @@ $("#input").click(function () {
        }
    });
 });
-$("#zc").click(function () {
-      $("#dl1").css("display","none");
-      $("#zc1").css("display","inline-block");
-});
-$(".fhdl").click(function () {
-    $("#zc1").css("display","none");
-    $("#dl1").css("display","inline-block");
-});
+
 
 
 
