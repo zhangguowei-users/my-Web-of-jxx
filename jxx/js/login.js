@@ -28,7 +28,7 @@ $("#zc").click(function () {
     $("#dl1").css("display","none");
     $("#zc1").css("display","inline-block");
     $.ajax({
-        url:config.ip + '/getDepartment',
+        url:config.ip + config.port + '/getDepartment',
         type: 'POST',
         success: function (data) {
             function bumen(data) {
@@ -52,7 +52,7 @@ $("#input").click(function () {
        var name = $("#name").val();
        var value = $("#value").val();
    $.ajax({
-       url: "http//:localhost:8089/login",
+       url: config.ip + config.port + "/login",
        type: "POST",
        data: {uesrname:name,password:value},
        success:function (data) {
