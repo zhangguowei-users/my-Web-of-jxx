@@ -52,7 +52,7 @@ $("#input").click(function () {
        var name = $("#name").val();
        var value = $("#value").val();
    $.ajax({
-       url: "http:127.0.0.1:8089/login",
+       url: "http//:localhost:8089/login",
        type: "POST",
        data: {uesrname:name,password:value},
        success:function (data) {
