@@ -27,14 +27,17 @@ $("#input").mouseout(function(){
 $("#zc").click(function () {
     $("#dl1").css("display","none");
     $("#zc1").css("display","inline-block");
+    console.log(config.ip + config.port + '/getDepartment');
     $.ajax({
         url:config.ip + config.port + '/getDepartment',
         type: 'POST',
+        xhrFields:{withCredentials:true},
         success: function (data) {
-            function bumen(data) {
-                for(value of data){
+            console.log(data);
+            function bumen(arr) {
+                for(value of arr){
                     console.log(value.departmentname,value.departmentid);
-                    $("#bm1").append("<option value=" + value.departmentid + ">" + value.departmentname + "123</option>");
+                    $("#bm1").append("<option value=" + value.departmentid + ">" + value.departmentname + "</option>");
                     if(value.subDepartment.length != 0){
                      bumen(value.subDepartment);
                     }
@@ -54,14 +57,12 @@ $("#input").click(function () {
    $.ajax({
        url: config.ip + config.port + "/login",
        type: "POST",
-       data: {uesrname:name,password:value},
+       data: {username:name,password:value},
+       xhrFields:{withCredentials:true},
        success:function (data) {
            console.log(data);
-           if(data.result == success){
-               window.location.href = "./go.html";
-               setTimeout(function () {
-                   window.location.href = "./welcome.html";
-               },1000);
+           if(data.result == 'success'){
+            window.location.href = "./go.html";
            }
            else{alert("用户名密码错误!!!")};
        },
