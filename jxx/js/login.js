@@ -33,7 +33,8 @@ $("#zc").click(function () {
         success: function (data) {
             function bumen(data) {
                 for(value of data){
-                    console.log(value.departmentname);
+                    console.log(value.departmentname,value.departmentid);
+                    $("#bm1").append("<option value=" + value.departmentid + ">" + value.departmentname + "123</option>");
                     if(value.subDepartment.length != 0){
                      bumen(value.subDepartment);
                     }
@@ -48,16 +49,14 @@ $(".fhdl").click(function () {
     $("#dl1").css("display","inline-block");
 });
 $("#input").click(function () {
-       var name = $("#name").html();
-       var value = $("#value").html();
-       console.log(name,value)
-       console.log(config.ip +config.port + "/login")
+       var name = $("#name").val();
+       var value = $("#value").val();
    $.ajax({
-       url:config.ip + "/login",
-
+       url: "http:127.0.0.1:8089/login",
        type: "POST",
        data: {uesrname:name,password:value},
        success:function (data) {
+           console.log(data);
            if(data.result == success){
                window.location.href = "./go.html";
                setTimeout(function () {
@@ -65,6 +64,9 @@ $("#input").click(function () {
                },1000);
            }
            else{alert("用户名密码错误!!!")};
+       },
+       error:function () {
+           console.log("error")
        }
    });
 });
