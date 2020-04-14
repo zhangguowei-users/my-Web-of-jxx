@@ -27,6 +27,21 @@ $("#input").mouseout(function(){
 $("#zc").click(function () {
     $("#dl1").css("display","none");
     $("#zc1").css("display","inline-block");
+    $.ajax({
+        url:config.ip + '/getDepartment',
+        type: 'POST',
+        success: function (data) {
+            function bumen(data) {
+                for(value of data){
+                    console.log(value.departmentname);
+                    if(value.subDepartment.length != 0){
+                     bumen(value.subDepartment);
+                    }
+                }
+            }
+            bumen(data);
+        }
+    })
 });
 $(".fhdl").click(function () {
     $("#zc1").css("display","none");
@@ -35,8 +50,11 @@ $(".fhdl").click(function () {
 $("#input").click(function () {
        var name = $("#name").html();
        var value = $("#value").html();
+       console.log(name,value)
+       console.log(config.ip +config.port + "/login")
    $.ajax({
        url:config.ip + "/login",
+
        type: "POST",
        data: {uesrname:name,password:value},
        success:function (data) {
