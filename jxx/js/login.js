@@ -25,6 +25,7 @@ $("#input").mouseover(function () {
 $("#input").mouseout(function(){
         $(this).css({"background":"url(./img/login__14.png) no-repeat","background-size":"350px 45px"});
 });
+//注册
 $("#zc").click(function () {
     $("#dl1").css("display","none");
     $("#zc1").css("display","inline-block");
@@ -32,6 +33,7 @@ $("#zc").click(function () {
     $.ajax({
         url:config.ip + config.port + '/getDepartment',
         type: 'POST',
+        xhrFields:{withCredentials:true},
         success: function (data) {
             console.log(data);
             function bumen(arr) {
@@ -51,6 +53,7 @@ $(".fhdl").click(function () {
     $("#zc1").css("display","none");
     $("#dl1").css("display","inline-block");
 });
+//登录
 $("#input").click(function () {
        var name = $("#name").val();
        var value = $("#value").val();
@@ -58,15 +61,13 @@ $("#input").click(function () {
        url: config.ip + config.port + "/login",
        type: "POST",
        data: {username:name,password:value},
+       xhrFields:{withCredentials:true},
        success:function (data) {
            console.log(data);
            if(data.result == 'success'){
             window.location.href = "./go.html";
            }
            else{alert("用户名密码错误!!!")};
-       },
-       error:function () {
-           console.log("error")
        }
    });
 });

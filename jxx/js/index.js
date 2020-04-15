@@ -2,12 +2,14 @@
 function jiancelogin(){
     $.ajax({
         url:config.ip + config.port + '/getUserInfo',
-        dataType: "json",
         type: 'POST',
+        xhrFields:{withCredentials:true},
         success:function(data){
             //alert(data);
-            if(data.length > 0) return true;
-            if(data == {"result":"error"}) return false;
+            if(data !=null) return true;
+            if(data == null) return false;
+        },error:function(){
+            return false;
         }
     })
 };
