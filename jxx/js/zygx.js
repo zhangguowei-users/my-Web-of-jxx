@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    dengluLocation();
     $("#inf-namenow-time").html(newTime());
     tiaozhuan();
     $(".eone").click(function(){

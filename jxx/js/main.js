@@ -16,6 +16,20 @@ function jiancelogin(){
     });
     return call;
 };
+//登录检测器
+function dengluLocation(){
+    if(jiancelogin()){
+        console.log("已经登录");
+        setInterval(function(){
+            if(jiancelogin()){
+            }else{
+                window.location.href = "./login.html";
+            }
+        },10000);
+    }else{
+        window.location.href = "./login.html";
+    };
+}
 //获取当前时间
 function newTime(){
     var time = new Date();
