@@ -42,4 +42,4 @@ function tiaozhuan(){
     $(".five").click(function () {
         window.location.href = "./wdgx.html";
     });
-}
+};
