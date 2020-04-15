@@ -30,17 +30,16 @@ $("#input").mouseout(function(){
 $("#zc").click(function () {
     $("#dl1").css("display","none");
     $("#zc1").css("display","inline-block");
-    console.log(config.ip + config.port + '/getDepartment');
+    //获取部门信息 同步
     $.ajax({
         url:config.ip + config.port + '/getDepartment',
         type: 'POST',
+        async: false,
         xhrFields:{withCredentials:true},
         success: function (data) {
-            console.log(data);
             function bumen(arr) {
                 for(value of arr){
-                    console.log(value.departmentname,value.departmentid);
-                    $("#bm1").append("<option value=" + value.departmentid + ">" + value.departmentname + "</option>");
+                    $("#bm1").append("<option value='" + value.departmentid + "'>" + value.departmentname + "</option>");
                     if(value.subDepartment.length != 0){
                      bumen(value.subDepartment);
                     }
@@ -48,7 +47,33 @@ $("#zc").click(function () {
             }
             bumen(data);
         }
-    })
+    });
+    //获取角色 同步
+    $.ajax({
+        url:config.ip + config.port + '/getRole',
+        type: 'POST',
+        async: false,
+        xhrFields:{withCredentials:true},
+        success: function (data) {
+            for(value of data){
+                $("#js1").append("<option value='" +value.roleid + "'>" + value.rolename + "</option>")
+            }     
+        }
+    });
+    // 获取岗位 同步
+    $.ajax({
+        url:config.ip + config.port + '/getPost',
+        type: 'POST',
+        async: false,
+        xhrFields:{withCredentials:true},
+        success: function (data) {
+            for(value of data){
+                $("#gw1").append("<option value='" +value.postid + "'>" + value.postname + "</option>")
+            }     
+        }
+    });
+    //将获取所有信息进行提交
+    
 });
 $(".fhdl").click(function () {
     $("#zc1").css("display","none");
