@@ -1,3 +1,4 @@
+$(document).ready(function(){
 $(function name(){
 $(document).click(function(){
         $(".name").css("background","url(./img/login__03.png) no-repeat");
@@ -69,7 +70,7 @@ $("#input").click(function () {
        }
    });
 });
-
+});
 
 
 

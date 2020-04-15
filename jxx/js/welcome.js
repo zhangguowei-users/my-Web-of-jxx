@@ -1,16 +1,4 @@
 function newTime(){
-
-    
-    $.ajax({
-        url:"http://192.168.1.109:8080/dsfsdf",
-        type: 'POST',
-        success:function(data){
-
-            alert("~~~~" + data);
-        }
-        });
-
-
      var time = new Date();
      var year = time.getFullYear();
      var month = time.getMonth() + 1;
@@ -18,6 +6,7 @@ function newTime(){
      var new_time = year + "-" + month + "-" + data;
      return new_time;
 };
+$(document).ready(function(){
 $("#inf-namenow-time").html(newTime());
 $(".one").click(function () {
     window.location.href = "./index.html";
@@ -70,4 +59,5 @@ $(".etwo").click(function(){
         })
     }
 
+});
 });
