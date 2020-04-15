@@ -31,7 +31,6 @@ $("#zc").click(function () {
     $.ajax({
         url:config.ip + config.port + '/getDepartment',
         type: 'POST',
-        xhrFields:{withCredentials:true},
         success: function (data) {
             console.log(data);
             function bumen(arr) {
@@ -58,7 +57,6 @@ $("#input").click(function () {
        url: config.ip + config.port + "/login",
        type: "POST",
        data: {username:name,password:value},
-       xhrFields:{withCredentials:true},
        success:function (data) {
            console.log(data);
            if(data.result == 'success'){
