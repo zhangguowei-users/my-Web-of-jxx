@@ -1,4 +1,5 @@
 $(document).ready(function(){
+//登陆页面样式变化
 $(function name(){
 $(document).click(function(){
         $(".name").css("background","url(./img/login__03.png) no-repeat");

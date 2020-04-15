@@ -1,11 +1,3 @@
-function newTime(){
-     var time = new Date();
-     var year = time.getFullYear();
-     var month = time.getMonth() + 1;
-     var data = time.getDate();
-     var new_time = year + "-" + month + "-" + data;
-     return new_time;
-};
 $(document).ready(function(){
 $("#inf-namenow-time").html(newTime());
 $(".one").click(function () {

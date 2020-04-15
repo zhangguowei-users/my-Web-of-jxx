@@ -16,36 +16,26 @@ function jiancelogin(){
     });
     return call;
 };
+//获取当前时间
+function newTime(){
+    var time = new Date();
+    var year = time.getFullYear();
+    var month = time.getMonth() + 1;
+    var data = time.getDate();
+    var new_time = year + "-" + month + "-" + data;
+    return new_time;
+};
+
 $(document).ready(function(){
 if(jiancelogin()){
-    $("#login").css("display","none");
+    $("#login1").css("display","none");
 };
-$("#login").click(function () {
+$("#login1").click(function () {
     window.location.href = "./login.html";
 });
 $(".control").click(function(){
     if(jiancelogin()){
-        if (this.className == "control one") {
-            window.location.href = "./welcome.html";
-            //按className操作进入后的页面
-            $(".dh-bottom").css("display","none");
-            $(".two2").css("display","inline-block");
-        } else if (this.className == "control two") {
-            window.location.href = "./welcome.html";
-            //按className操作进入后的页面
-            $(".dh-bottom").css("display","none");
-            $(".three3").css("display","inline-block");
-        } else if (this.className == "control three") {
-            window.location.href = "./welcome.html";
-            //按className操作进入后的页面
-            $(".dh-bottom").css("display","none");
-            $(".four4").css("display","inline-block");
-        } else if (this.className == "control four") {
-            window.location.href = "./welcome.html";
-            //按className操作进入后的页面
-            $(".dh-bottom").css("display","none");
-            $(".five5").css("display","inline-block");
-        }
+        window.location.href = "./welcome.html";
     }else{
         window.location.href = "./login.html";
     }    
