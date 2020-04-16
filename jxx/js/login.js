@@ -56,8 +56,11 @@ $("#zc").click(function () {
         xhrFields:{withCredentials:true},
         success: function (data) {
             for(value of data){
+                if(value.rolename == "管理员"){
+                    continue;
+                };
                 $("#js1").append("<option value='" +value.roleid + "'>" + value.rolename + "</option>")
-            }     
+            };     
         }
     });
     // 获取岗位 同步
