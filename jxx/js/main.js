@@ -63,7 +63,7 @@ function huoquName(){
             type: 'POST',
             xhrFields:{withCredentials:true},
             success:function(data){
-                $("#inf-namenow-name").html(data[0].username);
+                $("#inf-namenow-name").html(data[0].realname);
             }
         });
 }

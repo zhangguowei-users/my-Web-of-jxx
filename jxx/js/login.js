@@ -56,8 +56,11 @@ $("#zc").click(function () {
         xhrFields:{withCredentials:true},
         success: function (data) {
             for(value of data){
+                if(value.rolename == "管理员"){
+                    continue;
+                };
                 $("#js1").append("<option value='" +value.roleid + "'>" + value.rolename + "</option>")
-            }     
+            };     
         }
     });
     // 获取岗位 同步
@@ -73,7 +76,32 @@ $("#zc").click(function () {
         }
     });
     //将获取所有信息进行提交
-    
+    $("#tj").click(function(){
+        var username = $("#zh2").val();
+        var password = $("#mm2").val();
+        var realname = $("#xm2").val();
+        var gender = $("#xb1").val();
+        var departmentid = $("#bm1").val();
+        var postid = $("#gw1").val();
+        var roleid = $("#js1").val();
+        $.ajax({
+            url:config.ip + config.port + '/regist',
+            type: 'POST',
+            async: false,
+            data:{username:username,password:password,realname:realname,gender:gender,'department.departmentid':departmentid,'post.postid':postid,'role.roleid':roleid},
+            xhrFields:{withCredentials:true},
+            success: function (data) {
+              var data = JSON.parse(data);
+              if(data.result == "success"){
+                  alert("注册成功，请点击返回登录用您注册的账户和密码进行登录!!!");
+              }else if(data.result == "fail"){
+                  alert("注册失败，请重新注册!!!");
+              }else if(data.result == "repeat"){
+                  alert("您注册的账户密码重复，请重新注册!!!");
+              };
+            }
+        });
+    })
 });
 $(".fhdl").click(function () {
     $("#zc1").css("display","none");
