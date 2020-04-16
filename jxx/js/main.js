@@ -68,12 +68,12 @@ function huoquName(){
         });
 };
  //手风琴事件 增加300px
- function shoufengqin(className){
+ function shoufengqin(className,theheight){
   $(`${className}`).click(function(){
     var height = $(this).next().height();
-    if(height == 0 ){
+    if(height == 0){
         $(this).next().animate({
-            height:'300px'
+            height:`${theheight}`
         })
     }else{
         $(this).next().animate({
