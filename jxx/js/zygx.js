@@ -3,7 +3,6 @@ $(document).ready(function(){
     $("#inf-namenow-time").html(newTime());
     tiaozhuan();
     huoquName();
-    
     $.ajax({
         url:config.ip + config.port + '/getMenue',
         type: 'POST',
@@ -40,7 +39,11 @@ $(document).ready(function(){
                         marginTop: height
                     })
                 });
-                //搜索
+                //点击变色事件
+                $(".sfqx").click(function(){
+                    $(".sfqx").css("color","black");
+                    $(this).css("color","white");
+                });
         }
     });
     });
