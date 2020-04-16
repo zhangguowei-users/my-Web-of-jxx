@@ -19,7 +19,6 @@ function jiancelogin(){
 //登录检测器
 function dengluLocation(){
     if(jiancelogin()){
-        console.log("已经登录");
         setInterval(function(){
             if(jiancelogin()){
             }else{
@@ -57,3 +56,14 @@ function tiaozhuan(){
         window.location.href = "./wdgx.html";
     });
 };
+//获取当前用户姓名 并添加到页面
+function huoquName(){
+        $.ajax({
+            url:config.ip + config.port + '/getUserInfo',
+            type: 'POST',
+            xhrFields:{withCredentials:true},
+            success:function(data){
+                $("#inf-namenow-name").html(data[0].username);
+            }
+        });
+}

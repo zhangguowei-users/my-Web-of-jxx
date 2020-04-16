@@ -2,6 +2,7 @@ $(document).ready(function(){
     dengluLocation();
     $("#inf-namenow-time").html(newTime());
     tiaozhuan();
+    huoquName();
     // $(".eone").click(function(){
     //     var height = $(".rone").height();
     //     if(height == 0 ){
