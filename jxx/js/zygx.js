@@ -20,30 +20,11 @@ $(document).ready(function(){
                     n++;
                 };
                 //手风琴事件
-                $(".eone").click(function(){
-                    var height = $(this).next().height();
-                    if(height == 0 ){
-                        $(this).next().animate({
-                            height:'300px'
-                        })
-                    }else{
-                        $(this).next().animate({
-                            height:'0px'
-                        })
-                    }
-                });
+                shoufengqin(".eone");
                 //滑块移动事件
-                $(".eone").click(function(){
-                    var height = $(this).position().top;
-                    $(".wone").animate({
-                        marginTop: height
-                    })
-                });
+                huakuaiMove(".eone");
                 //点击变色事件
-                $(".sfqx").click(function(){
-                    $(".sfqx").css("color","black");
-                    $(this).css("color","white");
-                });
+                caidanChangeColor(".sfqx");
         }
     });
     });

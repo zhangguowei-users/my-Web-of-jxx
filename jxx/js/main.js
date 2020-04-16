@@ -66,4 +66,35 @@ function huoquName(){
                 $("#inf-namenow-name").html(data[0].realname);
             }
         });
-}
+};
+ //手风琴事件
+ function shoufengqin(className){
+  $(`${className}`).click(function(){
+    var height = $(this).next().height();
+    if(height == 0 ){
+        $(this).next().animate({
+            height:'300px'
+        })
+    }else{
+        $(this).next().animate({
+            height:'0px'
+        })
+    }
+ });
+};
+//滑块移动事件
+function huakuaiMove(IdName){
+    $(`${IdName}`).click(function(){
+        var height = $(this).position().top;
+        $(".wone").animate({
+            marginTop: height
+        })
+    });
+};
+//点击变色事件
+function caidanChangeColor(className){
+    $(`${className}`).click(function(){
+        $(`${className}`).css("color","black");
+        $(this).css("color","white");
+    });
+};
