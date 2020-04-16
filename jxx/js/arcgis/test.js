@@ -1,14 +1,17 @@
-$(document).ready(function(){
-    myFunction();
-});
+require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", 
+        "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic",
+        "esri/tasks/QueryTask", "esri/tasks/query","dojo/domReady!"], init);
 
 
-function myFunction()
+function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query)
 {
-    var a = 10;
+    var map = new Map("map_div", {logo: false});
 
-    if(a > 5){
-        console.log(a);
-    }
+    var layer = new ArcGISDynamicMapServiceLayer("http://192.168.1.109:6080/arcgis/rest/services/mygis/arcgis_learn_3/MapServer");
+
+    map.addLayer(layer);
+
+
 
 }
+ 
