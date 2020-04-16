@@ -22,6 +22,8 @@ $(document).ready(function(){
                            var vheight = $(".sfqx").height();
                            Divheight.push(vheight); 
                         };
+                     }else{
+                        $(`.${n}`).next().append(`<div class='sfqx' style='display:none;'>${data[key].subMenue[k].menuename}</div>`);
                      };       
                     n++;
                 };
