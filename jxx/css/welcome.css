@@ -239,7 +239,7 @@ body {
     background: transparent;
     right: 50px;
     top:25px;
-    z-index: 1100px;
+    z-index: 10000;
 }
 .fg1{
     display: inline-block;
@@ -249,7 +249,7 @@ body {
     position: absolute;
     right: 50px;
     top:25px;
-    z-index: 1100px;
+    z-index: 10000;
 }
 .xgj{
     display: inline-block;
@@ -260,7 +260,7 @@ body {
     border-radius: 30px;
     top:20px;
     left:487px;
-    z-index: 1100px;
+    z-index: 10000;
 }
 #gb{
     display: inline-block;
