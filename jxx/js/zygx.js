@@ -17,11 +17,11 @@ $(document).ready(function(){
                      if(data[key].subMenue.length != 0){
                         for(k in data[key].subMenue){
                            $(`.${n}`).next().append(`<div class='sfqx'>${data[key].subMenue[k].menuename}</div>`);
-                           var Num = $(".sfqx").length;
-                           gloArr.push(Num);
                            var vheight = $(".sfqx").height();
                            Divheight.push(vheight); 
                         };
+                        var Num = $(".rone").eq(key).find(".sfqx").length;
+                        gloArr.push(Num);
                      }else{
                         $(`.${n}`).next().append(`<div class='sfqx' style='display:none;'>${data[key].subMenue[k].menuename}</div>`);
                      };       
@@ -29,7 +29,7 @@ $(document).ready(function(){
                 };
                 var MaxDivheight = Math.max.apply(null,Divheight);
                 var MaxHeight = Math.max.apply(null,gloArr) * MaxDivheight;
-                console.log(MaxHeight,MaxDivheight);
+                console.log(MaxHeight,gloArr);
                 //手风琴事件
                 shoufengqin(".eone",MaxHeight);
                 //滑块移动事件
