@@ -25,7 +25,6 @@ $(document).ready(function(){
                      };       
                     n++;
                 };
-                console.log(gloArr,Divheight)
                 var MaxDivheight = Math.max.apply(null,Divheight);
                 var MaxHeight = Math.max.apply(null,gloArr) * MaxDivheight;
                 console.log(MaxHeight,MaxDivheight);
