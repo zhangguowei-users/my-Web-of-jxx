@@ -10,13 +10,11 @@ $(document).ready(function(){
         async: false,
         xhrFields:{withCredentials:true},
         success:function(data){
-                console.log(data);
                 var n=0;
                 for(key in data){
                    $(".qone").append(`<div class="cds eone ${n}">${data[key].menuename}</div><div class="sfq rone"></div>`);
                      if(data[key].subMenue.length != 0){
                         for(k in data[key].subMenue){
-                           console.log(data[key].subMenue[k]);
                            $(`.${n}`).next().append("<div class='sfqx'>" + data[key].subMenue[k].menuename + "</div>");
                         };
                      };       
@@ -37,8 +35,12 @@ $(document).ready(function(){
                 });
                 //滑块移动事件
                 $(".eone").click(function(){
-                    
+                    var height = $(this).position().top;
+                    $(".wone").animate({
+                        marginTop: height
+                    })
                 });
+                //搜索
         }
     });
     });
