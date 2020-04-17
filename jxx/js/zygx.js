@@ -19,14 +19,12 @@ $(document).ready(function(){
                 //点击查询
                 $(".sone").click(function(){
                    var fone = $(".fone").val();
-                   var sfqx = $(".sfqx");
+                   var sfqx = $(".file");
                    for(var i=0;i<sfqx.length;i++){
                       var Sumsfqx = sfqx.eq(i).html();
                       if(Sumsfqx.indexOf(fone) >= 0){
-                         sfqx.eq(i).parent().animate({
-                            height:MaxHeight
-                         });
-                         sfqx.eq(i).css("color","white");
+                         
+                         sfqx.eq(i).css("color","red");
                       }
                    }
                 })
