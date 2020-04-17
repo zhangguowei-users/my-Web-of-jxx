@@ -67,21 +67,6 @@ function huoquName(){
             }
         });
 };
- //手风琴事件 增加300px
- function shoufengqin(className,theheight){
-  $(`${className}`).click(function(){
-    var height = $(this).next().height();
-    if(height == 0){
-        $(this).next().animate({
-            height:`${theheight}`
-        })
-    }else{
-        $(this).next().animate({
-            height:'0px'
-        })
-    }
- });
-};
 //滑块移动事件
 function huakuaiMove(IdName){
     $(`${IdName}`).click(function(){
@@ -95,6 +80,6 @@ function huakuaiMove(IdName){
 function caidanChangeColor(className){
     $(`${className}`).click(function(){
         $(`${className}`).css("color","black");
-        $(this).css("color","white");
+        $(this).css("color","red");
     });
 };
