@@ -86,7 +86,6 @@ function caidanChangeColor(className){
 //形成树菜单 无限层级
 function tree(data,className){
     for(key of data){
-       console.log(key.subMenue.length);
       if(key.subMenue.length != 0){
          $(`${className}`).append(`<ul><li class="closed"><span class="folder">${key.menuename}</span></li></ul>`);
          for(k of key.subMenue){

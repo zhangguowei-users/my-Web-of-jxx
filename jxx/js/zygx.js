@@ -20,11 +20,13 @@ $(document).ready(function(){
                 $(".sone").click(function(){
                    var fone = $(".fone").val();
                    var sfqx = $(".file");
+                   sfqx.css("color","black");
                    for(var i=0;i<sfqx.length;i++){
                       var Sumsfqx = sfqx.eq(i).html();
                       if(Sumsfqx.indexOf(fone) >= 0){
-                         
                          sfqx.eq(i).css("color","red");
+                         //展开树型菜单方法
+                         
                       }
                    }
                 })
