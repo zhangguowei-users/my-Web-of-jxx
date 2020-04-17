@@ -83,3 +83,22 @@ function caidanChangeColor(className){
         $(this).css("color","red");
     });
 };
+//形成树菜单 无限层级
+function tree(data,className){
+    for(key of data){
+       console.log(key.subMenue.length);
+      if(key.subMenue.length != 0){
+         $(`${className}`).append(`<ul><li class="closed"><span class="folder">${key.menuename}</span></li></ul>`);
+         for(k of key.subMenue){
+            if(k.subMenue.length !=0){
+              $(".closed").append(`<ul><li class="closed"><span class="folder">${k.menuename}</span></li></ul>`)
+            }else{
+              $(".closed").append(`<ul><li><span class="file">${k.menuename}</span></li></ul>`)
+            }
+            tree(k.subMenue,".closed");
+         };
+      }else{
+         $(`${className}`).append(`<ul><li><span class="file">${key.menuename}</span></li></ul>`);
+      }
+    }
+   };
