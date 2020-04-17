@@ -29,7 +29,6 @@ $(document).ready(function(){
                 };
                 var MaxDivheight = Math.max.apply(null,Divheight);
                 var MaxHeight = Math.max.apply(null,gloArr) * MaxDivheight;
-                console.log(MaxHeight,gloArr);
                 //手风琴事件
                 shoufengqin(".eone",MaxHeight);
                 //滑块移动事件
