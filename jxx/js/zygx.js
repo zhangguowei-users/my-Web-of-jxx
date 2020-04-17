@@ -35,6 +35,21 @@ $(document).ready(function(){
                 huakuaiMove(".eone");
                 //点击变色事件
                 caidanChangeColor(".sfqx");
+                //点击查询
+                $(".sone").click(function(){
+                   var fone = $(".fone").val();
+                   var sfqx = $(".sfqx");
+                   for(var i=0;i<sfqx.length;i++){
+                      var Sumsfqx = sfqx.eq(i).html();
+                      if(Sumsfqx.indexOf(fone) >= 0){
+                         sfqx.eq(i).parent().animate({
+                            height:MaxHeight
+                         });
+                         sfqx.eq(i).css("color","white");
+                      }
+                   }
+                })
+                //
         }
     });
     });
