@@ -195,7 +195,7 @@ body {
 }
 .gd-n{
     display: inline-block;
-    height:33px;
+    height:21px;
     width: 8px;
     background: #15d6c5;
 }
@@ -205,28 +205,8 @@ body {
     display: inline-block;
     width: 392px;
     height: 100%;
-}
-.cds{
-    background: url(../img/btn_bg_01.png) no-repeat;
-    display: inline-block;
-    width: 252px;
-    height:33px;
-    margin-left: 70px;
-    color: white;
-    font-size: large;
-    text-align: center;
-    line-height: 33px;
-}
-.sfq{
-    display: inline-block;
-    width: 232px;
-    height:0px;
-    margin-left: 80px;
-    background: #bfdbf3;
-    overflow: hidden;
-}
-.sfqx{
-    text-align: center;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .xz{
     display: inline-block;
