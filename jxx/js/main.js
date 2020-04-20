@@ -87,19 +87,17 @@ function caidanChangeColor(className){
    function tree(data,className){
        for(var i=0;i<data.length;i++){
          if(data[i].subMenue.length != 0){
-            $(`${className}`).append(`<ul><li class="closed ${data[i].menueid}"><span class="folder">${data[i].menuename}</span></li></ul>`);
-            console.log(data[i].menuename) 
+            $(`${className}`).append(`<ul><li class="closed ${data[i].menueid}"><span class="folder" menueid="${data[i].menueid}">${data[i].menuename}</span></li></ul>`);
             for(var j=0;j<data[i].subMenue.length;j++){
-                console.log(data[i].subMenue[j].menuename)
                  if(data[i].subMenue[j].subMenue != 0){
-                    $(`.${data[i].menueid}`).append(`<ul><li class="closed ${data[i].subMenue[j].menueid}"><span class="folder">${data[i].subMenue[j].menuename}</span></li></ul>`);
+                    $(`.${data[i].menueid}`).append(`<ul><li class="closed ${data[i].subMenue[j].menueid}"><span class="folder" menueid="${data[i].subMenue[j].menueid}">${data[i].subMenue[j].menuename}</span></li></ul>`);
                     tree(data[i].subMenue[j].subMenue,`.${data[i].subMenue[j].menueid}`);
                  }else{
-                    $(`.${data[i].menueid}`).append(`<ul><li class="closed"><span class="file">${data[i].subMenue[j].menuename}</span></li></ul>`);
+                    $(`.${data[i].menueid}`).append(`<ul><li class="closed"><span class="file" menueid="${data[i].subMenue[j].menueid}">${data[i].subMenue[j].menuename}</span></li></ul>`);
                  };
              };
          }else{
-            $(`${className}`).append(`<ul><li class="closed"><span class="file">${data[i].menuename}</span></li></ul>`);
+            $(`${className}`).append(`<ul><li class="closed"><span class="file" menueid="${data[i].menueid}">${data[i].menuename}</span></li></ul>`);
          };
        };
    };
