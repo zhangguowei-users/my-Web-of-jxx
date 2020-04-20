@@ -84,20 +84,21 @@ function caidanChangeColor(className){
     });
 };
 //形成树菜单 无限层级
-function tree(data,className){
-    for(key of data){
-      if(key.subMenue.length != 0){
-         $(`${className}`).append(`<ul><li class="closed"><span class="folder">${key.menuename}</span></li></ul>`);
-         for(k of key.subMenue){
-            if(k.subMenue.length !=0){
-              $(".closed").append(`<ul><li class="closed"><span class="folder">${k.menuename}</span></li></ul>`)
-            }else{
-              $(".closed").append(`<ul><li><span class="file">${k.menuename}</span></li></ul>`)
-            }
-            tree(k.subMenue,".closed");
+   function tree(data,className){
+       for(var i=0;i<data.length;i++){
+         if(data[i].subMenue.length != 0){
+            $(`${className}`).append(`<ul><li class="closed ${data[i].menueid}"><span class="folder">${data[i].menuename}</span></li></ul>`);
+             for(var j=0;j<data[i].subMenue.length;j++){
+                 if(data[i].subMenue[j].subMenue != 0){
+                    $(`.${data[i].menueid}`).append(`<ul><li class="closed ${data[i].subMenue[j].menueid}"><span class="folder">${data[i].subMenue[j].menuename}</span></li></ul>`);
+                    
+                 }else{
+                    $(`.${data[i].menueid}`).append(`<ul><li class="closed"><span class="file">${data[i].menuename}</span></li></ul>`);
+                 };
+                 tree(data[i].subMenue[j].subMenue,`.${data[i].subMenue[j].menueid}`);
+             };
+         }else{
+            $(`${className}`).append(`<ul><li class="closed"><span class="file">${data[i].menuename}</span></li></ul>`);
          };
-      }else{
-         $(`${className}`).append(`<ul><li><span class="file">${key.menuename}</span></li></ul>`);
-      }
-    }
+       };
    };
