@@ -101,3 +101,26 @@ function caidanChangeColor(className){
          };
        };
    };
+   //审核员页面检测
+   function shy(){
+    $.ajax({
+        url:config.ip + config.port + '/getUserInfo',
+        type: 'POST',
+        async: false,
+        xhrFields:{withCredentials:true},
+        success:function(data){
+            var glorolename = [];
+            for(var i=0;i<data.length;i++){
+                glorolename.push(data[i].role.rolename);
+            };
+            if(glorolename.indexOf("管理员") >= 0){
+                alert("欢迎来到审核员页面")
+            }else{
+                location.href = "./index.html"
+            }
+        },
+        error:function(){
+            location.href = "./login.html"
+        }
+    });
+   }

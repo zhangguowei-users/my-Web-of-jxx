@@ -14,6 +14,7 @@ body {
     user-select: none;
     background: url(../img/background.png) no-repeat;
     height:90%;
+    overflow-x: hidden;
 }
 #top{
     margin-top: 3px;
@@ -123,7 +124,6 @@ body {
     position: absolute;
 }
 .one1{
-    display: none;
     color: white;
     font-size: 80px;
     line-height: 700px;
@@ -322,4 +322,15 @@ body {
 .map_09{
     background: url(../img/map__09.png) no-repeat;
     background-size: 20px 20px;
+}
+#bottom{
+    height: 80px;
+    width: 100%;
+    line-height: 80px;
+    text-align: center;
+    color: white;
+    font-size: large;
+    background-image: linear-gradient(to right, #1ce4ae, #01b6fc );
+    position: absolute;
+    top:100%;
 }
