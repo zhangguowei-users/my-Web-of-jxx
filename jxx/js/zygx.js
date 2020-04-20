@@ -9,7 +9,6 @@ $(document).ready(function(){
         async: false,
         xhrFields:{withCredentials:true},
         success:function(data){
-           console.log(JSON.stringify(data));
                //形成树菜单
                tree(data,".qone");
                $("#browser").treeview();
