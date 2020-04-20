@@ -14,6 +14,7 @@ body {
     user-select: none;
     background: url(../img/background.png) no-repeat;
     height:90%;
+    overflow-x: hidden;
 }
 #top{
     margin-top: 3px;
@@ -123,7 +124,6 @@ body {
     position: absolute;
 }
 .one1{
-    display: none;
     color: white;
     font-size: 80px;
     line-height: 700px;
@@ -142,7 +142,7 @@ body {
     display: inline-block;
     height:93.6%;
     width:1518px;
-    background:#ffffff;
+    background:#e6edf5;
     border: 1px #9fccf0 solid;
     position: absolute;
     bottom: 0px;
@@ -214,12 +214,11 @@ body {
     height: 37px;
     font-size: large;
     color: #9d9d9d;
-    border: 1px #9fdfed solid;
-    position: absolute;
+    border: 2px #9fdfed solid;
     background: transparent;
-    right: 50px;
-    top:25px;
-    z-index: 10000;
+    position: absolute;
+    z-index: 10001;
+    outline: none;
 }
 .fg1{
     display: inline-block;
@@ -227,19 +226,18 @@ body {
     height: 37px;
     background: #06c0e9;
     position: absolute;
-    right: 50px;
-    top:25px;
+    right: 0px;
     z-index: 10000;
 }
 .xgj{
     display: inline-block;
-    width: 545px;
+    width: 565px;
     height:30px;
     background: #04c4db;
     position: absolute;
     border-radius: 30px;
     top:20px;
-    left:487px;
+    left:457px;
     z-index: 10000;
 }
 #gb{
@@ -251,4 +249,88 @@ body {
     right: 45px;
     top:66px;
     cursor: pointer;
+}
+.select-background{
+     display: inline-block;
+     z-index: 9999;
+     background-color: white;
+     position: absolute;
+     width: 221px;
+     height: 37px;
+     right: 50px;
+     top:25px;
+}
+.map_12,.map_14,.map_16,.map_18,.map_20,.map_22,.map_24,.map_26,.map_28,.map_30,.map_07,.map_33,.map_35,.map_09{
+    display: inline-block;
+    height:20px;
+    width: 20px;
+    margin-top: 5px;
+    margin-left:15px;
+}
+.map_12{
+    background: url(../img/map__12.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_14{
+    background: url(../img/map__14.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_16{
+    background: url(../img/map__16.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_18{
+    background: url(../img/map__18.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_20{
+    background: url(../img/map__20.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_22{
+    background: url(../img/map__22.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_24{
+    background: url(../img/map__24.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_26{
+    background: url(../img/map__26.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_28{
+    background: url(../img/map__28.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_30{
+    background: url(../img/map__30.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_07{
+    background: url(../img/map__07.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_33{
+    background: url(../img/map__33.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_35{
+    background: url(../img/map__35.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_09{
+    background: url(../img/map__09.png) no-repeat;
+    background-size: 20px 20px;
+}
+#bottom{
+    height: 80px;
+    width: 100%;
+    line-height: 80px;
+    text-align: center;
+    color: white;
+    font-size: large;
+    background-image: linear-gradient(to right, #1ce4ae, #01b6fc );
+    position: absolute;
+    top:100%;
 }

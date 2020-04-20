@@ -6,7 +6,6 @@ $(document).ready(function(){
     $.ajax({
         url:config.ip + config.port + '/getMenue',
         type: 'POST',
-        async: false,
         xhrFields:{withCredentials:true},
         success:function(data){
                //形成树菜单
@@ -27,10 +26,41 @@ $(document).ready(function(){
                          sfqx.eq(i).css("color","red");
                          //展开树型菜单方法
                          
-                      }
-                   }
-                })
-                //
+                      };
+                     }
+                });
+                //点击tree 获取id
+                $(".folder,.file").click(function(){
+                     var menueid = $(this).attr("menueid");
+                     if(menueid == 1){
+                        return;
+                     }else{
+                        $.ajax({
+                           url:config.ip + config.port + '/getSecondCategory',
+                           type: 'POST',
+                           data:{menueid:menueid},
+                           xhrFields:{withCredentials:true},
+                           success:function(data){
+                                function pushArry(arr){
+                                   var gloArr = [];
+                                   for(var i=0;i<arr.length;i++){
+                                      if(arr[i].secondcategory == null){ 
+                                          continue;
+                                       };
+                                       var abc = {firstcategoryCode:arr[i].firstcategory,secondcategoryCode:arr[i].secondcategory,secondcategoryName:arr[i].menuename};
+                                       gloArr.push(abc);
+                                      if(arr[i].subMenue.length != 0){
+                                        pushArry(arr[i].subMenue);                                      
+                                      };
+                                   };
+                                   return gloArr;
+                                };
+                               pushArry(data);
+                           }
+                        });
+                     };
+                  });
+                  //
         }
     });
     });
