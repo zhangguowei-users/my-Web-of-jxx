@@ -21,6 +21,9 @@ $(document).ready(function(){
                 caidanChangeColor(".file");
                 //点击查询
                 $(".sone").click(function(){
+                   $(".qone").children().remove();
+                   tree(data,".qone");
+                   $("#browser").treeview(); 
                    var fone = $(".fone").val();
                    var sfqx = $(".file");
                    sfqx.css("color","black");
@@ -29,9 +32,9 @@ $(document).ready(function(){
                       if(Sumsfqx.indexOf(fone) >= 0){
                          sfqx.eq(i).css("color","red");
                          //展开树型菜单方法
-                         sfqx.eq(i).parents().prevAll(".hitarea").click();
+                         sfqx.eq(i).parents().siblings(".hitarea").click();
                       };
-                     }
+                     };
                 });
                 //点击tree 获取id
                 $(".folder,.file").click(function(){
