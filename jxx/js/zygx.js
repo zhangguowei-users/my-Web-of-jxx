@@ -16,13 +16,13 @@ $(document).ready(function(){
                tree(data,".qone");
                $("#browser").treeview();
                 //滑块移动事件
-                huakuaiMove(".folder");
+               huakuaiMove(".folder");
                 //点击变色事件
-                caidanChangeColor(".file");
+               caidanChangeColor(".file");
                 //点击查询
-                queryCd(".fone",".sone");
+               queryCd(".fone",".sone","#browser",data);
                 //点击tree 获取id
-                $(".folder,.file").click(function(){
+               $(".folder,.file").click(function(){
                      var menueid = $(this).attr("menueid");
                      if(menueid == 1){
                         return;

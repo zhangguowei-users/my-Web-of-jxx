@@ -178,8 +178,13 @@ function caidanChangeColor(className){
     return gloArr;
  };
  //点击查询拼接的树型菜单
- function queryCd(queryInput,queryButton){
-    $(`${queryButton}`).click(function(){ 
+ function queryCd(queryInput,queryButton,CDname,data){
+    $(`${queryButton}`).click(function(){
+        $(`${CDname}`).children().remove();
+        tree(data,`${CDname}`);
+        $(`${CDname}`).treeview();
+        huakuaiMove(".folder");
+        caidanChangeColor(".file"); 
         var fone = $(`${queryInput}`).val();
         var sfqx = $(".file");
         var glo = [];
@@ -192,7 +197,7 @@ function caidanChangeColor(className){
                 var Sumsfqx = sfqx.eq(i).html();
                 if(Sumsfqx.indexOf(fone) >= 0){
                    sfqx.eq(i).css("color","red");
-                   $(".expandable-hitarea").click(); 
+                   sfqx.eq(i).parents().siblings(".expandable-hitarea").click(); 
                 };
                };
                var a = glo.toString().replace(/\,/g,"");
@@ -200,5 +205,5 @@ function caidanChangeColor(className){
                    confirm("搜索字符不存在");    
                };
         };
-     });
+     });   
  };
