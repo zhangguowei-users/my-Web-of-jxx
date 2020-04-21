@@ -37,7 +37,6 @@ $(document).ready(function(){
                            xhrFields:{withCredentials:true},
                            success:function(data){
                               pushArry(data);
-
                               
                               console.log(click_Inf);
                            }
