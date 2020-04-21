@@ -3,6 +3,9 @@ $(document).ready(function(){
     $("#inf-namenow-time").html(newTime());
     tiaozhuan();
     huoquName();
+    $("#login").click(function(){
+      PDclick();
+    });
     $.ajax({
         url:config.ip + config.port + '/getMenue',
         type: 'POST',

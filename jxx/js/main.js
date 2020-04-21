@@ -116,7 +116,30 @@ function caidanChangeColor(className){
             if(glorolename.indexOf("管理员") >= 0){
                 alert("欢迎来到审核员页面")
             }else{
-                location.href = "./index.html"
+                location.href = "./welcome.html"
+            }
+        },
+        error:function(){
+            location.href = "./login.html"
+        }
+    });
+   };
+   //判断点击事件
+   function PDclick(){
+    $.ajax({
+        url:config.ip + config.port + '/getUserInfo',
+        type: 'POST',
+        async: false,
+        xhrFields:{withCredentials:true},
+        success:function(data){
+            var glorolename = [];
+            for(var i=0;i<data.length;i++){
+                glorolename.push(data[i].role.rolename);
+            };
+            if(glorolename.indexOf("管理员") >= 0){
+                location.href = "./shy.html";
+            }else{
+                //获取显示申请资源
             }
         },
         error:function(){
