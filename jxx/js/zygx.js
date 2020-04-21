@@ -9,6 +9,7 @@ $(document).ready(function(){
     $.ajax({
         url:config.ip + config.port + '/getMenue',
         type: 'POST',
+        async: false,
         xhrFields:{withCredentials:true},
         success:function(data){
                //形成树菜单
@@ -28,7 +29,7 @@ $(document).ready(function(){
                       if(Sumsfqx.indexOf(fone) >= 0){
                          sfqx.eq(i).css("color","red");
                          //展开树型菜单方法
-                         
+                        //  sfqx.eq(i).parents().(".hitarea").click()
                       };
                      }
                 });
@@ -52,4 +53,5 @@ $(document).ready(function(){
                   //
         }
     });
+   //   $(".hitarea").click();
     });
