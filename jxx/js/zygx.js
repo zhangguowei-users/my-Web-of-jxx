@@ -36,9 +36,8 @@ $(document).ready(function(){
                            data:{menueid:menueid},
                            xhrFields:{withCredentials:true},
                            success:function(data){
-
-                              queryDLTB(click_Inf, pushArry(data);)
-
+                              pushArry(data);
+                              globalQueryClass.queryByFindTask();
                               console.log(click_Inf);
                            }
                         });
