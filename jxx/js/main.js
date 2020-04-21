@@ -227,6 +227,7 @@ function caidanChangeColor(className){
                 pushArry(data);
                 globalQueryClass.queryByFindTask();
                 console.log(click_Inf);
+                
              }
           });
        };
