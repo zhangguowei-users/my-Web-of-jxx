@@ -35,26 +35,26 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
         query.returnGeometry = true;
 
         queryTask.execute(query, showQueryResult);
+    }
 
-        function showQueryResult(queryResult)
+    function showQueryResult(queryResult)
+    {
+        var lineSymbol=new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new dojo.Color([255, 255, 0]), 3);
+        var fill = SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, lineSymbol,  new dojo.Color([255, 0, 0]));
+
+        if(queryResult.features.length == 0){alert("no result"); return;}
+
+        for(let i=0; i<queryResult.features.length; i++)
         {
-            var lineSymbol=new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new dojo.Color([255, 255, 0]), 3);
-            var fill = SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, lineSymbol,  new dojo.Color([255, 0, 0]));
+            var graphic = queryResult.features[i];
+            graphic.setSymbol(fill);
+            map.graphics.add(graphic);
 
-            if(queryResult.features.length == 0){alert("no result"); return;}
+            console.log(graphic.attributes["QSDWMC"]);
 
-            for(let i=0; i<queryResult.features.length; i++)
+            if(i == queryResult.features.length-1)
             {
-                var graphic = queryResult.features[i];
-                graphic.setSymbol(fill);
-                map.graphics.add(graphic);
-
-                console.log(graphic.attributes["QSDWMC"]);
-
-                if(i == queryResult.features.length-1)
-                {
-                    new QueryClass().setExtentFun(map, graphic.geometry);
-                }
+                this.setExtentFun(map, graphic.geometry);
             }
         }
     }
@@ -68,39 +68,53 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 
         var findTask = new FindTask(ARCGISCONFIG.DLTB);
         findTask.execute(findParams, resultFun);
+    }
 
-        function resultFun(queryResult){
-            map.graphics.clear();
-        
-            if(queryResult.length == 0){alert("没有该元素！"); return;}
-        
-            for(var i=0; i<queryResult.length; i++){
-                var feature = queryResult[i].feature;
-                var geometry = feature.geometry;
-        
-                var outline = new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT, new Color([255,0,0]), 1);
-                var polygonSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, outline, new Color([0,255,1]));
-        
-                var graphic = new Graphic(geometry, polygonSymbol);
-        
-                map.graphics.add(graphic);
-        
-                if(i == queryResult.length-1){
-                    new QueryClass().setExtentFun(map, geometry);
-                }
+    function resultFun(queryResult){
+        map.graphics.clear();
+    
+        if(queryResult.length == 0){alert("没有该元素！"); return;}
+    
+        for(var i=0; i<queryResult.length; i++){
+            var feature = queryResult[i].feature;
+            var geometry = feature.geometry;
+    
+            var outline = new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT, new Color([255,0,0]), 1);
+            var polygonSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, outline, new Color([0,255,1]));
+    
+            var graphic = new Graphic(geometry, polygonSymbol);
+    
+            map.graphics.add(graphic);
+    
+            if(i == queryResult.length-1){
+                this.setExtentFun(map, geometry);
+                
             }
         }
-
     }
 
 
     this.setExtentFun = function(map, geometry){//设置文档可见域
         map.setExtent(geometry.getExtent().expand(0));
     }
+}
 
 
+function queryDLTB(data){
+
+    alert(data);
+
+    globalQueryClass.queryByFindTask();
 
 }
+
+
+
+
+
+
+
+
 
 
 

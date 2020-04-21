@@ -44,9 +44,9 @@ $(document).ready(function(){
                            data:{menueid:menueid},
                            xhrFields:{withCredentials:true},
                            success:function(data){
-                              console.log(pushArry(data));
+                              //console.log(pushArry(data));
+                              queryDLTB(pushArry(data));//点击左侧树选取地类
 
-                              globalQueryClass.queryByFindTask();
                            }
                         });
                      };
