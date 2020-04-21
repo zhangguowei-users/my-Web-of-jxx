@@ -29,7 +29,7 @@ $(document).ready(function(){
                       if(Sumsfqx.indexOf(fone) >= 0){
                          sfqx.eq(i).css("color","red");
                          //展开树型菜单方法
-                        //  sfqx.eq(i).parents().(".hitarea").click()
+                         sfqx.eq(i).parents().prevAll(".hitarea").click();
                       };
                      }
                 });
