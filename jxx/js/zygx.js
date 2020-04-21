@@ -20,18 +20,7 @@ $(document).ready(function(){
                 //点击变色事件
                 caidanChangeColor(".file");
                 //点击查询
-                $(".sone").click(function(){ 
-                   var fone = $(".fone").val();
-                   var sfqx = $(".file");
-                   sfqx.css("color","black");
-                   for(var i=0;i<sfqx.length;i++){
-                      var Sumsfqx = sfqx.eq(i).html();
-                      if(Sumsfqx.indexOf(fone) >= 0){
-                         sfqx.eq(i).css("color","red");
-                         $(".expandable-hitarea").click();
-                      };
-                     };
-                });
+                queryCd(".fone",".sone");
                 //点击tree 获取id
                 $(".folder,.file").click(function(){
                      var menueid = $(this).attr("menueid");
@@ -54,8 +43,6 @@ $(document).ready(function(){
                         });
                      };
                   });
-                  //
         }
     });
-   //   $(".hitarea").click();
     });

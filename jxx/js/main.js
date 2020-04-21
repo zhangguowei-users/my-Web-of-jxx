@@ -177,3 +177,18 @@ function caidanChangeColor(className){
     };
     return gloArr;
  };
+ //点击查询拼接的树型菜单
+ function queryCd(queryInput,queryButton){
+    $(`${queryButton}`).click(function(){ 
+        var fone = $(`${queryInput}`).val();
+        var sfqx = $(".file");
+        sfqx.css("color","black");
+        for(var i=0;i<sfqx.length;i++){
+           var Sumsfqx = sfqx.eq(i).html();
+           if(Sumsfqx.indexOf(fone) >= 0){
+              sfqx.eq(i).css("color","red");
+              $(".expandable-hitarea").click();
+           };
+          };
+     });
+ };
