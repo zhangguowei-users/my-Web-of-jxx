@@ -164,16 +164,31 @@ function caidanChangeColor(className){
               if(data[j].secondcategory == ""){
                   pushArry(data);
               }else{
-                 var abc = {firstcategoryCode:data[j].firstcategory,secondcategoryCode:data[j].secondcategory,secondcategoryName:data[j].menuename};
+                 var abc = {menueid:data[j].menueid,menuename:data[j].menuename,firstcategoryCode:data[j].firstcategory,secondcategoryCode:data[j].secondcategory,secondcategoryName:data[j].menuename};
                  gloArr.push(abc);
               };
              };
            }
         });
         }else{
-           var abc = {firstcategoryCode:arr[i].firstcategory,secondcategoryCode:arr[i].secondcategory,secondcategoryName:arr[i].menuename};
+           var abc = {menueid:arr[i].menueid,menuename:arr[i].menuename,firstcategoryCode:arr[i].firstcategory,secondcategoryCode:arr[i].secondcategory,secondcategoryName:arr[i].menuename};
            gloArr.push(abc);
         };
     };
     return gloArr;
+ };
+ //点击查询拼接的树型菜单
+ function queryCd(queryInput,queryButton){
+    $(`${queryButton}`).click(function(){ 
+        var fone = $(`${queryInput}`).val();
+        var sfqx = $(".file");
+        sfqx.css("color","black");
+        for(var i=0;i<sfqx.length;i++){
+           var Sumsfqx = sfqx.eq(i).html();
+           if(Sumsfqx.indexOf(fone) >= 0){
+              sfqx.eq(i).css("color","red");
+              $(".expandable-hitarea").click();
+           };
+          };
+     });
  };
