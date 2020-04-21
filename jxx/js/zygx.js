@@ -20,7 +20,7 @@ $(document).ready(function(){
                 //点击变色事件
                caidanChangeColor(".file");
                 //点击查询
-               queryCd(".fone",".sone","#browser",data);
+               queryCd(".fone",".sone");
                 //点击tree 获取id
                $(".folder,.file").click(function(){
                      var menueid = $(this).attr("menueid");

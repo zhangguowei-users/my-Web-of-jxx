@@ -178,13 +178,8 @@ function caidanChangeColor(className){
     return gloArr;
  };
  //点击查询拼接的树型菜单
- function queryCd(queryInput,queryButton,CDname,data){
+ function queryCd(queryInput,queryButton){
     $(`${queryButton}`).click(function(){
-        $(`${CDname}`).children().remove();
-        tree(data,`${CDname}`);
-        $(`${CDname}`).treeview();
-        huakuaiMove(".folder");
-        caidanChangeColor(".file"); 
         var fone = $(`${queryInput}`).val();
         var sfqx = $(".file");
         var glo = [];
@@ -205,5 +200,5 @@ function caidanChangeColor(className){
                    confirm("搜索字符不存在");    
                };
         };
-     });   
+     });
  };
