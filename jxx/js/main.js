@@ -178,10 +178,16 @@ function caidanChangeColor(className){
     return gloArr;
  };
  //点击查询拼接的树型菜单
- function queryCd(queryInput,queryButton){
+ function queryCd(queryInput,queryButton,treeId,data){
     $(`${queryButton}`).click(function(){
+        $(`${treeId}`).children().remove();
+        tree(data,`${treeId}`);
+        $(`${treeId}`).treeview();
         var fone = $(`${queryInput}`).val();
         var sfqx = $(".file");
+        huakuaiMove(".folder");
+        caidanChangeColor(".file");
+        clicktreeById()
         var glo = [];
         sfqx.css("color","black");
         if(fone == ""){
@@ -201,4 +207,28 @@ function caidanChangeColor(className){
                };
         };
      });
+ };
+ //点击tree 获取id
+ function clicktreeById(){
+    $(".folder,.file").click(function(){
+       var menueid = $(this).attr("menueid");
+       if(menueid == 1){
+          return;
+       }else{
+             var menueid = $(this).attr("menueid");
+             var menuename = $(this).html();
+             var click_Inf = {menueid:menueid,menuename:menuename};
+          $.ajax({
+             url:config.ip + config.port + '/getSecondCategory',
+             type: 'POST',
+             data:{menueid:menueid},
+             xhrFields:{withCredentials:true},
+             success:function(data){
+                pushArry(data);
+                globalQueryClass.queryByFindTask();
+                console.log(click_Inf);
+             }
+          });
+       };
+    });
  };
