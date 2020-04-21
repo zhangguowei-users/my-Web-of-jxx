@@ -37,7 +37,8 @@ $(document).ready(function(){
                            xhrFields:{withCredentials:true},
                            success:function(data){
                               pushArry(data);
-                              globalQueryClass.queryByFindTask();
+
+                              
                               console.log(click_Inf);
                            }
                         });
