@@ -182,13 +182,23 @@ function caidanChangeColor(className){
     $(`${queryButton}`).click(function(){ 
         var fone = $(`${queryInput}`).val();
         var sfqx = $(".file");
+        var glo = [];
         sfqx.css("color","black");
-        for(var i=0;i<sfqx.length;i++){
-           var Sumsfqx = sfqx.eq(i).html();
-           if(Sumsfqx.indexOf(fone) >= 0){
-              sfqx.eq(i).css("color","red");
-              $(".expandable-hitarea").click();
-           };
-          };
+        if(fone == ""){
+            confirm("搜索字符为空，请重新填写");
+        }else{
+            for(var i=0;i<sfqx.length;i++){
+                glo.push(sfqx.eq(i).html());
+                var Sumsfqx = sfqx.eq(i).html();
+                if(Sumsfqx.indexOf(fone) >= 0){
+                   sfqx.eq(i).css("color","red");
+                   $(".expandable-hitarea").click(); 
+                };
+               };
+               var a = glo.toString().replace(/\,/g,"");
+               if(a.indexOf(fone) < 0){
+                   confirm("搜索字符不存在");    
+               };
+        };
      });
  };
