@@ -22,7 +22,7 @@ $(document).ready(function(){
                 //点击查询
                queryCd(".fone",".sone","#browser",data);
                 //点击tree 获取id
-                clicktreeById();
+               clicktreeById();
         }
     });
     });
