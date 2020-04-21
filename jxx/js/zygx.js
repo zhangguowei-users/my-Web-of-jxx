@@ -45,6 +45,8 @@ $(document).ready(function(){
                            xhrFields:{withCredentials:true},
                            success:function(data){
                               console.log(pushArry(data));
+
+                              globalQueryClass.queryByFindTask();
                            }
                         });
                      };
