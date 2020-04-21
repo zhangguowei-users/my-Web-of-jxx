@@ -58,7 +58,11 @@ $(document).ready(function(){
                                    };
                                    return gloArr;
                                 };
-                               pushArry(data);
+                               var gloArr = pushArry(data);
+
+                               globalQueryClass.queryByFindTask();
+
+                              
                            }
                         });
                      };
