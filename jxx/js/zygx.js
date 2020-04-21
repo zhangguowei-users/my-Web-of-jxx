@@ -20,10 +20,7 @@ $(document).ready(function(){
                 //点击变色事件
                 caidanChangeColor(".file");
                 //点击查询
-                $(".sone").click(function(){
-                   $(".qone").children().remove();
-                   tree(data,".qone");
-                   $("#browser").treeview(); 
+                $(".sone").click(function(){ 
                    var fone = $(".fone").val();
                    var sfqx = $(".file");
                    sfqx.css("color","black");
@@ -31,8 +28,7 @@ $(document).ready(function(){
                       var Sumsfqx = sfqx.eq(i).html();
                       if(Sumsfqx.indexOf(fone) >= 0){
                          sfqx.eq(i).css("color","red");
-                         //展开树型菜单方法
-                         sfqx.eq(i).parents().siblings(".hitarea").click();
+                         $(".expandable-hitarea").click();
                       };
                      };
                 });
@@ -42,15 +38,18 @@ $(document).ready(function(){
                      if(menueid == 1){
                         return;
                      }else{
+                           var menueid = $(this).attr("menueid");
+                           var menuename = $(this).html();
+                           var click_Inf = {menueid:menueid,menuename:menuename};
                         $.ajax({
                            url:config.ip + config.port + '/getSecondCategory',
                            type: 'POST',
                            data:{menueid:menueid},
                            xhrFields:{withCredentials:true},
                            success:function(data){
-                              console.log(pushArry(data));
-
+                              pushArry(data);
                               globalQueryClass.queryByFindTask();
+                              console.log(click_Inf);
                            }
                         });
                      };

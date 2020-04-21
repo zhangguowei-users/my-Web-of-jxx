@@ -164,14 +164,14 @@ function caidanChangeColor(className){
               if(data[j].secondcategory == ""){
                   pushArry(data);
               }else{
-                 var abc = {firstcategoryCode:data[j].firstcategory,secondcategoryCode:data[j].secondcategory,secondcategoryName:data[j].menuename};
+                 var abc = {menueid:data[j].menueid,menuename:data[j].menuename,firstcategoryCode:data[j].firstcategory,secondcategoryCode:data[j].secondcategory,secondcategoryName:data[j].menuename};
                  gloArr.push(abc);
               };
              };
            }
         });
         }else{
-           var abc = {firstcategoryCode:arr[i].firstcategory,secondcategoryCode:arr[i].secondcategory,secondcategoryName:arr[i].menuename};
+           var abc = {menueid:arr[i].menueid,menuename:arr[i].menuename,firstcategoryCode:arr[i].firstcategory,secondcategoryCode:arr[i].secondcategory,secondcategoryName:arr[i].menuename};
            gloArr.push(abc);
         };
     };
