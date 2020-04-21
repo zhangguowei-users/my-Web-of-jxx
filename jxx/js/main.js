@@ -93,11 +93,11 @@ function caidanChangeColor(className){
                     $(`.${data[i].menueid}`).append(`<ul><li class="closed ${data[i].subMenue[j].menueid}"><span class="folder" menueid="${data[i].subMenue[j].menueid}">${data[i].subMenue[j].menuename}</span></li></ul>`);
                     tree(data[i].subMenue[j].subMenue,`.${data[i].subMenue[j].menueid}`);
                  }else{
-                    $(`.${data[i].menueid}`).append(`<ul><li class="closed"><span class="file" menueid="${data[i].subMenue[j].menueid}">${data[i].subMenue[j].menuename}</span></li></ul>`);
+                    $(`.${data[i].menueid}`).append(`<ul><li><span class="file" menueid="${data[i].subMenue[j].menueid}">${data[i].subMenue[j].menuename}</span></li></ul>`);
                  };
              };
          }else{
-            $(`${className}`).append(`<ul><li class="closed"><span class="file" menueid="${data[i].menueid}">${data[i].menuename}</span></li></ul>`);
+            $(`${className}`).append(`<ul><li><span class="file" menueid="${data[i].menueid}">${data[i].menuename}</span></li></ul>`);
          };
        };
    };
@@ -146,4 +146,34 @@ function caidanChangeColor(className){
             location.href = "./login.html"
         }
     });
-   }
+   };
+   //获取菜单最底层信息
+   function pushArry(arr){
+    var gloArr = [];
+    for(var i=0;i<arr.length;i++){
+       if(arr[i].secondcategory == ""){
+          var menueid = arr[i].menueid;
+           $.ajax({
+           url:config.ip + config.port + '/getSecondCategory',
+           type: 'POST',
+           async: false,
+           data:{menueid:menueid},
+           xhrFields:{withCredentials:true},
+           success:function(data){
+           for(var j=0;j<data.length;j++){
+              if(data[j].secondcategory == ""){
+                  pushArry(data);
+              }else{
+                 var abc = {firstcategoryCode:data[j].firstcategory,secondcategoryCode:data[j].secondcategory,secondcategoryName:data[j].menuename};
+                 gloArr.push(abc);
+              };
+             };
+           }
+        });
+        }else{
+           var abc = {firstcategoryCode:arr[i].firstcategory,secondcategoryCode:arr[i].secondcategory,secondcategoryName:arr[i].menuename};
+           gloArr.push(abc);
+        };
+    };
+    return gloArr;
+ };

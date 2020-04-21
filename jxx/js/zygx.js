@@ -44,6 +44,7 @@ $(document).ready(function(){
                            data:{menueid:menueid},
                            xhrFields:{withCredentials:true},
                            success:function(data){
+<<<<<<< HEAD
                                 function pushArry(arr){
                                    var gloArr = [];
                                    for(var i=0;i<arr.length;i++){
@@ -63,6 +64,9 @@ $(document).ready(function(){
                                globalQueryClass.queryByFindTask();
 
                               
+=======
+                              console.log(pushArry(data));
+>>>>>>> 7252a55dfb1f79c33bf31a0b5a9464c9c963ae64
                            }
                         });
                      };
