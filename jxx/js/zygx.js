@@ -44,29 +44,7 @@ $(document).ready(function(){
                            data:{menueid:menueid},
                            xhrFields:{withCredentials:true},
                            success:function(data){
-<<<<<<< HEAD
-                                function pushArry(arr){
-                                   var gloArr = [];
-                                   for(var i=0;i<arr.length;i++){
-                                      if(arr[i].secondcategory == null){ 
-                                          continue;
-                                       };
-                                       var abc = {firstcategoryCode:arr[i].firstcategory,secondcategoryCode:arr[i].secondcategory,secondcategoryName:arr[i].menuename};
-                                       gloArr.push(abc);
-                                      if(arr[i].subMenue.length != 0){
-                                        pushArry(arr[i].subMenue);                                      
-                                      };
-                                   };
-                                   return gloArr;
-                                };
-                               var gloArr = pushArry(data);
-
-                               globalQueryClass.queryByFindTask();
-
-                              
-=======
                               console.log(pushArry(data));
->>>>>>> 7252a55dfb1f79c33bf31a0b5a9464c9c963ae64
                            }
                         });
                      };
