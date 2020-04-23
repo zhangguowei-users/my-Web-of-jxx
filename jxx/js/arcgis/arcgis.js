@@ -100,7 +100,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 }
 
 
-function queryDLTB(data){
+function queryDLTB(click_inf, data){
 
     alert(data);
 

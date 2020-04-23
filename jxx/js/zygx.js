@@ -36,9 +36,12 @@ $(document).ready(function(){
                            data:{menueid:menueid},
                            xhrFields:{withCredentials:true},
                            success:function(data){
-                              pushArry(data);
-                              globalQueryClass.queryByFindTask();
-                              console.log(click_Inf);
+                              //pushArry(data);
+                              //console.log(click_Inf);
+
+                              queryDLTB(click_Inf, data);
+
+
                            }
                         });
                      };
