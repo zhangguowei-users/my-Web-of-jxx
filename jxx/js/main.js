@@ -224,9 +224,10 @@ function caidanChangeColor(className){
              data:{menueid:menueid},
              xhrFields:{withCredentials:true},
              success:function(data){
-                pushArry(data);
-                globalQueryClass.queryByFindTask();
-                console.log(click_Inf);
+                //pushArry(data);
+                //console.log(click_Inf);
+
+                queryDLTB(pushArry(data));
                 
              }
           });

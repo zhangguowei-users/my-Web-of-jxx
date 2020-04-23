@@ -54,7 +54,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 
             if(i == queryResult.features.length-1)
             {
-                this.setExtentFun(map, graphic.geometry);
+                new QueryClass().setExtentFun(map, graphic.geometry);
             }
         }
     }
@@ -87,7 +87,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
             map.graphics.add(graphic);
     
             if(i == queryResult.length-1){
-                this.setExtentFun(map, geometry);
+                new QueryClass().setExtentFun(map, geometry);
                 
             }
         }
@@ -100,9 +100,9 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 }
 
 
-function queryDLTB(click_inf, data){
+function queryDLTB(data){
 
-    alert(data);
+    //alert(data);
 
     globalQueryClass.queryByFindTask();
 
