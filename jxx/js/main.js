@@ -178,17 +178,58 @@ function caidanChangeColor(className){
     return gloArr;
  };
  //点击查询拼接的树型菜单
- function queryCd(queryInput,queryButton){
-    $(`${queryButton}`).click(function(){ 
+ function queryCd(queryInput,queryButton,treeId,data){
+    $(`${queryButton}`).click(function(){
+        $(`${treeId}`).children().remove();
+        tree(data,`${treeId}`);
+        $(`${treeId}`).treeview();
         var fone = $(`${queryInput}`).val();
         var sfqx = $(".file");
+        huakuaiMove(".folder");
+        caidanChangeColor(".file");
+        clicktreeById()
+        var glo = [];
         sfqx.css("color","black");
-        for(var i=0;i<sfqx.length;i++){
-           var Sumsfqx = sfqx.eq(i).html();
-           if(Sumsfqx.indexOf(fone) >= 0){
-              sfqx.eq(i).css("color","red");
-              $(".expandable-hitarea").click();
-           };
-          };
+        if(fone == ""){
+            confirm("搜索字符为空，请重新填写");
+        }else{
+            for(var i=0;i<sfqx.length;i++){
+                glo.push(sfqx.eq(i).html());
+                var Sumsfqx = sfqx.eq(i).html();
+                if(Sumsfqx.indexOf(fone) >= 0){
+                   sfqx.eq(i).css("color","red");
+                   sfqx.eq(i).parents().siblings(".expandable-hitarea").click(); 
+                };
+               };
+               var a = glo.toString().replace(/\,/g,"");
+               if(a.indexOf(fone) < 0){
+                   confirm("搜索字符不存在");    
+               };
+        };
      });
+ };
+ //点击tree 获取id
+ function clicktreeById(){
+    $(".folder,.file").click(function(){
+       var menueid = $(this).attr("menueid");
+       if(menueid == 1){
+          return;
+       }else{
+             var menueid = $(this).attr("menueid");
+             var menuename = $(this).html();
+             var click_Inf = {menueid:menueid,menuename:menuename};
+          $.ajax({
+             url:config.ip + config.port + '/getSecondCategory',
+             type: 'POST',
+             data:{menueid:menueid},
+             xhrFields:{withCredentials:true},
+             success:function(data){
+                pushArry(data);
+                globalQueryClass.queryByFindTask();
+                console.log(click_Inf);
+                
+             }
+          });
+       };
+    });
  };
