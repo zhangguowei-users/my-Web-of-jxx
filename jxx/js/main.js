@@ -226,7 +226,7 @@ function caidanChangeColor(className){
              success:function(data){
                 //pushArry(data);
                 //console.log(click_Inf);
-
+                alert(click_Inf);
                 queryDLTB(pushArry(data));
                 
              }
