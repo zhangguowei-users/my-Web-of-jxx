@@ -25,12 +25,12 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     this.Color = Color;
     this.Graphic = Graphic;
     
-    this.queryTask = function()//Query属性查询
+    this.queryTask = function(querySQL)//Query属性查询
     {
         var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + "/0");
     
         var query = new Query();
-        query.where = "QSDWMC='七星林场'";
+        query.where = querySQL;
         query.outFields = ["*"];
         query.returnGeometry = true;
 
@@ -39,18 +39,18 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 
     function showQueryResult(queryResult)
     {
-        var lineSymbol=new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new dojo.Color([255, 255, 0]), 3);
-        var fill = SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, lineSymbol,  new dojo.Color([255, 0, 0]));
+        map.graphics.clear();
 
-        if(queryResult.features.length == 0){alert("no result"); return;}
+        var lineSymbol=new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new dojo.Color([255, 0, 0]), 1);
+        var fill = SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, lineSymbol,  new dojo.Color([0, 255, 1]));
+
+        if(queryResult.features.length == 0){alert("无结果！"); return;}
 
         for(let i=0; i<queryResult.features.length; i++)
         {
             var graphic = queryResult.features[i];
             graphic.setSymbol(fill);
             map.graphics.add(graphic);
-
-            console.log(graphic.attributes["QSDWMC"]);
 
             if(i == queryResult.features.length-1)
             {
@@ -95,15 +95,35 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 
 
     this.setExtentFun = function(map, geometry){//设置文档可见域
-        map.setExtent(geometry.getExtent().expand(0));
+        map.setExtent(geometry.getExtent().expand(30));
     }
 }
 
 
-function queryDLTB(data){
+function queryDLTB(data, menue){
+
+    console.log(data);
+
+    if(data.length <=0){//叶子节点
+
+    }else {
+
+        var sql = "DLBM in(";
+
+        for(var i=0; i<data.length; i++){
+            sql += "'" + data[i].secondcategoryCode + "'" + ",";
+
+            if(i == data.length-1){
+                sql += "'" + data[i].secondcategoryCode + "'" + ")";
+            }
+
+        }
+
+        globalQueryClass.queryTask(sql);
+    }
 
 
-    globalQueryClass.queryByFindTask();
+
 
 }
 
