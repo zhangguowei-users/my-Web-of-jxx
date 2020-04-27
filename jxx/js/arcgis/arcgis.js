@@ -1,12 +1,12 @@
 var globalQueryClass;
 
 
-require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","dojo/domReady!"], init);
+require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","dojo/domReady!"], init);
 
-function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils){
+function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils,FeatureLayer){
 
     var map = new Map("map_div", {logo: false});
-    var layer = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.DLTB);
+    var layer = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.DLTB_Dinamic);
     map.addLayer(layer);
    
     var queryClass =  new QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic);
@@ -27,7 +27,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     
     this.queryTask = function()//Query属性查询
     {
-        var queryTask = new QueryTask(ARCGISCONFIG.DLTB + "/1");
+        var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + "/0");
     
         var query = new Query();
         query.where = "QSDWMC='七星林场'";
@@ -62,11 +62,11 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     this.queryByFindTask = function(){//属性查询
         var findParams = new FindParameters();
         findParams.returnGeometry = true;
-        findParams.layerIds = [1];
+        findParams.layerIds = [0];
         findParams.searchFields = ["QSDWMC"];
         findParams.searchText = "七星林场";
 
-        var findTask = new FindTask(ARCGISCONFIG.DLTB);
+        var findTask = new FindTask(ARCGISCONFIG.DLTB_Dinamic);
         findTask.execute(findParams, resultFun);
     }
 
@@ -102,7 +102,6 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 
 function queryDLTB(data){
 
-    //alert(data);
 
     globalQueryClass.queryByFindTask();
 
