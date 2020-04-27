@@ -1,12 +1,12 @@
 var globalQueryClass;
 
 
-require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","dojo/domReady!"], init);
+require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","dojo/domReady!"], init);
 
-function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils){
+function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils,FeatureLayer){
 
     var map = new Map("map_div", {logo: false});
-    var layer = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.DLTB);
+    var layer = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.DLTB_Dinamic);
     map.addLayer(layer);
    
     var queryClass =  new QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic);
@@ -25,12 +25,12 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     this.Color = Color;
     this.Graphic = Graphic;
     
-    this.queryTask = function()//Query属性查询
+    this.queryTask = function(querySQL)//Query属性查询
     {
-        var queryTask = new QueryTask(ARCGISCONFIG.DLTB + "/1");
+        var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + "/0");
     
         var query = new Query();
-        query.where = "QSDWMC='七星林场'";
+        query.where = querySQL;
         query.outFields = ["*"];
         query.returnGeometry = true;
 
@@ -39,18 +39,18 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 
     function showQueryResult(queryResult)
     {
-        var lineSymbol=new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new dojo.Color([255, 255, 0]), 3);
-        var fill = SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, lineSymbol,  new dojo.Color([255, 0, 0]));
+        map.graphics.clear();
 
-        if(queryResult.features.length == 0){alert("no result"); return;}
+        var lineSymbol=new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new dojo.Color([255, 0, 0]), 1);
+        var fill = SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, lineSymbol,  new dojo.Color([0, 255, 1]));
+
+        if(queryResult.features.length == 0){alert("无结果！"); return;}
 
         for(let i=0; i<queryResult.features.length; i++)
         {
             var graphic = queryResult.features[i];
             graphic.setSymbol(fill);
             map.graphics.add(graphic);
-
-            console.log(graphic.attributes["QSDWMC"]);
 
             if(i == queryResult.features.length-1)
             {
@@ -62,11 +62,11 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     this.queryByFindTask = function(){//属性查询
         var findParams = new FindParameters();
         findParams.returnGeometry = true;
-        findParams.layerIds = [1];
+        findParams.layerIds = [0];
         findParams.searchFields = ["QSDWMC"];
         findParams.searchText = "七星林场";
 
-        var findTask = new FindTask(ARCGISCONFIG.DLTB);
+        var findTask = new FindTask(ARCGISCONFIG.DLTB_Dinamic);
         findTask.execute(findParams, resultFun);
     }
 
@@ -95,16 +95,35 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 
 
     this.setExtentFun = function(map, geometry){//设置文档可见域
-        map.setExtent(geometry.getExtent().expand(0));
+        map.setExtent(geometry.getExtent().expand(30));
     }
 }
 
 
-function queryDLTB(data){
+function queryDLTB(data, menue){
 
-    //alert(data);
+    console.log(data);
 
-    globalQueryClass.queryByFindTask();
+    if(data.length <=0){//叶子节点
+
+    }else {
+
+        var sql = "DLBM in(";
+
+        for(var i=0; i<data.length; i++){
+            sql += "'" + data[i].secondcategoryCode + "'" + ",";
+
+            if(i == data.length-1){
+                sql += "'" + data[i].secondcategoryCode + "'" + ")";
+            }
+
+        }
+
+        globalQueryClass.queryTask(sql);
+    }
+
+
+
 
 }
 

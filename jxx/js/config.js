@@ -5,5 +5,8 @@ config={
     port: ':8081'
 };
 
-var ARCGISCONFIG={DLTB:"http://192.168.1.109:6080/arcgis/rest/services/mygis/arcgis_learn_3/MapServer"};
+var ARCGISCONFIG={
+    DLTB_Dinamic:"http://192.168.1.109:6080/arcgis/rest/services/jixian/DLTB_Dynamic/MapServer",
+    DLTB_FEATURE:"http://192.168.1.109:6080/arcgis/rest/services/jixian/DLTB/FeatureServer"
+};
 
