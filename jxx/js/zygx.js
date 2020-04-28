@@ -28,7 +28,7 @@ $(document).ready(function(){
     $("#gb-p1").click(function(){
       $(".theone").css("display","none");
     });
-    var myChart = echarts.init(document.getElementById('bing'));
+    /*var myChart = echarts.init(document.getElementById('bing'));
     option = {
       title: {
         text: '同名数量统计',
@@ -73,8 +73,8 @@ $(document).ready(function(){
           }
       ]
   };
-  myChart.setOption(option);
-  var myChartone = echarts.init(document.getElementById('zhu'));
+  myChart.setOption(option);*/
+  /*var myChartone = echarts.init(document.getElementById('zhu'));
   option = {
     title: {
       text: '同名数量统计',
@@ -116,7 +116,9 @@ $(document).ready(function(){
         }
     ]
 };
-myChartone.setOption(option);
+myChartone.setOption(option);*/
+
+
 $("#gb-bing").click(function(){
   $(".bing").css("display","none");
 });

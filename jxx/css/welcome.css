@@ -422,6 +422,7 @@ body {
     right: 0;
     top:10%;
     opacity: 0.9;
+    display: none;
 }
 #gb-bing{
     font-size: large;
@@ -439,6 +440,7 @@ body {
     right: 0;
     top:55%; 
     opacity: 0.9;
+    display: none;
 }
 #gb-zhu{
     font-size: large;
