@@ -7,6 +7,9 @@
 .map30{
     cursor: url(../img/map01__30.png) 12 12,default; 
 }
+.cdiv{
+    pointer-events: none;
+}
 html{
     height:100%;
 }
