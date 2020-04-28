@@ -170,6 +170,7 @@ body {
     cursor: pointer;
     background: url(../img/help.png) no-repeat;
     background-size: 22px 22px;
+    display: none;
 }
 #setting{
     display: inline-block;
@@ -181,4 +182,5 @@ body {
     cursor: pointer;
     background: url(../img/setting.png) no-repeat;
     background-size: 22px 22px;
+    display: none;
 }
