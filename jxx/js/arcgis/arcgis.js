@@ -12,6 +12,8 @@ function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindP
     var queryClass =  new QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic);
     globalQueryClass = queryClass;
 
+    mouseClick(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic);//鼠标点击高亮显示信息
+
 }
 
 function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, FindTask, FindParameters,Color, Graphic)//查询类
@@ -24,6 +26,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     this.FindParameters = FindParameters;
     this.Color = Color;
     this.Graphic = Graphic;
+    this.Query = Query;
     
     this.queryTask = function(querySQL)//Query属性查询
     {
@@ -93,6 +96,41 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
         }
     }
 
+    this.queryByGeometry = function(geometry) {//Query查询根据几何对象
+        var query = new Query();
+        query.geometry = geometry;
+        query.outFields = ["*"];
+        query.outSpatialReference = this.map.spatialReference;
+        query.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
+        query.returnGeometry = true;
+
+        var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + "/0");
+
+        queryTask.execute(query, queryByGeometryResult);
+    }
+
+    function queryByGeometryResult(result) {
+        //map.graphics.clear();
+
+        if(result.features == 0){alert("no features"); return;}
+
+        for(var i=0; i<result.features.length; i++) {
+            var feature = result.features[i];
+            var geometry = feature.geometry;
+
+            alert(feature.attributes.DLMC + "," + feature.attributes.GDLX + "," + feature.attributes.ZZSXMC);
+
+            var outline = new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT, new Color([255,0,0]), 1);
+            var polygonSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, outline, new Color([255,0,1]));
+
+            var graphic = new Graphic(geometry, polygonSymbol);
+
+            map.graphics.add(graphic);
+
+        }
+
+    }
+
 
     this.setExtentFun = function(map, geometry){//设置文档可见域
         map.setExtent(geometry.getExtent().expand(30));
@@ -100,32 +138,40 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 }
 
 
-function queryDLTB(data, menue){
+function mouseClick(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic)//点击地图高亮读取信息
+{
+    var handdle = map.on("click", clickFun);
+    function clickFun(e) {
+        var point = e.mapPoint;
+        globalQueryClass.queryByGeometry(point);
+    }
+}
 
-    console.log(data);
+function queryDLTB(data, menue){//点击左侧树
+
+    var sql = "DLBM in(";
 
     if(data.length <=0){//叶子节点
+        $.ajax({url:config.ip + config.port + '/getMenueByMenueId', type: 'POST', data:{menueid:menue.menueid}, xhrFields:{withCredentials:true}, success:function(result) {
+            sql += "'" + result.secondcategory + "'" + ")";
+            globalQueryClass.queryTask(sql);
+        }});
 
     }else {
-
-        var sql = "DLBM in(";
-
         for(var i=0; i<data.length; i++){
             sql += "'" + data[i].secondcategoryCode + "'" + ",";
 
             if(i == data.length-1){
                 sql += "'" + data[i].secondcategoryCode + "'" + ")";
             }
-
         }
 
         globalQueryClass.queryTask(sql);
+
     }
 
-
-
-
 }
+
 
 
 
