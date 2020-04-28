@@ -1,6 +1,7 @@
 $(document).ready(function(){
 if(jiancelogin()){
     $("#login1").css("display","none");
+    $("#gb").css("display","inline-block");
 };
 $("#login1").click(function () {
     window.location.href = "./login.html";

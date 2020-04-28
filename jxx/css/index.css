@@ -148,3 +148,37 @@ body {
     text-overflow: ellipsis;
     white-space:nowrap;
 }
+#gb{
+    display: inline-block;
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    right: 35px;
+    top:5px;
+    cursor: pointer;
+    background: url(../img/exit.png) no-repeat;
+    background-size: 22px 22px;
+    display: none;
+}
+#help{
+    display: inline-block;
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    right: 115px;
+    top:5px;
+    cursor: pointer;
+    background: url(../img/help.png) no-repeat;
+    background-size: 22px 22px;
+}
+#setting{
+    display: inline-block;
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    right: 75px;
+    top:5px;
+    cursor: pointer;
+    background: url(../img/setting.png) no-repeat;
+    background-size: 22px 22px;
+}
