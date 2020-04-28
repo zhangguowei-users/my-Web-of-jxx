@@ -1,6 +1,12 @@
 $(document).ready(function(){
 if(jiancelogin()){
     $("#login1").css("display","none");
+    $("#gb").css("display","inline-block");
+    $("#help").css("display","inline-block");
+    $("#setting").css("display","inline-block");
+    $("#inf-namenow-time").html(newTime());
+    huoquName();
+    $("#login").css("display","inline-block");
 };
 $("#login1").click(function () {
     window.location.href = "./login.html";
