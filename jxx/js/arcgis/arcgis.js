@@ -12,6 +12,8 @@ function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindP
     var queryClass =  new QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic);
     globalQueryClass = queryClass;
 
+    mouseClick(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic);//鼠标点击高亮显示信息
+
 }
 
 function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, FindTask, FindParameters,Color, Graphic)//查询类
@@ -24,6 +26,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     this.FindParameters = FindParameters;
     this.Color = Color;
     this.Graphic = Graphic;
+    this.Query = Query;
     
     this.queryTask = function(querySQL)//Query属性查询
     {
@@ -93,6 +96,42 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
         }
     }
 
+    this.queryByGeometry = function(geometry) {//Query查询根据几何对象
+        var query = new Query();
+        query.geometry = geometry;
+        query.outFields = ["*"];
+        query.outSpatialReference = this.map.spatialReference;
+        query.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
+        query.returnGeometry = true;
+
+        var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + "/0");
+
+        queryTask.execute(query, queryByGeometryResult);
+    }
+
+    function queryByGeometryResult(result) {
+        //map.graphics.clear();
+
+        if(result.features == 0){alert("no features"); return;}
+
+        for(var i=0; i<result.features.length; i++) {
+            var feature = result.features[i];
+            var geometry = feature.geometry;
+
+            //alert(feature.attributes.DLMC + "," + feature.attributes.GDLX + "," + feature.attributes.ZZSXMC);
+            messageBox(feature);
+
+            var outline = new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT, new Color([255,0,0]), 1);
+            var polygonSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, outline, new Color([255,0,1]));
+
+            var graphic = new Graphic(geometry, polygonSymbol);
+
+            map.graphics.add(graphic);
+
+        }
+
+    }
+
 
     this.setExtentFun = function(map, geometry){//设置文档可见域
         map.setExtent(geometry.getExtent().expand(30));
@@ -100,32 +139,79 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 }
 
 
-function queryDLTB(data, menue){
+function mouseClick(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic)//点击地图高亮读取信息
+{
+    var handdle = map.on("click", clickFun);
+    function clickFun(e) {
+        var point = e.mapPoint;
+        globalQueryClass.queryByGeometry(point);
+    }
+}
+function messageBox(feature) {//信息框
+    $(".theone").css("display","inline-block");//打开信息框
+    $(".lone").children().remove();
 
-    console.log(data);
+    var divElement = "";
+    divElement += "<div>" + "要素代码：" + feature.attributes.YSDM +"</div>"
+    divElement += "<div>" + "图斑编号：" + feature.attributes.TBBH +"</div>"
+    divElement += "<div>" + "地类编码：" + feature.attributes.DLBM +"</div>"
+    divElement += "<div>" + "地类名称：" + feature.attributes.DLMC +"</div>"
+    divElement += "<div>" + "权属性质：" + feature.attributes.QSXZ +"</div>"
+    divElement += "<div>" + "权属单位代码：" + feature.attributes.QSDWDM +"</div>"
+    divElement += "<div>" + "权属单位名称：" + feature.attributes.QSDWMC +"</div>"
+    divElement += "<div>" + "图斑面积：" + feature.attributes.TBMJ +"</div>"
+    divElement += "<div>" + "扣除地类编码：" + feature.attributes.KCDLBM  +"</div>"
+    divElement += "<div>" + "扣除地类系数：" + feature.attributes.KCXS   +"</div>"
+    divElement += "<div>" + "扣除地类面积：" + feature.attributes.KCMJ    +"</div>"
+    divElement += "<div>" + " 图斑地类面积：" + feature.attributes.TBDLMJ    +"</div>"
+    divElement += "<div>" + "耕地坡度级别：" + feature.attributes.GDPDJB    +"</div>"
+    //divElement += "<div>" + "耕地类型：" + feature.attributes.GDLX    +"</div>"
+    //divElement += "<div>" + "线状地物宽度：" + feature.attributes.XZDWKD     +"</div>"
+    divElement += "<div>" + "图斑细化代码：" + feature.attributes.TBXHDM     +"</div>"
+    divElement += "<div>" + "图斑细化名称：" + feature.attributes.TBXHMC     +"</div>"
+    divElement += "<div>" + "种植属性代码：" + feature.attributes.ZZSXDM     +"</div>"
+    divElement += "<div>" + "种植属性名称：" + feature.attributes.ZZSXMC     +"</div>"
+    divElement += "<div>" + "耕地等别：" + feature.attributes.GDDB     +"</div>"
+    divElement += "<div>" + "数据年份：" + feature.attributes.SJNF    +"</div>"
+
+    $(".lone").append(divElement);
+}
+
+
+
+function queryDLTB(data, menue){//点击左侧树
+
+    var sql = "DLBM in(";
 
     if(data.length <=0){//叶子节点
+        $.ajax({url:config.ip + config.port + '/getMenueByMenueId', type: 'POST', data:{menueid:menue.menueid}, xhrFields:{withCredentials:true}, success:function(result) {
+            sql += "'" + result.secondcategory + "'" + ")";
+            globalQueryClass.queryTask(sql);
+        }});
+
+
+        $(".bing").css("display","none");
 
     }else {
-
-        var sql = "DLBM in(";
-
         for(var i=0; i<data.length; i++){
             sql += "'" + data[i].secondcategoryCode + "'" + ",";
 
             if(i == data.length-1){
                 sql += "'" + data[i].secondcategoryCode + "'" + ")";
             }
-
         }
 
         globalQueryClass.queryTask(sql);
+
+        $(".bing").css("display","inline-block");
+        $(".zhu").css("display","inline-block");
+
     }
 
-
-
-
 }
+
+
+
 
 
 
