@@ -1,4 +1,5 @@
 var globalQueryClass;
+var handdle=null;
 
 
 require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","dojo/domReady!"], init);
@@ -12,7 +13,7 @@ function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindP
     var queryClass =  new QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic);
     globalQueryClass = queryClass;
 
-    mouseClick(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic);//鼠标点击高亮显示信息
+    //mouseClick(map);//鼠标点击高亮显示信息
 
 }
 
@@ -139,14 +140,23 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 }
 
 
-function mouseClick(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic)//点击地图高亮读取信息
+function mouseClick(map, event)//点击地图高亮读取信息
 {
-    var handdle = map.on("click", clickFun);
+    if(event == "close") {
+        handdle.remove();
+        handdle = null;
+        return;
+    }
+
+    handdle = map.on("click", clickFun);
+
     function clickFun(e) {
         var point = e.mapPoint;
         globalQueryClass.queryByGeometry(point);
     }
 }
+
+
 function messageBox(feature) {//信息框
     $(".theone").css("display","inline-block");//打开信息框
     $(".lone").children().remove();

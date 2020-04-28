@@ -407,9 +407,11 @@ function caidanChangeColor(className){
         if($(".map_30").attr("class") == "map_30"){
             $(".map_30").attr("class","map01_30");
             $("*").addClass("map30");
+            mouseClick(globalQueryClass.map);//开启鼠标拾取
         }else{
             $(".map01_30").attr("class","map_30");
             $("*").removeClass("map30");
+            mouseClick(globalQueryClass.map, "close");//关闭鼠标拾取
         };
     });
     $(".map_07").click(function(){
