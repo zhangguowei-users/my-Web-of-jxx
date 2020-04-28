@@ -125,4 +125,5 @@ $("#gb-bing").click(function(){
 $("#gb-zhu").click(function(){
   $(".zhu").css("display","none");
 });
+tishi();
 });
