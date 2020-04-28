@@ -211,44 +211,10 @@ function caidanChangeColor(className){
  //地图小图标提示
  function tishi(){
     $(".map_12").click(function(){
-        $(".map01_14").attr("class","map_14");
-        $(".map01_16").attr("class","map_16");
-        $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
-        $(".map01_22").attr("class","map_22");
-        $(".map01_24").attr("class","map_24");
-        $(".map01_26").attr("class","map_26");
-        $(".map01_28").attr("class","map_28");
-        $(".map01_30").attr("class","map_30");
-        $(".map01_07").attr("class","map_07");
-        $(".map01_33").attr("class","map_33");
-        $(".map01_35").attr("class","map_35");
-        $(".map01_09").attr("class","map_09");
-        if($(".map_12").attr("class") == "map_12"){
-            $(".map_12").attr("class","map01_12");
-        }else{
-            $(".map01_12").attr("class","map_12");
-        };
+        
     });
     $(".map_14").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_16").attr("class","map_16");
-        $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
-        $(".map01_22").attr("class","map_22");
-        $(".map01_24").attr("class","map_24");
-        $(".map01_26").attr("class","map_26");
-        $(".map01_28").attr("class","map_28");
-        $(".map01_30").attr("class","map_30");
-        $(".map01_07").attr("class","map_07");
-        $(".map01_33").attr("class","map_33");
-        $(".map01_35").attr("class","map_35");
-        $(".map01_09").attr("class","map_09");
-        if($(".map_14").attr("class") == "map_14"){
-            $(".map_14").attr("class","map01_14");
-        }else{
-            $(".map01_14").attr("class","map_14");
-        };
+        
     });
     $(".map_16").click(function(){
         $(".map01_12").attr("class","map_12");
