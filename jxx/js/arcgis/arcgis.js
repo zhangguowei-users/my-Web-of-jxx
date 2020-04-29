@@ -216,63 +216,90 @@ function queryDLTB(data, menue){//点击左侧树
         globalQueryClass.queryTask(sql);
 
 
-        createBingReport();
+        createBingReport(data);
         creatZhuReport()
 
     }
 
 }
 
-function createBingReport()
+function createBingReport(data)
 {
-    $(".bing").css("display","inline-block");
+    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data)}, xhrFields:{withCredentials:true}, success:function(result) {
+        var legendData = "[";
+        var seriesData = "["
 
-    var myChart = echarts.init(document.getElementById('bing'));
-    option = {
-        title: {
-            text: '同名数量统计',
-            left: 'center'
-        },
-        tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b}: {c} ({d}%)'
-        },
-        legend: {
-            orient: 'vertical',
-            left: 10,
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-        },
-        series: [
-            {
-                name: '访问来源',
-                type: 'pie',
-                radius: ['50%', '70%'],
-                avoidLabelOverlap: false,
-                label: {
-                    show: false,
-                    position: 'center'
-                },
-                emphasis: {
-                    label: {
-                        show: true,
-                        fontSize: '30',
-                        fontWeight: 'bold'
-                    }
-                },
-                labelLine: {
-                    show: false
-                },
-                data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
-                ]
+        for(var i=0; i<result.length; i++){
+            if(i == result.length-1){
+                legendData += "'" + result[i].dlmc + "'" + "]";
+            }else{
+                legendData += "'" + result[i].dlmc + "'" + ",";
             }
-        ]
-    };
-    myChart.setOption(option);
+
+            if(i == result.length-1){
+                seriesData += "{value:" + result[i].area + ",name:" + result[i].dlmc + "}]";
+            }else{
+                seriesData += "{value:" + result[i].area + ",name:" + result[i].dlmc + "}" + ",";
+            }
+        
+        }
+
+        console.log(legendData);
+
+        $(".bing").css("display","inline-block");
+
+        var myChart = echarts.init(document.getElementById('bing'));
+        option = {
+            title: {
+                text: '同名数量统计',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b}: {c} ({d}%)'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 10,
+                //data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+                data: legendData
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: ['50%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    // data: [
+                    //     {value: 335, name: '直接访问'},
+                    //     {value: 310, name: '邮件营销'},
+                    //     {value: 234, name: '联盟广告'},
+                    //     {value: 135, name: '视频广告'},
+                    //     {value: 1548, name: '搜索引擎'}
+                    // ]
+                    data: seriesData
+                }
+            ]
+        };
+        myChart.setOption(option);
+
+    }});
+
+    
 }
 
 function creatZhuReport()

@@ -10,3 +10,8 @@ var ARCGISCONFIG={
     DLTB_FEATURE:"http://192.168.1.109:6080/arcgis/rest/services/jixian/DLTB/FeatureServer"
 };
 
+var GEOSERVER={
+    IP:"http://192.168.1.109",
+    PORT:":65535"
+}
+
