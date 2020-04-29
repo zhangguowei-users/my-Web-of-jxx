@@ -173,6 +173,11 @@ body {
     background: #bcd6ee;
     position: absolute;
     left:400px;
+    color: black;
+    font-size: x-large;
+}
+.middle1 div{
+    padding: 0.5%;
 }
 .middle-s{
     display: inline-block;
