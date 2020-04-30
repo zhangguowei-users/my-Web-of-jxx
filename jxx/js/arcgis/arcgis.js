@@ -31,7 +31,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     
     this.queryTask = function(querySQL)//Query属性查询
     {
-        var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + "/0");
+        var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + ARCGISCONFIG.QueryLevel);
     
         var query = new Query();
         query.where = querySQL;
@@ -66,7 +66,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     this.queryByFindTask = function(){//属性查询
         var findParams = new FindParameters();
         findParams.returnGeometry = true;
-        findParams.layerIds = [0];
+        findParams.layerIds = [ARCGISCONFIG.FindTaskLevel];
         findParams.searchFields = ["QSDWMC"];
         findParams.searchText = "七星林场";
 
@@ -105,7 +105,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
         query.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
         query.returnGeometry = true;
 
-        var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + "/0");
+        var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + ARCGISCONFIG.QueryLevel);
 
         queryTask.execute(query, queryByGeometryResult);
     }
@@ -303,7 +303,7 @@ function creatZhuReport(data, menuename)
             } 
             }],
             yAxis: [{type: 'value'}],
-            series: [{name: '直接访问',type: 'bar',data: eval(seriesData)}]
+            series: [{name: menuename,type: 'bar',data: eval(seriesData)}]
         };
 
         myChartone.setOption(option);
