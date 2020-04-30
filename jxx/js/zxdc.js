@@ -6,6 +6,9 @@ $(document).ready(function(){
     $("#login").click(function(){
         PDclick();
       });
+      $("#quxiao").click(function(){
+       $("#css").css("display","none");
+      });
       $.ajax({
         url:config.ip + config.port + '/getMenue',
         type: 'POST',

@@ -12,11 +12,97 @@
         color: #000;
         border: 2px #9fdfed solid;
         background:  #cfe1ef;
-        position:fixed;
+        position: fixed;
         left: 5%;
         z-index: 10001;
         outline: none;
 }
 .caidan1{
     background-color: white;
+}
+.xianshi{
+    overflow-y: auto;
+}
+table{
+    border-collapse:collapse;
+}
+#zy{
+    border: none;
+    width: 98%;
+    margin: 1% 1%;
+    text-align: center;
+}
+#zy tr:nth-child(1){
+    background-color: #3399cc;
+    height:30px;
+    color: white;
+}
+#zy tr th {
+    border-left:0; 
+    border-right:0;
+    font-size: large;  
+}
+#zy tr td{
+    border-left:0; 
+    border-right:0;
+    font-size: large;  
+}
+#zy tr{
+    border-left:0; 
+    border-right:0;
+    font-size: large;  
+}
+td button{
+    background: #0a7bbe;
+    color:white;
+    width: 50px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    outline: none;
+    font-family: "幼圆";
+    font-size: large;
+}
+#ts{
+    width: 98%;
+    margin: 1% 1%;
+    font-size: large;
+}
+#tcts{
+    background: white;
+    width: 800px;
+    height:750px;
+    position: fixed;
+    top:10%;
+    left:31%;
+    z-index: 100000000;
+    opacity: 1;
+    border:1px solid #000;
+    overflow-y: auto;
+}
+#css{
+    display:none;
+    width: 100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    position: fixed;
+    top:0;
+    z-index: 1000000;
+}
+#bt{
+    color:#0000ff;
+    font-size: xx-large;
+    margin-left: 25%;
+}
+#daochu,#quxiao{
+    background-image: linear-gradient(#8dc5fa,#0e7ec0) ;
+    color:white;
+    font-size: large;
+    font-weight: bold;
+    width: 80px;
+    height:40px;
+    margin-top: 10%;
+    margin-left: 25%;
+    border-radius: 5px;
+    border: 1px #3399ff solid;
 }
