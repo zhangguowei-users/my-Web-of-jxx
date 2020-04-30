@@ -199,10 +199,16 @@ function queryDLTB(data, menue){//点击左侧树
         $.ajax({url:config.ip + config.port + '/getMenueByMenueId', type: 'POST', data:{menueid:menue.menueid}, xhrFields:{withCredentials:true}, success:function(result) {
             sql += "'" + result.secondcategory + "'" + ")";
             globalQueryClass.queryTask(sql);
+
+            var elementNodeData = [{"menueid":menue.menueid,"menuename":menue.menuename,"firstcategoryCode":"","secondcategoryCode":result.secondcategory,"secondcategoryName":menue.menuename}]
+            creatZhuReport(elementNodeData, menue.menuename);
         }});
 
         $(".bing").css("display","none");
-        creatZhuReport();
+
+        
+
+       
 
     }else {
         for(var i=0; i<data.length; i++){
@@ -216,112 +222,91 @@ function queryDLTB(data, menue){//点击左侧树
         globalQueryClass.queryTask(sql);
 
 
-        createBingReport();
-        creatZhuReport()
+        createBingReport(data, menue.menuename);
+        creatZhuReport(data, menue.menuename)
 
     }
 
 }
 
-function createBingReport()
+function createBingReport(data, menuename)
 {
-    $(".bing").css("display","inline-block");
+    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data)}, xhrFields:{withCredentials:true}, success:function(result) {
+        var legendData = "[";
+        var seriesData = "["
 
-    var myChart = echarts.init(document.getElementById('bing'));
-    option = {
-        title: {
-            text: '同名数量统计',
-            left: 'center'
-        },
-        tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b}: {c} ({d}%)'
-        },
-        legend: {
-            orient: 'vertical',
-            left: 10,
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-        },
-        series: [
-            {
-                name: '访问来源',
-                type: 'pie',
-                radius: ['50%', '70%'],
-                avoidLabelOverlap: false,
-                label: {
-                    show: false,
-                    position: 'center'
-                },
-                emphasis: {
-                    label: {
-                        show: true,
-                        fontSize: '30',
-                        fontWeight: 'bold'
-                    }
-                },
-                labelLine: {
-                    show: false
-                },
-                data: [
-                    {value: 335, name: '直接访问'},
-                    {value: 310, name: '邮件营销'},
-                    {value: 234, name: '联盟广告'},
-                    {value: 135, name: '视频广告'},
-                    {value: 1548, name: '搜索引擎'}
-                ]
+        for(var i=0; i<result.length; i++){
+            if(i == result.length-1){
+                legendData += "'" + result[i].dlmc + "'" + "]";
+            }else{
+                legendData += "'" + result[i].dlmc + "'" + ",";
             }
-        ]
-    };
-    myChart.setOption(option);
+
+            if(i == result.length-1){
+                seriesData += "{value:" + result[i].area + ",name:" + "'" + result[i].dlmc + "'" + "}]";
+            }else{
+                seriesData += "{value:" + result[i].area + ",name:" + "'" + result[i].dlmc + "'" + "}" + ",";
+            }
+        
+        }
+
+
+        $(".bing").css("display","inline-block");
+
+        var myChart = echarts.init(document.getElementById('bing'));
+
+        option = {
+            title: {text: menuename + '各地类比例图',left: 'center'},
+            tooltip: {trigger: 'item',formatter: '{a} <br/>{b}: {c} ({d}%)'},
+            legend: {orient: 'vertical',left: 10,data: eval(legendData)},
+            series: [{name: menuename,type: 'pie',radius: ['50%', '70%'],avoidLabelOverlap: false,label: {show: false,position: 'center'},emphasis: {label: {show: true,fontSize: '30',fontWeight: 'bold'}},labelLine: {show: false},data:eval(seriesData)}]
+        };
+
+        myChart.setOption(option);
+
+    }});
+
+    
 }
 
-function creatZhuReport()
+function creatZhuReport(data, menuename)
 {
-    $(".zhu").css("display","inline-block");
+    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data)}, xhrFields:{withCredentials:true}, success:function(result) {
+        var xAxisData = "[";
+        var seriesData = "[";
 
-    var myChartone = echarts.init(document.getElementById('zhu'));
-    option = {
-        title: {
-            text: '同名数量统计',
-            left: 'center'
-        },
-        color: ['#3398DB'],
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        for(var i=0; i<result.length; i++){
+            if(i == result.length-1){
+                xAxisData += "'" + result[i].dlmc + "'" + "]";
+            }else{
+                xAxisData += "'" + result[i].dlmc + "'" + ",";
             }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: [
-            {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                axisTick: {
-                    alignWithLabel: true
-                }
+
+            if(i == result.length-1){
+                seriesData +=  result[i].area +"]";
+            }else{
+                seriesData += result[i].area  + ",";
             }
-        ],
-        yAxis: [
-            {
-                type: 'value'
-            }
-        ],
-        series: [
-            {
-                name: '直接访问',
-                type: 'bar',
-                barWidth: '60%',
-                data: [10, 52, 200, 334, 390, 330, 220]
-            }
-        ]
-    };
-    myChartone.setOption(option);
+        }
+
+        $(".zhu").css("display","inline-block");
+
+        var myChartone = echarts.init(document.getElementById('zhu'));
+        option = {
+            title: {text: menuename + '各地类面积报表',left: 'center'},
+            color: ['#3398DB'],
+            tooltip: {trigger: 'axis',axisPointer: {type: 'shadow'}},
+            grid: {left: '3%',right: '4%',bottom: '3%',containLabel: true},
+            xAxis: [{type: 'category',data:eval(xAxisData),axisTick: {alignWithLabel: true}}],
+            yAxis: [{type: 'value'}],
+            series: [{name: '直接访问',type: 'bar',barWidth: '60%',data: eval(seriesData)}]
+        };
+
+        myChartone.setOption(option);
+    }});
+
+
+   
 }
 
 
