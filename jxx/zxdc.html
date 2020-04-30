@@ -6,6 +6,7 @@
     <title>三调资源服务共享平台</title>
     <link rel="stylesheet" href="./css/welcome.css">
     <link rel="stylesheet" href="./css/zxdc.css">
+    <link rel="stylesheet" href="./css/jquery.treeview.css">
 </head>
 <body>
     <div id="top">
@@ -32,8 +33,16 @@
     <div>
         <div class="dh-bottom three3">
             <div class="middle"><div class="middle-s"><input class="ser-c ftwo" type="text"/><input class="ser-b stwo" type="button"></div></div><div class="middle1"><div>专项调查</div></div>
-            <div class="caidan dtwo"><div class="gd"><div class="gd-n wtwo"></div></div><div class="caidan1 qtwo">
-              菜单
+            <div class="caidan dtwo"><div class="gd"><div class="gd-n wone"></div></div><div class="caidan1">
+                <br>
+                <select name="xzqy" class="xz1">
+                    <option value="" disabled selected hidden>行政区域</option>
+                    <option value="sc">集贤县</option>
+                </select>
+                <br><br>
+                <div class="qtwo filetree treeview-famfamfam" id="browser">
+                  
+                </div>
             </div>
             </div>
             <div class="xianshi jtwo"></div>
@@ -42,6 +51,7 @@
     <div id="bottom">© 2020 版权所有 黑龙江文图测绘地理信息责任公司</div>
     </body>
     <script src="./js/jquery-1.7.1.min.js"></script>
+    <script src="./js/jquery.treeview.js"></script>
     <script src="./js/config.js"></script> 
     <script src="./js/main.js"></script>
     <script src="./js/zxdc.js"></script>

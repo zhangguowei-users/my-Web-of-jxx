@@ -4,3 +4,18 @@
 .three{
     background: #01b6e2;
 }
+.xz1{
+        display: inline-block;
+        width: 372px;
+        height: 30px;
+        font-size: large;
+        color: #000;
+        border: 2px #9fdfed solid;
+        background:  #cfe1ef;
+        position:fixed;
+        z-index: 10001;
+        outline: none;
+}
+.caidan1{
+    background-color: white;
+}
