@@ -297,9 +297,13 @@ function creatZhuReport(data, menuename)
             color: ['#3398DB'],
             tooltip: {trigger: 'axis',axisPointer: {type: 'shadow'}},
             grid: {left: '3%',right: '4%',bottom: '3%',containLabel: true},
-            xAxis: [{type: 'category',data:eval(xAxisData),axisTick: {alignWithLabel: true}}],
+            xAxis: [{type: 'category',data:eval(xAxisData),axisLabel:{  
+                interval:0,//横轴信息全部显示  
+                rotate:45,//-15度角倾斜显示
+            } 
+            }],
             yAxis: [{type: 'value'}],
-            series: [{name: '直接访问',type: 'bar',barWidth: '60%',data: eval(seriesData)}]
+            series: [{name: '直接访问',type: 'bar',data: eval(seriesData)}]
         };
 
         myChartone.setOption(option);
