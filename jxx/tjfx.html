@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>三调资源服务共享平台</title>
+    <link rel="stylesheet" href="./css/jquery.treeview.css">
     <link rel="stylesheet" href="./css/welcome.css">
     <link rel="stylesheet" href="./css/tjfx.css">
 </head>
@@ -32,10 +33,14 @@
     <div>
         <div class="dh-bottom four4">
             <div class="middle"><div class="middle-s"><input class="ser-c fthree" type="text"/><input class="ser-b sthree" type="button"></div></div><div class="middle1"><div>福利镇湿地情况对比</div></div>
-            <div class="caidan dthree"><div class="gd"><div class="gd-n wthree"></div></div><div class="caidan1">
-                <select name="xzqy" class="xz1">
-                    <option value="" disabled selected hidden>行政区域</option>
+            <div class="caidan dthree"><div class="gd"><div class="gd-n wone"></div></div><div class="caidan1">
+                <br>
+                <span style="font-size: larger;position: fixed;">行政区域:</span><select name="xzqy" class="xz1">
                     <option value="sc">集贤县</option>
+                </select>
+                <br><br>
+                <span style="font-size: larger;position: fixed;">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份:</span><select name="xzqy" class="xz2">
+                    <option value="sc">2019</option>
                 </select>
                 <br><br>
                 <div class="qtwo filetree treeview-famfamfam" id="browser">
@@ -50,6 +55,7 @@
     <div id="bottom">© 2020 版权所有 黑龙江文图测绘地理信息责任公司</div>
     </body>
     <script src="./js/jquery-1.7.1.min.js"></script>
+    <script src="./js/jquery.treeview.js"></script>
     <script src="./js/config.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/tifx.js"></script> 
