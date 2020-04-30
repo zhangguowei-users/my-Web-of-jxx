@@ -184,7 +184,7 @@ function caidanChangeColor(className){
         tree(data,`${treeId}`);
         $(`${treeId}`).treeview();
         var fone = $(`${queryInput}`).val();
-        var sfqx = $(".file");
+        var sfqx = $(".file,.folder");
         huakuaiMove(".folder");
         caidanChangeColor(".file");
         clicktreeById()
