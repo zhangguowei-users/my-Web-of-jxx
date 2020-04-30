@@ -228,7 +228,7 @@ table,tr,th,td{
 }
 .xz{
     display: inline-block;
-    width: 221px;
+    width: 250px;
     height: 37px;
     font-size: large;
     color: #9d9d9d;
@@ -296,7 +296,7 @@ table,tr,th,td{
      z-index: 9999;
      background-color: white;
      position: absolute;
-     width: 221px;
+     width: 250px;
      height: 37px;
      right: 50px;
      top:25px;
