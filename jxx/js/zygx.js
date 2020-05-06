@@ -41,27 +41,28 @@ $.ajax({
     async: false,
     xhrFields:{withCredentials:true},
     success:function(data){
-    bianliDF(data,".cc1");
-    $(".cc1").treeview();
-    caidanChangeColor(".cd,.cd1");
-    $(".xz").click(function(){
-     var display = $(".cc1").css("display");
-     if(display == "none"){
-       $(".cc1").css("display","inline-block");
-     }else{
-       $(".cc1").css("display","none");
-     };
-    });
-    $(".cd1, .cd").click(function(){
-      var name = $(this).html();
-      var id = JSON.parse($(this).attr("menueid"));
-      $(".xz").html(name);
-      //获取点击的信息
-      console.log(id);
-      if($(this).attr("class") == "file cd"){
-        $(".cc1").css("display","none");
-      };
-    });
+      $(".xz").click(function(){
+        var display = $(".cc1").css("display");
+        if(display == "none"){
+          $(".cc1").children().remove();
+          bianliDF(data,".cc1");
+          $(".cc1").treeview();
+          caidanChangeColor(".cd,.cd1");
+          $(".cd1, .cd").click(function(){
+          var name = $(this).html();
+          var id = JSON.parse($(this).attr("menueid"));
+          $(".xz").html(name);
+          //获取点击的信息
+          console.log(id);
+          if($(this).attr("class") == "file cd"){
+             $(".cc1").css("display","none");
+          };
+          });
+          $(".cc1").css("display","inline-block");
+          }else{
+          $(".cc1").css("display","none");
+         };
+       });
     }
 });
 });
