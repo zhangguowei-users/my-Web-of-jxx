@@ -56,6 +56,7 @@ $.ajax({
       var name = $(this).html();
       var id = JSON.parse($(this).attr("menueid"));
       $(".xz").html(name);
+      //获取点击的信息
       console.log(id);
       if($(this).attr("class") == "file cd"){
         $(".cc1").css("display","none");
