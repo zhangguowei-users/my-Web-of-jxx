@@ -87,17 +87,17 @@ function caidanChangeColor(className){
    function tree(data,className){
        for(var i=0;i<data.length;i++){
          if(data[i].subMenue.length != 0){
-            $(`${className}`).append(`<ul><li class="closed ${data[i].menueid}"><span class="folder dcd1" menueid="${data[i].menueid}">${data[i].menuename}</span></li></ul>`);
+            $(`${className}`).append(`<ul><li class="closed ${data[i].menueid}"><span class="folder dcd1" menueid="${data[i].menueid}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
             for(var j=0;j<data[i].subMenue.length;j++){
                  if(data[i].subMenue[j].subMenue != 0){
-                    $(`.${data[i].menueid}`).append(`<ul><li class="closed ${data[i].subMenue[j].menueid}"><span class="folder dcd1" menueid="${data[i].subMenue[j].menueid}">${data[i].subMenue[j].menuename}</span></li></ul>`);
+                    $(`.${data[i].menueid}`).append(`<ul><li class="closed ${data[i].subMenue[j].menueid}"><span class="folder dcd1" menueid="${data[i].subMenue[j].menueid}" cd='${JSON.stringify(data[i].subMenue[j])}'>${data[i].subMenue[j].menuename}</span></li></ul>`);
                     tree(data[i].subMenue[j].subMenue,`.${data[i].subMenue[j].menueid}`);
                  }else{
-                    $(`.${data[i].menueid}`).append(`<ul><li><span class="file dcd" menueid="${data[i].subMenue[j].menueid}">${data[i].subMenue[j].menuename}</span></li></ul>`);
+                    $(`.${data[i].menueid}`).append(`<ul><li><span class="file dcd" menueid="${data[i].subMenue[j].menueid}" cd='${JSON.stringify(data[i].subMenue[j])}'>${data[i].subMenue[j].menuename}</span></li></ul>`);
                  };
              };
          }else{
-            $(`${className}`).append(`<ul><li><span class="file dcd" menueid="${data[i].menueid}">${data[i].menuename}</span></li></ul>`);
+            $(`${className}`).append(`<ul><li><span class="file dcd" menueid="${data[i].menueid}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
          };
        };
    };
@@ -788,6 +788,7 @@ function caidanChangeColor(className){
  //点击tree 获取id
  function clicktreeById(){
     $(".dcd1,.dcd").click(function(){
+       left = JSON.parse($(this).attr("cd"));
        var menueid = $(this).attr("menueid");
        if(menueid == 1){
           return;

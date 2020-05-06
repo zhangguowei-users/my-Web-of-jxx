@@ -3,6 +3,8 @@ $(document).ready(function(){
     $("#inf-namenow-time").html(newTime());
     tiaozhuan();
     huoquName();
+    var right = "";
+    var left ="";
     $("#login").click(function(){
       PDclick();
     });
@@ -52,6 +54,7 @@ $.ajax({
           $(".cd1, .cd").click(function(){
           var name = $(this).html();
           var id = JSON.parse($(this).attr("menueid"));
+          right = JSON.parse($(this).attr("menueid"));
           $(".xz").html(name);
           //获取点击的信息
           console.log(id);
