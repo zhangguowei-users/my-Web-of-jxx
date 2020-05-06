@@ -43,7 +43,7 @@ $.ajax({
     success:function(data){
     bianliDF(data,".cc1");
     $(".cc1").treeview();
-    caidanChangeColor(".cd");
+    caidanChangeColor(".cd,.cd1");
     $(".xz").click(function(){
      var display = $(".cc1").css("display");
      if(display == "none"){
