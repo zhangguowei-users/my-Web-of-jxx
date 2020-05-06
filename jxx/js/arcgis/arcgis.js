@@ -274,6 +274,7 @@ function creatZhuReport(data, menuename)
     $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data)}, xhrFields:{withCredentials:true}, success:function(result) {
         var xAxisData = "[";
         var seriesData = "[";
+        if(result.length <=0) {return;}
 
         for(var i=0; i<result.length; i++){
             if(i == result.length-1){
