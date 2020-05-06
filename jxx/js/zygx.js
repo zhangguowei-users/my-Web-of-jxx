@@ -4,7 +4,7 @@ $(document).ready(function(){
     tiaozhuan();
     huoquName();
     var right = "";
-    var left ="";
+    var left = "";
     $("#login").click(function(){
       PDclick();
     });

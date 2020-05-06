@@ -788,7 +788,6 @@ function caidanChangeColor(className){
  //点击tree 获取id
  function clicktreeById(){
     $(".dcd1,.dcd").click(function(){
-       left = JSON.parse($(this).attr("cd"));
        var menueid = $(this).attr("menueid");
        if(menueid == 1){
           return;
@@ -802,6 +801,7 @@ function caidanChangeColor(className){
              data:{menueid:menueid},
              xhrFields:{withCredentials:true},
              success:function(data){
+                left = data;
                 //pushArry(data);
                 //console.log(click_Inf);
                 //alert(click_Inf);
