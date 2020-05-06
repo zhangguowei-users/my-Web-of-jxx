@@ -45,7 +45,8 @@ $.ajax({
         var display = $(".cc1").css("display");
         if(display == "none"){
           $(".cc1").children().remove();
-          bianliDF(data,".cc1");
+          $(".cc1").append(`<ul><li class="closed" id="jxx2"><span class="folder cd1" id="jxx1" menueid='{"name":"jxx"}'>集贤县</span></li></ul>`);
+          bianliDF(data,"#jxx2");
           $(".cc1").treeview();
           caidanChangeColor(".cd,.cd1");
           $(".cd1, .cd").click(function(){

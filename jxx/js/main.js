@@ -787,7 +787,7 @@ function caidanChangeColor(className){
     };
  //点击tree 获取id
  function clicktreeById(){
-    $(".folder,.file").click(function(){
+    $(".dcd1,.dcd").click(function(){
        var menueid = $(this).attr("menueid");
        if(menueid == 1){
           return;
