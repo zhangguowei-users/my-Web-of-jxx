@@ -228,15 +228,17 @@ table,tr,th,td{
 }
 .xz{
     display: inline-block;
-    width: 250px;
-    height: 37px;
-    font-size: large;
+    width: 248px;
+    height: 35px;
+    font-size: larger;
     color: #9d9d9d;
     border: 2px #9fdfed solid;
     background: transparent;
     position: absolute;
     z-index: 10001;
     outline: none;
+    line-height: 35px;
+    text-align: left;
 }
 .fg1{
     display: inline-block;
@@ -246,6 +248,9 @@ table,tr,th,td{
     position: absolute;
     right: 0px;
     z-index: 10000;
+    line-height: 37px;
+    text-align: center;
+    color: #9d9d9d;
 }
 .xgj{
     display: inline-block;

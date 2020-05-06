@@ -5,5 +5,35 @@
     background: #01b6e2;
 }
 .caidan1{
-background-color: white;
+    background-color: white;
+}
+.xianshi{
+    overflow-y: auto;
+    background-color: white;
+}
+table{
+    border-collapse:collapse;
+}
+#zx{
+    width: 98%;
+    margin: 1% 1%;
+    text-align: center;
+}
+#zx tr th {
+    border-left:0; 
+    border-right:0;
+    font-size: large;  
+}
+#zx tr td{
+    border-left:0; 
+    border-right:0;
+    font-size: large;  
+}
+#zx tr{
+    border-left:0; 
+    border-right:0;
+    font-size: large;  
+}
+.jfour{
+    background-color: white;
 }

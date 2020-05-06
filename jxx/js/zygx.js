@@ -16,9 +16,9 @@ $(document).ready(function(){
                tree(data,".qone");
                $("#browser").treeview();
                 //滑块移动事件
-               huakuaiMove(".folder");
+               huakuaiMove(".dcd1");
                 //点击变色事件
-               caidanChangeColor(".file");
+               caidanChangeColor(".dcd");
                 //点击查询
                queryCd(".fone",".sone","#browser",data);
                 //点击tree 获取id
@@ -41,17 +41,28 @@ $.ajax({
     async: false,
     xhrFields:{withCredentials:true},
     success:function(data){
-        function bianliDF(data){
-        for(var i=0;i<data.length;i++){
-            if(data[i].subAdministrations == null && data[i].subAdministrations.length == 0){
-                $(".xz").append(`<option value="${data[i]}">${data[i].name}</option>`);
-            }else{
-                $(".xz").append(`<option value="${data[i]}">${data[i].name}</option>`);
-                bianliDF(data[i].subAdministrations);
-            };
-        }
-    };
-    bianliDF(data);
-}
+      $(".xz").click(function(){
+        var display = $(".cc1").css("display");
+        if(display == "none"){
+          $(".cc1").children().remove();
+          bianliDF(data,".cc1");
+          $(".cc1").treeview();
+          caidanChangeColor(".cd,.cd1");
+          $(".cd1, .cd").click(function(){
+          var name = $(this).html();
+          var id = JSON.parse($(this).attr("menueid"));
+          $(".xz").html(name);
+          //获取点击的信息
+          console.log(id);
+          if($(this).attr("class") == "file cd"){
+             $(".cc1").css("display","none");
+          };
+          });
+          $(".cc1").css("display","inline-block");
+          }else{
+          $(".cc1").css("display","none");
+         };
+       });
+    }
 });
 });

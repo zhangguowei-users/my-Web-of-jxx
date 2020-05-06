@@ -87,17 +87,17 @@ function caidanChangeColor(className){
    function tree(data,className){
        for(var i=0;i<data.length;i++){
          if(data[i].subMenue.length != 0){
-            $(`${className}`).append(`<ul><li class="closed ${data[i].menueid}"><span class="folder" menueid="${data[i].menueid}">${data[i].menuename}</span></li></ul>`);
+            $(`${className}`).append(`<ul><li class="closed ${data[i].menueid}"><span class="folder dcd1" menueid="${data[i].menueid}">${data[i].menuename}</span></li></ul>`);
             for(var j=0;j<data[i].subMenue.length;j++){
                  if(data[i].subMenue[j].subMenue != 0){
-                    $(`.${data[i].menueid}`).append(`<ul><li class="closed ${data[i].subMenue[j].menueid}"><span class="folder" menueid="${data[i].subMenue[j].menueid}">${data[i].subMenue[j].menuename}</span></li></ul>`);
+                    $(`.${data[i].menueid}`).append(`<ul><li class="closed ${data[i].subMenue[j].menueid}"><span class="folder dcd1" menueid="${data[i].subMenue[j].menueid}">${data[i].subMenue[j].menuename}</span></li></ul>`);
                     tree(data[i].subMenue[j].subMenue,`.${data[i].subMenue[j].menueid}`);
                  }else{
-                    $(`.${data[i].menueid}`).append(`<ul><li><span class="file" menueid="${data[i].subMenue[j].menueid}">${data[i].subMenue[j].menuename}</span></li></ul>`);
+                    $(`.${data[i].menueid}`).append(`<ul><li><span class="file dcd" menueid="${data[i].subMenue[j].menueid}">${data[i].subMenue[j].menuename}</span></li></ul>`);
                  };
              };
          }else{
-            $(`${className}`).append(`<ul><li><span class="file" menueid="${data[i].menueid}">${data[i].menuename}</span></li></ul>`);
+            $(`${className}`).append(`<ul><li><span class="file dcd" menueid="${data[i].menueid}">${data[i].menuename}</span></li></ul>`);
          };
        };
    };
@@ -186,7 +186,7 @@ function caidanChangeColor(className){
         var fone = $(`${queryInput}`).val();
         var sfqx = $(".file,.folder");
         huakuaiMove(".folder");
-        caidanChangeColor(".file");
+        caidanChangeColor(".dcd");
         clicktreeById()
         var glo = [];
         sfqx.css("color","black");
@@ -811,3 +811,21 @@ function caidanChangeColor(className){
        };
     });
  };
+ //遍历地区
+ function bianliDF(data,className){
+    for(var i=0;i<data.length;i++){
+        if(data[i].subAdministrations.length != 0){
+           $(`${className}`).append(`<ul><li class="closed ${data[i].id}"><span class="folder cd1" menueid='${JSON.stringify(data[i])}'>${data[i].name}</span></li></ul>`);
+           for(var j=0;j<data[i].subAdministrations.length;j++){
+                if(data[i].subAdministrations[j].subAdministrations != 0){
+                   $(`.${data[i].id}`).append(`<ul><li class="closed ${data[i].subAdministrations[j].id}"><span class="folder cd1" menueid='${JSON.stringify(data[i].subAdministrations[j])}'>${data[i].subAdministrations[j].name}</span></li></ul>`);
+                   bianliDF(data[i].subAdministrations[j].subAdministrations,`.${data[i].subAdministrations[j].id}`);
+                }else{
+                   $(`.${data[i].id}`).append(`<ul><li><span class="file cd" menueid='${JSON.stringify(data[i].subAdministrations[j])}'>${data[i].subAdministrations[j].name}</span></li></ul>`);
+                };
+            };
+        }else{
+           $(`${className}`).append(`<ul><li><span class="file cd" menueid='${JSON.stringify(data[i])}'>${data[i].name}</span></li></ul>`);
+        };
+      };
+};
