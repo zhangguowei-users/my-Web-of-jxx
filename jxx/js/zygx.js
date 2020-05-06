@@ -67,6 +67,14 @@ $.ajax({
           $(".cc1").css("display","none");
          };
        });
+       $(function gbright(){
+        $(".xz,.cc1").click(function(event){
+            event.stopPropagation();
+        });
+        $(document).click(function(){
+            $(".cc1").css("display","none");
+        });
+    });
     }
 });
 });
