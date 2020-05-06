@@ -805,6 +805,8 @@ function caidanChangeColor(className){
                 //pushArry(data);
                 //console.log(click_Inf);
                 //alert(click_Inf);
+                console.log(left);
+                console.log(data);
                 queryDLTB(pushArry(data), click_Inf);
                 
              }
