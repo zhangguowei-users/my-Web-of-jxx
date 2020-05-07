@@ -1,4 +1,4 @@
-var right = "";
+var right = {id:0, subAdministrations:null, name: "集贤县", parentId: 0, treeCode: 000000};
 var left = "";
 $(document).ready(function(){
     dengluLocation();
@@ -47,7 +47,7 @@ $.ajax({
         var display = $(".cc1").css("display");
         if(display == "none"){
           $(".cc1").children().remove();
-          $(".cc1").append(`<ul><li class="closed" id="jxx2"><span class="folder cd1" id="jxx1" menueid='{"id":"0", "subAdministrations":null, "name": "集贤县", "parentId": "0", "treeCode": "0"}'>集贤县</span></li></ul>`);
+          $(".cc1").append(`<ul><li class="closed" id="jxx2"><span class="folder cd1" id="jxx1" menueid='{"id":"0", "subAdministrations":null, "name": "集贤县", "parentId": "0", "treeCode": "000000"}'>集贤县</span></li></ul>`);
           bianliDF(data,"#jxx2");
           $(".cc1").treeview();
           caidanChangeColor(".cd,.cd1");
