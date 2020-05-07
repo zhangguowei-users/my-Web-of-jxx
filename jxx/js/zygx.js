@@ -47,7 +47,7 @@ $.ajax({
         var display = $(".cc1").css("display");
         if(display == "none"){
           $(".cc1").children().remove();
-          $(".cc1").append(`<ul><li class="closed" id="jxx2"><span class="folder cd1" id="jxx1" menueid='{id:0, subAdministrations: [], name: "集贤县", parentId: 0, treeCode: "0"}'>集贤县</span></li></ul>`);
+          $(".cc1").append(`<ul><li class="closed" id="jxx2"><span class="folder cd1" id="jxx1" menueid='{"id":"0", "subAdministrations":null, "name": "集贤县", "parentId": "0", "treeCode": "0"}'>集贤县</span></li></ul>`);
           bianliDF(data,"#jxx2");
           $(".cc1").treeview();
           caidanChangeColor(".cd,.cd1");
@@ -56,8 +56,6 @@ $.ajax({
           var id = JSON.parse($(this).attr("menueid"));
           right = JSON.parse($(this).attr("menueid"));
           $(".xz").html(name);
-          //获取点击的信息
-          console.log(id);
           if($(this).attr("class") == "file cd"){
              $(".cc1").css("display","none");
           };
