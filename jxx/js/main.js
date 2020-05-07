@@ -802,8 +802,7 @@ function caidanChangeColor(className){
              xhrFields:{withCredentials:true},
              success:function(data){
                 left = data;
-                queryDLTB(pushArry(data), click_Inf);
-                
+                queryDLTB(pushArry(data), click_Inf); 
              }
           });
        };
