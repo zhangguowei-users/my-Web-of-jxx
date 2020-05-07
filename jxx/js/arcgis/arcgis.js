@@ -193,9 +193,6 @@ function messageBox(feature) {//信息框
 
 
 function queryDLTB(data, menue, rightMenue){//点击左侧树
-
-    console.log(rightMenue);
-
     var sql = "DLBM in(";
 
     if(data.length <=0){//叶子节点
