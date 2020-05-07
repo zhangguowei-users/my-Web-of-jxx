@@ -802,9 +802,6 @@ function caidanChangeColor(className){
              xhrFields:{withCredentials:true},
              success:function(data){
                 left = data;
-                //pushArry(data);
-                //console.log(click_Inf);
-                //alert(click_Inf);
                 console.log(left);
                 console.log(data);
                 queryDLTB(pushArry(data), click_Inf);
