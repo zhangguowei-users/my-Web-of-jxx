@@ -194,15 +194,20 @@ function messageBox(feature) {//信息框
 
 function queryDLTB(data, menue, rightMenue){//点击左侧树
 
+    console.log(rightMenue);
+
     var sql = "DLBM in(";
 
     if(data.length <=0){//叶子节点
         $.ajax({url:config.ip + config.port + '/getMenueByMenueId', type: 'POST', data:{menueid:menue.menueid}, xhrFields:{withCredentials:true}, success:function(result) {
             sql += "'" + result.secondcategory + "'" + ")";
+
+            sql = addProvinceSQL(sql, rightMenue);//判断是否拼接行政区sql
+
             globalQueryClass.queryTask(sql);
 
             var elementNodeData = [{"menueid":menue.menueid,"menuename":menue.menuename,"firstcategoryCode":"","secondcategoryCode":result.secondcategory,"secondcategoryName":menue.menuename}]
-            creatZhuReport(elementNodeData, menue.menuename);
+            creatZhuReport(elementNodeData, menue.menuename, rightMenue);
         }});
 
         $(".bing").css("display","none");
@@ -216,21 +221,25 @@ function queryDLTB(data, menue, rightMenue){//点击左侧树
             }
         }
 
+        sql = addProvinceSQL(sql, rightMenue);//判断是否拼接行政区sql
+
         globalQueryClass.queryTask(sql);
 
 
-        createBingReport(data, menue.menuename);
-        creatZhuReport(data, menue.menuename)
+        createBingReport(data, menue.menuename,rightMenue);
+        creatZhuReport(data, menue.menuename, rightMenue)
 
     }
 
 }
 
-function createBingReport(data, menuename)
+function createBingReport(data, menuename, rightMenue)
 {
-    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data)}, xhrFields:{withCredentials:true}, success:function(result) {
+    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data), "proviceCode":getCountryCode(rightMenue)}, xhrFields:{withCredentials:true}, success:function(result) {
         var legendData = "[";
         var seriesData = "["
+
+        if(result.length<=0){return;}
 
         for(var i=0; i<result.length; i++){
             if(i == result.length-1){
@@ -266,9 +275,9 @@ function createBingReport(data, menuename)
     
 }
 
-function creatZhuReport(data, menuename)
+function creatZhuReport(data, menuename, rightMenue)
 {
-    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data)}, xhrFields:{withCredentials:true}, success:function(result) {
+    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data), "proviceCode":getCountryCode(rightMenue)}, xhrFields:{withCredentials:true}, success:function(result) {
         var xAxisData = "[";
         var seriesData = "[";
         if(result.length <=0) {return;}
@@ -313,9 +322,37 @@ function creatZhuReport(data, menuename)
 
 function addProvinceSQL(sql, rightMenue){//判断是否拼接行政区sql
 
-    if(rightMenue.treeCode=="000000"){
+    if(rightMenue.treeCode=="000000"){//集贤县
+
+    }else{
+         if(rightMenue.subAdministrations.length>0){//乡镇
+            var countryCode = rightMenue.treeCode.substring(0,9);
+            sql += " and QSDWDM like " + "'" + countryCode + "%'" ;
+
+         }else{
+            sql += " and QSDWDM like " + "'" + rightMenue.treeCode + "'" ;
+         }
         
     }
+
+    return sql;
+}
+
+function getCountryCode(rightMenue){//获取截取好的行政区码，县级：000000，乡镇：230521 100，村：230521 100 300 0000000
+
+    var countryCode = "";
+
+    if(rightMenue.treeCode=="000000"){//集贤县
+        countryCode = rightMenue.treeCode;
+    }else{
+         if(rightMenue.subAdministrations.length>0){//乡镇
+            countryCode = rightMenue.treeCode.substring(0,9);
+         }else{
+            countryCode = rightMenue.treeCode;
+         }
+        
+    }
+    return countryCode;
 }
 
 

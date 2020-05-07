@@ -803,10 +803,6 @@ function caidanChangeColor(className){
              success:function(data){
                 left = data;
 
-                
-                console.log(left);
-                console.log(right);
-
                 queryDLTB(pushArry(data), click_Inf, right); 
              }
           });
