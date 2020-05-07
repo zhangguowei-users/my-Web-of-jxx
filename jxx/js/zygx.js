@@ -1,10 +1,10 @@
+var right = "";
+var left = "";
 $(document).ready(function(){
     dengluLocation();
     $("#inf-namenow-time").html(newTime());
     tiaozhuan();
-    huoquName();
-    var right = "";
-    var left = "";
+    huoquName(); 
     $("#login").click(function(){
       PDclick();
     });
@@ -47,7 +47,7 @@ $.ajax({
         var display = $(".cc1").css("display");
         if(display == "none"){
           $(".cc1").children().remove();
-          $(".cc1").append(`<ul><li class="closed" id="jxx2"><span class="folder cd1" id="jxx1" menueid='{"name":"jxx"}'>集贤县</span></li></ul>`);
+          $(".cc1").append(`<ul><li class="closed" id="jxx2"><span class="folder cd1" id="jxx1" menueid='{id:0, subAdministrations: [], name: "集贤县", parentId: 0, treeCode: "0"}'>集贤县</span></li></ul>`);
           bianliDF(data,"#jxx2");
           $(".cc1").treeview();
           caidanChangeColor(".cd,.cd1");
