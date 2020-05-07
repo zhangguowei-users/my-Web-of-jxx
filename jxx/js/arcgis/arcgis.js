@@ -35,6 +35,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     
         var query = new Query();
         query.where = querySQL;
+        //query.where = "QSDWDM like '2305211002020000000'"
         query.outFields = ["*"];
         query.returnGeometry = true;
 
@@ -191,7 +192,7 @@ function messageBox(feature) {//信息框
 
 
 
-function queryDLTB(data, menue){//点击左侧树
+function queryDLTB(data, menue, rightMenue){//点击左侧树
 
     var sql = "DLBM in(";
 
