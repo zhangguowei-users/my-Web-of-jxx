@@ -207,10 +207,6 @@ function queryDLTB(data, menue, rightMenue){//点击左侧树
 
         $(".bing").css("display","none");
 
-        
-
-       
-
     }else {
         for(var i=0; i<data.length; i++){
             sql += "'" + data[i].secondcategoryCode + "'" + ",";
@@ -315,6 +311,12 @@ function creatZhuReport(data, menuename)
    
 }
 
+function addProvinceSQL(sql, rightMenue){//判断是否拼接行政区sql
+
+    if(rightMenue.treeCode=="000000"){
+        
+    }
+}
 
 
 
