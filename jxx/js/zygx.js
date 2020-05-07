@@ -1,10 +1,12 @@
+var right = "";
+var left = "";
+
 $(document).ready(function(){
     dengluLocation();
     $("#inf-namenow-time").html(newTime());
     tiaozhuan();
     huoquName();
-    var right = "";
-    var left = "";
+
     $("#login").click(function(){
       PDclick();
     });
