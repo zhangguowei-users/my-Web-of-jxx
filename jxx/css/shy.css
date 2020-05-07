@@ -28,16 +28,22 @@ table{
 #zy tr th {
     border-left:0; 
     border-right:0;
+    border-top: 0;
+    border-bottom: 0;
     font-size: large;  
 }
 #zy tr td{
     border-left:0; 
     border-right:0;
+    border-top: 0;
+    border-bottom: 0;
     font-size: large;  
 }
 #zy tr{
     border-left:0; 
     border-right:0;
+    border-top: 0;
+    border-bottom: 0;
     font-size: large;  
 }
 td button{
