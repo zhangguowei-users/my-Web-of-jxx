@@ -64,6 +64,21 @@
             <button id="daochu">导出文件</button><button id="quxiao">取消</button>
         </div>
     </div>
+    <!-- 第二个遮罩层 -->
+    <div id="css1">
+      <div id="tcts1">
+        <div>申请表</div>
+        <div style="display: inline-block;">申请人</div><input id="sq-p" type="text">&nbsp;<div style="display: inline-block;">申请部门</div><select id="sq-b">
+          <option value="">办公厅</option>
+          <option value="">办事机构</option>
+        </select>
+        <br><br>
+        <div style="display: inline-block;">申请用途</div><textarea rows="10" style="width:300px;height:100px;padding-top:1px;font-size:14px;display: inline-block;vertical-align: top;"></textarea>
+        <br><br>
+        <button id="tijiao1" style="height:9%;width:15%;font-size:large;color: white;background-image: linear-gradient(#8dc5fa,#0e7ec0);border: 1px #3399ff solid;border-radius: 5px;">确定</button>
+        <button id="quxiao1" style="height:9%;width:15%;font-size:large;color: white;background-image: linear-gradient(#ffc45e,#ff6802);border: 1px #3399ff solid;border-radius: 5px;">取消</button>
+      </div>
+    </div>
     <!-- 正文 -->
     <div id="top">
         <div class="logo"></div>
@@ -88,47 +103,51 @@
     </div>
     <div>
         <div class="dh-bottom three3">
-            <div class="middle"><div class="middle-s"><input class="ser-c ftwo" type="text"/><input class="ser-b stwo" type="button"></div></div><div class="middle1"><div>专项调查</div></div>
+            <div class="middle"><div class="middle-s"><input class="ser-c ftwo" type="text"/><input class="ser-b stwo" type="button"></div></div><div class="middle1"><div>专项调查</div><button id="btn" style="display:none;position: absolute;right:1%;top:15%;height:70%;width:5%;font-size:large;color: white;background-image: linear-gradient(#8dc5fa,#0e7ec0);border: 1px #3399ff solid;border-radius: 5px;">导出文件</button></div>
             <div style="background: #bcd6ee;border-top: 1px #9fccf0 solid;border-bottom: 1px #9fccf0 solid;position: absolute;top:6%;height:6%;width: 100%;">
               <span style="font-size:larger;margin-left:1.5%;">行政区域:</span><select name="xzqy" class="xz1">
                   <option value="sc">集贤县</option>
               </select>
             </div>
             <div class="caidan dtwo"><div class="gd"><div class="gd-n wone"></div></div><div class="caidan1">
-              
-              
                 <div class="qtwo filetree treeview-famfamfam" id="browser">
-                  
+                  <br>
+                  <div class="btn-tree">专项资源共享</div>
+                  <div class="btn-tree">耕地级别</div>
+                  <div class="btn-tree">权属单位</div>
+                  <div class="btn-tree">不动产调查</div>
+                  <div class="btn-tree">基本农田</div>
+                  <div class="btn-tree">违法用地</div>
                 </div>
             </div>
             </div>
             <div class="xianshi jtwo">
-                <table id="zy">
-                    <tr>
-                      <th>资源图</th>
-                      <th>资源类型</th>
-                      <th>资源分布</th>
-                      <th>发布机构</th>
-                      <th>发布时间</th>
-                      <th>操作</th>
-                    </tr>
-                    <tr>
-                      <td><img class="img-zxdc" src="./img/ex.png" alt=""></td>
-                      <td>集贤县工业用地分布图</td>
-                      <td>空间分布图</td>
-                      <td>集贤县自然资源信息中心</td>
-                      <td>2120-2-25</td>
-                      <td><button>下载</button></td>
-                    </tr>
-                    <tr>
-                        <td><img class="img-zxdc" src="./img/ex.png" alt=""></td>
-                        <td>集贤县工业用地分布图</td>
-                        <td>空间分布图</td>
-                        <td>集贤县自然资源信息中心</td>
-                        <td>2120-2-25</td>
-                        <td><button>下载</button></td>
-                      </tr>
-                  </table>  
+              <table id="zy">
+                <tr>
+                  <th>资源图</th>
+                  <th>资源类型</th>
+                  <th>资源分布</th>
+                  <th>发布机构</th>
+                  <th>发布时间</th>
+                  <th>操作</th>
+                </tr>
+                <tr>
+                  <td><img class="img-zxdc" src="./img/ex.png" alt=""></td>
+                  <td>集贤县工业用地分布图</td>
+                  <td>空间分布图</td>
+                  <td>集贤县自然资源信息中心</td>
+                  <td>2120-2-25</td>
+                  <td><button>下载</button></td>
+                </tr>
+                <tr>
+                    <td><img class="img-zxdc" src="./img/ex.png" alt=""></td>
+                    <td>集贤县工业用地分布图</td>
+                    <td>空间分布图</td>
+                    <td>集贤县自然资源信息中心</td>
+                    <td>2120-2-25</td>
+                    <td><button>下载</button></td>
+                  </tr>
+              </table> 
             </div>
         </div>
     </div>

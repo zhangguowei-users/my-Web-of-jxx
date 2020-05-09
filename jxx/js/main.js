@@ -114,7 +114,7 @@ function caidanChangeColor(className){
                 glorolename.push(data[i].role.rolename);
             };
             if(glorolename.indexOf("管理员") >= 0){
-                alert("欢迎来到审核员页面")
+                
             }else{
                 location.href = "./welcome.html"
             }
@@ -831,3 +831,14 @@ function caidanChangeColor(className){
         };
       };
 };
+//测试
+function option(data,classN){
+    for(var i=0; i<data.length;i++){
+        if(data[i].subAdministrations.length != 0){
+            $(`${classN}`).append(`<option value="${data[i]}">${data[i].name}</option>`);
+            option(data[i].subAdministrations,classN);
+        }else{
+            $(`${classN}`).append(`<option value="${data[i]}">${data[i].name}</option>`);
+        }
+    }
+}

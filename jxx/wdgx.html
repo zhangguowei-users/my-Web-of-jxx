@@ -9,6 +9,22 @@
     <link rel="stylesheet" href="./css/jquery.treeview.css">
 </head>
 <body>
+    <!-- 第二个遮罩层 -->
+    <div id="css1">
+        <div id="tcts1">
+          <div>申请表</div>
+          <div style="display: inline-block;">申请人</div><input id="sq-p" type="text">&nbsp;<div style="display: inline-block;">申请部门</div><select id="sq-b">
+            <option value="">办公厅</option>
+            <option value="">办事机构</option>
+          </select>
+          <br><br>
+          <div style="display: inline-block;">申请用途</div><textarea rows="10" style="width:300px;height:100px;padding-top:1px;font-size:14px;display: inline-block;vertical-align: top;"></textarea>
+          <br><br>
+          <button id="tijiao1" style="height:9%;width:15%;font-size:large;color: white;background-image: linear-gradient(#8dc5fa,#0e7ec0);border: 1px #3399ff solid;border-radius: 5px;">确定</button>
+          <button id="quxiao1" style="height:9%;width:15%;font-size:large;color: white;background-image: linear-gradient(#ffc45e,#ff6802);border: 1px #3399ff solid;border-radius: 5px;">取消</button>
+        </div>
+      </div>
+
     <div id="top">
         <div class="logo"></div>
         <div class="text"></div>
@@ -32,10 +48,13 @@
     </div>
     <div>
         <div class="dh-bottom five5">
-            <div class="middle"><div class="middle-s"><input class="ser-c ffour" type="text"/><input class="ser-b sfour" type="button"></div></div><div class="middle1"><div>文档共享</div></div>
+            <div class="middle"><div class="middle-s"><input class="ser-c ffour" type="text"/><input class="ser-b sfour" type="button"></div></div><div class="middle1"><div>文档共享</div><button id="btn-wendang" style="display:none;position: absolute;right:1%;top:15%;height:70%;width:5%;font-size:large;color: white;background-image: linear-gradient(#8dc5fa,#0e7ec0);border: 1px #3399ff solid;border-radius: 5px;">下载</button></div>
             <div class="caidan dfour"><div class="gd"><div class="gd-n wone"></div></div><div class="caidan1">
                 <div class="qtwo filetree treeview-famfamfam" id="browser">
-                  
+                    <br>
+                    <div class="btn-tree">技术标准</div>
+                    <div class="btn-tree">工作报告</div>
+                    <div class="btn-tree">其他文档</div>
                 </div>
             </div>
             </div>
@@ -47,7 +66,7 @@
                       <th>创建部门</th>
                       <th>创建时间</th>
                     </tr>
-                    <tr>
+                    <tr id="wendang">
                       <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
                       <td>永久基本农田现状统计表</td>
                       <td>集贤县自然资源信息中心</td>
@@ -58,6 +77,7 @@
         </div>
     </div>
     <div id="bottom">© 2020 版权所有 黑龙江文图测绘地理信息责任公司</div>
+    
     </body>
     <script src="./js/jquery-1.7.1.min.js"></script>
     <script src="./js/jquery.treeview.js"></script>

@@ -524,3 +524,13 @@ table,tr,th,td{
     margin-top: 5px;
     margin-left:15px;
 }
+.btn-tree{
+    display: inline-block;
+    height:50px;
+    width: 65%;
+    background: url(../img/btn_bg_01.png) no-repeat;
+    background-size: auto;
+    color: #fff;
+    font-size: large;
+    line-height: 35px;
+}
