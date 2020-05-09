@@ -1,23 +1,24 @@
 var globalQueryClass;
 var handdle=null;
+var totalPages;
 
 
-require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","dojo/domReady!"], init);
+require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","esri/renderers/UniqueValueRenderer","dojo/domReady!"], init);
 
-function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils,FeatureLayer){
+function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils,FeatureLayer,UniqueValueRenderer){
 
     var map = new Map("map_div", {logo: false});
     var layer = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.DLTB_Dinamic);
     map.addLayer(layer);
    
-    var queryClass =  new QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic);
+    var queryClass =  new QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic,FeatureLayer,UniqueValueRenderer);
     globalQueryClass = queryClass;
 
     //mouseClick(map);//鼠标点击高亮显示信息
 
 }
 
-function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, FindTask, FindParameters,Color, Graphic)//查询类
+function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, FindTask, FindParameters,Color, Graphic, FeatureLayer,UniqueValueRenderer)//查询类
 {                   
     this.map = map;
     this.SimpleLineSymbol = SimpleLineSymbol;
@@ -28,6 +29,8 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     this.Color = Color;
     this.Graphic = Graphic;
     this.Query = Query;
+    this.FeatureLayer = FeatureLayer;
+    this.UniqueValueRenderer = UniqueValueRenderer;
     
     this.queryTask = function(querySQL)//Query属性查询
     {
@@ -35,7 +38,6 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     
         var query = new Query();
         query.where = querySQL;
-        //query.where = "QSDWDM like '2305211002020000000'"
         query.outFields = ["*"];
         query.returnGeometry = true;
 
@@ -44,11 +46,9 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 
     function showQueryResult(queryResult)
     {
-        map.graphics.clear();
-
         var lineSymbol=new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new dojo.Color([255, 0, 0]), 1);
         var fill = SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, lineSymbol,  new dojo.Color([0, 255, 1]));
-
+        
         if(queryResult.features.length == 0){alert("无结果！"); return;}
 
         for(let i=0; i<queryResult.features.length; i++)
@@ -57,7 +57,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
             graphic.setSymbol(fill);
             map.graphics.add(graphic);
 
-            if(i == queryResult.features.length-1)
+            if(totalPages<=1)
             {
                 new QueryClass().setExtentFun(map, graphic.geometry);
             }
@@ -91,9 +91,8 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     
             map.graphics.add(graphic);
     
-            if(i == queryResult.length-1){
+            if(totalPages<=1){
                 new QueryClass().setExtentFun(map, geometry);
-                
             }
         }
     }
@@ -134,6 +133,19 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 
     }
 
+    this.UniqRender = function UniqRender(){//唯一值渲染
+        var featureLayer = new FeatureLayer("http://192.168.1.109:6080/arcgis/rest/services/jixian/DLTB/FeatureServer/0", {mode:FeatureLayer.MODE_SNAPSHOT, outFields:["*"]});
+
+        var lineSymbol=new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new dojo.Color([255, 0, 0]), 1);
+        var fill = SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, lineSymbol,  new dojo.Color([0, 255, 1]));
+
+        var renderer = new UniqueValueRenderer(fill, "dlbm");
+        renderer.addValue("0101", fill);
+        
+        featureLayer.setRenderer(renderer);
+        
+        map.addLayer(featureLayer);
+    }
 
     this.setExtentFun = function(map, geometry){//设置文档可见域
         map.setExtent(geometry.getExtent().expand(30));
@@ -190,18 +202,15 @@ function messageBox(feature) {//信息框
 
 }
 
-
-
 function queryDLTB(data, menue, rightMenue){//点击左侧树
-    var sql = "DLBM in(";
-
     if(data.length <=0){//叶子节点
         $.ajax({url:config.ip + config.port + '/getMenueByMenueId', type: 'POST', data:{menueid:menue.menueid}, xhrFields:{withCredentials:true}, success:function(result) {
-            sql += "'" + result.secondcategory + "'" + ")";
+            var newMenue = new Array();
+            newMenue.push({'menueid':result.menueid, 'menuename':result.menuename, 'firstcategoryCode':result.firstcategory, 'secondcategoryCode':result.secondcategory, 'secondcategoryName':''});
 
-            sql = addProvinceSQL(sql, rightMenue);//判断是否拼接行政区sql
-
-            globalQueryClass.queryTask(sql);
+            $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getDLTB', type: 'POST', data:{"jsonMenue":JSON.stringify(newMenue), "proviceCode":getCountryCode(rightMenue)}, xhrFields:{withCredentials:true}, success:function(resultData){
+                queryDltbByObjectID(resultData);//根据OBJECTID查询图斑并高亮
+            }});
 
             var elementNodeData = [{"menueid":menue.menueid,"menuename":menue.menuename,"firstcategoryCode":"","secondcategoryCode":result.secondcategory,"secondcategoryName":menue.menuename}]
             creatZhuReport(elementNodeData, menue.menuename, rightMenue);
@@ -210,18 +219,9 @@ function queryDLTB(data, menue, rightMenue){//点击左侧树
         $(".bing").css("display","none");
 
     }else {
-        for(var i=0; i<data.length; i++){
-            sql += "'" + data[i].secondcategoryCode + "'" + ",";
-
-            if(i == data.length-1){
-                sql += "'" + data[i].secondcategoryCode + "'" + ")";
-            }
-        }
-
-        sql = addProvinceSQL(sql, rightMenue);//判断是否拼接行政区sql
-
-        globalQueryClass.queryTask(sql);
-
+        $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getDLTB', type: 'POST', data:{"jsonMenue":JSON.stringify(data), "proviceCode":getCountryCode(rightMenue)}, xhrFields:{withCredentials:true}, success:function(resultData){
+            queryDltbByObjectID(resultData);//根据OBJECTID查询图斑并高亮
+        }});
 
         createBingReport(data, menue.menuename,rightMenue);
         creatZhuReport(data, menue.menuename, rightMenue)
@@ -229,6 +229,43 @@ function queryDLTB(data, menue, rightMenue){//点击左侧树
     }
 
 }
+
+function pagination(pageNo, pageSize, array) {//分页
+    var offset = (pageNo - 1) * pageSize;
+    return (offset + pageSize >= array.length) ? array.slice(offset, array.length) : array.slice(offset, offset + pageSize);
+}
+
+function getTotalRecord(totalRecord, pageSize){//求总页数
+    return parseInt((totalRecord + pageSize - 1) / pageSize);
+}
+
+function queryDltbByObjectID(result){//根据OBJECTID查询图斑并高亮
+    globalQueryClass.map.graphics.clear();
+
+    if(result.length <= 0){alert("无结果！"); return;}
+
+    var totalRecord = result.length;//总记录数
+    var pageSize = 1000;//每页大小
+
+    totalPages = getTotalRecord(totalRecord, pageSize);//总页数
+
+    for(var i=1; i<=totalPages; i++){//每页
+        var sql = "OBJECTID in("
+
+        var pageResult = pagination(i, pageSize,result);//某页数据
+
+        for(var j=0; j<pageResult.length; j++){
+            sql += pageResult[j].objectid +",";
+            if(j == pageResult.length-1){
+                sql += pageResult[j].objectid + ")";
+            }
+        }
+        globalQueryClass.queryTask(sql);
+    }
+    //globalQueryClass.setExtentFun(globalQueryClass.map, GEOMETRY);
+    //new QueryClass().setExtentFun(globalQueryClass.map, GEOMETRY);
+}
+
 
 function createBingReport(data, menuename, rightMenue)
 {
