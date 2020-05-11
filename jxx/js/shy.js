@@ -241,11 +241,12 @@ $(document).ready(function(){
             $("#ce").css("display","none");
             $("#myPage").css("display","none");
             $("#shenheyemian").css("display","block");
-            $("#myPage").css("display","");
+            
         });
             $("#shenhetongguo,#tuihui").click(function(){
             $("#shenheyemian").css("display","none");  
             $("#zy").css("display","");
+            $("#myPage").css("display","");
            });
        }else if($(this).html() == "已审核"){
            $(".jfive").html(`
