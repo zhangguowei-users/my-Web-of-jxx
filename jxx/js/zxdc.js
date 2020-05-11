@@ -79,7 +79,11 @@ $(document).ready(function(){
     $("#daochu,#btn").click(function(){
       $("#css1").css("display","inline-block");
     });
-    $("#tijiao1,#quxiao1").click(function(){
+    $("#tijiao1").click(function(){
+      $("#css1").css("display","none");
+      $("#css").css("display","none");
+    });
+    $("#quxiao1").click(function(){
       $("#css1").css("display","none");
     });
     });
