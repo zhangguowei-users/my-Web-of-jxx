@@ -79,7 +79,7 @@ td button{
     font-size:large;
     position: absolute;
     left:30%;
-    bottom: 1%;
+    bottom: 8%;
 }
 #quxiaosh{
     background-image: linear-gradient(#8dc5fa,#0e7ec0);
@@ -95,7 +95,7 @@ td button{
     font-size:large;
     position: absolute;
     left:40%;
-    bottom: 1%;
+    bottom: 8%;
 }
 #fanhuish{
     background-image: linear-gradient(#8dc5fa,#0e7ec0);
@@ -111,7 +111,7 @@ td button{
     font-size:large;
     position: absolute;
     left:40%;
-    bottom: 1%;
+    bottom: 8%;
 }
 #zy1{
     border: none;

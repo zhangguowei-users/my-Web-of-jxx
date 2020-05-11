@@ -216,7 +216,7 @@ $(document).ready(function(){
              </tr>
          </table>
          </div>
-         <div id="myPage" style="position: absolute;bottom:10%;left:20%;"></div>
+         <div id="myPage" style="position: absolute;bottom:1%;left:20%;"></div>
          <div id="shenheyemian" style="display: none;">
                     <div style="background: #f1f1f1;width:100%;height:90px;font-size: large;font-weight: bold;line-height: 90px;text-align: center;">地理环境监测分析</div><br>
                     <div style="font-size: large;position: relative;left:10%;display: inline-block;">申请人</div><input type="text" disabled style="position: relative;left:12%;font-size:large;box-shadow: 10px 10px 0px -8px #9a9a9a inset;background-color: #f1f1f1;" value="邬倩倩">
@@ -269,7 +269,7 @@ $(document).ready(function(){
              <td>地理环境监测分析</td>
              <td>0451-89782511</td>
              <td>2020-03-08</td>
-             <td>已申请</td>
+             <td>已审核</td>
            </tr>
            <tr>
              <td><input type="checkbox" name="" value="" /></td>
@@ -279,7 +279,7 @@ $(document).ready(function(){
              <td>地理环境监测分析</td>
              <td>0451-89782511</td>
              <td>2020-03-08</td>
-             <td>已申请</td>
+             <td>已审核</td>
            </tr>
            <tr>
              <td><input type="checkbox" name="" value="" /></td>
@@ -289,7 +289,7 @@ $(document).ready(function(){
              <td>地理环境监测分析</td>
              <td>0451-89782511</td>
              <td>2020-03-08</td>
-             <td>已申请</td>
+             <td>已审核</td>
            </tr>
            <tr>
              <td><input type="checkbox" name="" value="" /></td>
@@ -299,7 +299,7 @@ $(document).ready(function(){
              <td>地理环境监测分析</td>
              <td>0451-89782511</td>
              <td>2020-03-08</td>
-             <td>已申请</td>
+             <td>已审核</td>
            </tr>
            <tr>
              <td><input type="checkbox" name="" value="" /></td>
@@ -309,11 +309,11 @@ $(document).ready(function(){
              <td>地理环境监测分析</td>
              <td>0451-89782511</td>
              <td>2020-03-08</td>
-             <td>已申请</td>
+             <td>已审核</td>
            </tr>
          </table>
          </div>
-         <div id="myPage" style="position: absolute;bottom:10%;left:20%;"></div>
+         <div id="myPage" style="position: absolute;bottom:1%;left:20%;"></div>
          <button id="delete">删除</button>
          <button id="quxiaosh">取消审核</button>`);
          $(".middle1 div").html($(this).html());
@@ -339,7 +339,7 @@ $(document).ready(function(){
           <td>地理环境监测分析</td>
           <td>0451-89782511</td>
           <td>2020-03-08</td>
-          <td>已申请</td>
+          <td>已退回</td>
         </tr>
         <tr>
           <td><input type="checkbox" name="" value="" /></td>
@@ -349,7 +349,7 @@ $(document).ready(function(){
           <td>地理环境监测分析</td>
           <td>0451-89782511</td>
           <td>2020-03-08</td>
-          <td>已申请</td>
+          <td>已退回</td>
         </tr>
         <tr>
           <td><input type="checkbox" name="" value="" /></td>
@@ -359,7 +359,7 @@ $(document).ready(function(){
           <td>地理环境监测分析</td>
           <td>0451-89782511</td>
           <td>2020-03-08</td>
-          <td>已申请</td>
+          <td>已退回</td>
         </tr>
         <tr>
           <td><input type="checkbox" name="" value="" /></td>
@@ -369,7 +369,7 @@ $(document).ready(function(){
           <td>地理环境监测分析</td>
           <td>0451-89782511</td>
           <td>2020-03-08</td>
-          <td>已申请</td>
+          <td>已退回</td>
         </tr>
         <tr>
           <td><input type="checkbox" name="" value="" /></td>
@@ -379,7 +379,7 @@ $(document).ready(function(){
           <td>地理环境监测分析</td>
           <td>0451-89782511</td>
           <td>2020-03-08</td>
-          <td>已申请</td>
+          <td>已退回</td>
         </tr>
         <tr>
           <td><input type="checkbox" name="" value="" /></td>
@@ -389,11 +389,11 @@ $(document).ready(function(){
           <td>地理环境监测分析</td>
           <td>0451-89782511</td>
           <td>2020-03-08</td>
-          <td>已申请</td>
+          <td>已退回</td>
         </tr>
       </table>
       </div>
-      <div id="myPage" style="position: absolute;bottom:10%;left:20%;"></div>
+      <div id="myPage" style="position: absolute;bottom:1%;left:20%;"></div>
       <button id="delete">删除</button>
       <button id="fanhuish">返回未审核</button>`);
       $(".middle1 div").html($(this).html());
