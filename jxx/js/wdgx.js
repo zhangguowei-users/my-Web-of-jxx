@@ -25,7 +25,7 @@ $(document).ready(function(){
     // });
     //测试
     huakuaiMove(".btn-tree");
-    $("#wendang").click(function(){
+    $(".wendang").click(function(){
      $(".jfour").html(`<img src="./img/批注 2020-05-09 160919.png" alt="" style="width:100%;height:99%">`);
      $("#btn-wendang").css("display","inline-block");
     });
@@ -37,14 +37,63 @@ $(document).ready(function(){
         <th>创建部门</th>
         <th>创建时间</th>
       </tr>
-      <tr id="wendang">
+      <tr class="wendang">
         <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
         <td>永久基本农田现状统计表</td>
         <td>集贤县自然资源信息中心</td>
         <td>2120-2-25</td>
       </tr>
+      <tr class="wendang">
+          <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+          <td>永久基本农田现状统计表</td>
+          <td>集贤县自然资源信息中心</td>
+          <td>2120-2-25</td>
+        </tr>
+        <tr class="wendang">
+          <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+          <td>永久基本农田现状统计表</td>
+          <td>集贤县自然资源信息中心</td>
+          <td>2120-2-25</td>
+        </tr>
+        <tr class="wendang">
+          <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+          <td>永久基本农田现状统计表</td>
+          <td>集贤县自然资源信息中心</td>
+          <td>2120-2-25</td>
+        </tr>
+
+        <tr class="wendang">
+          <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+          <td>永久基本农田现状统计表</td>
+          <td>集贤县自然资源信息中心</td>
+          <td>2120-2-25</td>
+        </tr>
+        <tr class="wendang">
+          <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+          <td>永久基本农田现状统计表</td>
+          <td>集贤县自然资源信息中心</td>
+          <td>2120-2-25</td>
+        </tr>
+        <tr class="wendang">
+          <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+          <td>永久基本农田现状统计表</td>
+          <td>集贤县自然资源信息中心</td>
+          <td>2120-2-25</td>
+        </tr>
+        <tr class="wendang">
+          <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+          <td>永久基本农田现状统计表</td>
+          <td>集贤县自然资源信息中心</td>
+          <td>2120-2-25</td>
+        </tr>
+        <tr class="wendang">
+          <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+          <td>永久基本农田现状统计表</td>
+          <td>集贤县自然资源信息中心</td>
+          <td>2120-2-25</td>
+        </tr>
     </table>`);
-    $("#wendang").click(function(){
+    $(".wendang").click(function(){
       $(".jfour").html(`<img src="./img/批注 2020-05-09 160919.png" alt="" style="width:100%;height:99%">`);
       $("#btn-wendang").css("display","inline-block");
      });
