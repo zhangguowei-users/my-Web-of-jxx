@@ -61,7 +61,7 @@ $(document).ready(function(){
                     <br><br>
                     <div style="height: 1px;background-color: black;width:100%;"></div>
                     <br><br>
-                    <div style="font-size: large;position: relative;left:10%;display: inline-block;">审核意见</div><textarea name="" id="" cols="30" rows="10" style="background-color: #ededed;width: 60%;height:200px;position: relative;left:12%;vertical-align: top;border: 1px solid #000;font-size: large;" placeholder="审核通过.."></textarea>
+                    <div style="font-size: large;position: relative;left:10%;display: inline-block;">审核意见</div><textarea name="" id="" cols="30" rows="10" style="background-color: #ededed;width: 60%;height:200px;position: relative;left:12%;vertical-align: top;border: 1px solid #000;font-size: large;">审核通过</textarea>
                     <br><br><br><br>
                     <button id="shenhetongguo">审核通过</button>
                     <button id="tuihui">退回</button>
