@@ -47,16 +47,15 @@ table{
     z-index: 100000001;
 }
 #tcts1{
-    background-image: linear-gradient(#8dc5fa,#0e7ec0) ;
-    width: 600px;
-    height:300px;
+    background-image: linear-gradient(#d1ecff,#90d1ff);
+    width:38%;
+    height:320px;
     position: fixed;
     top:30%;
-    left:38%;
+    left:31%;
     z-index: 100000000;
     opacity: 1;
     overflow-y: auto;
-    text-align: center;
     font-size: large;
 }
 /* 测试 */
