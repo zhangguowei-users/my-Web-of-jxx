@@ -1,11 +1,13 @@
 $(document).ready(function(){
     dengluLocation();
     $("#inf-namenow-time").html(newTime());
+    $("#time1").html(newTime());
     tiaozhuan();
     huoquName();
     $("#login").click(function(){
         PDclick();
       });
+      
       $("#quxiao").click(function(){
        $("#css").css("display","none");
       });
