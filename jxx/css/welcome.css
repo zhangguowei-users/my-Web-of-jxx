@@ -31,7 +31,6 @@ table,tr,th,td{
     margin-top: 3px;
     height: 108px;
     background-image: linear-gradient(to right, #01b6fc , #1ce4ae);
-    
 }
 #login{
     display: inline-block;
