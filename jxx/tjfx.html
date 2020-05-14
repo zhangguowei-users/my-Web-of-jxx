@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="./css/jquery.treeview.css">
     <link rel="stylesheet" href="./css/welcome.css">
     <link rel="stylesheet" href="./css/tjfx.css">
+    <link rel="stylesheet" href="./css/jquery-ui.css">
+    
 </head>
 <body>
+    <!-- 普通用户显示 -->
+    <div id="putongyonghu" style="position: absolute;right:0%;top:11.5%;z-index:1000;width: 20%;height: 25%;background-color: white;">
+        <div style="background-image: linear-gradient(to right, #0298db, #065a9d);height:25%;">
+          <div class="img-usernow"></div><div style="display: inline-block;margin-top:4%;margin-left: 10%;height: 40%;width: 20%;font-size:x-large;color:white;vertical-align: top;" id="username1">张三</div><div id="time1" style="display: inline-block;margin-top:6.5%;margin-left: 15%;height: 40%;width: 20%;font-size:normal;color:white;vertical-align: top;"></div>
+        </div>
+        <img src="./img/putongyonghu.png" alt="" style="height:75%;width:100%;">
+      </div>
+      
     <div id="top">
         <div class="logo"></div>
         <div class="text"></div>
@@ -32,7 +42,7 @@
     </div>
     <div>
         <div class="dh-bottom four4">
-            <div class="middle"><div class="middle-s"><input class="ser-c fthree" type="text"/><input class="ser-b sthree" type="button"></div></div><div class="middle1"><div>福利镇湿地情况对比</div></div>
+            <div class="middle"><div class="middle-s"><input class="ser-c fthree" type="text" placeholder="搜索菜单..."/><input class="ser-b sthree" type="button"></div></div><div class="middle1"><div>福利镇湿地情况对比</div></div>
             <div style="background: #bcd6ee;border-top: 1px #9fccf0 solid;border-bottom: 1px #9fccf0 solid;display:inline-block;width:19.5%;position: absolute;top:6%;width:21%;height:12%;">
                 <span style="font-size: larger;margin-left:7%;">行政区域:</span><select name="xzqy" class="xz1">
                     
@@ -49,7 +59,6 @@
                     <option value="sc">2011</option>
                     <option value="sc">2010</option>
                     <option value="sc">2009</option>
-
                 </select>
                 </div>
             <div class="caidan dthree"><div class="gd"><div class="gd-n wone"></div></div><div class="caidan1">
@@ -60,7 +69,25 @@
             </div>
             </div>
             <div class="xianshi jthree">
-                <div id="duibi1"></div><div id="duibi2"></div>
+                <div id="duibi1">
+                    <div style="position:absolute;width:30%;left:15%;bottom: 10%; border:1px solid #000;height:9%;">
+                      <p>
+                        <label for="amount">当前年份</label>
+                        <input type="text" id="amount" readonly style="border:0;color:#f6931f;font-weight:bold;">
+                      </p>
+                      <br>
+                      <div id="slider" style="width: 94%;margin-left:3%;"></div>
+                    </div>
+                </div><div id="duibi2">
+                    <div style="position:absolute;width:30%;right:15%;bottom:10%;border:1px solid #000;height:9%;">
+                        <p>
+                          <label for="amount1">当前年份</label>
+                          <input type="text" id="amount1" readonly style="border:0;color:#f6931f;font-weight:bold;">
+                        </p>
+                        <br>
+                        <div id="slider1" style="width: 94%;margin-left:3%;"></div>
+                      </div>
+                </div>
             </div>
         </div>
         
@@ -69,6 +96,7 @@
     </body>
     <script src="./js/jquery-1.7.1.min.js"></script>
     <script src="./js/jquery.treeview.js"></script>
+    <script src="./js/jquery-ui.js"></script>
     <script src="./js/config.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/tifx.js"></script> 

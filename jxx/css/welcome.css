@@ -31,7 +31,6 @@ table,tr,th,td{
     margin-top: 3px;
     height: 108px;
     background-image: linear-gradient(to right, #01b6fc , #1ce4ae);
-    
 }
 #login{
     display: inline-block;
@@ -533,4 +532,16 @@ table,tr,th,td{
     color: #fff;
     font-size: large;
     line-height: 35px;
+}
+.img-usernow{
+    display: inline-block;
+    margin-top: 1%;
+    margin-left: 10%;
+    height: 80%;
+    width: 15%;
+    background: url(../img/user.png) no-repeat;
+    background-size:100% 100%;
+}
+#putongyonghu{
+    display: none;
 }

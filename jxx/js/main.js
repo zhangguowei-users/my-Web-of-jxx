@@ -140,6 +140,23 @@ function caidanChangeColor(className){
                 location.href = "./shy.html";
             }else{
                 //获取显示申请资源
+                if($("#putongyonghu").css("display") == "block"){
+                            $("#putongyonghu").css("display","none");
+                            
+                     
+                }else{
+                    $("#putongyonghu").css("display","block");
+                    
+                };
+                $(function gbright(){
+                    $("#putongyonghu,#login").click(function(event){
+                        event.stopPropagation();
+                    });
+                    $(document).click(function(){
+                        $("#putongyonghu").css("display","none");
+                
+                    });
+                });
             }
         },
         error:function(){
@@ -211,16 +228,16 @@ function caidanChangeColor(className){
  //地图小图标提示
  function tishi(){
     $(".map_12").click(function(){
-        
+        $(".map_12").removeClass("map30");
     });
     $(".map_14").click(function(){
-        
+        $(".map_14").removeClass("map30");
     });
     $(".map_16").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
+        // $(".map01_12").attr("class","map_12");
+        // $(".map01_14").attr("class","map_14");
         $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
+        // $(".map01_20").attr("class","map_20");
         $(".map01_22").attr("class","map_22");
         $(".map01_24").attr("class","map_24");
         $(".map01_26").attr("class","map_26");
@@ -231,10 +248,10 @@ function caidanChangeColor(className){
         $(".map01_35").attr("class","map_35");
         $(".map01_09").attr("class","map_09");
         if($(".map_16").attr("class") == "map_16"){
-        $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
+        // $(".map_12").addClass("cdiv");
+        // $(".map_14").addClass("cdiv");
         $(".map_18").addClass("cdiv");
-        $(".map_20").addClass("cdiv");
+        // $(".map_20").addClass("cdiv");
         $(".map_22").addClass("cdiv");
         $(".map_24").addClass("cdiv");
         $(".map_26").addClass("cdiv");
@@ -247,11 +264,11 @@ function caidanChangeColor(className){
         $(".map_16").attr("class","map01_16");
         }else{
             $(".map01_16").attr("class","map_16");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
+            // $(".map_12").removeClass("cdiv");
+            // $(".map_14").removeClass("cdiv");
             $(".map_16").removeClass("cdiv");
             $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
+            // $(".map_20").removeClass("cdiv");
             $(".map_22").removeClass("cdiv");
             $(".map_24").removeClass("cdiv");
             $(".map_26").removeClass("cdiv");
@@ -264,10 +281,10 @@ function caidanChangeColor(className){
         };
     });
     $(".map_18").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
+        // $(".map01_12").attr("class","map_12");
+        // $(".map01_14").attr("class","map_14");
         $(".map01_16").attr("class","map_16");
-        $(".map01_20").attr("class","map_20");
+        // $(".map01_20").attr("class","map_20");
         $(".map01_22").attr("class","map_22");
         $(".map01_24").attr("class","map_24");
         $(".map01_26").attr("class","map_26");
@@ -279,9 +296,9 @@ function caidanChangeColor(className){
         $(".map01_09").attr("class","map_09");
         if($(".map_18").attr("class") == "map_18"){
             $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
-        $(".map_16").addClass("cdiv");
-        $(".map_20").addClass("cdiv");
+        // $(".map_14").addClass("cdiv");
+        // $(".map_16").addClass("cdiv");
+        // $(".map_20").addClass("cdiv");
         $(".map_22").addClass("cdiv");
         $(".map_24").addClass("cdiv");
         $(".map_26").addClass("cdiv");
@@ -294,11 +311,11 @@ function caidanChangeColor(className){
             $(".map_18").attr("class","map01_18");
         }else{
             $(".map01_18").attr("class","map_18");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
+            // $(".map_12").removeClass("cdiv");
+            // $(".map_14").removeClass("cdiv");
             $(".map_16").removeClass("cdiv");
             $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
+            // $(".map_20").removeClass("cdiv");
             $(".map_22").removeClass("cdiv");
             $(".map_24").removeClass("cdiv");
             $(".map_26").removeClass("cdiv");
@@ -311,58 +328,19 @@ function caidanChangeColor(className){
         };
     });
     $(".map_20").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
-        $(".map01_16").attr("class","map_16");
-        $(".map01_18").attr("class","map_18");
-        $(".map01_22").attr("class","map_22");
-        $(".map01_24").attr("class","map_24");
-        $(".map01_26").attr("class","map_26");
-        $(".map01_28").attr("class","map_28");
-        $(".map01_30").attr("class","map_30");
-        $(".map01_07").attr("class","map_07");
-        $(".map01_33").attr("class","map_33");
-        $(".map01_35").attr("class","map_35");
-        $(".map01_09").attr("class","map_09");
+        $(".map_20").removeClass("map30");
         if($(".map_20").attr("class") == "map_20"){
-            $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
-        $(".map_16").addClass("cdiv");
-        $(".map_18").addClass("cdiv");
-        $(".map_22").addClass("cdiv");
-        $(".map_24").addClass("cdiv");
-        $(".map_26").addClass("cdiv");
-        $(".map_28").addClass("cdiv");
-        $(".map_30").addClass("cdiv");
-        $(".map_07").addClass("cdiv");
-        $(".map_33").addClass("cdiv");
-        $(".map_35").addClass("cdiv");
-        $(".map_09").addClass("cdiv");
             $(".map_20").attr("class","map01_20");
         }else{
             $(".map01_20").attr("class","map_20");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
-            $(".map_16").removeClass("cdiv");
-            $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
-            $(".map_22").removeClass("cdiv");
-            $(".map_24").removeClass("cdiv");
-            $(".map_26").removeClass("cdiv");
-            $(".map_28").removeClass("cdiv");
-            $(".map_30").removeClass("cdiv");
-            $(".map_07").removeClass("cdiv");
-            $(".map_33").removeClass("cdiv");
-            $(".map_35").removeClass("cdiv");
-            $(".map_09").removeClass("cdiv");
         };
     });
     $(".map_22").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
+        // $(".map01_12").attr("class","map_12");
+        // $(".map01_14").attr("class","map_14");
         $(".map01_16").attr("class","map_16");
         $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
+        // $(".map01_20").attr("class","map_20");
         $(".map01_24").attr("class","map_24");
         $(".map01_26").attr("class","map_26");
         $(".map01_28").attr("class","map_28");
@@ -372,11 +350,11 @@ function caidanChangeColor(className){
         $(".map01_35").attr("class","map_35");
         $(".map01_09").attr("class","map_09");
         if($(".map_22").attr("class") == "map_22"){
-            $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
+            // $(".map_12").addClass("cdiv");
+        // $(".map_14").addClass("cdiv");
         $(".map_16").addClass("cdiv");
         $(".map_18").addClass("cdiv");
-        $(".map_20").addClass("cdiv");
+        // $(".map_20").addClass("cdiv");
         $(".map_24").addClass("cdiv");
         $(".map_26").addClass("cdiv");
         $(".map_28").addClass("cdiv");
@@ -388,11 +366,11 @@ function caidanChangeColor(className){
             $(".map_22").attr("class","map01_22");
         }else{
             $(".map01_22").attr("class","map_22");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
+            // $(".map_12").removeClass("cdiv");
+            // $(".map_14").removeClass("cdiv");
             $(".map_16").removeClass("cdiv");
             $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
+            // $(".map_20").removeClass("cdiv");
             $(".map_22").removeClass("cdiv");
             $(".map_24").removeClass("cdiv");
             $(".map_26").removeClass("cdiv");
@@ -405,11 +383,11 @@ function caidanChangeColor(className){
         };
     });
     $(".map_24").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
+        // $(".map01_12").attr("class","map_12");
+        // $(".map01_14").attr("class","map_14");
         $(".map01_16").attr("class","map_16");
         $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
+        // $(".map01_20").attr("class","map_20");
         $(".map01_22").attr("class","map_22");
         $(".map01_26").attr("class","map_26");
         $(".map01_28").attr("class","map_28");
@@ -419,11 +397,11 @@ function caidanChangeColor(className){
         $(".map01_35").attr("class","map_35");
         $(".map01_09").attr("class","map_09"); 
         if($(".map_24").attr("class") == "map_24"){
-            $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
+            // $(".map_12").addClass("cdiv");
+        // $(".map_14").addClass("cdiv");
         $(".map_16").addClass("cdiv");
         $(".map_18").addClass("cdiv");
-        $(".map_20").addClass("cdiv");
+        // $(".map_20").addClass("cdiv");
         $(".map_22").addClass("cdiv");
         $(".map_26").addClass("cdiv");
         $(".map_28").addClass("cdiv");
@@ -435,11 +413,11 @@ function caidanChangeColor(className){
             $(".map_24").attr("class","map01_24");
         }else{
             $(".map01_24").attr("class","map_24");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
+            // $(".map_12").removeClass("cdiv");
+            // $(".map_14").removeClass("cdiv");
             $(".map_16").removeClass("cdiv");
             $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
+            // $(".map_20").removeClass("cdiv");
             $(".map_22").removeClass("cdiv");
             $(".map_24").removeClass("cdiv");
             $(".map_26").removeClass("cdiv");
@@ -452,11 +430,11 @@ function caidanChangeColor(className){
         };
     });
     $(".map_26").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
+        // $(".map01_12").attr("class","map_12");
+        // $(".map01_14").attr("class","map_14");
         $(".map01_16").attr("class","map_16");
         $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
+        // $(".map01_20").attr("class","map_20");
         $(".map01_22").attr("class","map_22");
         $(".map01_24").attr("class","map_24");
         $(".map01_28").attr("class","map_28");
@@ -466,11 +444,11 @@ function caidanChangeColor(className){
         $(".map01_35").attr("class","map_35");
         $(".map01_09").attr("class","map_09");
         if($(".map_26").attr("class") == "map_26"){
-            $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
+            // $(".map_12").addClass("cdiv");
+        // $(".map_14").addClass("cdiv");
         $(".map_16").addClass("cdiv");
         $(".map_18").addClass("cdiv");
-        $(".map_20").addClass("cdiv");
+        // $(".map_20").addClass("cdiv");
         $(".map_22").addClass("cdiv");
         $(".map_24").addClass("cdiv");
         $(".map_28").addClass("cdiv");
@@ -482,11 +460,11 @@ function caidanChangeColor(className){
             $(".map_26").attr("class","map01_26");
         }else{
             $(".map01_26").attr("class","map_26");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
+            // $(".map_12").removeClass("cdiv");
+            // $(".map_14").removeClass("cdiv");
             $(".map_16").removeClass("cdiv");
             $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
+            // $(".map_20").removeClass("cdiv");
             $(".map_22").removeClass("cdiv");
             $(".map_24").removeClass("cdiv");
             $(".map_26").removeClass("cdiv");
@@ -499,11 +477,11 @@ function caidanChangeColor(className){
         };
     });
     $(".map_28").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
+        // $(".map01_12").attr("class","map_12");
+        // $(".map01_14").attr("class","map_14");
         $(".map01_16").attr("class","map_16");
         $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
+        // $(".map01_20").attr("class","map_20");
         $(".map01_22").attr("class","map_22");
         $(".map01_24").attr("class","map_24");
         $(".map01_26").attr("class","map_26");
@@ -513,11 +491,11 @@ function caidanChangeColor(className){
         $(".map01_35").attr("class","map_35");
         $(".map01_09").attr("class","map_09");
         if($(".map_28").attr("class") == "map_28"){
-            $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
+            // $(".map_12").addClass("cdiv");
+        // $(".map_14").addClass("cdiv");
         $(".map_16").addClass("cdiv");
         $(".map_18").addClass("cdiv");
-        $(".map_20").addClass("cdiv");
+        // $(".map_20").addClass("cdiv");
         $(".map_22").addClass("cdiv");
         $(".map_24").addClass("cdiv");
         $(".map_26").addClass("cdiv");
@@ -529,11 +507,11 @@ function caidanChangeColor(className){
             $(".map_28").attr("class","map01_28");
         }else{
             $(".map01_28").attr("class","map_28");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
+            // $(".map_12").removeClass("cdiv");
+            // $(".map_14").removeClass("cdiv");
             $(".map_16").removeClass("cdiv");
             $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
+            // $(".map_20").removeClass("cdiv");
             $(".map_22").removeClass("cdiv");
             $(".map_24").removeClass("cdiv");
             $(".map_26").removeClass("cdiv");
@@ -546,11 +524,11 @@ function caidanChangeColor(className){
         };
     });
     $(".map_30").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
+        // $(".map01_12").attr("class","map_12");
+        // $(".map01_14").attr("class","map_14");
         $(".map01_16").attr("class","map_16");
         $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
+        // $(".map01_20").attr("class","map_20");
         $(".map01_22").attr("class","map_22");
         $(".map01_24").attr("class","map_24");
         $(".map01_26").attr("class","map_26");
@@ -561,11 +539,11 @@ function caidanChangeColor(className){
         $(".map01_09").attr("class","map_09");
         if($(".map_30").attr("class") == "map_30"){
             $(".map_30").attr("class","map01_30");
-            $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
+            // $(".map_12").addClass("cdiv");
+        // $(".map_14").addClass("cdiv");
         $(".map_16").addClass("cdiv");
         $(".map_18").addClass("cdiv");
-        $(".map_20").addClass("cdiv");
+        // $(".map_20").addClass("cdiv");
         $(".map_22").addClass("cdiv");
         $(".map_24").addClass("cdiv");
         $(".map_26").addClass("cdiv");
@@ -579,11 +557,11 @@ function caidanChangeColor(className){
         }else{
             $(".map01_30").attr("class","map_30");
             $("*").removeClass("map30");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
+            // $(".map_12").removeClass("cdiv");
+            // $(".map_14").removeClass("cdiv");
             $(".map_16").removeClass("cdiv");
             $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
+            // $(".map_20").removeClass("cdiv");
             $(".map_22").removeClass("cdiv");
             $(".map_24").removeClass("cdiv");
             $(".map_26").removeClass("cdiv");
@@ -597,11 +575,11 @@ function caidanChangeColor(className){
         };
     });
     $(".map_07").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
+        // $(".map01_12").attr("class","map_12");
+        // $(".map01_14").attr("class","map_14");
         $(".map01_16").attr("class","map_16");
         $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
+        // $(".map01_20").attr("class","map_20");
         $(".map01_22").attr("class","map_22");
         $(".map01_24").attr("class","map_24");
         $(".map01_26").attr("class","map_26");
@@ -611,11 +589,11 @@ function caidanChangeColor(className){
         $(".map01_35").attr("class","map_35");
         $(".map01_09").attr("class","map_09");
         if($(".map_07").attr("class") == "map_07"){
-            $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
+            // $(".map_12").addClass("cdiv");
+        // $(".map_14").addClass("cdiv");
         $(".map_16").addClass("cdiv");
         $(".map_18").addClass("cdiv");
-        $(".map_20").addClass("cdiv");
+        // $(".map_20").addClass("cdiv");
         $(".map_22").addClass("cdiv");
         $(".map_24").addClass("cdiv");
         $(".map_26").addClass("cdiv");
@@ -627,11 +605,11 @@ function caidanChangeColor(className){
             $(".map_07").attr("class","map01_07");
         }else{
             $(".map01_07").attr("class","map_07");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
+            // $(".map_12").removeClass("cdiv");
+            // $(".map_14").removeClass("cdiv");
             $(".map_16").removeClass("cdiv");
             $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
+            // $(".map_20").removeClass("cdiv");
             $(".map_22").removeClass("cdiv");
             $(".map_24").removeClass("cdiv");
             $(".map_26").removeClass("cdiv");
@@ -644,11 +622,11 @@ function caidanChangeColor(className){
         };
     });
     $(".map_33").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
+        // $(".map01_12").attr("class","map_12");
+        // $(".map01_14").attr("class","map_14");
         $(".map01_16").attr("class","map_16");
         $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
+        // $(".map01_20").attr("class","map_20");
         $(".map01_22").attr("class","map_22");
         $(".map01_24").attr("class","map_24");
         $(".map01_26").attr("class","map_26");
@@ -658,11 +636,11 @@ function caidanChangeColor(className){
         $(".map01_35").attr("class","map_35");
         $(".map01_09").attr("class","map_09");
         if($(".map_33").attr("class") == "map_33"){
-            $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
+            // $(".map_12").addClass("cdiv");
+        // $(".map_14").addClass("cdiv");
         $(".map_16").addClass("cdiv");
         $(".map_18").addClass("cdiv");
-        $(".map_20").addClass("cdiv");
+        // $(".map_20").addClass("cdiv");
         $(".map_22").addClass("cdiv");
         $(".map_24").addClass("cdiv");
         $(".map_26").addClass("cdiv");
@@ -675,11 +653,11 @@ function caidanChangeColor(className){
             exportReportPDF(globalQueryClass.map);//导出报表按钮
         }else{
             $(".map01_33").attr("class","map_33");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
+            // $(".map_12").removeClass("cdiv");
+            // $(".map_14").removeClass("cdiv");
             $(".map_16").removeClass("cdiv");
             $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
+            // $(".map_20").removeClass("cdiv");
             $(".map_22").removeClass("cdiv");
             $(".map_24").removeClass("cdiv");
             $(".map_26").removeClass("cdiv");
@@ -694,11 +672,11 @@ function caidanChangeColor(className){
         };
     });
     $(".map_35").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
+        // $(".map01_12").attr("class","map_12");
+        // $(".map01_14").attr("class","map_14");
         $(".map01_16").attr("class","map_16");
         $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
+        // $(".map01_20").attr("class","map_20");
         $(".map01_22").attr("class","map_22");
         $(".map01_24").attr("class","map_24");
         $(".map01_26").attr("class","map_26");
@@ -708,11 +686,11 @@ function caidanChangeColor(className){
         $(".map01_33").attr("class","map_33");
         $(".map01_09").attr("class","map_09");
         if($(".map_35").attr("class") == "map_35"){
-            $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
+            // $(".map_12").addClass("cdiv");
+        // $(".map_14").addClass("cdiv");
         $(".map_16").addClass("cdiv");
         $(".map_18").addClass("cdiv");
-        $(".map_20").addClass("cdiv");
+        // $(".map_20").addClass("cdiv");
         $(".map_22").addClass("cdiv");
         $(".map_24").addClass("cdiv");
         $(".map_26").addClass("cdiv");
@@ -724,11 +702,11 @@ function caidanChangeColor(className){
             $(".map_35").attr("class","map01_35");
         }else{
             $(".map01_35").attr("class","map_35");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
+            // $(".map_12").removeClass("cdiv");
+            // $(".map_14").removeClass("cdiv");
             $(".map_16").removeClass("cdiv");
             $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
+            // $(".map_20").removeClass("cdiv");
             $(".map_22").removeClass("cdiv");
             $(".map_24").removeClass("cdiv");
             $(".map_26").removeClass("cdiv");
@@ -741,11 +719,11 @@ function caidanChangeColor(className){
         };
     });
     $(".map_09").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
+        // $(".map01_12").attr("class","map_12");
+        // $(".map01_14").attr("class","map_14");
         $(".map01_16").attr("class","map_16");
         $(".map01_18").attr("class","map_18");
-        $(".map01_20").attr("class","map_20");
+        // $(".map01_20").attr("class","map_20");
         $(".map01_22").attr("class","map_22");
         $(".map01_24").attr("class","map_24");
         $(".map01_26").attr("class","map_26");
@@ -755,11 +733,11 @@ function caidanChangeColor(className){
         $(".map01_33").attr("class","map_33");
         $(".map01_35").attr("class","map_35");
         if($(".map_09").attr("class") == "map_09"){
-            $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
+            // $(".map_12").addClass("cdiv");
+        // $(".map_14").addClass("cdiv");
         $(".map_16").addClass("cdiv");
         $(".map_18").addClass("cdiv");
-        $(".map_20").addClass("cdiv");
+        // $(".map_20").addClass("cdiv");
         $(".map_22").addClass("cdiv");
         $(".map_24").addClass("cdiv");
         $(".map_26").addClass("cdiv");
@@ -771,11 +749,11 @@ function caidanChangeColor(className){
             $(".map_09").attr("class","map01_09");
         }else{
             $(".map01_09").attr("class","map_09");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
+            // $(".map_12").removeClass("cdiv");
+            // $(".map_14").removeClass("cdiv");
             $(".map_16").removeClass("cdiv");
             $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
+            // $(".map_20").removeClass("cdiv");
             $(".map_22").removeClass("cdiv");
             $(".map_24").removeClass("cdiv");
             $(".map_26").removeClass("cdiv");

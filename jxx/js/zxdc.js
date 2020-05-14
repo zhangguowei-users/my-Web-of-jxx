@@ -1,11 +1,13 @@
 $(document).ready(function(){
     dengluLocation();
     $("#inf-namenow-time").html(newTime());
+    $("#time1").html(newTime());
     tiaozhuan();
     huoquName();
     $("#login").click(function(){
         PDclick();
       });
+      
       $("#quxiao").click(function(){
        $("#css").css("display","none");
       });
@@ -29,8 +31,8 @@ $(document).ready(function(){
     //测试
     $("#myPage").sPage({
       page:1,//当前页码，必填
-      total:150,//数据总条数，必填
-      pageSize:10,//每页显示多少条数据，默认10条
+      total:15,//数据总条数，必填
+      pageSize:3,//每页显示多少条数据，默认10条
       totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
       showTotal:true,//是否显示总条数，默认关闭：false
       showSkip:true,//是否显示跳页，默认关闭：false
