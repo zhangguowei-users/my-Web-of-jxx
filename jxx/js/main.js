@@ -229,9 +229,13 @@ function caidanChangeColor(className){
  function tishi(){
     $(".map_12").click(function(){
         $(".map_12").removeClass("map30");
+        
+        $(".esriSimpleSliderIncrementButton").click();//地图放大按钮
+
     });
     $(".map_14").click(function(){
         $(".map_14").removeClass("map30");
+        $(".esriSimpleSliderDecrementButton").click();//地图缩小按钮
     });
     $(".map_16").click(function(){
         // $(".map01_12").attr("class","map_12");
