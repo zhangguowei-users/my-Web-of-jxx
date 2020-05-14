@@ -650,6 +650,7 @@ function caidanChangeColor(className){
         $(".map_35").addClass("cdiv");
         $(".map_09").addClass("cdiv");
             $(".map_33").attr("class","map01_33");
+            exportReportPDF(globalQueryClass.map);//导出报表按钮
         }else{
             $(".map01_33").attr("class","map_33");
             // $(".map_12").removeClass("cdiv");
@@ -666,6 +667,8 @@ function caidanChangeColor(className){
             $(".map_33").removeClass("cdiv");
             $(".map_35").removeClass("cdiv");
             $(".map_09").removeClass("cdiv");
+
+            exportReportPDF(globalQueryClass.map, "close");//导出报表按钮
         };
     });
     $(".map_35").click(function(){

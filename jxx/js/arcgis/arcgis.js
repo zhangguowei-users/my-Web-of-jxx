@@ -1,6 +1,7 @@
 var globalQueryClass;
 var handdle=null;
 var totalPages;
+var global_data=null, global_menuename=null, global_rightMenue=null;//记录左侧菜单和右侧菜单
 
 
 require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","esri/renderers/UniqueValueRenderer","dojo/domReady!"], init);
@@ -228,6 +229,10 @@ function queryDLTB(data, menue, rightMenue){//点击左侧树
 
     }
 
+    global_data=data;
+    global_menuename=menue.menuename;
+    global_rightMenue=rightMenue;
+
 }
 
 function pagination(pageNo, pageSize, array) {//分页
@@ -390,7 +395,23 @@ function getCountryCode(rightMenue){//获取截取好的行政区码，县级：
 }
 
 
+function exportReportPDF(map, event){//导出报表按钮
+    if(event == "close") {
+        return;
+    }
 
+    // $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/exportReportPDF', type: 'POST', data:{"jsonMenue":JSON.stringify(global_data), "proviceCode":getCountryCode(global_rightMenue)}, xhrFields:{withCredentials:true}, success:function(result) {
+    //     alert(result);       
+    // }});
+
+    window.open("http://localhost:8080/htmls/test1589333645035.pdf");
+
+    var link = document.createElement('a');
+    link.setAttribute("download", "");
+    link.href = "http://localhost:8080/htmls/test1589333645035.pdf";
+    link.click();
+
+}
 
 
 
