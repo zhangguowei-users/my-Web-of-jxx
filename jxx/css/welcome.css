@@ -434,7 +434,7 @@ table,tr,th,td{
 }
 .bing{
     z-index: 1000;
-    background-image: linear-gradient(to right, #01b6fc , #1ce4ae);
+    background:white;
     position: absolute;
     right: 0;
     top:10%;
@@ -445,14 +445,14 @@ table,tr,th,td{
     font-size: large;
     position: absolute;
     background-color: transparent;
-    color: white;
+    color: black;
     top:1%;
     right: 1%;
     z-index: 100;
 }
 .zhu{
     z-index: 1000;
-    background-image: linear-gradient(to right, #01b6fc , #1ce4ae);
+    background:white;
     position: absolute;
     right: 0;
     top:55%; 
@@ -462,7 +462,7 @@ table,tr,th,td{
 #gb-zhu{
     font-size: large;
     position: absolute;
-    color: white;
+    color:black;
     background-color: transparent;
     top:1%;
     right: 1%;
