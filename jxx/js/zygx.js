@@ -55,7 +55,7 @@ $.ajax({
           var name = $(this).html();
           var id = JSON.parse($(this).attr("menueid"));
           right = id;
-          $(".xz").html(name);
+          $(".xz").html("&nbsp;" + name);
           if($(this).attr("class") == "file cd"){
              $(".cc1").css("display","none");
           };
