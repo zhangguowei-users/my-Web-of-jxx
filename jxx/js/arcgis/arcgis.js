@@ -401,8 +401,7 @@ function exportReportPDF(map, event){//导出报表按钮
     }
 
     // $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/exportReportPDF', type: 'POST', data:{"jsonMenue":JSON.stringify(global_data), "proviceCode":getCountryCode(global_rightMenue)}, xhrFields:{withCredentials:true}, success:function(result) {
-    //     alert(result);
-            
+    //     alert(result);       
     // }});
 
     window.open("http://localhost:8080/htmls/test1589333645035.pdf");
