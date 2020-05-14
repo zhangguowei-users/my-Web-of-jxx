@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./css/jquery.treeview.css">
     <link rel="stylesheet" href="./css/welcome.css">
     <link rel="stylesheet" href="./css/tjfx.css">
+    <link rel="stylesheet" href="./css/jquery-ui.css">
+    
 </head>
 <body>
     <!-- 普通用户显示 -->
@@ -57,7 +59,6 @@
                     <option value="sc">2011</option>
                     <option value="sc">2010</option>
                     <option value="sc">2009</option>
-
                 </select>
                 </div>
             <div class="caidan dthree"><div class="gd"><div class="gd-n wone"></div></div><div class="caidan1">
@@ -68,7 +69,25 @@
             </div>
             </div>
             <div class="xianshi jthree">
-                <div id="duibi1"></div><div id="duibi2"></div>
+                <div id="duibi1">
+                    <div style="position:absolute;width:30%;left:15%;bottom: 10%; border:1px solid #000;height:9%;">
+                      <p>
+                        <label for="amount">当前年份</label>
+                        <input type="text" id="amount" readonly style="border:0;color:#f6931f;font-weight:bold;">
+                      </p>
+                      <br>
+                      <div id="slider" style="width: 94%;margin-left:3%;"></div>
+                    </div>
+                </div><div id="duibi2">
+                    <div style="position:absolute;width:30%;right:15%;bottom:10%;border:1px solid #000;height:9%;">
+                        <p>
+                          <label for="amount1">当前年份</label>
+                          <input type="text" id="amount1" readonly style="border:0;color:#f6931f;font-weight:bold;">
+                        </p>
+                        <br>
+                        <div id="slider1" style="width: 94%;margin-left:3%;"></div>
+                      </div>
+                </div>
             </div>
         </div>
         
@@ -77,6 +96,7 @@
     </body>
     <script src="./js/jquery-1.7.1.min.js"></script>
     <script src="./js/jquery.treeview.js"></script>
+    <script src="./js/jquery-ui.js"></script>
     <script src="./js/config.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/tifx.js"></script> 
