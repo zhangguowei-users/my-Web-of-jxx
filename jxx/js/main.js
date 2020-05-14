@@ -142,11 +142,11 @@ function caidanChangeColor(className){
                 //获取显示申请资源
                 if($("#putongyonghu").css("display") == "block"){
                             $("#putongyonghu").css("display","none");
-                            $(".select-background").css("display","inline-block");
+                            
                      
                 }else{
                     $("#putongyonghu").css("display","block");
-                    $(".select-background").css("display","none");
+                    
                 };
                 $(function gbright(){
                     $("#putongyonghu,#login").click(function(event){
@@ -154,7 +154,7 @@ function caidanChangeColor(className){
                     });
                     $(document).click(function(){
                         $("#putongyonghu").css("display","none");
-                        $(".select-background").css("display","inline-block");
+            
                     });
                 });
             }
