@@ -329,7 +329,7 @@ table,tr,th,td{
     background-size: 20px 20px;
 }
 .map_20{
-    background: url(../img/map__20.png) no-repeat;
+    background: url(../img/map01__20.png) no-repeat;
     background-size: 20px 20px;
 }
 .map_22{
@@ -476,10 +476,10 @@ table,tr,th,td{
     background: url(../img/map01__18.png) no-repeat;
     background-size: 20px 20px;
 }
-.map01_20{
+/* .map01_20{
     background: url(../img/map01__20.png) no-repeat;
     background-size: 20px 20px;
-}
+} */
 .map01_22{
     background: url(../img/map01__22.png) no-repeat;
     background-size: 20px 20px;

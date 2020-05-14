@@ -328,51 +328,7 @@ function caidanChangeColor(className){
         };
     });
     $(".map_20").click(function(){
-        $(".map01_12").attr("class","map_12");
-        $(".map01_14").attr("class","map_14");
-        $(".map01_16").attr("class","map_16");
-        $(".map01_18").attr("class","map_18");
-        $(".map01_22").attr("class","map_22");
-        $(".map01_24").attr("class","map_24");
-        $(".map01_26").attr("class","map_26");
-        $(".map01_28").attr("class","map_28");
-        $(".map01_30").attr("class","map_30");
-        $(".map01_07").attr("class","map_07");
-        $(".map01_33").attr("class","map_33");
-        $(".map01_35").attr("class","map_35");
-        $(".map01_09").attr("class","map_09");
-        if($(".map_20").attr("class") == "map_20"){
-            $(".map_12").addClass("cdiv");
-        $(".map_14").addClass("cdiv");
-        $(".map_16").addClass("cdiv");
-        $(".map_18").addClass("cdiv");
-        $(".map_22").addClass("cdiv");
-        $(".map_24").addClass("cdiv");
-        $(".map_26").addClass("cdiv");
-        $(".map_28").addClass("cdiv");
-        $(".map_30").addClass("cdiv");
-        $(".map_07").addClass("cdiv");
-        $(".map_33").addClass("cdiv");
-        $(".map_35").addClass("cdiv");
-        $(".map_09").addClass("cdiv");
-            $(".map_20").attr("class","map01_20");
-        }else{
-            $(".map01_20").attr("class","map_20");
-            $(".map_12").removeClass("cdiv");
-            $(".map_14").removeClass("cdiv");
-            $(".map_16").removeClass("cdiv");
-            $(".map_18").removeClass("cdiv");
-            $(".map_20").removeClass("cdiv");
-            $(".map_22").removeClass("cdiv");
-            $(".map_24").removeClass("cdiv");
-            $(".map_26").removeClass("cdiv");
-            $(".map_28").removeClass("cdiv");
-            $(".map_30").removeClass("cdiv");
-            $(".map_07").removeClass("cdiv");
-            $(".map_33").removeClass("cdiv");
-            $(".map_35").removeClass("cdiv");
-            $(".map_09").removeClass("cdiv");
-        };
+        
     });
     $(".map_22").click(function(){
         $(".map01_12").attr("class","map_12");
