@@ -313,11 +313,11 @@ table,tr,th,td{
     margin-left:15px;
 }
 .map_12{
-    background: url(../img/map01__12.png) no-repeat;
+    background: url(../img/map__12.png) no-repeat;
     background-size: 20px 20px;
 }
 .map_14{
-    background: url(../img/map01__14.png) no-repeat;
+    background: url(../img/map__14.png) no-repeat;
     background-size: 20px 20px;
 }
 .map_16{
@@ -350,7 +350,7 @@ table,tr,th,td{
 }
 .map_30{
     background: url(../img/map__30.png) no-repeat;
-    background-size: 20px 20px;
+    background-size: 17px 20px;
 }
 .map_07{
     background: url(../img/map__07.png) no-repeat;
@@ -434,7 +434,7 @@ table,tr,th,td{
 }
 .bing{
     z-index: 1000;
-    background-image: linear-gradient(to right, #01b6fc , #1ce4ae);
+    background:white;
     position: absolute;
     right: 0;
     top:10%;
@@ -445,14 +445,14 @@ table,tr,th,td{
     font-size: large;
     position: absolute;
     background-color: transparent;
-    color: white;
+    color: black;
     top:1%;
     right: 1%;
     z-index: 100;
 }
 .zhu{
     z-index: 1000;
-    background-image: linear-gradient(to right, #01b6fc , #1ce4ae);
+    background:white;
     position: absolute;
     right: 0;
     top:55%; 
@@ -462,11 +462,19 @@ table,tr,th,td{
 #gb-zhu{
     font-size: large;
     position: absolute;
-    color: white;
+    color:black;
     background-color: transparent;
     top:1%;
     right: 1%;
     z-index: 100;
+}
+.map01_12{
+    background: url(../img/map01__12.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map01_14{
+    background: url(../img/map01__14.png) no-repeat;
+    background-size: 20px 20px;
 }
 .map01_16{
     background: url(../img/map01__16.png) no-repeat;
@@ -498,7 +506,7 @@ table,tr,th,td{
 }
 .map01_30{
     background: url(../img/map01__30.png) no-repeat;
-    background-size: 20px 20px;
+    background-size: 17px 20px;
 }
 .map01_07{
     background: url(../img/map01__07.png) no-repeat;

@@ -227,12 +227,28 @@ function caidanChangeColor(className){
  };
  //地图小图标提示
  function tishi(){
+     $(".map_12").mousedown(function(ev){
+        $(".map_12").removeClass("map30");
+        $(".map_12").attr("class","map01_12");
+     });
+     $(".map_12").mouseup(function(ev){
+        $(".map_12").removeClass("map30");
+        $(".map01_12").attr("class","map_12");
+     });
     $(".map_12").click(function(){
         $(".map_12").removeClass("map30");
         
         $(".esriSimpleSliderIncrementButton").click();//地图放大按钮
 
     });
+    $(".map_14").mousedown(function(ev){
+        $(".map_14").removeClass("map30");
+        $(".map_14").attr("class","map01_14");
+     });
+     $(".map_14").mouseup(function(ev){
+        $(".map_14").removeClass("map30");
+        $(".map01_14").attr("class","map_14");
+     });
     $(".map_14").click(function(){
         $(".map_14").removeClass("map30");
         $(".esriSimpleSliderDecrementButton").click();//地图缩小按钮
