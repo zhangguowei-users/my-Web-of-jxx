@@ -331,11 +331,8 @@ function caidanChangeColor(className){
      $(".map_33").mouseup(function(ev){
         $(".map_33").removeClass("map30");
         $(".map01_33").attr("class","map_33");
-     });
-    $(".map_33").click(function(){
-        $(".map_33").removeClass("map30");
         exportReportPDF(globalQueryClass.map);//导出报表按钮
-    });
+     });
     //显示区域报表图
     $(".map_35").click(function(){
         $(".map_35").removeClass("map30");
