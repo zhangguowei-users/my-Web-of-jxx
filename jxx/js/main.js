@@ -253,156 +253,17 @@ function caidanChangeColor(className){
         $(".map_14").removeClass("map30");
         $(".esriSimpleSliderDecrementButton").click();//地图缩小按钮
     });
-    // $(".map_16").click(function(){
-    //     // $(".map01_12").attr("class","map_12");
-    //     // $(".map01_14").attr("class","map_14");
-    //     $(".map01_18").attr("class","map_18");
-    //     // $(".map01_20").attr("class","map_20");
-    //     $(".map01_22").attr("class","map_22");
-    //     $(".map01_24").attr("class","map_24");
-    //     $(".map01_26").attr("class","map_26");
-    //     $(".map01_28").attr("class","map_28");
-    //     $(".map01_30").attr("class","map_30");
-    //     $(".map01_07").attr("class","map_07");
-    //     $(".map01_33").attr("class","map_33");
-    //     $(".map01_35").attr("class","map_35");
-    //     $(".map01_09").attr("class","map_09");
-    //     if($(".map_16").attr("class") == "map_16"){
-    //     // $(".map_12").addClass("cdiv");
-    //     // $(".map_14").addClass("cdiv");
-    //     $(".map_18").addClass("cdiv");
-    //     // $(".map_20").addClass("cdiv");
-    //     $(".map_22").addClass("cdiv");
-    //     $(".map_24").addClass("cdiv");
-    //     $(".map_26").addClass("cdiv");
-    //     $(".map_28").addClass("cdiv");
-    //     $(".map_30").addClass("cdiv");
-    //     $(".map_07").addClass("cdiv");
-    //     $(".map_33").addClass("cdiv");
-    //     $(".map_35").addClass("cdiv");
-    //     $(".map_09").addClass("cdiv");
-    //     $(".map_16").attr("class","map01_16");
-    //     }else{
-    //         $(".map01_16").attr("class","map_16");
-    //         // $(".map_12").removeClass("cdiv");
-    //         // $(".map_14").removeClass("cdiv");
-    //         $(".map_16").removeClass("cdiv");
-    //         $(".map_18").removeClass("cdiv");
-    //         // $(".map_20").removeClass("cdiv");
-    //         $(".map_22").removeClass("cdiv");
-    //         $(".map_24").removeClass("cdiv");
-    //         $(".map_26").removeClass("cdiv");
-    //         $(".map_28").removeClass("cdiv");
-    //         $(".map_30").removeClass("cdiv");
-    //         $(".map_07").removeClass("cdiv");
-    //         $(".map_33").removeClass("cdiv");
-    //         $(".map_35").removeClass("cdiv");
-    //         $(".map_09").removeClass("cdiv");
-    //     };
-    // });
-    // $(".map_18").click(function(){
-    //     // $(".map01_12").attr("class","map_12");
-    //     // $(".map01_14").attr("class","map_14");
-    //     $(".map01_16").attr("class","map_16");
-    //     // $(".map01_20").attr("class","map_20");
-    //     $(".map01_22").attr("class","map_22");
-    //     $(".map01_24").attr("class","map_24");
-    //     $(".map01_26").attr("class","map_26");
-    //     $(".map01_28").attr("class","map_28");
-    //     $(".map01_30").attr("class","map_30");
-    //     $(".map01_07").attr("class","map_07");
-    //     $(".map01_33").attr("class","map_33");
-    //     $(".map01_35").attr("class","map_35");
-    //     $(".map01_09").attr("class","map_09");
-    //     if($(".map_18").attr("class") == "map_18"){
-    //         $(".map_12").addClass("cdiv");
-    //     // $(".map_14").addClass("cdiv");
-    //     // $(".map_16").addClass("cdiv");
-    //     // $(".map_20").addClass("cdiv");
-    //     $(".map_22").addClass("cdiv");
-    //     $(".map_24").addClass("cdiv");
-    //     $(".map_26").addClass("cdiv");
-    //     $(".map_28").addClass("cdiv");
-    //     $(".map_30").addClass("cdiv");
-    //     $(".map_07").addClass("cdiv");
-    //     $(".map_33").addClass("cdiv");
-    //     $(".map_35").addClass("cdiv");
-    //     $(".map_09").addClass("cdiv");
-    //         $(".map_18").attr("class","map01_18");
-    //     }else{
-    //         $(".map01_18").attr("class","map_18");
-    //         // $(".map_12").removeClass("cdiv");
-    //         // $(".map_14").removeClass("cdiv");
-    //         $(".map_16").removeClass("cdiv");
-    //         $(".map_18").removeClass("cdiv");
-    //         // $(".map_20").removeClass("cdiv");
-    //         $(".map_22").removeClass("cdiv");
-    //         $(".map_24").removeClass("cdiv");
-    //         $(".map_26").removeClass("cdiv");
-    //         $(".map_28").removeClass("cdiv");
-    //         $(".map_30").removeClass("cdiv");
-    //         $(".map_07").removeClass("cdiv");
-    //         $(".map_33").removeClass("cdiv");
-    //         $(".map_35").removeClass("cdiv");
-    //         $(".map_09").removeClass("cdiv");
-    //     };
-    // });
     //地图全屏
     $(".map_20").click(function(){
         $(".map_20").removeClass("map30");
         if($(".map_20").attr("class") == "map_20"){
             $(".map_20").attr("class","map01_20");
+            $(".xianshi").css({"position":"fixed","bottom":"0","left":"0","height":"100%","width":"100%"})
         }else{
             $(".map01_20").attr("class","map_20");
+            $(".xianshi").css({"position":"","bottom":"","left":"","height":"","width":""});
         };
     });
-    // $(".map_22").click(function(){
-    //     // $(".map01_12").attr("class","map_12");
-    //     // $(".map01_14").attr("class","map_14");
-    //     $(".map01_16").attr("class","map_16");
-    //     $(".map01_18").attr("class","map_18");
-    //     // $(".map01_20").attr("class","map_20");
-    //     $(".map01_24").attr("class","map_24");
-    //     $(".map01_26").attr("class","map_26");
-    //     $(".map01_28").attr("class","map_28");
-    //     $(".map01_30").attr("class","map_30");
-    //     $(".map01_07").attr("class","map_07");
-    //     $(".map01_33").attr("class","map_33");
-    //     $(".map01_35").attr("class","map_35");
-    //     $(".map01_09").attr("class","map_09");
-    //     if($(".map_22").attr("class") == "map_22"){
-    //         // $(".map_12").addClass("cdiv");
-    //     // $(".map_14").addClass("cdiv");
-    //     $(".map_16").addClass("cdiv");
-    //     $(".map_18").addClass("cdiv");
-    //     // $(".map_20").addClass("cdiv");
-    //     $(".map_24").addClass("cdiv");
-    //     $(".map_26").addClass("cdiv");
-    //     $(".map_28").addClass("cdiv");
-    //     $(".map_30").addClass("cdiv");
-    //     $(".map_07").addClass("cdiv");
-    //     $(".map_33").addClass("cdiv");
-    //     $(".map_35").addClass("cdiv");
-    //     $(".map_09").addClass("cdiv");
-    //         $(".map_22").attr("class","map01_22");
-    //     }else{
-    //         $(".map01_22").attr("class","map_22");
-    //         // $(".map_12").removeClass("cdiv");
-    //         // $(".map_14").removeClass("cdiv");
-    //         $(".map_16").removeClass("cdiv");
-    //         $(".map_18").removeClass("cdiv");
-    //         // $(".map_20").removeClass("cdiv");
-    //         $(".map_22").removeClass("cdiv");
-    //         $(".map_24").removeClass("cdiv");
-    //         $(".map_26").removeClass("cdiv");
-    //         $(".map_28").removeClass("cdiv");
-    //         $(".map_30").removeClass("cdiv");
-    //         $(".map_07").removeClass("cdiv");
-    //         $(".map_33").removeClass("cdiv");
-    //         $(".map_35").removeClass("cdiv");
-    //         $(".map_09").removeClass("cdiv");
-    //     };
-    // });
     //鹰眼图
     $(".map_24").click(function(){
         $(".map_24").removeClass("map30"); 
