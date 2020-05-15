@@ -397,7 +397,7 @@ function getCountryCode(rightMenue){//获取截取好的行政区码，县级：
 }
 
 
-function exportReportPDF(map, event){//导出报表按钮
+function exportReportPDF(map, event){//导出报表按钮，根据行政区和地类
     if(event == "close") {
         return;
     }
@@ -408,15 +408,17 @@ function exportReportPDF(map, event){//导出报表按钮
     }
 
     $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/exportReportPDF', type: 'POST', data:{"jsonMenue":JSON.stringify(global_data), "proviceCode":getCountryCode(global_rightMenue), "rightMenueName":global_rightMenue.name, "menuename":global_menue.menuename}, xhrFields:{withCredentials:true}, success:function(result) {
-        alert(result);       
+
+        var link = document.createElement('a');
+        link.setAttribute("download", "");
+        link.href = result.result;
+        link.click();
+
+
+        
     }});
 
-    // window.open("http://localhost:8080/htmls/test1589333645035.pdf");
 
-    // var link = document.createElement('a');
-    // link.setAttribute("download", "");
-    // link.href = "http://localhost:8080/htmls/test1589333645035.pdf";
-    // link.click();
 
 }
 
