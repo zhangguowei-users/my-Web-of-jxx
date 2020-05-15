@@ -118,6 +118,9 @@ option = {
   ]
 };
 myChart_bing.setOption(option);
+$("#gb-quanbu-bing").click(function(){
+  $(".quanbu-bing").css("display","none");
+});
 const quanbu_zhu = document.querySelector("#quanbu-zhu");
 const myChart_zhu = echarts.init(quanbu_zhu);
 option = {
@@ -143,4 +146,7 @@ option = {
   }]
 };
 myChart_zhu.setOption(option);
+$("#gb-quanbu-zhu").click(function(){
+  $(".quanbu-zhu").css("display","none");
+});
 });
