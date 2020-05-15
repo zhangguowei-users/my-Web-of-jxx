@@ -241,7 +241,7 @@ table,tr,th,td{
 }
 .fg1{
     display: inline-block;
-    width: 20px;
+    width: 30px;
     height: 37px;
     background: #06c0e9;
     position: absolute;
@@ -253,7 +253,7 @@ table,tr,th,td{
 }
 .xgj{
     display: inline-block;
-    width: 565px;
+    width: 445px;
     height:30px;
     background: #04c4db;
     position: absolute;
@@ -305,12 +305,19 @@ table,tr,th,td{
      right: 50px;
      top:25px;
 }
-.map_12,.map_14,.map_16,.map_18,.map_20,.map_22,.map_24,.map_26,.map_28,.map_30,.map_07,.map_33,.map_35,.map_09{
+.map_12,.map_14,.map_16,.map_18,.map_20,.map_22,.map_24,.map_26,.map_28,.map_30,.map_07,.map_33,.map_09{
     display: inline-block;
     height:20px;
     width: 20px;
     margin-top: 5px;
     margin-left:15px;
+}
+.map_35{
+    display: inline-block;
+    height:18px;
+    width: 22px;
+    margin-left:15px;
+    margin-top:5px;
 }
 .map_12{
     background: url(../img/map__12.png) no-repeat;
@@ -362,7 +369,7 @@ table,tr,th,td{
 }
 .map_35{
     background: url(../img/map__35.png) no-repeat;
-    background-size: 20px 20px;
+    background-size: 22px 18px;
 }
 .map_09{
     background: url(../img/map__09.png) no-repeat;
@@ -518,16 +525,23 @@ table,tr,th,td{
 }
 .map01_35{
     background: url(../img/map01__35.png) no-repeat;
-    background-size: 20px 20px;
+    background-size: 22px 18px;
 }
 .map01_09{
     background: url(../img/map01__09.png) no-repeat;
     background-size: 20px 20px;
 }
-.map01_12,.map01_14,.map01_16,.map01_18,.map01_20,.map01_22,.map01_24,.map01_26,.map01_28,.map01_30,.map01_07,.map01_33,.map01_35,.map01_09{
+.map01_12,.map01_14,.map01_16,.map01_18,.map01_20,.map01_22,.map01_24,.map01_26,.map01_28,.map01_30,.map01_07,.map01_33,.map01_09{
     display: inline-block;
     height:20px;
     width: 20px;
+    margin-top: 5px;
+    margin-left:15px;
+}
+.map01_35{
+    display: inline-block;
+    height:18px;
+    width: 22px;
     margin-top: 5px;
     margin-left:15px;
 }
@@ -552,4 +566,80 @@ table,tr,th,td{
 }
 #putongyonghu{
     display: none;
+}
+.quanbu-bing{
+    z-index: 1000;
+    background:white;
+    position: absolute;
+    left: 0;
+    top:11%;
+    opacity: 0.9;
+    display: none;
+}
+#gb-quanbu-bing{
+    font-size: large;
+    position: absolute;
+    color:black;
+    background-color: transparent;
+    top:1%;
+    right: 1%;
+    z-index: 100; 
+}
+.quanbu-zhu{
+    z-index: 1000;
+    background:white;
+    position: absolute;
+    left: 0;
+    top:55%; 
+    opacity: 0.9;
+    display: none;
+}
+#gb-quanbu-zhu{
+    font-size: large;
+    position: absolute;
+    color:black;
+    background-color: transparent;
+    top:1%;
+    right: 1%;
+    z-index: 100;
+}
+.south{
+    background: url(../img/指北针.png) no-repeat;
+    position: absolute;
+    top:1%;
+    left:1%;
+    display:none;
+    width:5%;
+    height:10%;
+    background-size:100% 100%;
+    z-index: 9999;
+}
+.bili-ruler{
+    background: url(../img/比例尺.png) no-repeat;
+    position: absolute;
+    bottom:35%;
+    left:1%;
+    display:none;
+    width:8%;
+    height:2%;
+    background-size:100% 100%;
+    z-index: 9999;
+}
+.yingyan{
+    background: url(../img/鹰眼图.png) no-repeat;
+    position: absolute;
+    bottom:1%;
+    left:1%;
+    display:none;
+    width:20%;
+    height:25%;
+    background-size:100% 100%;
+    z-index: 9999;
+}
+#yingyan{
+    background:white;
+    height: 93.5%;
+    width:95%;
+    margin-top: 1.9%;
+    margin-left: 2.5%;
 }

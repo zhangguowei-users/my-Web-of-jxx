@@ -306,8 +306,8 @@ function createBingReport(data, menuename, rightMenue)
         option = {
             title: {text: menuename + '各地类比例图',left: 'center'},
             tooltip: {trigger: 'item',formatter: '{a} <br/>{b}: {c} ({d}%)'},
-            legend: {orient: 'vertical',left:0,top:18,data: eval(legendData)},
-            series: [{name: menuename,type: 'pie',radius: ['50%', '70%'],avoidLabelOverlap: false,label: {show: false,position: 'center'},emphasis: {label: {show: true,fontSize: '30',fontWeight: 'bold'}},labelLine: {show: false},data:eval(seriesData)}]
+            legend: {orient: 'vertical',right:12,top:21,data: eval(legendData)},
+            series: [{name: menuename,type: 'pie',center:['25%','50%'],radius: ['50%', '70%'],avoidLabelOverlap: false,label: {show: false,position: 'center'},emphasis: {label: {show: true,fontSize: '30',fontWeight: 'bold'}},labelLine: {show: false},data:eval(seriesData)}]
         };
 
         myChart.setOption(option);
@@ -339,7 +339,6 @@ function creatZhuReport(data, menuename, rightMenue)
         }
 
         $(".zhu").css("display","inline-block");
-
         var myChartone = echarts.init(document.getElementById('zhu'));
         option = {
             title: {text: menuename + '各地类面积报表',left: 'center'},
