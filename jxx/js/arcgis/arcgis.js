@@ -407,7 +407,7 @@ function exportReportPDF(map, event){//导出报表按钮
         return;
     }
 
-    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/exportReportPDF', type: 'POST', data:{"jsonMenue":JSON.stringify(global_data), "proviceCode":getCountryCode(global_rightMenue), "rightMenue":JSON.stringify(global_rightMenue)}, xhrFields:{withCredentials:true}, success:function(result) {
+    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/exportReportPDF', type: 'POST', data:{"jsonMenue":JSON.stringify(global_data), "proviceCode":getCountryCode(global_rightMenue), "rightMenueName":global_rightMenue.name, "menuename":global_menue.menuename}, xhrFields:{withCredentials:true}, success:function(result) {
         alert(result);       
     }});
 
