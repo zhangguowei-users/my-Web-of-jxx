@@ -7,3 +7,8 @@
 .qone{
     background: white;
 }
+
+/* 隐藏缩放按钮 */
+#map_div_zoom_slider {
+    display:none;
+}

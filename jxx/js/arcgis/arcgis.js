@@ -8,7 +8,7 @@ require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceL
 
 function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils,FeatureLayer,UniqueValueRenderer){
 
-    var map = new Map("map_div", {logo: false});
+    var map = new Map("map_div", {logo: false });
     var layer = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.DLTB_Dinamic);
     map.addLayer(layer);
    
