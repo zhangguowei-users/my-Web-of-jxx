@@ -466,19 +466,20 @@ function caidanChangeColor(className){
     $(".map_35").click(function(){
         $(".map_35").removeClass("map30");
         if($(".map_35").attr("class") == "map_35"){
-    
+            $(".bing,.zhu").css("display","inline-block");
             $(".map_35").attr("class","map01_35");
         }else{
             $(".map01_35").attr("class","map_35");
-            
+            $(".bing,.zhu").css("display","none");
         };
     });
     $(".map_09").click(function(){
         $(".map_09").removeClass("map30");
         if($(".map_09").attr("class") == "map_09"){
-            
+            $(".quanbu-bing,.quanbu-zhu").css("display","inline-block");
             $(".map_09").attr("class","map01_09");
         }else{
+            $(".quanbu-bing,.quanbu-zhu").css("display","none");
             $(".map01_09").attr("class","map_09");
            
         };
