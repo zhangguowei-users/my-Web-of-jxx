@@ -347,6 +347,7 @@ function caidanChangeColor(className){
     //         $(".map_09").removeClass("cdiv");
     //     };
     // });
+    //地图全屏
     $(".map_20").click(function(){
         $(".map_20").removeClass("map30");
         if($(".map_20").attr("class") == "map_20"){
@@ -402,34 +403,38 @@ function caidanChangeColor(className){
     //         $(".map_09").removeClass("cdiv");
     //     };
     // });
+    //鹰眼图
     $(".map_24").click(function(){
         $(".map_24").removeClass("map30"); 
         if($(".map_24").attr("class") == "map_24"){
-           
+           $(".yingyan").css("display","inline-block");
             $(".map_24").attr("class","map01_24");
         }else{
             $(".map01_24").attr("class","map_24");
+            $(".yingyan").css("display","none");
            
         };
     });
+    //指南针
     $(".map_26").click(function(){
         $(".map_26").removeClass("map30");
         if($(".map_26").attr("class") == "map_26"){
-            
+            $(".south").css("display","inline-block");
             $(".map_26").attr("class","map01_26");
         }else{
             $(".map01_26").attr("class","map_26");
-            
+            $(".south").css("display","none");
         };
     });
+    //比例尺
     $(".map_28").click(function(){
         $(".map_28").removeClass("map30");
         if($(".map_28").attr("class") == "map_28"){
-            
+            $(".bili-ruler").css("display","inline-block");
             $(".map_28").attr("class","map01_28");
         }else{
             $(".map01_28").attr("class","map_28");
-            
+            $(".bili-ruler").css("display","none");
         };
     });
     $(".map_30").click(function(){
@@ -463,6 +468,7 @@ function caidanChangeColor(className){
             exportReportPDF(globalQueryClass.map, "close");//导出报表按钮
         };
     });
+    //显示区域报表图
     $(".map_35").click(function(){
         $(".map_35").removeClass("map30");
         if($(".map_35").attr("class") == "map_35"){
@@ -473,6 +479,7 @@ function caidanChangeColor(className){
             $(".bing,.zhu").css("display","none");
         };
     });
+    //显示全部区域报表图
     $(".map_09").click(function(){
         $(".map_09").removeClass("map30");
         if($(".map_09").attr("class") == "map_09"){

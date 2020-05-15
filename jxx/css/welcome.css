@@ -603,3 +603,43 @@ table,tr,th,td{
     right: 1%;
     z-index: 100;
 }
+.south{
+    background: url(../img/指北针.png) no-repeat;
+    position: absolute;
+    top:1%;
+    left:1%;
+    display:none;
+    width:5%;
+    height:10%;
+    background-size:100% 100%;
+    z-index: 9999;
+}
+.bili-ruler{
+    background: url(../img/比例尺.png) no-repeat;
+    position: absolute;
+    bottom:35%;
+    left:1%;
+    display:none;
+    width:8%;
+    height:2%;
+    background-size:100% 100%;
+    z-index: 9999;
+}
+.yingyan{
+    background: url(../img/鹰眼图.png) no-repeat;
+    position: absolute;
+    bottom:1%;
+    left:1%;
+    display:none;
+    width:20%;
+    height:25%;
+    background-size:100% 100%;
+    z-index: 9999;
+}
+#yingyan{
+    background:white;
+    height: 93.5%;
+    width:95%;
+    margin-top: 1.9%;
+    margin-left: 2.5%;
+}
