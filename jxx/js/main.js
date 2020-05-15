@@ -258,10 +258,12 @@ function caidanChangeColor(className){
         $(".map_20").removeClass("map30");
         if($(".map_20").attr("class") == "map_20"){
             $(".map_20").attr("class","map01_20");
-            $(".xianshi").css({"position":"fixed","bottom":"0","left":"0","height":"100%","width":"100%"})
+            $(".xianshi").css({"position":"fixed","bottom":"0","left":"0","height":"100%","width":"100%"});
+            $(".nr").css("height","90.8%");
         }else{
             $(".map01_20").attr("class","map_20");
             $(".xianshi").css({"position":"","bottom":"","left":"","height":"","width":""});
+            $(".nr").css("height","");
         };
     });
     //鹰眼图
@@ -298,6 +300,7 @@ function caidanChangeColor(className){
             $(".bili-ruler").css("display","none");
         };
     });
+    //位置信息
     $(".map_30").click(function(){
         if($(".map_30").attr("class") == "map_30"){
             $(".map_30").attr("class","map01_30");
@@ -309,6 +312,7 @@ function caidanChangeColor(className){
             mouseClick(globalQueryClass.map, "close");//关闭鼠标拾取
         };
     });
+    //影像
     $(".map_07").click(function(){
         $(".map_07").removeClass("map30");
         if($(".map_07").attr("class") == "map_07"){
@@ -319,16 +323,16 @@ function caidanChangeColor(className){
             
         };
     });
-    $(".map_33").click(function(){
-        $(".map_12").removeClass("map30");
-        if($(".map_33").attr("class") == "map_33"){
-            $(".map_33").attr("class","map01_33");
-            exportReportPDF(globalQueryClass.map);//导出报表按钮
-        }else{
-            $(".map01_33").attr("class","map_33");
-            exportReportPDF(globalQueryClass.map, "close");//导出报表按钮
-        };
-    });
+    //显示统计报表
+    $(".map_33").mousedown(function(ev){
+        $(".map_33").removeClass("map30");
+        $(".map_33").attr("class","map01_33");
+     });
+     $(".map_33").mouseup(function(ev){
+        $(".map_33").removeClass("map30");
+        $(".map01_33").attr("class","map_33");
+        exportReportPDF(globalQueryClass.map);//导出报表按钮
+     });
     //显示区域报表图
     $(".map_35").click(function(){
         $(".map_35").removeClass("map30");
