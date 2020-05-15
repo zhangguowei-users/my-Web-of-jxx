@@ -1,7 +1,7 @@
 var globalQueryClass;
 var handdle=null;
 var totalPages;
-var global_data=null, global_menuename=null, global_rightMenue=null;//记录左侧菜单和右侧菜单
+var global_data=null, global_menue=null, global_rightMenue=null;//记录左侧菜单和右侧菜单
 
 
 require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","esri/renderers/UniqueValueRenderer","dojo/domReady!"], init);
@@ -208,6 +208,8 @@ function queryDLTB(data, menue, rightMenue){//点击左侧树
         $.ajax({url:config.ip + config.port + '/getMenueByMenueId', type: 'POST', data:{menueid:menue.menueid}, xhrFields:{withCredentials:true}, success:function(result) {
             var newMenue = new Array();
             newMenue.push({'menueid':result.menueid, 'menuename':result.menuename, 'firstcategoryCode':result.firstcategory, 'secondcategoryCode':result.secondcategory, 'secondcategoryName':''});
+            
+            global_data=newMenue;//全局二级分类数据
 
             $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getDLTB', type: 'POST', data:{"jsonMenue":JSON.stringify(newMenue), "proviceCode":getCountryCode(rightMenue)}, xhrFields:{withCredentials:true}, success:function(resultData){
                 queryDltbByObjectID(resultData);//根据OBJECTID查询图斑并高亮
@@ -227,10 +229,11 @@ function queryDLTB(data, menue, rightMenue){//点击左侧树
         createBingReport(data, menue.menuename,rightMenue);
         creatZhuReport(data, menue.menuename, rightMenue)
 
+        global_data=data;//全局二级分类数据
+
     }
 
-    global_data=data;
-    global_menuename=menue.menuename;
+    global_menue=menue; 
     global_rightMenue=rightMenue;
 
 }
@@ -400,16 +403,21 @@ function exportReportPDF(map, event){//导出报表按钮
         return;
     }
 
-    // $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/exportReportPDF', type: 'POST', data:{"jsonMenue":JSON.stringify(global_data), "proviceCode":getCountryCode(global_rightMenue)}, xhrFields:{withCredentials:true}, success:function(result) {
-    //     alert(result);       
-    // }});
+    if(global_data==null || global_rightMenue==null){
+        alert("请选择行政区与地类！");
+        return;
+    }
 
-    window.open("http://localhost:8080/htmls/test1589333645035.pdf");
+    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/exportReportPDF', type: 'POST', data:{"jsonMenue":JSON.stringify(global_data), "proviceCode":getCountryCode(global_rightMenue), "rightMenue":JSON.stringify(global_rightMenue)}, xhrFields:{withCredentials:true}, success:function(result) {
+        alert(result);       
+    }});
 
-    var link = document.createElement('a');
-    link.setAttribute("download", "");
-    link.href = "http://localhost:8080/htmls/test1589333645035.pdf";
-    link.click();
+    // window.open("http://localhost:8080/htmls/test1589333645035.pdf");
+
+    // var link = document.createElement('a');
+    // link.setAttribute("download", "");
+    // link.href = "http://localhost:8080/htmls/test1589333645035.pdf";
+    // link.click();
 
 }
 
