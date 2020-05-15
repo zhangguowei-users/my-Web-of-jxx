@@ -258,10 +258,12 @@ function caidanChangeColor(className){
         $(".map_20").removeClass("map30");
         if($(".map_20").attr("class") == "map_20"){
             $(".map_20").attr("class","map01_20");
-            $(".xianshi").css({"position":"fixed","bottom":"0","left":"0","height":"100%","width":"100%"})
+            $(".xianshi").css({"position":"fixed","bottom":"0","left":"0","height":"100%","width":"100%"});
+            $(".nr").css("height","90.8%");
         }else{
             $(".map01_20").attr("class","map_20");
             $(".xianshi").css({"position":"","bottom":"","left":"","height":"","width":""});
+            $(".nr").css("height","");
         };
     });
     //鹰眼图
