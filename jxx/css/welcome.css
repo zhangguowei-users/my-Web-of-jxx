@@ -571,10 +571,10 @@ table,tr,th,td{
     z-index: 1000;
     background:white;
     position: absolute;
-    right: 0;
-    top:10%;
+    left: 0;
+    top:11%;
     opacity: 0.9;
-    display: none;
+    /* display: none; */
 }
 #gb-quanbu-bing{
     font-size: large;
@@ -589,10 +589,10 @@ table,tr,th,td{
     z-index: 1000;
     background:white;
     position: absolute;
-    right: 0;
+    left: 0;
     top:55%; 
     opacity: 0.9;
-    display: none;
+    /* display: none; */
 }
 #gb-quanbu-zhu{
     font-size: large;
