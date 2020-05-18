@@ -350,6 +350,8 @@ function caidanChangeColor(className){
         if($(".map_09").attr("class") == "map_09"){
             $(".quanbu-bing,.quanbu-zhu").css("display","inline-block");
             $(".map_09").attr("class","map01_09");
+            createAllDLBingReport();//创建所有地类比例报表
+            createAllDLZhuReport();//创建所有地类数量报表
         }else{
             $(".quanbu-bing,.quanbu-zhu").css("display","none");
             $(".map01_09").attr("class","map_09");

@@ -75,7 +75,7 @@ $.ajax({
     });
     }
 });
-var quanbu_bing = document.getElementById("quanbu-bing");
+/*var quanbu_bing = document.getElementById("quanbu-bing");
 var myChart_bing = echarts.init(quanbu_bing);
 option = {
   title: {
@@ -117,11 +117,11 @@ option = {
       }
   ]
 };
-myChart_bing.setOption(option);
+myChart_bing.setOption(option);*/
 $("#gb-quanbu-bing").click(function(){
   $(".quanbu-bing").css("display","none");
 });
-const quanbu_zhu = document.querySelector("#quanbu-zhu");
+/*const quanbu_zhu = document.querySelector("#quanbu-zhu");
 const myChart_zhu = echarts.init(quanbu_zhu);
 option = {
   title: {text:'各地类面积报表',left: 'center'},
@@ -145,7 +145,7 @@ option = {
       }
   }]
 };
-myChart_zhu.setOption(option);
+myChart_zhu.setOption(option);*/
 $("#gb-quanbu-zhu").click(function(){
   $(".quanbu-zhu").css("display","none");
 });
