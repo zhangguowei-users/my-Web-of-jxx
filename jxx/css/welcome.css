@@ -636,8 +636,9 @@ table,tr,th,td{
     background-size:100% 100%;
     z-index: 9999;
 }
-#yingyan{
+#xx{
     background:white;
+    z-index: 10000;
     height: 93.5%;
     width:95%;
     margin-top: 1.9%;
