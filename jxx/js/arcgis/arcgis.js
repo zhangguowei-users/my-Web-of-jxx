@@ -4,9 +4,9 @@ var totalPages;
 var global_data=null, global_menue=null, global_rightMenue=null;//记录左侧菜单和右侧菜单
 
 
-require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","esri/renderers/UniqueValueRenderer","esri/dijit/OverviewMap","dojo/domReady!"], init);
+require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","esri/renderers/UniqueValueRenderer","esri/dijit/OverviewMap","esri/dijit/Scalebar","dojo/domReady!"], init);
 
-function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils,FeatureLayer,UniqueValueRenderer,OverviewMap){
+function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils,FeatureLayer,UniqueValueRenderer,OverviewMap,Scalebar){
 
     var map = new Map("map_div", {logo: false });
     var layer = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.DLTB_Dinamic);
@@ -15,9 +15,8 @@ function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindP
     var queryClass =  new QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic,FeatureLayer,UniqueValueRenderer);
     globalQueryClass = queryClass;
 
-    //mouseClick(map);//鼠标点击高亮显示信息
-
     myOverviewMap(map, dom, OverviewMap);//鹰眼
+    myScalebar(map, dom,Scalebar);//比例尺
 
 }
 
@@ -416,10 +415,12 @@ function exportReportPDF(map, event){//导出报表按钮，根据行政区和�
 
 function myOverviewMap(map, dom, OverviewMap){//鹰眼
     var overviewMapDijit = new OverviewMap({map:map, visible:true}, dom.byId("xx"));
-    //var overviewMapDijit = new OverviewMap({map:map, visible:true, attachTo: "top-left"});
     overviewMapDijit.startup();
 }
 
+function myScalebar(map, dom, Scalebar) {//比例尺
+    var scalebar = new Scalebar({ map: Map, attachTo: "top-right" }, dojo.byId("sca"));
+}
 
 
 
