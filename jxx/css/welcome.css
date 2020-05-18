@@ -615,7 +615,6 @@ table,tr,th,td{
     z-index: 9999;
 }
 .bili-ruler{
-    background: url(../img/比例尺.png) no-repeat;
     position: absolute;
     bottom:35%;
     left:1%;
@@ -645,4 +644,7 @@ table,tr,th,td{
 .ovwContainer{
     width: 100%!important;
     height: 100%!important;
+}
+.esriScalebar{
+    width: 100%!important;
 }
