@@ -419,7 +419,7 @@ function myOverviewMap(map, dom, OverviewMap){//鹰眼
 }
 
 function myScalebar(map, dom, Scalebar) {//比例尺
-    var scalebar = new Scalebar({ map: Map, unit: 'metric'}, dojo.byId("sca"));
+    var scalebar = new Scalebar({ map: map, attachTo:"top-left", scalebarUnit: "metric"}, dojo.byId("sca"));
 }
 
 
