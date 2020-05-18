@@ -635,15 +635,4 @@ table,tr,th,td{
     height:25%;
     background-size:100% 100%;
     z-index: 9999;
-<<<<<<< HEAD
-}
-#xx{
-    background:white;
-    z-index: 10000;
-    height: 93.5%;
-    width:95%;
-    margin-top: 1.9%;
-    margin-left: 2.5%;
-=======
->>>>>>> 1a096ea6ece95dc0898f945d4e7455204673b4af
 }
