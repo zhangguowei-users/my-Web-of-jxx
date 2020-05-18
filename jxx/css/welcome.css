@@ -636,3 +636,13 @@ table,tr,th,td{
     background-size:100% 100%;
     z-index: 9999;
 }
+#xx{
+    width:94%!important; 
+    height:93.3%!important; 
+    display: block!important;
+    z-index: 10001!important;
+}
+.ovwContainer{
+    width: 100%!important;
+    height: 100%!important;
+}
