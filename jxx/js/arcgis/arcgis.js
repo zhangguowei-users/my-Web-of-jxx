@@ -4,9 +4,9 @@ var totalPages;
 var global_data=null, global_menue=null, global_rightMenue=null;//记录左侧菜单和右侧菜单
 
 
-require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","esri/renderers/UniqueValueRenderer","dojo/domReady!"], init);
+require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","esri/renderers/UniqueValueRenderer","esri/dijit/OverviewMap","dojo/domReady!"], init);
 
-function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils,FeatureLayer,UniqueValueRenderer){
+function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils,FeatureLayer,UniqueValueRenderer,OverviewMap){
 
     var map = new Map("map_div", {logo: false });
     var layer = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.DLTB_Dinamic);
@@ -17,10 +17,11 @@ function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindP
 
     //mouseClick(map);//鼠标点击高亮显示信息
 
+    myOverviewMap(map, dom, OverviewMap);//鹰眼
+
 }
 
-function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, FindTask, FindParameters,Color, Graphic, FeatureLayer,UniqueValueRenderer)//查询类
-{                   
+function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, FindTask, FindParameters,Color, Graphic, FeatureLayer,UniqueValueRenderer){//查询类                   
     this.map = map;
     this.SimpleLineSymbol = SimpleLineSymbol;
     this.SimpleFillSymbol = SimpleFillSymbol;
@@ -33,8 +34,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     this.FeatureLayer = FeatureLayer;
     this.UniqueValueRenderer = UniqueValueRenderer;
     
-    this.queryTask = function(querySQL)//Query属性查询
-    {
+    this.queryTask = function(querySQL){//Query属性查询
         var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + ARCGISCONFIG.QueryLevel);
     
         var query = new Query();
@@ -45,21 +45,18 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
         queryTask.execute(query, showQueryResult);
     }
 
-    function showQueryResult(queryResult)
-    {
+    function showQueryResult(queryResult){
         var lineSymbol=new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new dojo.Color([255, 0, 0]), 1);
         var fill = SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, lineSymbol,  new dojo.Color([0, 255, 1]));
         
         if(queryResult.features.length == 0){alert("无结果！"); return;}
 
-        for(let i=0; i<queryResult.features.length; i++)
-        {
+        for(let i=0; i<queryResult.features.length; i++){
             var graphic = queryResult.features[i];
             graphic.setSymbol(fill);
             map.graphics.add(graphic);
 
-            if(totalPages<=1)
-            {
+            if(totalPages<=1){
                 new QueryClass().setExtentFun(map, graphic.geometry);
             }
         }
@@ -154,8 +151,7 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
 }
 
 
-function mouseClick(map, event)//点击地图高亮读取信息
-{
+function mouseClick(map, event){//点击地图高亮读取信息
     if(event == "close") {
         handdle.remove();
         handdle = null;
@@ -275,8 +271,7 @@ function queryDltbByObjectID(result){//根据OBJECTID查询图斑并高亮
 }
 
 
-function createBingReport(data, menuename, rightMenue)
-{
+function createBingReport(data, menuename, rightMenue){
     $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data), "proviceCode":getCountryCode(rightMenue)}, xhrFields:{withCredentials:true}, success:function(result) {
         var legendData = "[";
         var seriesData = "["
@@ -317,8 +312,7 @@ function createBingReport(data, menuename, rightMenue)
     
 }
 
-function creatZhuReport(data, menuename, rightMenue)
-{
+function creatZhuReport(data, menuename, rightMenue){
     $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data), "proviceCode":getCountryCode(rightMenue)}, xhrFields:{withCredentials:true}, success:function(result) {
         var xAxisData = "[";
         var seriesData = "[";
@@ -409,17 +403,21 @@ function exportReportPDF(map, event){//导出报表按钮，根据行政区和�
 
     $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/exportReportPDF', type: 'POST', data:{"jsonMenue":JSON.stringify(global_data), "proviceCode":getCountryCode(global_rightMenue), "rightMenueName":global_rightMenue.name, "menuename":global_menue.menuename}, xhrFields:{withCredentials:true}, success:function(result) {
 
-        var link = document.createElement('a');
+        var link = document.createElement('a');//下载报表文件
         link.setAttribute("download", "");
         link.href = result.result;
         link.click();
-
-
         
     }});
 
 
 
+}
+
+function myOverviewMap(map, dom, OverviewMap){//鹰眼
+    var overviewMapDijit = new OverviewMap({map:map, visible:true}, dom.byId("xx"));
+    //var overviewMapDijit = new OverviewMap({map:map, visible:true, attachTo: "top-left"});
+    overviewMapDijit.startup();
 }
 
 
