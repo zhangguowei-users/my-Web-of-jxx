@@ -84,6 +84,9 @@ $("#zc").click(function () {
         var departmentid = $("#bm1").val();
         var postid = $("#gw1").val();
         var roleid = $("#js1").val();
+        if(username=="" || password=="" || realname==""){
+            alert("用户名，密码，姓名不能为空！请重新注册");
+        };
         $.ajax({
             url:config.ip + config.port + '/regist',
             type: 'POST',
