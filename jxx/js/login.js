@@ -102,6 +102,9 @@ $("#zc").click(function () {
               }else if(data.result == "repeat"){
                   alert("您注册的账户密码重复，请重新注册!!!");
               };
+            },
+            error:function(){
+                  alert("网络原因，注册失败，请稍后重试！");
             }
         });
     })
