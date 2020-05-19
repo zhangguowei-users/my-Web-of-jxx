@@ -48,67 +48,36 @@ $(document).ready(function(){
       if($(this).html() == "技术标准"){
         $(".jfour").html(`<div style="height: 85.5%;overflow: hidden;" id="ce">
       <table id="zx">
-          <tr>
-            <th>文档格式</th>
-            <th>名称</th>
-            <th>创建部门</th>
-            <th>创建时间</th>
-          </tr>
-          <tr class="wendang">
-            <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
-            <td>永久基本农田现状统计表</td>
-            <td>集贤县自然资源信息中心</td>
-            <td>2120-2-25</td>
-          </tr>
-          <tr class="wendang">
-              <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
-              <td>永久基本农田现状统计表</td>
-              <td>集贤县自然资源信息中心</td>
-              <td>2120-2-25</td>
-            </tr>
-            <tr class="wendang">
-              <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
-              <td>永久基本农田现状统计表</td>
-              <td>集贤县自然资源信息中心</td>
-              <td>2120-2-25</td>
-            </tr>
-            <tr class="wendang">
-              <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
-              <td>永久基本农田现状统计表</td>
-              <td>集贤县自然资源信息中心</td>
-              <td>2120-2-25</td>
-            </tr>
-    
-            <tr class="wendang">
-              <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
-              <td>永久基本农田现状统计表</td>
-              <td>集贤县自然资源信息中心</td>
-              <td>2120-2-25</td>
-            </tr>
-            <tr class="wendang">
-              <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
-              <td>永久基本农田现状统计表</td>
-              <td>集贤县自然资源信息中心</td>
-              <td>2120-2-25</td>
-            </tr>
-            <tr class="wendang">
-              <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
-              <td>永久基本农田现状统计表</td>
-              <td>集贤县自然资源信息中心</td>
-              <td>2120-2-25</td>
-            </tr>
-            <tr class="wendang">
-              <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
-              <td>永久基本农田现状统计表</td>
-              <td>集贤县自然资源信息中心</td>
-              <td>2120-2-25</td>
-            </tr>
-            <tr class="wendang">
-              <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
-              <td>永久基本农田现状统计表</td>
-              <td>集贤县自然资源信息中心</td>
-              <td>2120-2-25</td>
-            </tr>
+      <tr>
+      <th>文档格式</th>
+      <th>名称</th>
+      <th>创建部门</th>
+      <th>创建时间</th>
+    </tr>
+    <tr class="wendang">
+      <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+      <td>国土调查数据库标准</td>
+      <td>集贤县自然资源信息中心</td>
+      <td>2018-12-13</td>
+    </tr>
+    <tr class="wendang">
+        <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+        <td>黑龙江省第三次国土调查技术细则（征求意见稿）0215</td>
+        <td>集贤县自然资源信息中心</td>
+        <td>2018-02-15</td>
+      </tr>
+      <tr class="wendang">
+        <td><img src="./img/excal.png" alt="" style="height:70px; width: 70px;"></td>
+        <td>(230521)永久基本农田现状情况统计表</td>
+        <td>集贤县自然资源信息中心</td>
+        <td>2020-2-25</td>
+      </tr>
+      <tr class="wendang">
+        <td><img src="./img/word.png" alt="" style="height:70px; width: 70px;"></td>
+        <td>(230521)第三次国土调查成果分析报告</td>
+        <td>集贤县自然资源信息中心</td>
+        <td>2120-2-21</td>
+      </tr>
         </table>
       </div>
       <div id="myPage" style="position: absolute;bottom:5%;left:20%;"></div>`);
@@ -142,9 +111,21 @@ $(document).ready(function(){
           </tr>
           <tr class="wendang">
             <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
-            <td>永久基本农田现状统计表</td>
+            <td>黑龙江省第三次国土调查技术细则（征求意见稿）0215</td>
             <td>集贤县自然资源信息中心</td>
-            <td>2120-2-25</td>
+            <td>2018-02-15</td>
+          </tr>
+          <tr class="wendang">
+            <td><img src="./img/word.png" alt="" style="height:70px; width: 70px;"></td>
+            <td>(230521)第三次国土调查数据库建设报告</td>
+            <td>集贤县自然资源信息中心</td>
+            <td>2120-2-03</td>
+          </tr>
+          <tr class="wendang">
+            <td><img src="./img/excal.png" alt="" style="height:70px; width: 70px;"></td>
+            <td>(230521)飞入地城镇村及工矿用地面积汇总表</td>
+            <td>集贤县自然资源信息中心</td>
+            <td>2020-2-05</td>
           </tr>
         </table>
       </div>
@@ -176,6 +157,24 @@ $(document).ready(function(){
             <th>名称</th>
             <th>创建部门</th>
             <th>创建时间</th>
+          </tr>
+          <tr class="wendang">
+            <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+            <td>黑龙江省第三次国土调查技术细则（征求意见稿）0215</td>
+            <td>集贤县自然资源信息中心</td>
+            <td>2018-02-15</td>
+          </tr>
+          <tr class="wendang">
+            <td><img src="./img/word.png" alt="" style="height:70px; width: 70px;"></td>
+            <td>(230521)第三次国土调查技术报告</td>
+            <td>集贤县自然资源信息中心</td>
+            <td>2120-2-13</td>
+          </tr>
+          <tr class="wendang">
+            <td><img src="./img/excal.png" alt="" style="height:70px; width: 70px;"></td>
+            <td>(230521)可调整地类面积汇总表</td>
+            <td>集贤县自然资源信息中心</td>
+            <td>2020-5-21</td>
           </tr>
         </table>
       </div>
