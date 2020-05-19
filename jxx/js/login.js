@@ -86,27 +86,29 @@ $("#zc").click(function () {
         var roleid = $("#js1").val();
         if(username=="" || password=="" || realname==""){
             alert("用户名，密码，姓名不能为空！请重新注册");
+        }else{
+            $.ajax({
+                url:config.ip + config.port + '/regist',
+                type: 'POST',
+                async: false,
+                data:{username:username,password:password,realname:realname,gender:gender,'department.departmentid':departmentid,'post.postid':postid,'role.roleid':roleid},
+                xhrFields:{withCredentials:true},
+                success: function (data) {
+                  var data = JSON.parse(data);
+                  if(data.result == "success"){
+                      alert("注册成功，请等待管理员审核，审核成功后方可登录!!!");
+                  }else if(data.result == "fail"){
+                      alert("注册失败，请重新注册!!!");
+                  }else if(data.result == "repeat"){
+                      alert("您注册的账户密码重复，请重新注册!!!");
+                  };
+                },
+                error:function(){
+                      alert("网络原因，注册失败，请稍后重试！");
+                }
+            });
         };
-        $.ajax({
-            url:config.ip + config.port + '/regist',
-            type: 'POST',
-            async: false,
-            data:{username:username,password:password,realname:realname,gender:gender,'department.departmentid':departmentid,'post.postid':postid,'role.roleid':roleid},
-            xhrFields:{withCredentials:true},
-            success: function (data) {
-              var data = JSON.parse(data);
-              if(data.result == "success"){
-                  alert("注册成功，请等待管理员审核，审核成功后方可登录!!!");
-              }else if(data.result == "fail"){
-                  alert("注册失败，请重新注册!!!");
-              }else if(data.result == "repeat"){
-                  alert("您注册的账户密码重复，请重新注册!!!");
-              };
-            },
-            error:function(){
-                  alert("网络原因，注册失败，请稍后重试！");
-            }
-        });
+        
     })
 });
 $(".fhdl").click(function () {
