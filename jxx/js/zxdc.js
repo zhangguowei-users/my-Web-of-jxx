@@ -86,6 +86,7 @@ $(document).ready(function(){
       </div>
       <div id="myPage" style="position: absolute;bottom:10%;left:20%;"></div>
       </div>`);
+      $("#btn").css("display","none");
       }else{
         $(".jtwo").html(`<img src="./img/批注 2020-05-09 144616.png" alt="" style="width:100%;height:99.5%;">`);
         $("#btn").css("display","inline-block");
