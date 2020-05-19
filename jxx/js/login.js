@@ -93,7 +93,7 @@ $("#zc").click(function () {
             success: function (data) {
               var data = JSON.parse(data);
               if(data.result == "success"){
-                  alert("注册成功，请点击返回登录用您注册的账户和密码进行登录!!!");
+                  alert("注册成功，请等待管理员审核，审核成功后方可登录!!!");
               }else if(data.result == "fail"){
                   alert("注册失败，请重新注册!!!");
               }else if(data.result == "repeat"){

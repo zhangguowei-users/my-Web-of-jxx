@@ -411,4 +411,7 @@ function option(data,classN){
             $(`${classN}`).append(`<option value="${data[i]}">${data[i].name}</option>`);
         }
     }
-}
+};
+$("#setting").click(function(){
+    location.href = "bigscreen.html";
+});
