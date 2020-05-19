@@ -38,6 +38,8 @@
     background-color: #fff;
 }
 #duibi1{
+    background: url(../img/2020-05-11140538.png);
+    background-size: 100% 100%;
     display: inline-block;
     height: 90%;
     width: 40%;
@@ -47,6 +49,8 @@
     background-color: white;
 }
 #duibi2{
+    background: url(../img/2020-05-11140618.png);
+    background-size: 100% 100%;
     display: inline-block;
     height: 90%;
     width: 40%;
