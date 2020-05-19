@@ -46,6 +46,7 @@ $(document).ready(function(){
     });
     $(".btn-tree").click(function(){
       if($(this).html() == "技术标准"){
+        $("#btn-wendang").css("display","none");
         $(".jfour").html(`<div style="height: 85.5%;overflow: hidden;" id="ce">
       <table id="zx">
       <tr>
@@ -101,6 +102,7 @@ $(document).ready(function(){
       }
       });
       }else if($(this).html() == "工作报告"){
+        $("#btn-wendang").css("display","none");
         $(".jfour").html(`<div style="height: 85.5%;overflow: hidden;" id="ce">
       <table id="zx">
           <tr>
@@ -150,6 +152,7 @@ $(document).ready(function(){
       }
       });
       }else if($(this).html() == "其他文档"){
+        $("#btn-wendang").css("display","none");
         $(".jfour").html(`<div style="height: 85.5%;overflow: hidden;" id="ce">
       <table id="zx">
           <tr>
@@ -180,7 +183,7 @@ $(document).ready(function(){
       </div>
       <div id="myPage" style="position: absolute;bottom:5%;left:20%;"></div>`);
     $(".wendang").click(function(){
-      $(".jfour").html(`<img src="./img/批注 2020-05-09 160919.png" alt="" style="width:100%;height:99%">`);
+      $(".jfour").html(`<div style="display:inline-block;width:100%;height:99%;text-align:center;font-size:xx-large;">私密文档不可用！！！请下载后进行查看</div>`);
       $("#btn-wendang").css("display","inline-block");
      });
      $("#myPage").sPage({
