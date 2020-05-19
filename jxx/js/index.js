@@ -1,5 +1,5 @@
 $(document).ready(function(){
-if(jiancelogin()){
+    if(jiancelogin()){
     $("#login1").css("display","none");
     $("#gb").css("display","inline-block");
     $("#help").css("display","inline-block");

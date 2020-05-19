@@ -22,11 +22,11 @@ function dengluLocation(){
         setInterval(function(){
             if(jiancelogin()){
             }else{
-                window.location.href = "./login.html";
+                window.location.href = "./index.html";
             }
         },10000);
     }else{
-        window.location.href = "./login.html";
+        window.location.href = "./index.html";
     };
 }
 //获取当前时间
@@ -414,4 +414,19 @@ function option(data,classN){
 };
 $("#setting").click(function(){
     location.href = "bigscreen.html";
+});
+//退出登录
+$("#gb").click(function(){
+    $.ajax({
+        url:config.ip + config.port + '/logOut',
+        type: 'POST',
+        async: false,
+        xhrFields:{withCredentials:true},
+        success:function(){
+
+        },
+        error:function(){
+
+        }
+    });
 });
