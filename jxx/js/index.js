@@ -8,6 +8,13 @@ if(jiancelogin()){
     huoquName();
     $("#login").css("display","inline-block");
 };
+$("#gb").click(function(){
+    $("#login1").css("display","inline-block");
+    $("#gb").css("display","none");
+    $("#help").css("display","none");
+    $("#setting").css("display","none");
+    $("#login").css("display","none");
+});
 $("#login1").click(function () {
     window.location.href = "./login.html";
 });
