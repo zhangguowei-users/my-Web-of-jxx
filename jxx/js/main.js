@@ -417,7 +417,6 @@ $("#setting").click(function(){
 });
 //退出登录
 $("#gb").click(function(){
-    
     $.ajax({
         url:config.ip + config.port + '/logOut',
         type: 'POST',
