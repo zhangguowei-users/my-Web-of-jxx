@@ -30,6 +30,10 @@ $("#input").mouseout(function(){
 $("#zc").click(function () {
     $("#dl1").css("display","none");
     $("#zc1").css("display","inline-block");
+    //初始化信息
+    $("#bm1").children().remove();
+    $("#js1").children().remove();
+    $("#gw1").children().remove();
     //获取部门信息 同步
     $.ajax({
         url:config.ip + config.port + '/getDepartment',
