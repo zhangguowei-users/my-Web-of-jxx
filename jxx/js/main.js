@@ -417,14 +417,14 @@ $("#setting").click(function(){
 });
 //退出登录
 $("#gb").click(function(){
-    location.href = "./index.html";
+    
     $.ajax({
         url:config.ip + config.port + '/logOut',
         type: 'POST',
         async: false,
         xhrFields:{withCredentials:true},
         success:function(){
-
+            location.href = "./index.html";
         },
         error:function(){
 
