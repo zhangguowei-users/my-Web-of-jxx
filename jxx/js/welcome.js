@@ -6,4 +6,5 @@ huoquName();
 $("#login").click(function(){
     PDclick();
   });
+  $("#time1").html(newTime());
 });

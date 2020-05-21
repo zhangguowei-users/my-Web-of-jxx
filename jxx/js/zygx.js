@@ -8,6 +8,7 @@ $(document).ready(function(){
     $("#login").click(function(){
       PDclick();
     });
+    $("#time1").html(newTime());
     $.ajax({
         url:config.ip + config.port + '/getMenue',
         type: 'POST',

@@ -7,7 +7,7 @@ $(document).ready(function(){
     $("#login").click(function(){
         PDclick();
       });
-      
+      $("#time1").html(newTime());
       $("#quxiao").click(function(){
        $("#css").css("display","none");
       });

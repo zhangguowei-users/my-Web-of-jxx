@@ -18,6 +18,7 @@ $("#gb").click(function(){
 $("#login1").click(function () {
     window.location.href = "./login.html";
 });
+$("#time1").html(newTime());
 $(".control").click(function(){
     if(jiancelogin()){
         if(this.className == "control one"){
