@@ -27,6 +27,7 @@ body {
     position: absolute;
     top:370rem;
     left:790rem;
+    line-height: 59rem;
 }
 .zh{
     display: inline-block;
@@ -39,7 +40,7 @@ body {
     line-height: 59rem;
 }
 #name{
-    height: 49rem;
+    height: 40rem;
     width: 347rem;
     margin-top: 4rem;
     margin-left: 73rem;
@@ -64,15 +65,15 @@ body {
     display: inline-block;
     height: 60rem;
     width: 440rem;
+    line-height: 60rem;
     background: url(../img/login__09.png) no-repeat;
     background-size: 100% 100%;
     position: absolute;
     top:470rem;
     left:790rem;
-    background: transparent;
 }
 #value{
-    height: 50rem;
+    height: 40rem;
     width: 347rem;
     margin-top: 4rem;
     margin-left: 73rem;
@@ -81,6 +82,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     font-size: larger;
+    background: transparent;
 }
 #input{
     display: inline-block;
