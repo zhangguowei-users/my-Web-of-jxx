@@ -3,10 +3,13 @@ $(document).ready(function(){
 $(function name(){
 $(document).click(function(){
         $(".name").css("background","url(./img/login__03.png) no-repeat");
+        $(".name").css("background-size","100% 100%");
 });
 $(".name").click(function(event){
         $(".name").css("background","url(./img/login__05.png) no-repeat");
+        $(".name").css("background-size","100% 100%");
         $(".value").css("background","url(./img/login__09.png) no-repeat");
+        $(".value").css("background-size","100% 100%");
         event.stopPropagation();
 });
 });
@@ -15,16 +18,19 @@ $(function value(){
         event.stopPropagation();
         $(".value").css("background","url(./img/login__10.png) no-repeat");
         $(".name").css("background","url(./img/login__03.png) no-repeat");
+        $(".value").css("background-size","100% 100%");
+        $(".name").css("background-size","100% 100%");
     });
     $(document).click(function(){
         $(".value").css("background","url(./img/login__09.png) no-repeat");
+        $(".value").css("background-size","100% 100%");
     });
 });
 $("#input").mouseover(function () {
-        $(this).css({"background":"url(./img/login__16.png) no-repeat","background-size":"350px 45px"});
+        $(this).css({"background":"url(./img/login__16.png) no-repeat","background-size":"350rem 45rem"});
 });
 $("#input").mouseout(function(){
-        $(this).css({"background":"url(./img/login__14.png) no-repeat","background-size":"350px 45px"});
+        $(this).css({"background":"url(./img/login__14.png) no-repeat","background-size":"350rem 45rem"});
 });
 //注册
 $("#zc").click(function () {
