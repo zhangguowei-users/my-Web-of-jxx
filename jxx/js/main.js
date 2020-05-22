@@ -339,15 +339,6 @@ function caidanChangeColor(className){
         exportReportPDF(globalQueryClass.map);//导出报表按钮
      });
     //显示区域报表图
-    setInterval(function(){
-        var a =$(".bing").css("display");
-        var b =$(".zhu").css("display");
-        if(a == "none" && b == "none"){
-          $(".map01_35").attr("class","map_35");
-        }else{
-          $(".map_35").attr("class","map01_35"); 
-        };
-    },100);
     $(".map_35").click(function(){
         $(".map_35").removeClass("map30");
         if($(".map_35").attr("class") == "map_35"){

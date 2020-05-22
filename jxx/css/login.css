@@ -48,7 +48,7 @@ body {
     line-height: 53rem;
     white-space: nowrap;
     overflow: hidden;
-    font-size: larger;
+    font-size: 20rem;
     background: transparent;
 }
 .mm{
@@ -81,7 +81,7 @@ body {
     line-height: 53rem;
     white-space: nowrap;
     overflow: hidden;
-    font-size: larger;
+    font-size: 20rem;
     background: transparent;
 }
 #input{
@@ -143,7 +143,7 @@ body {
 #dl1{
     display: inline-block;
 }
-#zh1,#zh2,#mm1,#mm2,#bm1,#bm,#gw,#gw1,#js,#js1,#tj,#cz,#xb1,#xb,#xm1,#xm2{
+#zh1,#zh2,#mm1,#mm2,#bm1,#bm,#gw,#gw1,#js,#js1,#tj,#cz,#xb1,#xb,#xm1,#xm2,#phone1,#phone2{
     display: inline-block;
     font-size:23rem;
     outline: none;
@@ -174,7 +174,7 @@ body {
     color:white;
     cursor: pointer;
 }
-#zh2,#mm2,#bm1,#gw1,#js1,#xm2,#xb1{
+#zh2,#mm2,#bm1,#gw1,#js1,#xm2,#xb1,#phone2{
    border: 1px #d8d6d6 solid;
 }
 .fh{
