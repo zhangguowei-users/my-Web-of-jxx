@@ -1,4 +1,7 @@
 var zhanghu1;
+var user;
+var dep;
+var depid;
 var resourceid;
 $(document).ready(function(){
     dengluLocation();
@@ -36,7 +39,6 @@ $(document).ready(function(){
       type: 'GET',
       async: false,
       success:function(data){
-        console.log(data);
         for(var i=0;i<data.data.length;i++){
           $("#browser").append(`<div class="btn-tree" id="${data.data[i].resourcetypeid}">${data.data[i].resourcetype}</div>`);
         };
@@ -95,7 +97,7 @@ $(document).ready(function(){
                    $("td button").click(function(){
                     $("#css").css("display","inline-block");
                     resourceid = $(this).attr("id");
-                  });  
+                   });  
                 }
               });
           }
@@ -115,20 +117,6 @@ $(document).ready(function(){
       }
     });
     huakuaiMove(".btn-tree");
-    $.ajax({
-      url:config.newip + config.newport + '/arcgis/SpecialInvestigation/GetDepList',
-      type: 'GET',
-      async: false,
-      success:function(data){
-        // console.log(data.data);
-        function sc(){
-          for(var i=0;i<data.data.length;i++){
-            $("#sq-b").append(`<option value="${data.data[i].departmentid}">${data.data[i].departmentname}</option>`);
-          };
-        };
-        sc();
-      }
-    });
     $(".btn-tree").click(function(){
       if($(this).html() == "专项资源共享"){
         $("#zy").css("display","");
@@ -148,6 +136,8 @@ $(document).ready(function(){
     $("#daochu,#btn").click(function(){
       $("#css1").css("display","inline-block");
     });
+    $("#shenqingren").val(user);
+    $("#sq-b").html(`<option value="${depid}">${dep}</option>`);
     $("#tijiao1").click(function(){
       var shenqingren = $("#shenqingren").val();
       var shenqingbumen = $("#sq-b").val();

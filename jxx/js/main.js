@@ -61,10 +61,14 @@ function huoquName(){
         $.ajax({
             url:config.ip + config.port + '/getUserInfo',
             type: 'POST',
+            async: false,
             xhrFields:{withCredentials:true},
             success:function(data){
                 $("#inf-namenow-name").html(data[0].realname);
                 zhanghu1 = data[0].userid;
+                user = data[0].realname;
+                dep = data[0].department.departmentname;
+                depid = data[0].department.departmentid;  
             }
         });
 };
