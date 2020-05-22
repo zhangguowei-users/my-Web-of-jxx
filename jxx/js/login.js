@@ -94,6 +94,7 @@ $("#zc").click(function () {
         var departmentid = $("#bm1").val();
         var postid = $("#gw1").val();
         var roleid = $("#js1").val();
+        var phone = $("#phone2").val();
         if(username=="" || password=="" || realname==""){
             alert("用户名，密码，姓名不能为空！请重新注册");
         }else{
@@ -101,7 +102,7 @@ $("#zc").click(function () {
                 url:config.ip + config.port + '/regist',
                 type: 'POST',
                 async: false,
-                data:{username:username,password:password,realname:realname,gender:gender,'department.departmentid':departmentid,'post.postid':postid,'role.roleid':roleid},
+                data:{username:username,password:password,realname:realname,telephone:phone,gender:gender,'department.departmentid':departmentid,'post.postid':postid,'role.roleid':roleid},
                 xhrFields:{withCredentials:true},
                 success: function (data) {
                   var data = JSON.parse(data);
