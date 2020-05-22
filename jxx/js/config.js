@@ -2,7 +2,9 @@
 var config;
 config={
     ip: 'http://192.168.1.109',
-    port: ':8081'
+    port: ':8081',
+    newip: 'http://192.168.1.106',
+    newport:':5050'
 };
 
 var ARCGISCONFIG={

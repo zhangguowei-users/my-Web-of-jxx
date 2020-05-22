@@ -70,12 +70,12 @@
       <div id="tcts1">
         <div style="text-align: center;font-size: larger;">申请表</div>
         <br>
-        <div style="display: inline-block;position:absolute;left:6%;">申请人</div><input style="font-size: large;position: absolute;left:16%;" id="sq-p" type="text" placeholder="请输入..">&nbsp;<div style="display: inline-block;position: absolute;left:56%;">申请部门</div><select style="font-size: large;position: absolute;left:68%;" id="sq-b">
-          <option value="">办公厅</option>
-          <option value="">办事机构</option>
+        <div style="display: inline-block;position:absolute;left:6%;">申请人</div><input id="shenqingren" style="font-size: large;position: absolute;left:16%;" id="sq-p" type="text" placeholder="请输入..">&nbsp;<div style="display: inline-block;position: absolute;left:56%;">申请部门</div><select style="font-size: large;position: absolute;left:68%;" id="sq-b">
+          <!-- <option value="">办公厅</option>
+          <option value="">办事机构</option> -->
         </select>
         <br><br>
-        <div style="display: inline-block;position:absolute;left:6%;">申请用途</div><textarea style="width:64.5%;height:100px;padding-top:1px;font-size:large;display: inline-block;vertical-align: top;position: absolute;left:16%;z-index: 100000000;" placeholder="请输入.."></textarea>
+        <div style="display: inline-block;position:absolute;left:6%;">申请用途</div><textarea id="shenqingyongtu" style="width:64.5%;height:100px;padding-top:1px;font-size:large;display: inline-block;vertical-align: top;position: absolute;left:16%;z-index: 100000000;" placeholder="请输入.."></textarea>
         <br><br>
         <button id="tijiao1" style="position: absolute;left:21%;top:80%;height:9%;width:15%;font-size:large;color: white;background-image: linear-gradient(#8dc5fa,#0e7ec0);border: 1px #3399ff solid;border-radius: 5px;">确定</button>
         <button id="quxiao1" style="position: absolute;left:51%;top:80%;height:9%;width:15%;font-size:large;color: white;background-image: linear-gradient(#ffc45e,#ff6802);border: 1px #ff6802 solid;border-radius: 5px;">取消</button>
@@ -121,17 +121,16 @@
             <div class="caidan dtwo"><div class="gd"><div class="gd-n wone"></div></div><div class="caidan1">
                 <div class="qtwo filetree treeview-famfamfam" id="browser">
                   <br>
-                  <div class="btn-tree">专项资源共享</div>
+                  <!-- <div class="btn-tree">专项资源共享</div>
                   <div class="btn-tree">耕地级别</div>
                   <div class="btn-tree">权属单位</div>
                   <div class="btn-tree">不动产调查</div>
                   <div class="btn-tree">基本农田</div>
-                  <div class="btn-tree">违法用地</div>
+                  <div class="btn-tree">违法用地</div> -->
                 </div>
             </div>
             </div>
             <div class="xianshi jtwo">
-              <div style="height: 81.5%;overflow: hidden;" id="ce">
               <table id="zy">
                 <tr>
                   <th>资源图</th>
@@ -142,7 +141,7 @@
                   <th>操作</th>
                 </tr>
                 <tr>
-                  <td><img class="img-zxdc" src="./img/ex.png" alt=""></td>
+                  <!-- <td><img class="img-zxdc" src="./img/ex.png" alt=""></td>
                   <td>集贤县工业用地分布图</td>
                   <td>空间分布图</td>
                   <td>集贤县自然资源信息中心</td>
@@ -156,9 +155,9 @@
                     <td>集贤县自然资源信息中心</td>
                     <td>2120-2-25</td>
                     <td><button>下载</button></td>
-                  </tr>
-              </table> 
-            </div>
+                  </tr> -->
+              </table>
+              <img id="se" src="./img/批注 2020-05-09 144616.png" alt="" style="width:100%;height:99.5%;display: none;">
             <div id="myPage" style="position: absolute;bottom:10%;left:20%;"></div>
             </div>
         </div>

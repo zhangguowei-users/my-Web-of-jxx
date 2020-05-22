@@ -64,6 +64,7 @@ function huoquName(){
             xhrFields:{withCredentials:true},
             success:function(data){
                 $("#inf-namenow-name").html(data[0].realname);
+                zhanghu1 = data[0].userid;
             }
         });
 };
