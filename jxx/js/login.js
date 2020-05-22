@@ -115,23 +115,19 @@ $("#zc").click(function () {
                     if(jianceAl){
                         alert("注册成功，请等待管理员审核，审核成功后方可登录!!!");
                         jianceAl = false;
-                    }else{
-                        alert("注册成功，请等待管理员审核，审核成功后方可登录!!!");
-                        jianceAl = false;
-                    };   
-                  }else if(data.result == "fail"){
-                    if(jianceAl){
+                     };
+                    }else if(data.result == "fail"){
+                       if(jianceAl){
                         alert("注册失败，请重新注册!!!");
                         jianceAl = false;
-                    }else{
-                        alert("注册失败，请重新注册!!!");
-                        jianceAl = false;  
-                    }; 
-                  }else if(data.result == "repeat"){
-                    if(jianceAl){
+                       };
+                    }else if(data.result == "repeat"){
+                       if(jianceAl){
                         alert("您注册的账户密码重复，请重新注册!!!");
                         jianceAl = false;
+                    };
                     }else{
+                        if(jianceAl){
                         alert("您注册的账户密码重复，请重新注册!!!");
                         jianceAl = false;  
                     }; 
