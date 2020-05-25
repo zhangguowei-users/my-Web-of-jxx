@@ -25,7 +25,7 @@ table{
 }
 #zy tr:nth-child(1){
     background-color: #f1f1f1;
-    height:30px;
+    height:30rem;
     color: black;
 }
 #zy tr th {
@@ -33,21 +33,31 @@ table{
     border-right:0;
     border-top: 0;
     border-bottom: 0;
-    font-size: large;  
+    font-size: 20rem;  
 }
 #zy tr td{
     border-left:0; 
     border-right:0;
     border-top: 0;
     border-bottom: 0;
-    font-size: large;  
+    font-size: 20rem;  
+}
+#zy tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 200rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
 }
 #zy tr{
     border-left:0; 
     border-right:0;
     border-top: 0;
     border-bottom: 0;
-    font-size: large;  
+    font-size: 20rem;  
 }
 td button{
     background-image: linear-gradient(#8dc5fa,#0e7ec0);

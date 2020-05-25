@@ -1,3 +1,4 @@
+var zhanghu1;
 $(document).ready(function(){
     dengluLocation();
     shy();
@@ -5,21 +6,61 @@ $(document).ready(function(){
     tiaozhuan();
     huoquName();
     huakuaiMove(".btn-tree");
-    $("#myPage").sPage({
-      page:1,//当前页码，必填
-      total:150,//数据总条数，必填
-      pageSize:10,//每页显示多少条数据，默认10条
-      totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-      showTotal:true,//是否显示总条数，默认关闭：false
-      showSkip:true,//是否显示跳页，默认关闭：false
-      showPN:true,//是否显示上下翻页，默认开启：true
-      prevPage:"上一页",//上翻页文字描述，默认“上一页”
-      nextPage:"下一页",//下翻页文字描述，默认“下一页”
-      backFun:function(page){
-          //点击分页按钮回调函数，返回当前页码
-          console.log(page);
+    $.ajax({
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page=1&limit=16',
+      type: 'GET',
+      async: false,
+      success: function (data){
+        console.log(data);
+        for(var i=0;i<data.data.length;i++){
+          $("#zy").append(`<tr>
+                           <td>${data.data[i].name}</td>
+                           <td>${data.data[i].depname}</td>
+                           <td>${data.data[i].postname}</td>
+                           <td><div>${data.data[i].applyreason}</div></td>
+                           <td>${data.data[i].phone}</td>
+                           <td>${data.data[i].applytime.split("T")[0]}</td>
+                           <td>已申请</td>
+                           <td><button class="shenhe">审核</button></td>
+                           </tr>`);
+        };
+        $("#myPage").sPage({
+          page:1,//当前页码，必填
+          total:data.count,//数据总条数，必填
+          pageSize:16,//每页显示多少条数据，默认10条
+          totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+          showTotal:true,//是否显示总条数，默认关闭：false
+          showSkip:true,//是否显示跳页，默认关闭：false
+          showPN:true,//是否显示上下翻页，默认开启：true
+          prevPage:"上一页",//上翻页文字描述，默认“上一页”
+          nextPage:"下一页",//下翻页文字描述，默认“下一页”
+          backFun:function(page){
+              //点击分页按钮回调函数，返回当前页码
+              $.ajax({
+                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page='+page+'&limit=16',
+                type: 'GET',
+                success: function (data){
+                  console.log(data);
+                  $("#zy").children().not(':first-child').remove();
+                  for(var i=0;i<data.data.length;i++){
+                    $("#zy").append(`<tr>
+                                     <td>${data.data[i].name}</td>
+                                     <td>${data.data[i].depname}</td>
+                                     <td>${data.data[i].postname}</td>
+                                     <td><div>${data.data[i].applyreason}</div></td>
+                                     <td>${data.data[i].phone}</td>
+                                     <td>${data.data[i].applytime.split("T")[0]}</td>
+                                     <td>已申请</td>
+                                     <td><button class="shenhe">审核</button></td>
+                                     </tr>`);
+                  };
+                }
+              });  
+          }
+        }); 
       }
     });
+
     $(".btn-tree").click(function(){
        $("#zy,#zy1,#zy2,#zy3,#delete,#quxiaosh,#fanhuish,#myPage,#myPage1,#myPage2").css("display","none");
        if($(this).html() == "待审核"){
@@ -62,7 +103,7 @@ $(document).ready(function(){
     });
     //个人中心数据加载
     $.ajax({
-      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page=1&limit=12',
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=0&page=1&limit=12&userid='+zhanghu1,
       type: 'GET',
       success: function (data) {
           for(var i=0;i<data.data.length;i++){
@@ -84,7 +125,7 @@ $(document).ready(function(){
             backFun:function(page){
                 //点击分页按钮回调函数，返回当前页码
                 $.ajax({
-                  url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page='+page+'&limit=12',
+                  url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page='+page+'&limit=12&userid='+zhanghu1,
                   type: 'GET',
                   success: function (data){
                     $("#shenheing").children().not(':first-child').remove();
@@ -101,10 +142,9 @@ $(document).ready(function(){
       }
   });
   $.ajax({
-    url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=1&page=1&limit=12',
+    url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=1&page=1&limit=12&userid='+zhanghu1,
     type: 'GET',
     success: function (data) {
-        console.log(data);
         for(var i=0;i<data.data.length;i++){
            $("#yitongguo").append(`<tr>
            <td><div>${data.data[i].applyreason}</div></td>
@@ -124,6 +164,10 @@ $(document).ready(function(){
           nextPage:"下一页",//下翻页文字描述，默认“下一页”
           backFun:function(page){
               //点击分页按钮回调函数，返回当前页码
+              $.ajax({
+                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=1&page='+page+'&limit=12&userid='+zhanghu1,
+                type: 'GET',
+                success: function (data){
               $("#yitongguo").children().not(':first-child').remove();
               for(var i=0;i<data.data.length;i++){
                 $("#yitongguo").append(`<tr>
@@ -132,15 +176,16 @@ $(document).ready(function(){
                 <td><a><button>下载</button></a></td>
                 </tr>`);
              };
+            }
+          });
           }
         });
       }
     });
     $.ajax({
-      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=2&page=1&limit=12',
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=2&page=1&limit=12&userid='+zhanghu1,
       type: 'GET',
       success: function (data) {
-          console.log(data);
           for(var i=0;i<data.data.length;i++){
              $("#yixiazai").append(`<tr>
              <td><div>${data.data[i].applyreason}</div></td>
@@ -160,7 +205,10 @@ $(document).ready(function(){
             nextPage:"下一页",//下翻页文字描述，默认“下一页”
             backFun:function(page){
                 //点击分页按钮回调函数，返回当前页码
-                console.log(page);
+                $.ajax({
+                  url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=2&page='+page+'&limit=12&userid='+zhanghu1,
+                  type: 'GET',
+                  success: function (data){
                 $("#yixiazai").children().not(':first-child').remove();
                 for(var i=0;i<data.data.length;i++){
                   $("#yixiazai").append(`<tr>
@@ -169,15 +217,16 @@ $(document).ready(function(){
                   <td><a><button>下载</button></a></td>
                   </tr>`);
                };
+              }
+            });
             }
           });
         }
       });
       $.ajax({
-        url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=-1&page=1&limit=12',
+        url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=-1&page=1&limit=12&userid='+zhanghu1,
         type: 'GET',
         success: function (data) {
-            console.log(data);
             for(var i=0;i<data.data.length;i++){
                $("#yituihui").append(`<tr>
                <td><div>${data.data[i].applyreason}</div></td>
@@ -196,7 +245,10 @@ $(document).ready(function(){
               nextPage:"下一页",//下翻页文字描述，默认“下一页”
               backFun:function(page){
                   //点击分页按钮回调函数，返回当前页码
-                  console.log(page);
+                  $.ajax({
+                    url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=-1&page='+page+'&limit=12&userid='+zhanghu1,
+                    type: 'GET',
+                    success: function (data){
                   $("#yituihui").children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
                     $("#yituihui").append(`<tr>
@@ -204,6 +256,8 @@ $(document).ready(function(){
                     <td>已退回</td>
                     </tr>`);
                  };
+                }
+              });
               }
             });
           }
