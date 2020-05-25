@@ -13,7 +13,12 @@ var ARCGISCONFIG={
     DLTB_FEATURE:"http://192.168.1.109:6080/arcgis/rest/services/jixian/DLTB/FeatureServer",
     
     QueryLevel: "/0",
-    FindTaskLevel: 0
+    FindTaskLevel: 0,
+
+    IMAGE_LAYER_1:"http://192.168.1.109:6080/arcgis/rest/services/jixian/IMAGE_1/ImageServer",
+    IMAGE_LAYER_2:"http://192.168.1.109:6080/arcgis/rest/services/jixian/IMAGE_2/ImageServer",
+    IMAGE_LAYER_3:"http://192.168.1.109:6080/arcgis/rest/services/jixian/IMAGE_3/ImageServer"
+
 };
 
 //地理服务
