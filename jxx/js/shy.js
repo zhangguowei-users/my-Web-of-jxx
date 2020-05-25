@@ -4,6 +4,7 @@ $(document).ready(function(){
     $("#inf-namenow-time").html(newTime());
     tiaozhuan();
     huoquName();
+    huakuaiMove(".btn-tree");
     $("#myPage").sPage({
       page:1,//当前页码，必填
       total:150,//数据总条数，必填
@@ -19,7 +20,6 @@ $(document).ready(function(){
           console.log(page);
       }
     });
-    huakuaiMove(".btn-tree");
     $(".btn-tree").click(function(){
        $("#zy,#zy1,#zy2,#zy3,#delete,#quxiaosh,#fanhuish,#myPage,#myPage1,#myPage2").css("display","none");
        if($(this).html() == "待审核"){
