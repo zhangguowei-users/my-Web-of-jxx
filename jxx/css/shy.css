@@ -69,6 +69,7 @@ td button{
     text-align: center;
 }
 #delete{
+    display: none;
     background-image: linear-gradient(#8dc5fa,#0e7ec0);
     border: 1px #3399ff solid;
     color:white;
@@ -85,6 +86,7 @@ td button{
     bottom: 8%;
 }
 #quxiaosh{
+    display: none;
     background-image: linear-gradient(#8dc5fa,#0e7ec0);
     border: 1px #3399ff solid;
     color:white;
@@ -101,6 +103,7 @@ td button{
     bottom: 8%;
 }
 #fanhuish{
+    display: none;
     background-image: linear-gradient(#8dc5fa,#0e7ec0);
     border: 1px #3399ff solid;
     color:white;
@@ -117,6 +120,7 @@ td button{
     bottom: 8%;
 }
 #zy1{
+    display:none;
     border: none;
     width: 98%;
     margin: 1% 1%;
@@ -150,8 +154,11 @@ td button{
     border-bottom: 0;
     font-size: large;  
 }
-
+#zy3{
+    display: none;
+}
 #zy2{
+    display: none;
     border: none;
     width: 98%;
     margin: 1% 1%;
@@ -235,6 +242,7 @@ td button{
     width:98%;
     margin:1% 1%;
     text-align: center;
+    
 }
 #shenheing tr:nth-child(1){
     background-color: #f1f1f1;
@@ -255,13 +263,22 @@ td button{
     border-bottom: 0;
     font-size:20rem;  
 }
+#shenheing tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 145rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
 #shenheing tr{
     border-left:0; 
     border-right:0;
     border-top: 0;
     border-bottom: 0;
-    font-size:20rem;  
-    height:41rem;
+    font-size:20rem;
 }
 #yitongguo{
     display:none;
@@ -288,6 +305,16 @@ td button{
     border-top: 0;
     border-bottom: 0;
     font-size:20rem;  
+}
+#yitongguo tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 100rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;  
 }
 #yitongguo tr{
     border-left:0; 
@@ -322,7 +349,75 @@ td button{
     border-bottom: 0;
     font-size:20rem;  
 }
+#yixiazai tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 100rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;  
+}
 #yixiazai tr{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;
+}
+td a button{
+    background-image: linear-gradient(#8dc5fa,#0e7ec0);
+    border: 1px #3399ff solid;
+    color:white;
+    width: 50rem;
+    height: 35rem;
+    line-height: 35rem;
+    text-align: center;
+    outline: none;
+    border-radius: 5rem;
+    font-family: "幼圆";
+    font-size:large;
+    margin-top:3rem;
+    margin-bottom: 3rem;
+}
+#yituihui{
+    border:none;
+    width:98%;
+    margin:1% 1%;
+    text-align: center;
+    display: none;
+}
+#yituihui tr:nth-child(1){
+    background-color: #f1f1f1;
+    height:30rem;
+    color: black;
+}
+#yituihui tr th {
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#yituihui tr td{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#yituihui tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 145rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+#yituihui tr{
     border-left:0; 
     border-right:0;
     border-top: 0;
@@ -387,4 +482,5 @@ td button{
     width: 999rem;
     height: 606rem;
     vertical-align: top;
+    overflow: auto;
 }
