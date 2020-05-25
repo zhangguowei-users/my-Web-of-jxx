@@ -11,7 +11,6 @@ $(document).ready(function(){
       type: 'GET',
       async: false,
       success: function (data){
-        console.log(data);
         for(var i=0;i<data.data.length;i++){
           $("#zy").append(`<tr>
                            <td>${data.data[i].name}</td>
@@ -39,8 +38,8 @@ $(document).ready(function(){
               $.ajax({
                 url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page='+page+'&limit=16',
                 type: 'GET',
+                async: false,
                 success: function (data){
-                  console.log(data);
                   $("#zy").children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
                     $("#zy").append(`<tr>
@@ -60,7 +59,7 @@ $(document).ready(function(){
         }); 
       }
     });
-
+    
     $(".btn-tree").click(function(){
        $("#zy,#zy1,#zy2,#zy3,#delete,#quxiaosh,#fanhuish,#myPage,#myPage1,#myPage2").css("display","none");
        if($(this).html() == "待审核"){
