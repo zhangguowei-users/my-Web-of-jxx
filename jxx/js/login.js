@@ -33,9 +33,7 @@ $("#input").mouseout(function(){
         $(this).css({"background":"url(./img/login__14.png) no-repeat","background-size":"350rem 45rem"});
 });
 //注册
-var jianceAl;
 $("#zc").click(function () {
-    jianceAl = true;
     $("#dl1").css("display","none");
     $("#zc1").css("display","inline-block");
     //初始化信息
@@ -88,7 +86,7 @@ $("#zc").click(function () {
         }
     });
     //将获取所有信息进行提交
-    $("#tj").click(function(){
+    $("#tj").unbind("click").bind("click",function(){
         var username = $("#zh2").val();
         var password = $("#mm2").val();
         var realname = $("#xm2").val();
@@ -98,10 +96,7 @@ $("#zc").click(function () {
         var roleid = $("#js1").val();
         var phone = $("#phone2").val();
         if(username=="" || password=="" || realname==""){
-            if(jianceAl){
                 alert("用户名，密码，姓名不能为空！请重新注册");
-                jianceAl = false;
-            } 
         }else{
             $.ajax({
                 url:config.ip + config.port + '/regist',
@@ -112,31 +107,17 @@ $("#zc").click(function () {
                 success: function (data) {
                   var data = JSON.parse(data);
                   if(data.result == "success"){
-                    if(jianceAl){
                         alert("注册成功，请等待管理员审核，审核成功后方可登录!!!");
-                        jianceAl = false;
-                     };
                     }else if(data.result == "fail"){
-                       if(jianceAl){
                         alert("注册失败，请重新注册!!!");
-                        jianceAl = false;
-                       };
                     }else if(data.result == "repeat"){
-                       if(jianceAl){
                         alert("您注册的账户密码重复，请重新注册!!!");
-                        jianceAl = false;
-                    };
                     }else{
-                        if(jianceAl){
                         alert("您注册的账户密码重复，请重新注册!!!");
-                        jianceAl = false;  
-                    }; 
                   };
                 },
                 error:function(){
-                      
-                        alert("网络原因，注册失败，请稍后重试！");
-                        
+                        alert("网络原因，注册失败，请稍后重试！");      
                 }
             });
         }; 
