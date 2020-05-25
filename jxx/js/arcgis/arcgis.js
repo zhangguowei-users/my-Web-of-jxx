@@ -351,6 +351,7 @@ function creatZhuReport(data, menuename, rightMenue){
     }});
 
 
+    changeToolBarBlue();//设置工具栏眼睛图标选中
    
 }
 
@@ -422,7 +423,9 @@ function myScalebar(map, dom, Scalebar) {//比例尺
     var scalebar = new Scalebar({ map: map, attachTo:"top-left", scalebarUnit: "metric"}, dojo.byId("sca"));
 }
 
-
+function changeToolBarBlue() {//设置工具栏眼睛图标选中
+    $(".map_35").attr("class","map01_35");
+}
 
 
 
