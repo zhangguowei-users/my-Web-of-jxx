@@ -16,8 +16,43 @@
     <div class="gr">
       <div class="ce1">个人中心</div>
       <div class="xianshi1">
-        <div class="left1"></div>
-        <div class="right1"></div>
+        <div class="left1">
+          <div class="btn-tree1">审核中</div>
+          <div class="btn-tree1">已通过</div>
+          <div class="btn-tree1">已下载</div>
+          <div class="btn-tree1">已退回</div>
+        </div><div class="right1">
+          <table id="shenheing">
+            <tr>
+               <th>申请用途</th>
+               <th>申请状态</th>
+            </tr>
+          </table>
+          <div id="myshenheing" style="position:absolute;bottom:1%;right:15%;"></div>
+          <table id="yitongguo">
+            <tr>
+               <th>申请用途</th>
+               <th>申请状态</th>
+               <th>操作</th>
+            </tr>
+          </table>
+          <div id="myyitongguo" style="position:absolute;bottom:1%;right:15%;display: none;"></div>
+          <table id="yixiazai">
+            <tr>
+               <th>申请用途</th>
+               <th>申请状态</th>
+               <th>操作</th>
+            </tr>
+          </table>
+          <div id="myyixiazai" style="position:absolute;bottom:1%;right:15%;display: none;"></div>
+          <table id="yituihui">
+            <tr>
+               <th>退回原因</th>
+               <th>申请状态</th>
+            </tr>
+          </table>
+          <div id="myyituihui" style="position:absolute;bottom:1%;right:15%;display: none;"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -55,9 +90,8 @@
                     <div class="btn-tree">审核情况分析</div>
                 </div>
             </div>
-            </div>
+        </div>
             <div class="xianshi jfive">
-              <div style="height: 81.5%;overflow: hidden;" id="ce">
                 <table id="zy">
                     <tr>
                       <th>申请人</th>
@@ -69,162 +103,58 @@
                       <th>申请状态</th>
                       <th>操作</th>
                     </tr>
+                  </table>
+                  <div id="myPage" style="position: absolute;bottom:1%;left:20%;"></div>
+                  <table id="zy1">
                     <tr>
+                      <th>请选择</th>
+                      <th>申请人</th>
+                      <th>申请部门</th>
+                      <th>职位</th>
+                      <th>申请用途</th>
+                      <th>电话</th>
+                      <th>申请时间</th>
+                      <th>申请状态</th>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" name="" value="" /></td>
                       <td>邬倩倩</td>
                       <td>环境资源局</td>
                       <td>科员</td>
                       <td>地理环境监测分析</td>
                       <td>0451-89782511</td>
                       <td>2020-03-08</td>
-                      <td>已申请</td>
-                      <td><button>审核</button></td>
+                      <td>已审核</td>
                     </tr>
-                    <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
+                    </table>
+                    <div id="myPage1" style="position: absolute;bottom:1%;left:20%;"></div>
+                    <table id="zy2">
+                      <tr>
+                        <th>请选择</th>
+                        <th>申请人</th>
+                        <th>申请部门</th>
+                        <th>职位</th>
+                        <th>申请用途</th>
+                        <th>电话</th>
+                        <th>申请时间</th>
+                        <th>申请状态</th>
                       </tr>
                       <tr>
+                        <td><input type="checkbox" name="" value="" /></td>
                         <td>邬倩倩</td>
                         <td>环境资源局</td>
                         <td>科员</td>
                         <td>地理环境监测分析</td>
                         <td>0451-89782511</td>
                         <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
+                        <td>已退回</td>
                       </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                      <tr>
-                        <td>邬倩倩</td>
-                        <td>环境资源局</td>
-                        <td>科员</td>
-                        <td>地理环境监测分析</td>
-                        <td>0451-89782511</td>
-                        <td>2020-03-08</td>
-                        <td>已申请</td>
-                        <td><button>审核</button></td>
-                      </tr>
-                  </table>
-                 </div>
-                  <div id="myPage" style="position: absolute;bottom:1%;left:20%;"></div>
-                  <!-- <button id="delete">删除</button>
+                      </table>
+                      <div id="myPage2" style="position: absolute;bottom:1%;left:20%;"></div>
+                      <img id="zy3" src="./img/批注 2020-05-11 094559.png" alt="">
+                  <button id="delete">删除</button>
                   <button id="quxiaosh">取消审核</button>
-                  <button id="fanhuish">返回未审核</button> -->
+                  <button id="fanhuish">返回未审核</button>
                   <div id="shenheyemian" style="display: none;">
                     <div style="background: #f1f1f1;width:100%;height:90px;font-size: large;font-weight: bold;line-height: 90px;text-align: center;">地理环境监测分析</div><br>
                     <div style="font-size: large;position: relative;left:10%;display: inline-block;">申请人</div><input type="text" disabled style="position: relative;left:12%;font-size:large;box-shadow: 10px 10px 0px -8px #9a9a9a inset;background-color: #f1f1f1;" value="邬倩倩">
