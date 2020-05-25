@@ -6,6 +6,7 @@ $(document).ready(function(){
     tiaozhuan();
     huoquName();
     huakuaiMove(".btn-tree");
+    //table同步加载
     $.ajax({
       url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page=1&limit=16',
       type: 'GET',
