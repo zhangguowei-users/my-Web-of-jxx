@@ -100,9 +100,10 @@ $("#zc").click(function () {
         if(username=="" || password=="" || realname==""){
             if(jianceAl){
                 alert("用户名，密码，姓名不能为空！请重新注册");
-                jianceAl = false;
+
             } 
         }else{
+
             $.ajax({
                 url:config.ip + config.port + '/regist',
                 type: 'POST',
@@ -110,6 +111,7 @@ $("#zc").click(function () {
                 data:{username:username,password:password,realname:realname,telephone:phone,gender:gender,'department.departmentid':departmentid,'post.postid':postid,'role.roleid':roleid},
                 xhrFields:{withCredentials:true},
                 success: function (data) {
+
                   var data = JSON.parse(data);
                   if(data.result == "success"){
                     if(jianceAl){
@@ -145,6 +147,7 @@ $("#zc").click(function () {
 $(".fhdl").click(function () {
     $("#zc1").css("display","none");
     $("#dl1").css("display","inline-block");
+
 });
 //登录
 $("#input").click(function () {
