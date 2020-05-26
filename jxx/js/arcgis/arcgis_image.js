@@ -1,9 +1,28 @@
-function addImageLayer(map, ArcGISImageServiceLayer) {//添加影像服务
-    var layer_1 = new ArcGISImageServiceLayer(ARCGISCONFIG.IMAGE_LAYER_1);
-    var layer_2 = new ArcGISImageServiceLayer(ARCGISCONFIG.IMAGE_LAYER_2);
-    var layer_3 = new ArcGISImageServiceLayer(ARCGISCONFIG.IMAGE_LAYER_3);
+var imageMap;//影像地图
 
-    map.addLayer(layer_1);
-    map.addLayer(layer_2);
-    map.addLayer(layer_3);
+function addImageLayer(ArcGISDynamicMapServiceLayer,Map, ArcGISImageServiceLayer) {//添加影像服务
+    var imageMap = new Map("left-yingxiang", {logo: false});
+    var layer1 = new ArcGISImageServiceLayer("http://192.168.1.109:6080/arcgis/rest/services/jixian/IMAGE_1/ImageServer");
+    var layer2 = new ArcGISImageServiceLayer("http://192.168.1.109:6080/arcgis/rest/services/jixian/IMAGE_2/ImageServer");
+    var layer3 = new ArcGISImageServiceLayer("http://192.168.1.109:6080/arcgis/rest/services/jixian/IMAGE_3/ImageServer");
+
+    imageMap.addLayer(layer1);
+    imageMap.addLayer(layer2);
+    imageMap.addLayer(layer3);
+
+
+
+    globalQueryClass.map.on("zoom-end",function(){
+        imageMap.setExtent(globalQueryClass.map.extent);
+    });
+
+    globalQueryClass.map.on("mouse-up",function(){
+        imageMap.setExtent(globalQueryClass.map.extent);
+    });
+
+
 }
+
+
+
+

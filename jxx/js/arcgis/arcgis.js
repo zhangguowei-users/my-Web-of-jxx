@@ -15,7 +15,7 @@ function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindP
     map.addLayer(layer_XZQ);
 
 
-    var queryClass =  new QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic,FeatureLayer,UniqueValueRenderer,ArcGISImageServiceLayer);
+    var queryClass =  new QueryClass(map,Map,ArcGISDynamicMapServiceLayer, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic,FeatureLayer,UniqueValueRenderer,ArcGISImageServiceLayer);
     globalQueryClass = queryClass;
 
     myOverviewMap(map, dom, OverviewMap);//鹰眼
@@ -23,7 +23,7 @@ function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindP
 
 }
 
-function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, FindTask, FindParameters,Color, Graphic, FeatureLayer,UniqueValueRenderer,ArcGISImageServiceLayer){//查询类
+function QueryClass(map, Map,ArcGISDynamicMapServiceLayer,SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, FindTask, FindParameters,Color, Graphic, FeatureLayer,UniqueValueRenderer,ArcGISImageServiceLayer){//查询类
     this.map = map;
     this.SimpleLineSymbol = SimpleLineSymbol;
     this.SimpleFillSymbol = SimpleFillSymbol;
@@ -36,6 +36,8 @@ function QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, Fi
     this.FeatureLayer = FeatureLayer;
     this.UniqueValueRenderer = UniqueValueRenderer;
     this.ArcGISImageServiceLayer  = ArcGISImageServiceLayer;
+    this.ArcGISDynamicMapServiceLayer = ArcGISDynamicMapServiceLayer;
+    this.Map = Map;
     
     this.queryTask = function(querySQL){//Query属性查询
         var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + ARCGISCONFIG.QueryLevel);
