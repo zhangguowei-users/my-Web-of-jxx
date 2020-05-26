@@ -13,6 +13,12 @@
 #map_div_zoom_slider {
     display:none;
 }
+
+/* 隐藏影像缩放按钮 */
+#left-yingxiang_zoom_slider {
+    display:none;
+}
+
 #left-yingxiang{
    background-color: white;
    display:none;

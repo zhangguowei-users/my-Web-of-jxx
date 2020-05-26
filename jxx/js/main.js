@@ -324,7 +324,7 @@ function caidanChangeColor(className){
             $(".map_07").attr("class","map01_07");
             $(".xianshi").css("width","50%");
             $("#left-yingxiang").css("display","inline-block");
-            //addImageLayer(globalQueryClass.map, globalQueryClass.ArcGISImageServiceLayer);//添加影像
+            addImageLayer(globalQueryClass.ArcGISDynamicMapServiceLayer,globalQueryClass.Map ,globalQueryClass.ArcGISImageServiceLayer);//添加影像
         }else{
             $(".map01_07").attr("class","map_07");
             $("#left-yingxiang").css("display","none");
