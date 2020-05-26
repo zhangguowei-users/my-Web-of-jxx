@@ -322,7 +322,7 @@ function caidanChangeColor(className){
         $(".map_07").removeClass("map30");
         if($(".map_07").attr("class") == "map_07"){
             $(".map_07").attr("class","map01_07");
-
+            addImageLayer(globalQueryClass.map, globalQueryClass.ArcGISImageServiceLayer);//添加影像
         }else{
             $(".map01_07").attr("class","map_07");
             
