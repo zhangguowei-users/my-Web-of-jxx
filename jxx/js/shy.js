@@ -144,7 +144,7 @@ $(document).ready(function(){
       async: false,
       success: function (data){
         for(var i=0;i<data.data.length;i++){
-          $("#zy1").append(`<tr>
+          $("#zy2").append(`<tr>
           <td><input type="checkbox" name="yishenhe" value="${data.data[i].applyid}" /></td>
           <td>${data.data[i].name}</td>
           <td>${data.data[i].depname}</td>
@@ -172,7 +172,7 @@ $(document).ready(function(){
                 type: 'GET',
                 async: false,
                 success: function (data){
-                  $("#zy1").children().not(':first-child').remove();
+                  $("#zy2").children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
                     $("#zy1").append(`<tr>
                     <td><input type="checkbox" name="yishenhe" value="${data.data[i].applyid}" /></td>
