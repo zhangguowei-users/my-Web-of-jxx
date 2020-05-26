@@ -263,11 +263,11 @@ function caidanChangeColor(className){
         $(".map_20").removeClass("map30");
         if($(".map_20").attr("class") == "map_20"){
             $(".map_20").attr("class","map01_20");
-            $(".xianshi").css({"position":"fixed","bottom":"0","left":"0","height":"100%","width":"100%"});
-            $(".nr").css("height","90.8%");
+            $("#quanbu123").css({"position":"fixed","bottom":"0","right":"0","height":"100%","width":"100%"});
+            $(".nr").css("height","90.4%");
         }else{
             $(".map01_20").attr("class","map_20");
-            $(".xianshi").css({"position":"","bottom":"","left":"","height":"","width":""});
+            $("#quanbu123").css({"position":"absolute","bottom":"0","right":"0.1%","height":"93.6%","width":"1518px"});
             $(".nr").css("height","");
         };
     });
@@ -322,10 +322,13 @@ function caidanChangeColor(className){
         $(".map_07").removeClass("map30");
         if($(".map_07").attr("class") == "map_07"){
             $(".map_07").attr("class","map01_07");
-            addImageLayer(globalQueryClass.map, globalQueryClass.ArcGISImageServiceLayer);//添加影像
+            $(".xianshi").css("width","50%");
+            $("#left-yingxiang").css("display","inline-block");
+            //addImageLayer(globalQueryClass.map, globalQueryClass.ArcGISImageServiceLayer);//添加影像
         }else{
             $(".map01_07").attr("class","map_07");
-            
+            $("#left-yingxiang").css("display","none");
+            $(".xianshi").css("width","100%");
         };
     });
     //显示统计报表

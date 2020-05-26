@@ -1,3 +1,4 @@
+
 .dh{
     background: transparent;
 }
@@ -11,4 +12,15 @@
 /* 隐藏缩放按钮 */
 #map_div_zoom_slider {
     display:none;
+}
+#left-yingxiang{
+   background-color: white;
+   display:none;
+   z-index:9990;
+   position: absolute;
+   right: 0;
+   bottom:0;
+   border: 1px #9fccf0 solid;
+   height:100%;
+   width:50%;
 }

@@ -151,13 +151,14 @@ table,tr,th,td{
 }
 .xianshi{
     display: inline-block;
-    height:93.6%;
-    width:1518px;
+    height:100%;
+    width:100%;
     background:#e6edf5;
     border: 1px #9fccf0 solid;
     position: absolute;
     bottom: 0px;
-    left:400px;
+    left:0px;
+    overflow:auto;
 }
 .middle{
     display: inline-block;
@@ -229,7 +230,7 @@ table,tr,th,td{
     display: inline-block;
     width: 248px;
     height: 35px;
-    font-size: larger;
+    font-size:larger;
     color: #9d9d9d;
     border: 2px #9fdfed solid;
     background: transparent;
@@ -258,9 +259,9 @@ table,tr,th,td{
     background: #04c4db;
     position: absolute;
     border-radius: 30px;
-    top:20px;
-    left:457px;
-    z-index: 10000;
+    top:4%;
+    left:30%;
+    z-index: 10001;
 }
 #gb{
     display: inline-block;
@@ -302,8 +303,8 @@ table,tr,th,td{
      position: absolute;
      width: 250px;
      height: 37px;
-     right: 50px;
-     top:25px;
+     right:2%;
+     top:5.5%;
 }
 .map_12,.map_14,.map_16,.map_18,.map_20,.map_22,.map_24,.map_26,.map_28,.map_30,.map_07,.map_33,.map_09{
     display: inline-block;
@@ -395,7 +396,7 @@ table,tr,th,td{
     background-color: transparent;
     position: absolute;
     top:15%;
-    left:37.5%;
+    left:37%;
     opacity: 0.9;
 }
 .theone{display: none}
@@ -424,7 +425,7 @@ table,tr,th,td{
 }
 .nr{
     background-color:white;
-    height:87.8%;
+    height:88%;
     width: 100%;
     overflow-y: auto;
     padding-left: 3%;
@@ -571,7 +572,7 @@ table,tr,th,td{
     z-index: 1000;
     background:white;
     position: absolute;
-    left: 0;
+    left:0%;
     top:11%;
     opacity: 0.9;
     display: none;
@@ -589,7 +590,7 @@ table,tr,th,td{
     z-index: 1000;
     background:white;
     position: absolute;
-    left: 0;
+    left:0%;
     top:55%; 
     opacity: 0.9;
     display: none;
