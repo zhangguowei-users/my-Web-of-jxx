@@ -52,9 +52,10 @@ $(document).ready(function(){
            $("#yitongguo").append(`<tr>
            <td><div>${data.data[i].resourcename}</div></td>
            <td>已通过</td>
-           <td><a><button>下载</button></a></td>
+           <td><a><button class=''>下载</button></a></td>
            </tr>`);
         };
+
         $("#myyitongguo").sPage({
           page:1,//当前页码，必填
           total:data.count,//数据总条数，必填
@@ -79,6 +80,7 @@ $(document).ready(function(){
                 <td><a><button>下载</button></a></td>
                 </tr>`);
              };
+
             }
           });
           }
