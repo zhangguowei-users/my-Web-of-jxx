@@ -90,6 +90,7 @@ $(document).ready(function(){
       type: 'GET',
       async: false,
       success: function (data){
+        console.log(data.data);
         for(var i=0;i<data.data.length;i++){
           $("#zy1").append(`<tr>
           <td><input class='yishenhe333' type="checkbox" name="yishenhe" value="${data.data[i].applyid}" /></td>
@@ -102,6 +103,7 @@ $(document).ready(function(){
           <td>已审核</td>
         </tr>`)
         };
+        
         $("#myPage1").sPage({
           page:1,//当前页码，必填
           total:data.count,//数据总条数，必填
@@ -143,6 +145,7 @@ $(document).ready(function(){
       type: 'GET',
       async: false,
       success: function (data){
+        
         for(var i=0;i<data.data.length;i++){
           $("#zy2").append(`<tr>
           <td><input class='yituihui333' type="checkbox" name="yituihui" value="${data.data[i].applyid}" /></td>
@@ -234,7 +237,53 @@ $(document).ready(function(){
         });
        });
     //批量删除
-    $("")   
+    $("#delete").bind("click",function(){
+      var c= new Array();
+      var a = $(".yishenhe333:checked");
+      for(let i=0;i<a.length;i++){
+        c.push(parseInt(a.eq(i).val()));
+      }
+      $.ajax({
+        url:config.newip + config.newport + '/arcgis/PersonalCenter/OperationBatch',
+        type:'POST',
+        data:{applyids:c,states:2},
+        success:function(data){
+          alert(data.msg);
+        }
+      });
+    });
+     //批量取消审核
+     $("#quxiaosh").bind("click",function(){
+      var c= new Array();
+      var a = $(".yishenhe333:checked");
+      for(let i=0;i<a.length;i++){
+        c.push(parseInt(a.eq(i).val()));
+      }
+      $.ajax({
+        url:config.newip + config.newport + '/arcgis/PersonalCenter/OperationBatch',
+        type:'POST',
+        data:{applyids:c,states:1},
+        success:function(data){
+          alert(data.msg);
+        }
+      });
+    });
+    //批量删除已退回
+    $("#delete1").bind("click",function(){
+      var c= new Array();
+      var a = $(".yituihui333:checked");
+      for(let i=0;i<a.length;i++){
+        c.push(parseInt(a.eq(i).val()));
+      }
+      $.ajax({
+        url:config.newip + config.newport + '/arcgis/PersonalCenter/OperationBatch',
+        type:'POST',
+        data:{applyids:c,states:2},
+        success:function(data){
+          alert(data.msg);
+        }
+      });
+    });
     //打开关闭个人中心
     $("#login").bind("click",function(){
         $("#css1").css('display','inline-block');
