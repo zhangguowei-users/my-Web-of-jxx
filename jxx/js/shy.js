@@ -247,7 +247,7 @@ $(document).ready(function(){
       success: function (data) {
           for(var i=0;i<data.data.length;i++){
              $("#shenheing").append(`<tr>
-             <td><div>${data.data[i].applyreason}</div></td>
+             <td><div>${data.data[i].resourcename}</div></td>
              <td>审核中</td>
              </tr>`);
           };
@@ -270,7 +270,7 @@ $(document).ready(function(){
                     $("#shenheing").children().not(':first-child').remove();
                     for(var i=0;i<data.data.length;i++){
                       $("#shenheing").append(`<tr>
-                      <td><div>${data.data[i].applyreason}</div></td>
+                      <td><div>${data.data[i].resourcename}</div></td>
                       <td>审核中</td>
                       </tr>`);
                     };
@@ -286,7 +286,7 @@ $(document).ready(function(){
     success: function (data) {
         for(var i=0;i<data.data.length;i++){
            $("#yitongguo").append(`<tr>
-           <td><div>${data.data[i].applyreason}</div></td>
+           <td><div>${data.data[i].resourcename}</div></td>
            <td>已通过</td>
            <td><a><button>下载</button></a></td>
            </tr>`);
@@ -310,7 +310,7 @@ $(document).ready(function(){
               $("#yitongguo").children().not(':first-child').remove();
               for(var i=0;i<data.data.length;i++){
                 $("#yitongguo").append(`<tr>
-                <td><div>${data.data[i].applyreason}</div></td>
+                <td><div>${data.data[i].resourcename}</div></td>
                 <td>已通过</td>
                 <td><a><button>下载</button></a></td>
                 </tr>`);
@@ -327,7 +327,7 @@ $(document).ready(function(){
       success: function (data) {
           for(var i=0;i<data.data.length;i++){
              $("#yixiazai").append(`<tr>
-             <td><div>${data.data[i].applyreason}</div></td>
+             <td><div>${data.data[i].resourcename}</div></td>
              <td>已下载</td>
              <td><a><button>下载</button></a></td>
              </tr>`);
@@ -351,7 +351,7 @@ $(document).ready(function(){
                 $("#yixiazai").children().not(':first-child').remove();
                 for(var i=0;i<data.data.length;i++){
                   $("#yixiazai").append(`<tr>
-                  <td><div>${data.data[i].applyreason}</div></td>
+                  <td><div>${data.data[i].resourcename}</div></td>
                   <td>已下载</td>
                   <td><a><button>下载</button></a></td>
                   </tr>`);
@@ -368,7 +368,7 @@ $(document).ready(function(){
         success: function (data) {
             for(var i=0;i<data.data.length;i++){
                $("#yituihui").append(`<tr>
-               <td><div>${data.data[i].applyreason}</div></td>
+               <td><div>${data.data[i].resourcename}</div></td>
                <td>已退回</td>
                </tr>`);
             };
@@ -391,7 +391,7 @@ $(document).ready(function(){
                   $("#yituihui").children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
                     $("#yituihui").append(`<tr>
-                    <td><div>${data.data[i].applyreason}</div></td>
+                    <td><div>${data.data[i].resourcename}</div></td>
                     <td>已退回</td>
                     </tr>`);
                  };
