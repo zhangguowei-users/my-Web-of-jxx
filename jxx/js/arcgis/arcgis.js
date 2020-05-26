@@ -10,8 +10,11 @@ function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindP
 
     var map = new Map("map_div", {logo: false });
     var layer = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.DLTB_Dinamic);
+    var layer_XZQ = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.XZQ_TAG_WITH_MAXSCALE_1_50000);
     map.addLayer(layer);
-   
+    map.addLayer(layer_XZQ);
+
+
     var queryClass =  new QueryClass(map, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic,FeatureLayer,UniqueValueRenderer,ArcGISImageServiceLayer);
     globalQueryClass = queryClass;
 

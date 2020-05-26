@@ -11,6 +11,7 @@ config={
 var ARCGISCONFIG={
     DLTB_Dinamic:"http://192.168.1.109:6080/arcgis/rest/services/jixian/DLTB_Dynamic/MapServer",
     DLTB_FEATURE:"http://192.168.1.109:6080/arcgis/rest/services/jixian/DLTB/FeatureServer",
+    XZQ_TAG_WITH_MAXSCALE_1_50000:"http://192.168.1.109:6080/arcgis/rest/services/jixian/XZQ_TAG_WITH_MAXSCALE1_50000/MapServer",
     
     QueryLevel: "/0",
     FindTaskLevel: 0,
