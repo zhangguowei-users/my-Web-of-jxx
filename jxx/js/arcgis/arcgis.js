@@ -67,36 +67,32 @@ function QueryClass(map, Map,ArcGISDynamicMapServiceLayer,SimpleLineSymbol,Simpl
         }
     }
 
-    this.queryByFindTask = function(){//属性查询
+    this.queryByFindTask = function(searchText){//属性查询
         var findParams = new FindParameters();
         findParams.returnGeometry = true;
         findParams.layerIds = [ARCGISCONFIG.FindTaskLevel];
-        findParams.searchFields = ["QSDWMC"];
-        findParams.searchText = "七星林场";
+        findParams.searchFields = ["XZQDM"];
+        findParams.searchText = searchText;
 
-        var findTask = new FindTask(ARCGISCONFIG.DLTB_Dinamic);
+        var findTask = new FindTask(ARCGISCONFIG.XZQ_TAG_WITH_MAXSCALE_1_50000);
         findTask.execute(findParams, resultFun);
     }
 
     function resultFun(queryResult){
         map.graphics.clear();
-    
-        if(queryResult.length == 0){alert("没有该元素！"); return;}
-    
+
         for(var i=0; i<queryResult.length; i++){
             var feature = queryResult[i].feature;
             var geometry = feature.geometry;
-    
+
             var outline = new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT, new Color([255,0,0]), 1);
             var polygonSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, outline, new Color([0,255,1]));
-    
+
             var graphic = new Graphic(geometry, polygonSymbol);
-    
-            map.graphics.add(graphic);
-    
-            if(totalPages<=1){
-                new QueryClass().setExtentFun(map, geometry);
-            }
+
+            //map.graphics.add(graphic);
+
+            map.setExtent(geometry.getExtent().expand(0));
         }
     }
 
@@ -433,7 +429,15 @@ function changeToolBarBlue() {//设置工具栏眼睛图标选中
     $(".map_35").attr("class","map01_35");
 }
 
+function xzqExtent(rightMenue) {//左侧树，行政区导航
 
+    if(rightMenue.name == "黑龙江省笔架山监狱"){//监狱特殊处理
+        globalQueryClass.queryByFindTask(rightMenue.treeCode.substring(0,9));
+    }else {
+        globalQueryClass.queryByFindTask(getCountryCode(rightMenue));
+    }
+
+}
 
 
 

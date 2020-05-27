@@ -60,6 +60,10 @@ $.ajax({
           if($(this).attr("class") == "file cd"){
              $(".cc1").css("display","none");
           };
+
+            xzqExtent(id);//左侧树，行政区导航
+
+
           });
           $(".cc1").css("display","inline-block");
           }else{
