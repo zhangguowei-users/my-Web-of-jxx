@@ -172,7 +172,7 @@ td button{
     border-bottom: 0;
     font-size:20rem;  
 }
-#zy tr td div{
+#zy1 tr td div{
     display: inline-block;
     height:36rem;
     line-height:36rem;
@@ -218,6 +218,16 @@ td button{
     border-top: 0;
     border-bottom: 0;
     font-size:20rem;  
+}
+#zy2 tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 210rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
 }
 #zy2 tr{
     height: 50px;

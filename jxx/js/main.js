@@ -145,23 +145,27 @@ function caidanChangeColor(className){
                 location.href = "./shy.html";
             }else{
                 //获取显示申请资源
-                if($("#putongyonghu").css("display") == "block"){
-                            $("#putongyonghu").css("display","none");
-                            
-                     
-                }else{
-                    $("#putongyonghu").css("display","block");
-                    
-                };
-                $(function gbright(){
-                    $("#putongyonghu,#login").click(function(event){
-                        event.stopPropagation();
-                    });
-                    $(document).click(function(){
-                        $("#putongyonghu").css("display","none");
-                
-                    });
+                $("#css2").css("display","inline-block");
+                $("#gb-p2").bind("click",function(){
+                    $("#css2").css("display","none");
                 });
+                //操作个人中心的按钮选项
+                $(".btn-tree1").bind("click",function(){
+                    $("#myyixiazai,#myyitongguo,#myshenheing,#shenheing,#yitongguo,#yixiazai,#myyituihui,#yituihui").css("display","none");
+                    if($(this).html() == "审核中"){
+                     $("#myshenheing").css("display","block");
+                     $("#shenheing").css("display","table");
+                    }else if($(this).html() == "已通过"){
+                      $("#myyitongguo").css("display","block");
+                      $("#yitongguo").css("display","table");
+                    }else if($(this).html() == "已下载"){
+                      $("#myyixiazai").css("display","block");
+                      $("#yixiazai").css("display","table");
+                    }else if($(this).html() == "已退回"){
+                      $("#myyituihui").css("display","block");
+                      $("#yituihui").css("display","table");
+                    }
+                  });
             }
         },
         error:function(){

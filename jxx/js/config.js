@@ -4,7 +4,9 @@ config={
     ip: 'http://192.168.1.109',
     port: ':8081',
     newip: 'http://192.168.1.106',
-    newport:':5050'
+    newport:':5050',
+    imgip: 'http://192.168.1.106',
+    imgport:':6060'
 };
 
 //地图服务
