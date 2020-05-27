@@ -502,7 +502,7 @@ function jiazaigeren(){
              <td>已通过</td>
              <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button class='.down'>下载</button></a></td>
              </tr>`);
-          };3
+          };
           $("#myyitongguo").sPage({
             page:1,//当前页码，必填
             total:data.count,//数据总条数，必填
