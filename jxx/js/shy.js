@@ -66,7 +66,7 @@ $(document).ready(function(){
                 type: 'GET',
                 async: false,
                 success: function (data){
-                  $("#zy").children().not(':first-child').remove();
+                  $("#zy").children().children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
                     $("#zy").append(`<tr>
                                      <td>${data.data[i].name}</td>
@@ -120,7 +120,7 @@ $(document).ready(function(){
                 type: 'GET',
                 async: false,
                 success: function (data){
-                  $("#zy1").children().not(':first-child').remove();
+                  $("#zy1").children().children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
                     $("#zy1").append(`<tr>
                     <td><input class='yishenhe333' type="checkbox" name="yishenhe" value="${data.data[i].applyid}" /></td>
@@ -174,7 +174,7 @@ $(document).ready(function(){
                 type: 'GET',
                 async: false,
                 success: function (data){
-                  $("#zy2").children().not(':first-child').remove();
+                  $("#zy2").children().children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
                     $("#zy1").append(`<tr>
                     <td><input class='yituihui333' type="checkbox" name="yituihui" value="${data.data[i].applyid}" /></td>

@@ -65,7 +65,7 @@ $(document).ready(function(){
                 url:config.newip + config.newport + '/arcgis/SpecialInvestigation/GetPageListByCondition?page='+page+'&limit=3',
                 type: 'GET',
                 success:function(data){
-                   $("#zy").children().not(':first-child').remove();
+                   $("#zy").children().children().not(':first-child').remove();
                    for(var i=0;i<data.data.length;i++){
                     $("#zy").append(`
                     <tr>
