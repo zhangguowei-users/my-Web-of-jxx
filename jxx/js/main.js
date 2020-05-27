@@ -500,7 +500,7 @@ function jiazaigeren(){
              $("#yitongguo").append(`<tr>
              <td><div>${data.data[i].resourcename}</div></td>
              <td>已通过</td>
-             <td><a href='${config.imgip+config.imgport+data.data[i].url}' download='${data.data[i].resourcename}.jpg'><button class='down' id='${data.data[i].applyid}'>下载</button></a></td>
+             <td><a><button class='down' id='${data.data[i].applyid}'>下载</button></a></td>
              </tr>`);
           };
           //点击button
@@ -535,7 +535,7 @@ function jiazaigeren(){
                   $("#yitongguo").append(`<tr>
                   <td><div>${data.data[i].resourcename}</div></td>
                   <td>已通过</td>
-                  <td><a href='${config.imgip+config.imgport+data.data[i].url}' download='${data.data[i].resourcename}.jpg'><button>下载</button></a></td>
+                  <td><a><button>下载</button></a></td>
                   </tr>`);
                };
                //点击button
@@ -563,7 +563,7 @@ function jiazaigeren(){
                $("#yixiazai").append(`<tr>
                <td><div>${data.data[i].resourcename}</div></td>
                <td>已下载</td>
-               <td><a href='${config.imgip+config.imgport+data.data[i].url}' download='${data.data[i].resourcename}.jpg'><button>下载</button></a></td>
+               <td><a><button>下载</button></a></td>
                </tr>`);
             };
             $("#myyixiazai").sPage({
@@ -587,7 +587,7 @@ function jiazaigeren(){
                     $("#yixiazai").append(`<tr>
                     <td><div>${data.data[i].resourcename}</div></td>
                     <td>已下载</td>
-                    <td><a href='${config.imgip+config.imgport+data.data[i].url}' download='${data.data[i].resourcename}.jpg'><button>下载</button></a></td>
+                    <td><a><button>下载</button></a></td>
                     </tr>`);
                  };
                 }
