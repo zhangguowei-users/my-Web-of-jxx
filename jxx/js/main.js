@@ -496,12 +496,6 @@ function jiazaigeren(){
                     
                 }
             });
-
-   
-
-
-
-
         $.ajax({
           url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=1&page=1&limit=12&userid='+zhanghu1,
           type: 'GET',
@@ -510,9 +504,13 @@ function jiazaigeren(){
                  $("#yitongguo").append(`<tr>
                  <td><div>${data.data[i].resourcename}</div></td>
                  <td>已通过</td>
-                 <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button class='.down'>下载</button></a></td>
+                 <td><a><button class='down' id='${data.data[i].applyid}'>下载</button></a></td>
                  </tr>`);
               };
+              $('.down').click(function() {
+                 window.open(config.newip + config.newport+'/arcgis/PersonalCenter/Download?applyid='+$(this).attr('id'));
+                 location.reload(); 
+              });
               $("#myyitongguo").sPage({
                 page:1,//当前页码，必填
                 total:data.count,//数据总条数，必填
@@ -534,9 +532,13 @@ function jiazaigeren(){
                       $("#yitongguo").append(`<tr>
                       <td><div>${data.data[i].resourcename}</div></td>
                       <td>已通过</td>
-                      <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button class='.down'>下载</button></a></td>
+                      <td><a><button class='down' id='${data.data[i].applyid}'>下载</button></a></td>
                       </tr>`);
                    };
+                   $('.down').click(function() {
+                    window.open(config.newip + config.newport+'/arcgis/PersonalCenter/Download?applyid='+$(this).attr('id'));
+                    location.reload(); 
+                  });
                   }
                 });
                 }
