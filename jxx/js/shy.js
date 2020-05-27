@@ -90,7 +90,6 @@ $(document).ready(function(){
       type: 'GET',
       async: false,
       success: function (data){
-        console.log(data.data);
         for(var i=0;i<data.data.length;i++){
           $("#zy1").append(`<tr>
           <td><input class='yishenhe333' type="checkbox" name="yishenhe" value="${data.data[i].applyid}" /></td>
