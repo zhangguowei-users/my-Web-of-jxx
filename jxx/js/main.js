@@ -500,9 +500,9 @@ function jiazaigeren(){
              $("#yitongguo").append(`<tr>
              <td><div>${data.data[i].resourcename}</div></td>
              <td>已通过</td>
-             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
+             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button class='.down'>下载</button></a></td>
              </tr>`);
-          };
+          };3
           $("#myyitongguo").sPage({
             page:1,//当前页码，必填
             total:data.count,//数据总条数，必填
@@ -524,7 +524,7 @@ function jiazaigeren(){
                   $("#yitongguo").append(`<tr>
                   <td><div>${data.data[i].resourcename}</div></td>
                   <td>已通过</td>
-                  <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
+                  <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button class='.down'>下载</button></a></td>
                   </tr>`);
                };
               }
@@ -544,6 +544,7 @@ function jiazaigeren(){
                <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
                </tr>`);
             };
+           
             $("#myyixiazai").sPage({
               page:1,//当前页码，必填
               total:data.count,//数据总条数，必填
@@ -565,7 +566,7 @@ function jiazaigeren(){
                     $("#yixiazai").append(`<tr>
                     <td><div>${data.data[i].resourcename}</div></td>
                     <td>已下载</td>
-                    <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
+                    <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button class='down'>下载</button></a></td>
                     </tr>`);
                  };
                 }

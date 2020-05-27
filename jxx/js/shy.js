@@ -219,6 +219,7 @@ $(document).ready(function(){
             $("#shenheyemian").css("display","none");  
             $("#zy").css("display","");
             $("#myPage").css("display","");
+            location.reload();
           }
         });
        });
@@ -233,6 +234,7 @@ $(document).ready(function(){
             $("#shenheyemian").css("display","none");  
             $("#zy").css("display","");
             $("#myPage").css("display","");
+            location.reload();
           }
         });
        });
@@ -249,6 +251,7 @@ $(document).ready(function(){
         data:{applyids:c,states:2},
         success:function(data){
           alert(data.msg);
+          location.reload();
         }
       });
     });
@@ -265,6 +268,7 @@ $(document).ready(function(){
         data:{applyids:c,states:1},
         success:function(data){
           alert(data.msg);
+          location.reload();
         }
       });
     });
@@ -281,6 +285,7 @@ $(document).ready(function(){
         data:{applyids:c,states:2},
         success:function(data){
           alert(data.msg);
+          location.reload();
         }
       });
     });
