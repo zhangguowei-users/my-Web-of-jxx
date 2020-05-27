@@ -50,9 +50,20 @@ $(document).ready(function(){
            $("#yitongguo").append(`<tr>
            <td><div>${data.data[i].resourcename}</div></td>
            <td>已通过</td>
-           <td><a><button>下载</button></a></td>
+           <td><a href='${config.imgip+config.imgport+data.data[i].url}' download='${data.data[i].resourcename}.jpg'><button class='down' id='${data.data[i].applyid}'>下载</button></a></td>
            </tr>`);
         };
+        //点击button
+        $(".down").bind("click",function(){
+           var id = $(this).attr("id");
+           $.ajax({
+            url:config.newip + config.newport + '/arcgis/PersonalCenter/Download?applyid='+id,
+            type: 'GET',
+            success:function(data){
+              alert(data.msg);
+            }
+           });
+        });
         $("#myyitongguo").sPage({
           page:1,//当前页码，必填
           total:data.count,//数据总条数，必填
@@ -74,9 +85,20 @@ $(document).ready(function(){
                 $("#yitongguo").append(`<tr>
                 <td><div>${data.data[i].resourcename}</div></td>
                 <td>已通过</td>
-                <td><a><button>下载</button></a></td>
+                <td><a href='${config.imgip+config.imgport+data.data[i].url}' download='${data.data[i].resourcename}.jpg'><button>下载</button></a></td>
                 </tr>`);
              };
+             //点击button
+             $(".down").bind("click",function(){
+             var id = $(this).attr("id");
+             $.ajax({
+             url:config.newip + config.newport + '/arcgis/PersonalCenter/Download?applyid='+id,
+             type: 'GET',
+             success:function(data){
+               alert(data.msg);
+             }
+            });
+       });
             }
           });
           }
@@ -91,7 +113,7 @@ $(document).ready(function(){
              $("#yixiazai").append(`<tr>
              <td><div>${data.data[i].resourcename}</div></td>
              <td>已下载</td>
-             <td><a><button>下载</button></a></td>
+             <td><a href='${config.imgip+config.imgport+data.data[i].url}' download='${data.data[i].resourcename}.jpg'><button>下载</button></a></td>
              </tr>`);
           };
           $("#myyixiazai").sPage({
@@ -115,7 +137,7 @@ $(document).ready(function(){
                   $("#yixiazai").append(`<tr>
                   <td><div>${data.data[i].resourcename}</div></td>
                   <td>已下载</td>
-                  <td><a><button>下载</button></a></td>
+                  <td><a href='${config.imgip+config.imgport+data.data[i].url}' download='${data.data[i].resourcename}.jpg'><button>下载</button></a></td>
                   </tr>`);
                };
               }
