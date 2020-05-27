@@ -288,6 +288,10 @@ $(document).ready(function(){
         }
       });
     });
+    //返回审核
+    $("#fanhuish").bind("click",function(){
+     $("#active").click();
+    });
     //打开关闭个人中心
     $("#login").bind("click",function(){
         $("#css1").css('display','inline-block');
