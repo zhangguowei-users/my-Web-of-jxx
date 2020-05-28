@@ -1,6 +1,8 @@
 var right = {id:0, subAdministrations:null, name: "集贤县", parentId: 0, treeCode: "000000"};
 var left = "";
 var zhanghu1;
+var arry=0;
+var brry=0;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
@@ -34,11 +36,26 @@ $(document).ready(function(){
     $("#gb-p1").click(function(){
       $(".theone").css("display","none");
     });
+
 $("#gb-bing").click(function(){
+  arry = 0;
   $(".bing").css("display","none");
+  arry = 1
+  if(brry==1){
+    $(".map01_35").attr("class","map_35");
+    brry = 0;
+    arry = 0;
+  };
 });
 $("#gb-zhu").click(function(){
+  brry = 0;
   $(".zhu").css("display","none");
+  brry = 1;
+  if(arry==1){
+    $(".map01_35").attr("class","map_35");
+    arry=0;
+    brry = 0;
+  };
 });
 tishi();
 $.ajax({
