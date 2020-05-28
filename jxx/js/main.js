@@ -234,6 +234,36 @@ function caidanChangeColor(className){
         };
      });
  };
+ //点击查询拼接的树型菜单(文档共享)
+ function queryCd1(queryInput,queryButton,treeId,data){
+    $(`${queryButton}`).click(function(){
+        $(`${treeId}`).children().remove();
+        tree(data,`${treeId}`);
+        $(`${treeId}`).treeview();
+        var fone = $(`${queryInput}`).val();
+        var sfqx = $(".file,.folder");
+        huakuaiMove(".folder");
+        caidanChangeColor(".file");
+        var glo = [];
+        sfqx.css("color","black");
+        if(fone == ""){
+            confirm("搜索字符为空，请重新填写");
+        }else{
+            for(var i=0;i<sfqx.length;i++){
+                glo.push(sfqx.eq(i).html());
+                var Sumsfqx = sfqx.eq(i).html();
+                if(Sumsfqx.indexOf(fone) >= 0){
+                   sfqx.eq(i).css("color","red");
+                   sfqx.eq(i).parents().siblings(".expandable-hitarea").click(); 
+                };
+               };
+               var a = glo.toString().replace(/\,/g,"");
+               if(a.indexOf(fone) < 0){
+                   confirm("搜索字符不存在");    
+               };
+        };
+     });
+ };
  //地图小图标提示
  function tishi(){
      $(".map_12").mousedown(function(ev){
