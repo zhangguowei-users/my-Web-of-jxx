@@ -373,21 +373,7 @@ function caidanChangeColor(className){
                 if(a==""){
                     alert('地图标题不可为空');
                 }else{
-                    printMap(a, b, c);//打印地图
-                    /*$.ajax({
-                        //请求地址
-                        url:config.ip + config.port + '',
-                        type: 'POST',
-                        //发送参数
-                        data:{},
-                        xhrFields:{withCredentials:true},
-                        success:function(data){
-                           location.href = data;
-                        },
-                        error:function(){
-                           alert("打印失败");
-                        }
-                    });*/
+                    printMap(a, b, c, globalQueryClass.PrintTask, globalQueryClass.PrintTemplate, globalQueryClass.PrintParameters);//打印地图
                 };
             });
         }else{
