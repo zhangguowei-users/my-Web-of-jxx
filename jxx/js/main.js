@@ -373,7 +373,8 @@ function caidanChangeColor(className){
                 if(a==""){
                     alert('地图标题不可为空');
                 }else{
-                    $.ajax({
+                    printMap(a, b, c);//打印地图
+                    /*$.ajax({
                         //请求地址
                         url:config.ip + config.port + '',
                         type: 'POST',
@@ -384,9 +385,9 @@ function caidanChangeColor(className){
                            location.href = data;
                         },
                         error:function(){
-                           alert("下载失败");
+                           alert("打印失败");
                         }
-                    });
+                    });*/
                 };
             });
         }else{
