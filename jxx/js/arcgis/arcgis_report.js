@@ -1,6 +1,6 @@
 function createAllDLBingReport() {//所有地类饼形图
     var legendData = "[";
-    var seriesData = "["
+    var seriesData = "[";
 
     $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getAllDltbAreaByProvinceCode', type: 'POST', data:{"proviceCode":getCountryCode(right)}, xhrFields:{withCredentials:true}, success:function(result){
         for(var i=0; i<result.length; i++){
