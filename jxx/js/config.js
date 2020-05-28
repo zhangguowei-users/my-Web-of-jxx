@@ -3,9 +3,9 @@ var config;
 config={
     ip: 'http://192.168.1.109',
     port: ':8081',
-    newip: 'http://192.168.1.106',
+    newip: 'http://192.168.1.107',
     newport:':5050',
-    imgip: 'http://192.168.1.106',
+    imgip: 'http://192.168.1.107',
     imgport:':6060'
 };
 
