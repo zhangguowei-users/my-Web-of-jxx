@@ -346,15 +346,6 @@ function caidanChangeColor(className){
         exportReportPDF(globalQueryClass.map);//导出报表按钮
      });
     //显示区域报表图
-    setInterval(function(){
-        var a =$(".bing").css("display");
-        var b =$(".zhu").css("display");
-        if(a == "none" && b == "none"){
-          $(".map01_35").attr("class","map_35");
-        }else{
-          $(".map_35").attr("class","map01_35"); 
-        };
-    },100);
     $(".map_35").click(function(){
         $(".map_35").removeClass("map30");
         if($(".map_35").attr("class") == "map_35"){
@@ -363,6 +354,21 @@ function caidanChangeColor(className){
         }else{
             $(".map01_35").attr("class","map_35");
             $(".bing,.zhu").css("display","none");
+        };
+    });
+    //打印地图
+    $(".map_36").click(function(){
+        $(".map_36").removeClass("map30");
+        if($(".map_36").attr("class") == "map_36"){
+            $(".map_36").attr("class","map01_36");
+            $("#dayin-map").css('display','inline-block');
+            $("#quxiao321").bind('click',function(){
+                $("#dayin-map").css('display','none');
+                $(".map01_36").attr("class","map_36");
+            });
+        }else{
+            $(".map01_36").attr("class","map_36");
+            $("#dayin-map").css('display','none');
         };
     });
     //显示全部区域报表图

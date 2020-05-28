@@ -105,6 +105,7 @@
                     <div class="map_33" title="显示统计报表"></div>
                     <div class="map_09" title="所有地类报表"></div>
                     <div class="map_35" title="选中地类报表"></div>
+                    <div class="map_36" title="选中地类报表"></div>
                 </div>
                 <div class="select-background">
                 <div class="fg1">▼</div>
@@ -131,6 +132,22 @@
     <div class="yingyan"><div style="width:94%;height:93.3%;background-color: white;z-index: 10000;margin-top: 2%;margin-left: 3%;"><div id="xx"></div></div></div>
     <!-- 显示影像 -->
     <div id="left-yingxiang"></div><div id="map_div" class="xianshi jone"></div>
+    <!-- 打印地图 -->
+    <div id="dayin-map" style='display:none;width:322px;height:340px;position: absolute;background: white;top:200px;left: 400px;border-radius: 5px;overflow: hidden;'>
+      <div style="height:56px;font-size:22px;color:rgba(255,255,255,1);padding-left:22px;background:linear-gradient(to right,#03b8f8,#1ae3b1);line-height: 56px;font-family:SourceHanSansCN-Regular;font-weight: 400;">打印</div>
+      <span style="position: absolute;top:98px;left:20px;">地图标题</span><input id="ditubiaoti" style='width:190px;height:36px;position: absolute;top:88px;left:110px;border:1px black dashed;font-size: 18px;color:#333333;outline: none;' type="text" placeholder="请输入地图标题">
+      <span style="position: absolute;top:162px;left:20px;">布局</span><select name="bj" id="buju" style="width:190px;height:36px;position: absolute;top:152px;left:110px;border:1px #E4E7ED solid;font-size: 18px;color:#333333;outline: none;">
+      <option value="A4 Portrait">A4 Portrait</option>
+      <option value="A3 Portrait.mxd">A3 Portrait.mxd</option>
+      <option value="Tabloid ANSI B Portrait">Tabloid ANSI B Portrait</option>
+      </select>
+      <span style="position: absolute;top:219px;left:20px;">格式</span><select name="gs" id=geshi"" style="width:190px;height:36px;position: absolute;top:208px;left:110px;border:1px #E4E7ED solid;font-size: 18px;color:#333333;outline: none;">
+      <option value="pdf">pdf</option>
+      <option value="jpg">jpg</option>
+      </select>
+      <div id="quxiao321" style="display: inline-block;width: 70px;height: 34px;border: 1px black dashed;color: #5AAFFA;font-size: 16px;text-align: center;line-height: 34px;position:absolute;top:273px;left:124px;border-radius:10px;;">取消</div>
+      <div id="dayin" style="display: inline-block;width: 70px;height: 34px;border: 1px black dashed;background:#5aaffa;color: #FFFFFF;font-size: 16px;text-align: center;line-height: 34px;position:absolute;top:273px;left:230px;border-radius:10px;;">打印</div>
+    </div>
     </div>       
     </div>
     <div id="bottom">© 2020 版权所有 黑龙江文图测绘地理信息责任公司</div>
