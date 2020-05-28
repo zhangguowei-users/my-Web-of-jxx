@@ -26,10 +26,11 @@ $(document).ready(function(){
        $("#fanhuish").css("display","inline-block");
        $("#myPage2").css("display","block");
        $(".middle1 div").html($(this).html());
-     }else if($(this).html() == "审核情况分析"){
-       $("#zy3").css("display","table");
-       $(".middle1 div").html($(this).html());
-     };
+     }
+    //  else if($(this).html() == "审核情况分析"){
+    //    $("#zy3").css("display","table");
+    //    $(".middle1 div").html($(this).html());
+    //  };
    });
     //table同步加载(管理员)
     $.ajax({
