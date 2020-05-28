@@ -26,10 +26,11 @@ $(document).ready(function(){
        $("#fanhuish").css("display","inline-block");
        $("#myPage2").css("display","block");
        $(".middle1 div").html($(this).html());
-     }else if($(this).html() == "审核情况分析"){
-       $("#zy3").css("display","table");
-       $(".middle1 div").html($(this).html());
-     };
+     }
+    //  else if($(this).html() == "审核情况分析"){
+    //    $("#zy3").css("display","table");
+    //    $(".middle1 div").html($(this).html());
+    //  };
    });
     //table同步加载(管理员)
     $.ajax({
@@ -66,7 +67,7 @@ $(document).ready(function(){
                 type: 'GET',
                 async: false,
                 success: function (data){
-                  $("#zy").children().not(':first-child').remove();
+                  $("#zy").children().children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
                     $("#zy").append(`<tr>
                                      <td>${data.data[i].name}</td>
@@ -90,7 +91,6 @@ $(document).ready(function(){
       type: 'GET',
       async: false,
       success: function (data){
-        console.log(data.data);
         for(var i=0;i<data.data.length;i++){
           $("#zy1").append(`<tr>
           <td><input class='yishenhe333' type="checkbox" name="yishenhe" value="${data.data[i].applyid}" /></td>
@@ -121,7 +121,7 @@ $(document).ready(function(){
                 type: 'GET',
                 async: false,
                 success: function (data){
-                  $("#zy1").children().not(':first-child').remove();
+                  $("#zy1").children().children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
                     $("#zy1").append(`<tr>
                     <td><input class='yishenhe333' type="checkbox" name="yishenhe" value="${data.data[i].applyid}" /></td>
@@ -175,7 +175,7 @@ $(document).ready(function(){
                 type: 'GET',
                 async: false,
                 success: function (data){
-                  $("#zy2").children().not(':first-child').remove();
+                  $("#zy2").children().children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
                     $("#zy1").append(`<tr>
                     <td><input class='yituihui333' type="checkbox" name="yituihui" value="${data.data[i].applyid}" /></td>
@@ -219,6 +219,7 @@ $(document).ready(function(){
             $("#shenheyemian").css("display","none");  
             $("#zy").css("display","");
             $("#myPage").css("display","");
+            location.reload();
           }
         });
        });
@@ -233,6 +234,7 @@ $(document).ready(function(){
             $("#shenheyemian").css("display","none");  
             $("#zy").css("display","");
             $("#myPage").css("display","");
+            location.reload();
           }
         });
        });
@@ -249,6 +251,7 @@ $(document).ready(function(){
         data:{applyids:c,states:2},
         success:function(data){
           alert(data.msg);
+          location.reload();
         }
       });
     });
@@ -265,6 +268,7 @@ $(document).ready(function(){
         data:{applyids:c,states:1},
         success:function(data){
           alert(data.msg);
+          location.reload();
         }
       });
     });
@@ -281,8 +285,13 @@ $(document).ready(function(){
         data:{applyids:c,states:2},
         success:function(data){
           alert(data.msg);
+          location.reload();
         }
       });
+    });
+    //返回审核
+    $("#fanhuish").bind("click",function(){
+     $("#active").click();
     });
     //打开关闭个人中心
     $("#login").bind("click",function(){
@@ -291,167 +300,8 @@ $(document).ready(function(){
     $("#gb-p1").bind("click",function(){
         $("#css1").css('display','none');
     });
-    //个人中心数据加载
-    $.ajax({
-      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=0&page=1&limit=12&userid='+zhanghu1,
-      type: 'GET',
-      success: function (data) {
-          for(var i=0;i<data.data.length;i++){
-             $("#shenheing").append(`<tr>
-             <td><div>${data.data[i].resourcename}</div></td>
-             <td>审核中</td>
-             </tr>`);
-          };
-          $("#myshenheing").sPage({
-            page:1,//当前页码，必填
-            total:data.count,//数据总条数，必填
-            pageSize:12,//每页显示多少条数据，默认10条
-            totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-            showTotal:true,//是否显示总条数，默认关闭：false
-            showSkip:true,//是否显示跳页，默认关闭：false
-            showPN:true,//是否显示上下翻页，默认开启：true
-            prevPage:"上一页",//上翻页文字描述，默认“上一页”
-            nextPage:"下一页",//下翻页文字描述，默认“下一页”
-            backFun:function(page){
-                //点击分页按钮回调函数，返回当前页码
-                $.ajax({
-                  url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page='+page+'&limit=12&userid='+zhanghu1,
-                  type: 'GET',
-                  success: function (data){
-                    $("#shenheing").children().not(':first-child').remove();
-                    for(var i=0;i<data.data.length;i++){
-                      $("#shenheing").append(`<tr>
-                      <td><div>${data.data[i].resourcename}</div></td>
-                      <td>审核中</td>
-                      </tr>`);
-                    };
-                  }
-                });
-            }
-          });     
-      }
-  });
-  $.ajax({
-    url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=1&page=1&limit=12&userid='+zhanghu1,
-    type: 'GET',
-    success: function (data) {
-        for(var i=0;i<data.data.length;i++){
-           $("#yitongguo").append(`<tr>
-           <td><div>${data.data[i].resourcename}</div></td>
-           <td>已通过</td>
-           <td><a><button>下载</button></a></td>
-           </tr>`);
-        };
-        $("#myyitongguo").sPage({
-          page:1,//当前页码，必填
-          total:data.count,//数据总条数，必填
-          pageSize:12,//每页显示多少条数据，默认10条
-          totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-          showTotal:true,//是否显示总条数，默认关闭：false
-          showSkip:true,//是否显示跳页，默认关闭：false
-          showPN:true,//是否显示上下翻页，默认开启：true
-          prevPage:"上一页",//上翻页文字描述，默认“上一页”
-          nextPage:"下一页",//下翻页文字描述，默认“下一页”
-          backFun:function(page){
-              //点击分页按钮回调函数，返回当前页码
-              $.ajax({
-                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=1&page='+page+'&limit=12&userid='+zhanghu1,
-                type: 'GET',
-                success: function (data){
-              $("#yitongguo").children().not(':first-child').remove();
-              for(var i=0;i<data.data.length;i++){
-                $("#yitongguo").append(`<tr>
-                <td><div>${data.data[i].resourcename}</div></td>
-                <td>已通过</td>
-                <td><a><button>下载</button></a></td>
-                </tr>`);
-             };
-            }
-          });
-          }
-        });
-      }
-    });
-    $.ajax({
-      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=2&page=1&limit=12&userid='+zhanghu1,
-      type: 'GET',
-      success: function (data) {
-          for(var i=0;i<data.data.length;i++){
-             $("#yixiazai").append(`<tr>
-             <td><div>${data.data[i].resourcename}</div></td>
-             <td>已下载</td>
-             <td><a><button>下载</button></a></td>
-             </tr>`);
-          };
-          $("#myyixiazai").sPage({
-            page:1,//当前页码，必填
-            total:data.count,//数据总条数，必填
-            pageSize:12,//每页显示多少条数据，默认10条
-            totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-            showTotal:true,//是否显示总条数，默认关闭：false
-            showSkip:true,//是否显示跳页，默认关闭：false
-            showPN:true,//是否显示上下翻页，默认开启：true
-            prevPage:"上一页",//上翻页文字描述，默认“上一页”
-            nextPage:"下一页",//下翻页文字描述，默认“下一页”
-            backFun:function(page){
-                //点击分页按钮回调函数，返回当前页码
-                $.ajax({
-                  url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=2&page='+page+'&limit=12&userid='+zhanghu1,
-                  type: 'GET',
-                  success: function (data){
-                $("#yixiazai").children().not(':first-child').remove();
-                for(var i=0;i<data.data.length;i++){
-                  $("#yixiazai").append(`<tr>
-                  <td><div>${data.data[i].resourcename}</div></td>
-                  <td>已下载</td>
-                  <td><a><button>下载</button></a></td>
-                  </tr>`);
-               };
-              }
-            });
-            }
-          });
-        }
-      });
-      $.ajax({
-        url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=-1&page=1&limit=12&userid='+zhanghu1,
-        type: 'GET',
-        success: function (data) {
-            for(var i=0;i<data.data.length;i++){
-               $("#yituihui").append(`<tr>
-               <td><div>${data.data[i].resourcename}</div></td>
-               <td>已退回</td>
-               </tr>`);
-            };
-            $("#myyituihui").sPage({
-              page:1,//当前页码，必填
-              total:data.count,//数据总条数，必填
-              pageSize:12,//每页显示多少条数据，默认10条
-              totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-              showTotal:true,//是否显示总条数，默认关闭：false
-              showSkip:true,//是否显示跳页，默认关闭：false
-              showPN:true,//是否显示上下翻页，默认开启：true
-              prevPage:"上一页",//上翻页文字描述，默认“上一页”
-              nextPage:"下一页",//下翻页文字描述，默认“下一页”
-              backFun:function(page){
-                  //点击分页按钮回调函数，返回当前页码
-                  $.ajax({
-                    url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=-1&page='+page+'&limit=12&userid='+zhanghu1,
-                    type: 'GET',
-                    success: function (data){
-                  $("#yituihui").children().not(':first-child').remove();
-                  for(var i=0;i<data.data.length;i++){
-                    $("#yituihui").append(`<tr>
-                    <td><div>${data.data[i].resourcename}</div></td>
-                    <td>已退回</td>
-                    </tr>`);
-                 };
-                }
-              });
-              }
-            });
-          }
-        });
+    //加载个人中心数据
+    jiazaigeren();
     //操作个人中心的按钮选项
     $(".btn-tree1").bind("click",function(){
       $("#myyixiazai,#myyitongguo,#myshenheing,#shenheing,#yitongguo,#yixiazai,#myyituihui,#yituihui").css("display","none");

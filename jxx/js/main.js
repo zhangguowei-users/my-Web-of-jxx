@@ -346,7 +346,6 @@ function caidanChangeColor(className){
         exportReportPDF(globalQueryClass.map);//导出报表按钮
      });
     //显示区域报表图
-
     $(".map_35").click(function(){
         $(".map_35").removeClass("map30");
         if($(".map_35").attr("class") == "map_35"){
@@ -355,6 +354,21 @@ function caidanChangeColor(className){
         }else{
             $(".map01_35").attr("class","map_35");
             $(".bing,.zhu").css("display","none");
+        };
+    });
+    //打印地图
+    $(".map_36").click(function(){
+        $(".map_36").removeClass("map30");
+        if($(".map_36").attr("class") == "map_36"){
+            $(".map_36").attr("class","map01_36");
+            $("#dayin-map").css('display','inline-block');
+            $("#quxiao321").bind('click',function(){
+                $("#dayin-map").css('display','none');
+                $(".map01_36").attr("class","map_36");
+            });
+        }else{
+            $(".map01_36").attr("class","map_36");
+            $("#dayin-map").css('display','none');
         };
     });
     //显示全部区域报表图
@@ -443,3 +457,178 @@ $("#gb").click(function(){
         }
     });
 });
+//个人中心数据加载
+function jiazaigeren(){
+            $("#shenheing,#yitongguo,#yixiazai,#yituihui").children().children().not(':first-child').remove();
+            $.ajax({
+                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=0&page=1&limit=12&userid='+zhanghu1,
+                type: 'GET',
+                async: false,
+                success: function (data) {
+                    $("#shenheing").children().children().not(':first-child');
+                    for(var i=0;i<data.data.length;i++){
+                    $("#shenheing").append(`<tr>
+                    <td><div>${data.data[i].resourcename}</div></td>
+                    <td>审核中</td>
+                    </tr>`);
+                    };
+                    $("#myshenheing").sPage({
+                    page:1,//当前页码，必填
+                    total:data.count,//数据总条数，必填
+                    pageSize:12,//每页显示多少条数据，默认10条
+                    totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                    showTotal:true,//是否显示总条数，默认关闭：false
+                    showSkip:true,//是否显示跳页，默认关闭：false
+                    showPN:true,//是否显示上下翻页，默认开启：true
+                    prevPage:"上一页",//上翻页文字描述，默认“上一页”
+                    nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                    backFun:function(page){
+                        //点击分页按钮回调函数，返回当前页码
+                        $.ajax({
+                            url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page='+page+'&limit=12&userid='+zhanghu1,
+                            type: 'GET',
+                            success: function (data){
+                            $("#shenheing").children().children().not(':first-child').remove();
+                            for(var i=0;i<data.data.length;i++){
+                                $("#shenheing").append(`<tr>
+                                <td><div>${data.data[i].resourcename}</div></td>
+                                <td>审核中</td>
+                                </tr>`);
+                            };
+                            }
+                        });
+                    }
+                    });   
+                    
+                }
+            });
+        $.ajax({
+          url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=1&page=1&limit=12&userid='+zhanghu1,
+          type: 'GET',
+          success: function (data) {
+              for(var i=0;i<data.data.length;i++){
+                 $("#yitongguo").append(`<tr>
+                 <td><div>${data.data[i].resourcename}</div></td>
+                 <td>已通过</td>
+                 <td><a><button class='down' id='${data.data[i].applyid}'>下载</button></a></td>
+                 </tr>`);
+              };
+              $('.down').click(function() {
+                 window.open(config.newip + config.newport+'/arcgis/PersonalCenter/Download?applyid='+$(this).attr('id'));
+                 location.reload(); 
+              });
+              $("#myyitongguo").sPage({
+                page:1,//当前页码，必填
+                total:data.count,//数据总条数，必填
+                pageSize:12,//每页显示多少条数据，默认10条
+                totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                showTotal:true,//是否显示总条数，默认关闭：false
+                showSkip:true,//是否显示跳页，默认关闭：false
+                showPN:true,//是否显示上下翻页，默认开启：true
+                prevPage:"上一页",//上翻页文字描述，默认“上一页”
+                nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                backFun:function(page){
+                    //点击分页按钮回调函数，返回当前页码
+                    $.ajax({
+                      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=1&page='+page+'&limit=12&userid='+zhanghu1,
+                      type: 'GET',
+                      success: function (data){
+                    $("#yitongguo").children().children().not(':first-child').remove();
+                    for(var i=0;i<data.data.length;i++){
+                      $("#yitongguo").append(`<tr>
+                      <td><div>${data.data[i].resourcename}</div></td>
+                      <td>已通过</td>
+                      <td><a><button class='down' id='${data.data[i].applyid}'>下载</button></a></td>
+                      </tr>`);
+                   };
+                   $('.down').click(function() {
+                    window.open(config.newip + config.newport+'/arcgis/PersonalCenter/Download?applyid='+$(this).attr('id'));
+                    location.reload(); 
+                  });
+                  }
+                });
+                }
+              });
+            }
+          });
+          $.ajax({
+            url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=2&page=1&limit=12&userid='+zhanghu1,
+            type: 'GET',
+            success: function (data) {
+                for(var i=0;i<data.data.length;i++){
+                   $("#yixiazai").append(`<tr>
+                   <td><div>${data.data[i].resourcename}</div></td>
+                   <td>已下载</td>
+                   <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
+                   </tr>`);
+                };
+                $("#myyixiazai").sPage({
+                  page:1,//当前页码，必填
+                  total:data.count,//数据总条数，必填
+                  pageSize:12,//每页显示多少条数据，默认10条
+                  totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                  showTotal:true,//是否显示总条数，默认关闭：false
+                  showSkip:true,//是否显示跳页，默认关闭：false
+                  showPN:true,//是否显示上下翻页，默认开启：true
+                  prevPage:"上一页",//上翻页文字描述，默认“上一页”
+                  nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                  backFun:function(page){
+                      //点击分页按钮回调函数，返回当前页码
+                      $.ajax({
+                        url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=2&page='+page+'&limit=12&userid='+zhanghu1,
+                        type: 'GET',
+                        success: function (data){
+                      $("#yixiazai").children().children().not(':first-child').remove();
+                      for(var i=0;i<data.data.length;i++){
+                        $("#yixiazai").append(`<tr>
+                        <td><div>${data.data[i].resourcename}</div></td>
+                        <td>已下载</td>
+                        <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button class='down'>下载</button></a></td>
+                        </tr>`);
+                     };
+                    }
+                  });
+                  }
+                });
+              }
+            });
+            $.ajax({
+              url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=-1&page=1&limit=12&userid='+zhanghu1,
+              type: 'GET',
+              success: function (data) {
+                  for(var i=0;i<data.data.length;i++){
+                     $("#yituihui").append(`<tr>
+                     <td><div>${data.data[i].resourcename}</div></td>
+                     <td>已退回</td>
+                     </tr>`);
+                  };
+                  $("#myyituihui").sPage({
+                    page:1,//当前页码，必填
+                    total:data.count,//数据总条数，必填
+                    pageSize:12,//每页显示多少条数据，默认10条
+                    totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                    showTotal:true,//是否显示总条数，默认关闭：false
+                    showSkip:true,//是否显示跳页，默认关闭：false
+                    showPN:true,//是否显示上下翻页，默认开启：true
+                    prevPage:"上一页",//上翻页文字描述，默认“上一页”
+                    nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                    backFun:function(page){
+                        //点击分页按钮回调函数，返回当前页码
+                        $.ajax({
+                          url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=-1&page='+page+'&limit=12&userid='+zhanghu1,
+                          type: 'GET',
+                          success: function (data){
+                        $("#yituihui").children().children().not(':first-child').remove();
+                        for(var i=0;i<data.data.length;i++){
+                          $("#yituihui").append(`<tr>
+                          <td><div>${data.data[i].resourcename}</div></td>
+                          <td>已退回</td>
+                          </tr>`);
+                       };
+                      }
+                    });
+                    }
+                  });
+                }
+              });
+};
