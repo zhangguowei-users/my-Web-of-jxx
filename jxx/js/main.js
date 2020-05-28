@@ -373,7 +373,7 @@ function caidanChangeColor(className){
                 if(a==""){
                     alert('地图标题不可为空');
                 }else{
-                    alert(123);
+                    printMap(a, b, c);//打印地图
                     /*$.ajax({
                         //请求地址
                         url:config.ip + config.port + '',
