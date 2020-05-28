@@ -366,7 +366,7 @@ function caidanChangeColor(className){
                 $("#dayin-map").css('display','none');
                 $(".map01_36").attr("class","map_36");
             });
-            $("#dayin").bind('click',function(){
+            $("#dayin").unbind('click').bind('click',function(){
                 var a = $("#ditubiaoti").val(); //标题 
                 var b = $("#buju").val(); //布局
                 var c = $("#geshi").val(); //格式
