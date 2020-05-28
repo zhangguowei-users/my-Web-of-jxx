@@ -1,4 +1,4 @@
-function printMap(title, paper, format, PrintTask, PrintTemplate, PrintParameters) {
+function printMap(title, paper, format, PrintTask, PrintTemplate, PrintParameters) {//地图打印
     var printMap = new PrintTask(ARCGISCONFIG.PRINTTASK);//创建地图打印对象
     var template = new PrintTemplate();//创建地图打印模版
     var params = new PrintParameters();//创建地图的打印参数，参数里面包括：模版和地图
