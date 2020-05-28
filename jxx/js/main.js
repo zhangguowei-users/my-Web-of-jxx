@@ -366,6 +366,29 @@ function caidanChangeColor(className){
                 $("#dayin-map").css('display','none');
                 $(".map01_36").attr("class","map_36");
             });
+            $("#dayin").bind('click',function(){
+                var a = $("#ditubiaoti").val(); //标题 
+                var b = $("#buju").val(); //布局
+                var c = $("#geshi").val(); //格式
+                if(a==""){
+                    alert('地图标题不可为空');
+                }else{
+                    $.ajax({
+                        //请求地址
+                        url:config.ip + config.port + '',
+                        type: 'POST',
+                        //发送参数
+                        data:{},
+                        xhrFields:{withCredentials:true},
+                        success:function(data){
+                           location.href = data;
+                        },
+                        error:function(){
+                           alert("下载失败");
+                        }
+                    });
+                };
+            });
         }else{
             $(".map01_36").attr("class","map_36");
             $("#dayin-map").css('display','none');

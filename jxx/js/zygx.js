@@ -36,7 +36,6 @@ $(document).ready(function(){
     $("#gb-p1").click(function(){
       $(".theone").css("display","none");
     });
-
 $("#gb-bing").click(function(){
   arry = 0;
   $(".bing").css("display","none");
