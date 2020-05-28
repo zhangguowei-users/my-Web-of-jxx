@@ -122,7 +122,7 @@ function caidanChangeColor(className){
                 
             }else{
                 location.href = "./welcome.html"
-            }
+            };
         },
         error:function(){
             location.href = "./login.html"
@@ -147,7 +147,7 @@ function caidanChangeColor(className){
                 //获取显示申请资源
                 $("#css2").css("display","inline-block");
                 $("#gb-p2").bind("click",function(){
-                    $("#css2").css("display","none");
+                $("#css2").css("display","none");
                 });
                 //操作个人中心的按钮选项
                 $(".btn-tree1").bind("click",function(){
