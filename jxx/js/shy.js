@@ -310,10 +310,10 @@ $(document).ready(function(){
                              };
                            };
                           }
-                           });
-                           }
-                         });
-        }
+                      });
+                    }
+                });
+            }
       });
     //打开审核页面获取值                 
     $("td .shenhe").click(function(){
