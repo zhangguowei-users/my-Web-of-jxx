@@ -17,3 +17,6 @@ function drawPolygon(Draw, map, SimpleLineSymbol, SimpleFillSymbol, Color, Graph
 
     });
 }
+
+
+
