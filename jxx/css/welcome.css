@@ -570,13 +570,13 @@ table,tr,th,td{
 }
 .btn-tree{
     display: inline-block;
-    height:50px;
-    width: 65%;
-    background: url(../img/btn_bg_01.png) no-repeat;
-    background-size: auto;
+    height:33px;
+    width:287px;
+    background:linear-gradient(#3ED1F5,#1BA8F1);
+    border-radius: 26px;
     color: #fff;
     font-size: large;
-    line-height: 35px;
+    line-height: 33px;
 }
 .img-usernow{
     display: inline-block;
