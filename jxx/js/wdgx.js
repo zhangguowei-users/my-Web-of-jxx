@@ -25,6 +25,7 @@ $(document).ready(function(){
                  $.ajax({
                   url:config.newip + config.newport + '/arcgis/DocumentSharing/GetPageListByCondition?page=1&limit=6&typeid='+menueid,
                   type: 'get',
+                  async: false,
                   success:function (data) {
                     console.log(data.data);
                     for(var i=0;i<data.data.length;i++){
@@ -95,6 +96,7 @@ $(document).ready(function(){
                           $.ajax({
                             url:config.newip + config.newport + '/arcgis/DocumentSharing/GetPageListByCondition?page='+page+'&limit=6&typeid='+menueid,
                             type: 'get',
+                            async: false,
                             success:function(){
                               $('#zx tbody').children().remove();
                               for(var i=0;i<data.data.length;i++){
