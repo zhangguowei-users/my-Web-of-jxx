@@ -74,6 +74,85 @@ td button{
     margin-top:3rem;
     margin-bottom: 3rem;
 }
+#zy3{
+    display: none;
+    border: 1px #ABD2F2 solid;
+    width: 98%;
+    margin: 1% 1%;
+    text-align: center;
+    position: absolute;
+    top:109rem;
+}
+#zy3 thead tr th{
+    border: none;
+}
+#zy3 thead tr:nth-child(1){
+    background-color: #D6E6F4;
+    height:70rem;
+    color: #333333;
+    font-size: 24rem;
+    font-family:Source Han Sans CN;
+    border: 1px #ABD2F2 solid;
+}
+#zy3 tbody tr th {
+    border: 1px #ABD2F2 solid;
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size: 20rem;  
+}
+#zy3 tbody tr td{
+    border: 1px #ABD2F2 solid;
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size: 20rem; 
+}
+#zy3 tbody tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 200rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+#zy3 tbody tr{
+    border: 1px #ABD2F2 solid;
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    /* border-bottom: 0; */
+    font-size: 20rem; 
+}
+td a button{
+    background-image: linear-gradient(#8dc5fa,#0e7ec0);
+    border: 1px #3399ff solid;
+    color:white;
+    width: 50rem;
+    height: 35rem;
+    line-height: 35rem;
+    text-align: center;
+    outline: none;
+    border-radius: 5rem;
+    font-family: "幼圆";
+    font-size:large;
+    margin-top:3rem;
+    margin-bottom: 3rem;
+}
+.marge-down{
+    display: none;
+    font-size: 24rem;
+    font-family:Source Han Sans CN;
+    color:rgba(51,51,51,1);
+    position: absolute;
+    font-weight:400;
+    top:43rem;
+    left:626rem;
+}
 /* 测试 */
 #browser{
     text-align: center;
