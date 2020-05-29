@@ -21,21 +21,62 @@ $(document).ready(function(){
                //通过点击tree操作table
                $('.folder,.file').bind('click',function(){
                  var menueid=$(this).attr('menueid');
+                 $('#zx tbody').children().remove();
                  $.ajax({
                   url:config.newip + config.newport + '/arcgis/DocumentSharing/GetPageListByCondition?page=1&limit=6&typeid='+menueid,
                   type: 'get',
-                  async: false,
                   success:function (data) {
-                    console.log(data);
+                    console.log(data.data);
                     for(var i=0;i<data.data.length;i++){
-                      $('#zx tbody').append(`<tr>
-                      <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
-                      <td>国土调查数据库标准</td>
-                      <td>集贤县自然资源信息中心</td>
-                      <td>2018-12-13</td>
-                      <td></td>
-                      <td></td>
-                      </tr>`);
+                      var urlname = data.data[i].url.split('.');
+                      var length = urlname.length;
+                      var format = urlname[length-1];
+                      if(format == 'pdf'){
+                        $('#zx tbody').append(`<tr>
+                        <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+                        <td>${data.data[i].resourcetypename}</td>
+                        <td>${data.data[i].resourcename}</td>
+                        <td>${data.data[i].sender}</td>
+                        <td>${data.data[i].createtime.split('T')[0]}</td>
+                        <td><button id='${data.data[i].resourceid}'>下载</button></td>
+                        </tr>`);
+                      }else if(format == 'doc'|| format == 'docx'){
+                        $('#zx tbody').append(`<tr>
+                        <td><img src="./img/word.png" alt="" style="height:70px; width: 70px;"></td>
+                        <td>${data.data[i].resourcetypename}</td>
+                        <td>${data.data[i].resourcename}</td>
+                        <td>${data.data[i].sender}</td>
+                        <td>${data.data[i].createtime.split('T')[0]}</td>
+                        <td><button id='${data.data[i].resourceid}'>下载</button></td>
+                        </tr>`);
+                      }else if(format == 'xlsx' || format == 'xls'){
+                        $('#zx tbody').append(`<tr>
+                        <td><img src="./img/excal.png" alt="" style="height:70px; width: 70px;"></td>
+                        <td>${data.data[i].resourcetypename}</td>
+                        <td>${data.data[i].resourcename}</td>
+                        <td>${data.data[i].sender}</td>
+                        <td>${data.data[i].createtime.split('T')[0]}</td>
+                        <td><button id='${data.data[i].resourceid}'>下载</button></td>
+                        </tr>`);
+                      }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+                        $('#zx tbody').append(`<tr>
+                        <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
+                        <td>${data.data[i].resourcetypename}</td>
+                        <td>${data.data[i].resourcename}</td>
+                        <td>${data.data[i].sender}</td>
+                        <td>${data.data[i].createtime.split('T')[0]}</td>
+                        <td><button id='${data.data[i].resourceid}'>下载</button></td>
+                        </tr>`);
+                      }else{
+                        $('#zx tbody').append(`<tr>
+                        <td><img src="./img/txt.png" alt="" style="height:70px; width: 70px;"></td>
+                        <td>${data.data[i].resourcetypename}</td>
+                        <td>${data.data[i].resourcename}</td>
+                        <td>${data.data[i].sender}</td>
+                        <td>${data.data[i].createtime.split('T')[0]}</td>
+                        <td><button id='${data.data[i].resourceid}'>下载</button></td>
+                        </tr>`);
+                      };
                     };
                     $("#myPage").sPage({
                       page:1,//当前页码，必填
@@ -50,6 +91,65 @@ $(document).ready(function(){
                       backFun:function(page){
                           //点击分页按钮回调函数，返回当前页码
                           console.log(page);
+                          $('#zx tbody').children().remove();
+                          $.ajax({
+                            url:config.newip + config.newport + '/arcgis/DocumentSharing/GetPageListByCondition?page='+page+'&limit=6&typeid='+menueid,
+                            type: 'get',
+                            success:function(){
+                              $('#zx tbody').children().remove();
+                              for(var i=0;i<data.data.length;i++){
+                                var urlname = data.data[i].url.split('.');
+                                var length = urlname.length;
+                                var format = urlname[length-1];
+                                if(format == 'pdf'){
+                                  $('#zx tbody').append(`<tr>
+                                  <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+                                  <td>${data.data[i].resourcetypename}</td>
+                                  <td>${data.data[i].resourcename}</td>
+                                  <td>${data.data[i].sender}</td>
+                                  <td>${data.data[i].createtime.split('T')[0]}</td>
+                                  <td><button id='${data.data[i].resourceid}'>下载</button></td>
+                                  </tr>`);
+                                }else if(format == 'doc'|| format == 'docx'){
+                                  $('#zx tbody').append(`<tr>
+                                  <td><img src="./img/word.png" alt="" style="height:70px; width: 70px;"></td>
+                                  <td>${data.data[i].resourcetypename}</td>
+                                  <td>${data.data[i].resourcename}</td>
+                                  <td>${data.data[i].sender}</td>
+                                  <td>${data.data[i].createtime.split('T')[0]}</td>
+                                  <td><button id='${data.data[i].resourceid}'>下载</button></td>
+                                  </tr>`);
+                                }else if(format == 'xlsx' || format == 'xls'){
+                                  $('#zx tbody').append(`<tr>
+                                  <td><img src="./img/excal.png" alt="" style="height:70px; width: 70px;"></td>
+                                  <td>${data.data[i].resourcetypename}</td>
+                                  <td>${data.data[i].resourcename}</td>
+                                  <td>${data.data[i].sender}</td>
+                                  <td>${data.data[i].createtime.split('T')[0]}</td>
+                                  <td><button id='${data.data[i].resourceid}'>下载</button></td>
+                                  </tr>`);
+                                }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+                                  $('#zx tbody').append(`<tr>
+                                  <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
+                                  <td>${data.data[i].resourcetypename}</td>
+                                  <td>${data.data[i].resourcename}</td>
+                                  <td>${data.data[i].sender}</td>
+                                  <td>${data.data[i].createtime.split('T')[0]}</td>
+                                  <td><button id='${data.data[i].resourceid}'>下载</button></td>
+                                  </tr>`);
+                                }else{
+                                  $('#zx tbody').append(`<tr>
+                                  <td><img src="./img/txt.png" alt="" style="height:70px; width: 70px;"></td>
+                                  <td>${data.data[i].resourcetypename}</td>
+                                  <td>${data.data[i].resourcename}</td>
+                                  <td>${data.data[i].sender}</td>
+                                  <td>${data.data[i].createtime.split('T')[0]}</td>
+                                  <td><button id='${data.data[i].resourceid}'>下载</button></td>
+                                  </tr>`);
+                                };
+                              };
+                            }
+                          });
                       }
                     });
                   }
