@@ -9,7 +9,7 @@ $(document).ready(function(){
     huakuaiMove(".btn-tree");
     //操作菜单
     $(".btn-tree").click(function(){
-      $("#zy,#zy1,#zy2,#zy3,#delete,#delete1,#fanhuish,#myPage,#myPage2,#myPage3,#shenheyemian,.marge-down").css("display","none");
+      $("#zy,#zy1,#zy2,#zy3,#delete,#myPage,#myPage2,#myPage3,#shenheyemian,.marge-down,.marge-down1").css("display","none");
       if($(this).html() == "审核管理"){
         $("#zy").css("display","table");
         $("#myPage").css("display","block");
@@ -19,8 +19,7 @@ $(document).ready(function(){
         $(".middle1 div").html($(this).html());
       }else if($(this).html() == "浏览统计"){
        $("#zy2").css("display","table");
-       $("#delete1").css("display","inline-block");
-       $("#fanhuish").css("display","inline-block");
+       $(".marge-down1").css("display","inline");
        $("#myPage2").css("display","block");
        $(".middle1 div").html($(this).html());
       }else if($(this).html() == "下载管理"){
@@ -359,61 +358,6 @@ $(document).ready(function(){
           }
         });
        });
-    //批量删除
-    $("#delete").bind("click",function(){
-      var c= new Array();
-      var a = $(".yishenhe333:checked");
-      for(let i=0;i<a.length;i++){
-        c.push(parseInt(a.eq(i).val()));
-      }
-      $.ajax({
-        url:config.newip + config.newport + '/arcgis/PersonalCenter/OperationBatch',
-        type:'POST',
-        data:{applyids:c,states:2},
-        success:function(data){
-          alert(data.msg);
-          location.reload();
-        }
-      });
-    });
-     //批量取消审核
-     $("#quxiaosh").bind("click",function(){
-      var c= new Array();
-      var a = $(".yishenhe333:checked");
-      for(let i=0;i<a.length;i++){
-        c.push(parseInt(a.eq(i).val()));
-      }
-      $.ajax({
-        url:config.newip + config.newport + '/arcgis/PersonalCenter/OperationBatch',
-        type:'POST',
-        data:{applyids:c,states:1},
-        success:function(data){
-          alert(data.msg);
-          location.reload();
-        }
-      });
-    });
-    //批量删除已退回
-    $("#delete1").bind("click",function(){
-      var c= new Array();
-      var a = $(".yituihui333:checked");
-      for(let i=0;i<a.length;i++){
-        c.push(parseInt(a.eq(i).val()));
-      }
-      $.ajax({
-        url:config.newip + config.newport + '/arcgis/PersonalCenter/OperationBatch',
-        type:'POST',
-        data:{applyids:c,states:2},
-        success:function(data){
-          alert(data.msg);
-          location.reload();
-        }
-      });
-    });
-    //返回审核
-    $("#fanhuish").bind("click",function(){
-     $("#active").click();
-    });
     //打开关闭个人中心
     $("#login").bind("click",function(){
         $("#css1").css('display','inline-block');

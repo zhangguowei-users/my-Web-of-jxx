@@ -172,43 +172,19 @@ td a button{
     top:43rem;
     left:626rem;
 }
+.marge-down1{
+    display: none;
+    font-size: 24rem;
+    font-family:Source Han Sans CN;
+    color:rgba(51,51,51,1);
+    position: absolute;
+    font-weight:400;
+    top:43rem;
+    left:626rem;
+}
 /* 测试 */
 #browser{
     text-align: center;
-}
-#delete1{
-    display: none;
-    background-image: linear-gradient(#8dc5fa,#0e7ec0);
-    border: 1px #3399ff solid;
-    color:white;
-    width: 100px;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    outline: none;
-    border-radius: 5px;
-    font-family: "幼圆";
-    font-size:large;
-    position: absolute;
-    left:30%;
-    bottom: 8%;
-}
-#fanhuish{
-    display: none;
-    background-image: linear-gradient(#8dc5fa,#0e7ec0);
-    border: 1px #3399ff solid;
-    color:white;
-    width: 100px;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    outline: none;
-    border-radius: 5px;
-    font-family: "幼圆";
-    font-size:large;
-    position: absolute;
-    left:40%;
-    bottom: 8%;
 }
 #zy1{
     width: 100%;
