@@ -57,7 +57,7 @@ $(document).ready(function(){
             <td>${data.data[i].phone}</td>
             <td>${data.data[i].applytime.split("T")[0]}</td>
             <td>已通过</td>
-            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
+            <td><a><button class='down1' id='${data.data[i].applyid}'>下载</button></a></td>
             </tr>`);
           }else if(data.data[i].states == -1){ //已退回
             $("#zy").append(`<tr>
@@ -72,6 +72,10 @@ $(document).ready(function(){
             </tr>`);
           };           
         };
+        $('.down1').bind('click',function(){
+          window.open(config.newip + config.newport+'/arcgis/PersonalCenter/Download?applyid='+$(this).attr('id'));
+          location.reload();
+        });
         $("#myPage").sPage({
           page:1,//当前页码，必填
           total:data.count,//数据总条数，必填
@@ -111,7 +115,7 @@ $(document).ready(function(){
                       <td>${data.data[i].phone}</td>
                       <td>${data.data[i].applytime.split("T")[0]}</td>
                       <td>已通过</td>
-                      <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
+                      <td><a><button class='down1' id='${data.data[i].applyid}'>下载</button></a></td>
                       </tr>`);
                     }else if(data.data[i].states == -1){ //已退回
                       $("#zy").append(`<tr>
@@ -126,6 +130,10 @@ $(document).ready(function(){
                       </tr>`);
                     };           
                   };
+                  $('.down1').bind('click',function(){
+                    window.open(config.newip + config.newport+'/arcgis/PersonalCenter/Download?applyid='+$(this).attr('id'));
+                    location.reload();
+                  });
                 }
               });  
           }
@@ -137,7 +145,6 @@ $(document).ready(function(){
       type: 'GET',
       async: false,
       success: function (data){
-        
         for(var i=0;i<data.data.length;i++){
           $("#zy2").append(`<tr>
           <td><input class='yituihui333' type="checkbox" name="yituihui" value="${data.data[i].applyid}" /></td>
