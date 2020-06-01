@@ -9,16 +9,13 @@ $(document).ready(function(){
     huakuaiMove(".btn-tree");
     //操作菜单
     $(".btn-tree").click(function(){
-      $("#zy,#zy1,#zy2,#zy3,#delete,#delete1,#quxiaosh,#fanhuish,#myPage,#myPage1,#myPage2,#myPage3,#shenheyemian,.marge-down").css("display","none");
+      $("#zy,#zy1,#zy2,#zy3,#delete,#delete1,#fanhuish,#myPage,#myPage2,#myPage3,#shenheyemian,.marge-down").css("display","none");
       if($(this).html() == "审核管理"){
         $("#zy").css("display","table");
         $("#myPage").css("display","block");
         $(".middle1 div").html($(this).html());
       }else if($(this).html() == "个人资料管理"){
-        $("#zy1").css("display","table");
-        $("#delete").css("display","inline-block");
-        $("#quxiaosh").css("display","inline-block");
-        $("#myPage1").css("display","block");
+        $("#zy1").css("display","block");
         $(".middle1 div").html($(this).html());
       }else if($(this).html() == "浏览统计"){
        $("#zy2").css("display","table");
@@ -488,4 +485,5 @@ $(document).ready(function(){
         $("#yituihui").css("display","table");
       };
     });
+    
     });
