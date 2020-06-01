@@ -30,6 +30,7 @@ $(document).ready(function(){
       }
    });
     //table同步加载(管理员)
+    //审核管理
     $.ajax({
       url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page=1&limit=16',
       type: 'GET',
@@ -130,60 +131,6 @@ $(document).ready(function(){
           }
         }); 
       }
-    });
-    $.ajax({
-      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=1&page=1&limit=16',
-      type: 'GET',
-      async: false,
-      success: function (data){
-        for(var i=0;i<data.data.length;i++){
-          $("#zy1").append(`<tr>
-          <td><input class='yishenhe333' type="checkbox" name="yishenhe" value="${data.data[i].applyid}" /></td>
-          <td>${data.data[i].name}</td>
-          <td>${data.data[i].depname}</td>
-          <td>${data.data[i].postname}</td>
-          <td><div>${data.data[i].applyreason}</div></td>
-          <td>${data.data[i].phone}</td>
-          <td>${data.data[i].applytime.split("T")[0]}</td>
-          <td>已审核</td>
-        </tr>`)
-        };
-        
-        $("#myPage1").sPage({
-          page:1,//当前页码，必填
-          total:data.count,//数据总条数，必填
-          pageSize:16,//每页显示多少条数据，默认10条
-          totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-          showTotal:true,//是否显示总条数，默认关闭：false
-          showSkip:true,//是否显示跳页，默认关闭：false
-          showPN:true,//是否显示上下翻页，默认开启：true
-          prevPage:"上一页",//上翻页文字描述，默认“上一页”
-          nextPage:"下一页",//下翻页文字描述，默认“下一页”
-          backFun:function(page){
-              //点击分页按钮回调函数，返回当前页码
-              $.ajax({
-                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=1&page='+page+'&limit=16',
-                type: 'GET',
-                async: false,
-                success: function (data){
-                  $("#zy1").children().children().not(':first-child').remove();
-                  for(var i=0;i<data.data.length;i++){
-                    $("#zy1").append(`<tr>
-                    <td><input class='yishenhe333' type="checkbox" name="yishenhe" value="${data.data[i].applyid}" /></td>
-                    <td>${data.data[i].name}</td>
-                    <td>${data.data[i].depname}</td>
-                    <td>${data.data[i].postname}</td>
-                    <td><div>${data.data[i].applyreason}</div></td>
-                    <td>${data.data[i].phone}</td>
-                    <td>${data.data[i].applytime.split("T")[0]}</td>
-                    <td>已审核</td>
-                    </tr>`);
-                  };
-                }
-              });  
-          }
-        });
-      }  
     });
     $.ajax({
       url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=-1&page=1&limit=16',
