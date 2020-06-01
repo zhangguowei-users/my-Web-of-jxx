@@ -10,17 +10,17 @@ $(document).ready(function(){
     //操作菜单
     $(".btn-tree").click(function(){
       $("#zy,#zy1,#zy2,#zy3,#delete,#delete1,#quxiaosh,#fanhuish,#myPage,#myPage1,#myPage2,#myPage3,#shenheyemian,.marge-down").css("display","none");
-      if($(this).html() == "待审核"){
+      if($(this).html() == "审核管理"){
         $("#zy").css("display","table");
         $("#myPage").css("display","block");
         $(".middle1 div").html($(this).html());
-      }else if($(this).html() == "已审核"){
+      }else if($(this).html() == "个人资料管理"){
         $("#zy1").css("display","table");
         $("#delete").css("display","inline-block");
         $("#quxiaosh").css("display","inline-block");
         $("#myPage1").css("display","block");
         $(".middle1 div").html($(this).html());
-      }else if($(this).html() == "退回表单"){
+      }else if($(this).html() == "浏览统计"){
        $("#zy2").css("display","table");
        $("#delete1").css("display","inline-block");
        $("#fanhuish").css("display","inline-block");
@@ -34,21 +34,45 @@ $(document).ready(function(){
    });
     //table同步加载(管理员)
     $.ajax({
-      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page=1&limit=16',
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page=1&limit=16',
       type: 'GET',
       async: false,
       success: function (data){
         for(var i=0;i<data.data.length;i++){
-          $("#zy").append(`<tr>
-                           <td>${data.data[i].name}</td>
-                           <td>${data.data[i].depname}</td>
-                           <td>${data.data[i].postname}</td>
-                           <td><div>${data.data[i].applyreason}</div></td>
-                           <td>${data.data[i].phone}</td>
-                           <td>${data.data[i].applytime.split("T")[0]}</td>
-                           <td>已申请</td>
-                           <td><button class="shenhe" id="${data.data[i].applyid}">审核</button></td>
-                           </tr>`);             
+          if(data.data[i].states == 0){ //审核中
+            $("#zy").append(`<tr>
+            <td>${data.data[i].name}</td>
+            <td>${data.data[i].depname}</td>
+            <td>${data.data[i].postname}</td>
+            <td><div>${data.data[i].applyreason}</div></td>
+            <td>${data.data[i].phone}</td>
+            <td>${data.data[i].applytime.split("T")[0]}</td>
+            <td>已申请</td>
+            <td><button class="shenhe" id="${data.data[i].applyid}">审核</button></td>
+            </tr>`); 
+          }else if(data.data[i].states == 1){ //已通过
+            $("#zy").append(`<tr>
+            <td>${data.data[i].name}</td>
+            <td>${data.data[i].depname}</td>
+            <td>${data.data[i].postname}</td>
+            <td><div>${data.data[i].applyreason}</div></td>
+            <td>${data.data[i].phone}</td>
+            <td>${data.data[i].applytime.split("T")[0]}</td>
+            <td>已通过</td>
+            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
+            </tr>`);
+          }else if(data.data[i].states == -1){ //已退回
+            $("#zy").append(`<tr>
+            <td>${data.data[i].name}</td>
+            <td>${data.data[i].depname}</td>
+            <td>${data.data[i].postname}</td>
+            <td><div>${data.data[i].applyreason}</div></td>
+            <td>${data.data[i].phone}</td>
+            <td>${data.data[i].applytime.split("T")[0]}</td>
+            <td>已退回</td>
+            <td><button class='tuihuione' disabled>已退回</button></td>
+            </tr>`);
+          };           
         };
         $("#myPage").sPage({
           page:1,//当前页码，必填
@@ -63,22 +87,46 @@ $(document).ready(function(){
           backFun:function(page){
               //点击分页按钮回调函数，返回当前页码
               $.ajax({
-                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page='+page+'&limit=16',
+                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page='+page+'&limit=16',
                 type: 'GET',
                 async: false,
                 success: function (data){
                   $("#zy").children().children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
-                    $("#zy").append(`<tr>
-                                     <td>${data.data[i].name}</td>
-                                     <td>${data.data[i].depname}</td>
-                                     <td>${data.data[i].postname}</td>
-                                     <td><div>${data.data[i].applyreason}</div></td>
-                                     <td>${data.data[i].phone}</td>
-                                     <td>${data.data[i].applytime.split("T")[0]}</td>
-                                     <td>已申请</td>
-                                     <td><button class="shenhe" id="${data.data[i].applyid}">审核</button></td>
-                                     </tr>`);
+                    if(data.data[i].states == 0){ //审核中
+                      $("#zy").append(`<tr>
+                      <td>${data.data[i].name}</td>
+                      <td>${data.data[i].depname}</td>
+                      <td>${data.data[i].postname}</td>
+                      <td><div>${data.data[i].applyreason}</div></td>
+                      <td>${data.data[i].phone}</td>
+                      <td>${data.data[i].applytime.split("T")[0]}</td>
+                      <td>已申请</td>
+                      <td><button class="shenhe" id="${data.data[i].applyid}">审核</button></td>
+                      </tr>`); 
+                    }else if(data.data[i].states == 1){ //已通过
+                      $("#zy").append(`<tr>
+                      <td>${data.data[i].name}</td>
+                      <td>${data.data[i].depname}</td>
+                      <td>${data.data[i].postname}</td>
+                      <td><div>${data.data[i].applyreason}</div></td>
+                      <td>${data.data[i].phone}</td>
+                      <td>${data.data[i].applytime.split("T")[0]}</td>
+                      <td>已通过</td>
+                      <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
+                      </tr>`);
+                    }else if(data.data[i].states == -1){ //已退回
+                      $("#zy").append(`<tr>
+                      <td>${data.data[i].name}</td>
+                      <td>${data.data[i].depname}</td>
+                      <td>${data.data[i].postname}</td>
+                      <td><div>${data.data[i].applyreason}</div></td>
+                      <td>${data.data[i].phone}</td>
+                      <td>${data.data[i].applytime.split("T")[0]}</td>
+                      <td>已退回</td>
+                      <td><button class='tuihuione' disabled>已退回</button></td>
+                      </tr>`);
+                    };           
                   };
                 }
               });  
