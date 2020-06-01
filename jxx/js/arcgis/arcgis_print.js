@@ -5,7 +5,7 @@ function printMap(title, paper, format, PrintTask, PrintTemplate, PrintParameter
     printMap.outSpatialReference = globalQueryClass.map.SpatialReference//输出图片的空间参考
     template.exportOptions = {width: 1500, height: 80000, dpi: 96};//打印图片的各种参数
 
-    template.format = format;//打印输出的格式
+    template.format = "jpg";//打印输出的格式
     template.layout = paper;//输出地图的布局
 
     params.map = globalQueryClass.map;//设置参数地图
@@ -13,21 +13,20 @@ function printMap(title, paper, format, PrintTask, PrintTemplate, PrintParameter
 
     printMap.execute(params, function(result){//运行结果
         if (result != null) {
-            window.open(result.url);
-            var link = document.createElement('a');
-            link.setAttribute("download", "");
-            //link.href = result.url;
-            link.click();
+            requestServer(title,paper,format,result.url);//后台生成pdf
         }
     });
 
-
-
 }
 
-function requestServer() {
-    $.ajax({url:config.ip + config.port + '', type: 'POST', data:{}, xhrFields:{withCredentials:true}, success:function(data) {
-        location.href = data;
+function requestServer(title,paper,format,url) {
+    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/printMap', type: 'POST', data:{"title":title,"paper":paper,"format":format,"url":url}, xhrFields:{withCredentials:true}, success:function(data) {
+        window.open(data.result);
+        var link = document.createElement('a');
+        link.setAttribute("download", "");
+        //link.href = data.result;
+        link.click();
+
     }, error:function() {
        alert("打印失败");
     }});

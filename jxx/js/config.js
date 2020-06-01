@@ -22,7 +22,7 @@ var ARCGISCONFIG={
     IMAGE_LAYER_2:"http://192.168.1.109:6080/arcgis/rest/services/jixian/IMAGE_2/ImageServer",
     IMAGE_LAYER_3:"http://192.168.1.109:6080/arcgis/rest/services/jixian/IMAGE_3/ImageServer",
 
-    PRINTTASK:"http://localhost:6080/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
+    PRINTTASK:"http://192.168.1.109:6080/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
 
 };
 
