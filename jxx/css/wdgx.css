@@ -71,7 +71,6 @@ table{
     display: inline-block;
     height: 55px;
     width: 398px;
-    border: 1px black dashed;
     position: absolute;
     right: 15px;
     top: 31px;
@@ -99,4 +98,19 @@ table{
     position: absolute;
     left:347px;
     top:14.5px;
+}
+td button{
+    background-image: linear-gradient(#8dc5fa,#0e7ec0);
+    border: 1px #3399ff solid;
+    color:white;
+    width: 50px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    outline: none;
+    border-radius: 5px;
+    font-family: "幼圆";
+    font-size:large;
+    margin-top:3px;
+    margin-bottom: 3px;
 }

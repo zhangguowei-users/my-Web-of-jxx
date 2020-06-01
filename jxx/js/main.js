@@ -425,6 +425,26 @@ function caidanChangeColor(className){
            
         };
     });
+    //绘制地块
+    $(".map_37").click(function(){
+        $(".map_37").removeClass("map30");
+        if($(".map_37").attr("class") == "map_37"){
+            $('#huizhi').css('display','inline-block');
+            $(".map_37").attr("class","map01_37");
+            //编辑地块
+            $('#bj').click(function(){
+            
+            });
+            //移除地块
+            $('#yc').click(function(){
+              
+            });
+        }else{
+            $('#huizhi').css('display','none');
+            $(".map01_37").attr("class","map_37");
+           
+        };
+    });
     };
  //点击tree 获取id
  function clicktreeById(){
