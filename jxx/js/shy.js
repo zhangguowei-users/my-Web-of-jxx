@@ -250,11 +250,12 @@ $(document).ready(function(){
               nextPage:"下一页",//下翻页文字描述，默认“下一页”
               backFun:function(page){
                   //点击分页按钮回调函数，返回当前页码
+                  $('#zy3 tbody').children().remove();
                   $.ajax({
-                    url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=2&page='+page+'&limit=6&userid='+zhanghu1,
+                    url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=2&page='+page+'&limit=6&userid='+zhanghu1,
                     type: 'GET',
                     success: function (data){
-                         $("#yixiazai").children().children().not(':first-child').remove();
+                      console.log(data)
                          for(var i=0;i<data.data.length;i++){
                          var urlname = data.data[i].url.split('.');
                          var length = urlname.length;
