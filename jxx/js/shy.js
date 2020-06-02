@@ -9,8 +9,9 @@ $(document).ready(function(){
     huakuaiMove(".btn-tree");
     //操作菜单
     $(".btn-tree").click(function(){
-      $("#zy,#zy1,#zy2,#zy3,#delete,#myPage,#myPage2,#myPage3,#shenheyemian,.marge-down,.marge-down1,#dlcs").css("display","none");
+      $("#zy,#zy1,#zy2,#zy3,#delete,#myPage,#myPage2,#myPage3,#shenheyemian,.marge-down,.marge-down1,.marge-down2,#dlcs").css("display","none");
       if($(this).html() == "审核管理"){
+        $(".marge-down2").css("display","inline");
         $("#zy").css("display","table");
         $("#myPage").css("display","block");
         $(".middle1 div").html($(this).html());
@@ -32,7 +33,7 @@ $(document).ready(function(){
     //table同步加载(管理员)
     //审核管理
     $.ajax({
-      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page=1&limit=16',
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page=1&limit=12',
       type: 'GET',
       async: false,
       success: function (data){
@@ -79,7 +80,7 @@ $(document).ready(function(){
         $("#myPage").sPage({
           page:1,//当前页码，必填
           total:data.count,//数据总条数，必填
-          pageSize:16,//每页显示多少条数据，默认10条
+          pageSize:12,//每页显示多少条数据，默认10条
           totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
           showTotal:true,//是否显示总条数，默认关闭：false
           showSkip:true,//是否显示跳页，默认关闭：false
@@ -89,7 +90,7 @@ $(document).ready(function(){
           backFun:function(page){
               //点击分页按钮回调函数，返回当前页码
               $.ajax({
-                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page='+page+'&limit=16',
+                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page='+page+'&limit=12',
                 type: 'GET',
                 async: false,
                 success: function (data){
@@ -148,6 +149,7 @@ $(document).ready(function(){
       type: 'GET',
       async:false,
       success: function (data) {
+        console.log(data)
         for(var i=0;i<data.data.length;i++){
           var urlname = data.data[i].url.split('.');
           var length = urlname.length;
