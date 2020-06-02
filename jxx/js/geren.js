@@ -34,7 +34,7 @@ $(document).ready(function(){
       
       //下载管理
       $.ajax({
-        url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=2&page=1&limit=6&userid='+zhanghu1,
+        url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=1&page=1&limit=6&userid='+zhanghu1,
         type: 'GET',
         async:false,
         success: function (data) {
@@ -99,7 +99,7 @@ $(document).ready(function(){
                     //点击分页按钮回调函数，返回当前页码
                     $('#zy3 tbody').children().remove();
                     $.ajax({
-                      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=2&page='+page+'&limit=6&userid='+zhanghu1,
+                      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=1&page='+page+'&limit=6&userid='+zhanghu1,
                       type: 'GET',
                       success: function (data){
                            for(var i=0;i<data.data.length;i++){
