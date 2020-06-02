@@ -141,7 +141,6 @@ function caidanChangeColor(className){
             for(var i=0;i<data.length;i++){
                 glorolename.push(data[i].role.rolename);
             };
-            console.log(glorolename)
             if(glorolename.indexOf("管理员") >= 0){
                 location.href = "./shy.html";
             }else{
@@ -479,6 +478,10 @@ function option(data,classN){
         }
     }
 };
+//大屏幕
+$('#setting').bind('click',function(){
+  open('./bigscreen.html');
+});
 //退出登录
 $("#gb").click(function(){
     $.ajax({
