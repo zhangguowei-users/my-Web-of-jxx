@@ -7,6 +7,38 @@ $(document).ready(function(){
     tiaozhuan();
     huoquName();
     huakuaiMove(".btn-tree");
+    //部门tree下拉菜单
+    $('#bumen').bind('click',function(){
+      if($('#set-bumen').css('display') == 'none'){
+        $('#set-bumen').css('display','inline-block');
+      }else{
+        $('#set-bumen').css('display','none');
+      }
+    });
+    $(function(){
+      $("#bumen,#set-bumen").click(function(event){
+          event.stopPropagation();
+      });
+      $(document).click(function(){
+          $("#set-bumen").css("display","none");
+      });
+    });
+    //职位tree下拉菜单
+    $('#zhiwei').bind('click',function(){
+      if($('#set-zhiwei').css('display') == 'none'){
+        $('#set-zhiwei').css('display','inline-block');
+      }else{
+        $('#set-zhiwei').css('display','none');
+      }
+    });
+    $(function(){
+      $("#zhiwei,#set-zhiwei").click(function(event){
+          event.stopPropagation();
+      });
+      $(document).click(function(){
+          $("#set-zhiwei").css("display","none");
+      });
+    });
     //操作菜单
     $(".btn-tree").click(function(){
       $("#zy,#zy1,#zy2,#zy3,#delete,#myPage,#myPage2,#myPage3,#shenheyemian,.marge-down,.marge-down1,.marge-down2,#dlcs").css("display","none");
