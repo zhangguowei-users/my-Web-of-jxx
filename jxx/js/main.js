@@ -467,7 +467,7 @@ function caidanChangeColor(className){
         };
       };
 };
-//测试
+//select标签
 function option(data,classN){
     for(var i=0; i<data.length;i++){
         if(data[i].subAdministrations.length != 0){
