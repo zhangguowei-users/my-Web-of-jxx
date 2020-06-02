@@ -140,7 +140,7 @@ $(document).ready(function(){
             $('#zy3 tbody').append(`<tr>
             <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
             <td>${data.data[i].resourcename}</td>
-            <td></td>
+            <td>${data.data[i].depname}</td>
             <td>${data.data[i].applytime.split('T')[0]}</td>
             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
             </tr>`);
@@ -148,7 +148,7 @@ $(document).ready(function(){
             $('#zy3 tbody').append(`<tr>
             <td><img src="./img/word.png" alt="" style="height:70px; width: 70px;"></td>
             <td>${data.data[i].resourcename}</td>
-            <td></td>
+            <td>${data.data[i].depname}</td>
             <td>${data.data[i].applytime.split('T')[0]}</td>
             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
             </tr>`);
@@ -156,7 +156,7 @@ $(document).ready(function(){
             $('#zy3 tbody').append(`<tr>
             <td><img src="./img/excal.png" alt="" style="height:70px; width: 70px;"></td>
             <td>${data.data[i].resourcename}</td>
-            <td></td>
+            <td>${data.data[i].depname}</td>
             <td>${data.data[i].applytime.split('T')[0]}</td>
             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
             </tr>`);
@@ -164,7 +164,7 @@ $(document).ready(function(){
             $('#zy3 tbody').append(`<tr>
             <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
             <td>${data.data[i].resourcename}</td>
-            <td></td>
+            <td>${data.data[i].depname}</td>
             <td>${data.data[i].applytime.split('T')[0]}</td>
             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
             </tr>`);
@@ -172,7 +172,7 @@ $(document).ready(function(){
             $('#zy3 tbody').append(`<tr>
             <td><img src="./img/txt.png" alt="" style="height:70px; width: 70px;"></td>
             <td>${data.data[i].resourcename}</td>
-            <td></td>
+            <td>${data.data[i].depname}</td>
             <td>${data.data[i].applytime.split('T')[0]}</td>
             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
             </tr>`);
@@ -204,7 +204,7 @@ $(document).ready(function(){
                            $('#zy3 tbody').append(`<tr>
                            <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
                            <td>${data.data[i].resourcename}</td>
-                           <td></td>
+                           <td>${data.data[i].depname}</td>
                            <td>${data.data[i].applytime.split('T')[0]}</td>
                            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
                            </tr>`);
@@ -212,7 +212,7 @@ $(document).ready(function(){
                            $('#zy3 tbody').append(`<tr>
                            <td><img src="./img/word.png" alt="" style="height:70px; width: 70px;"></td>
                            <td>${data.data[i].resourcename}</td>
-                           <td></td>
+                           <td>${data.data[i].depname}</td>
                            <td>${data.data[i].applytime.split('T')[0]}</td>
                            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
                            </tr>`);
@@ -220,7 +220,7 @@ $(document).ready(function(){
                            $('#zy3 tbody').append(`<tr>
                            <td><img src="./img/excal.png" alt="" style="height:70px; width: 70px;"></td>
                            <td>${data.data[i].resourcename}</td>
-                           <td></td>
+                           <td>${data.data[i].depname}</td>
                            <td>${data.data[i].applytime.split('T')[0]}</td>
                            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
                            </tr>`);
@@ -228,7 +228,7 @@ $(document).ready(function(){
                            $('#zy3 tbody').append(`<tr>
                            <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
                            <td>${data.data[i].resourcename}</td>
-                           <td></td>
+                           <td>${data.data[i].depname}</td>
                            <td>${data.data[i].applytime.split('T')[0]}</td>
                            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
                            </tr>`);
@@ -236,7 +236,7 @@ $(document).ready(function(){
                            $('#zy3 tbody').append(`<tr>
                            <td><img src="./img/txt.png" alt="" style="height:70px; width: 70px;"></td>
                            <td>${data.data[i].resourcename}</td>
-                           <td></td>
+                           <td>${data.data[i].depname}</td>
                            <td>${data.data[i].applytime.split('T')[0]}</td>
                            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
                            </tr>`);
