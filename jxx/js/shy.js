@@ -310,31 +310,4 @@ $(document).ready(function(){
           }
         });
        });
-    //打开关闭个人中心
-    $("#login").bind("click",function(){
-        $("#css1").css('display','inline-block');
-    });
-    $("#gb-p1").bind("click",function(){
-        $("#css1").css('display','none');
-    });
-    //加载个人中心数据
-    jiazaigeren();
-    //操作个人中心的按钮选项
-    $(".btn-tree1").bind("click",function(){
-      $("#myyixiazai,#myyitongguo,#myshenheing,#shenheing,#yitongguo,#yixiazai,#myyituihui,#yituihui").css("display","none");
-      if($(this).html() == "审核中"){
-       $("#myshenheing").css("display","block");
-       $("#shenheing").css("display","table");
-      }else if($(this).html() == "已通过"){
-        $("#myyitongguo").css("display","block");
-        $("#yitongguo").css("display","table");
-      }else if($(this).html() == "已下载"){
-        $("#myyixiazai").css("display","block");
-        $("#yixiazai").css("display","table");
-      }else if($(this).html() == "已退回"){
-        $("#myyituihui").css("display","block");
-        $("#yituihui").css("display","table");
-      };
-    });
-    
     });

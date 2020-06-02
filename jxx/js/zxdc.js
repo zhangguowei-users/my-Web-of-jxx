@@ -6,8 +6,6 @@ var resourceid;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
-    //个人中心数据加载
-    jiazaigeren();
     $("#inf-namenow-time").html(newTime());
     $("#time1").html(newTime());
     tiaozhuan();

@@ -6,8 +6,6 @@ var brry=0;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
-    //加载个人中心数据
-    jiazaigeren();
     $("#inf-namenow-time").html(newTime());
     tiaozhuan(); 
     $("#login").click(function(){
