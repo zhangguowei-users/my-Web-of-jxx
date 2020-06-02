@@ -438,8 +438,8 @@ function caidanChangeColor(className){
             });
             //移除地块
             $('#yc').click(function(){
-                //removeGraphics(globalQueryClass.map, DRAWGRAPHICS);//移除画好的几何图形
-                xx();
+                removeGraphics(globalQueryClass.map, DRAWGRAPHICS);//移除画好的几何图形
+                //removeEditToolbar();
             });
             drawPolygon(globalQueryClass.Draw,globalQueryClass.map,globalQueryClass.SimpleLineSymbol,globalQueryClass.SimpleFillSymbol,globalQueryClass.Color,globalQueryClass.Graphic,globalQueryClass.on,globalQueryClass.Point,globalQueryClass.TextSymbol,globalQueryClass.Font,globalQueryClass.graphicsLayer);//画面图形
 
