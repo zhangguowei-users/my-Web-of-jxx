@@ -135,6 +135,18 @@ $(document).ready(function(){
                     window.open(config.newip + config.newport+'/arcgis/PersonalCenter/Download?applyid='+$(this).attr('id'));
                     location.reload();
                   });
+                  $("td .shenhe").click(function(){
+                    applyid = $(this).attr("id");
+                    $("#time123").val($(this).parent().prev().prev().html());
+                    $("#phone123").val($(this).parent().prev().prev().prev().html());
+                    $("#shenqingyongtu123").val($(this).parent().prev().prev().prev().prev().children("div").html());
+                    $("#zhiwei123").val($(this).parent().prev().prev().prev().prev().prev().html());
+                    $("#shenqingbumen123").val($(this).parent().prev().prev().prev().prev().prev().prev().html());
+                    $("#shenqingren123").val($(this).parent().prev().prev().prev().prev().prev().prev().prev().html());
+                      $("#zy").css("display","none");
+                      $("#myPage").css("display","none");
+                      $("#shenheyemian").css("display","block");
+                   }); 
                 }
               });  
           }
@@ -212,8 +224,8 @@ $(document).ready(function(){
                   $.ajax({
                     url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=2&page='+page+'&limit=6&userid='+zhanghu1,
                     type: 'GET',
+                    async: false,
                     success: function (data){
-                      console.log(data)
                          for(var i=0;i<data.data.length;i++){
                          var urlname = data.data[i].url.split('.');
                          var length = urlname.length;
@@ -266,7 +278,7 @@ $(document).ready(function(){
                 });
             }
       });
-    //打开审核页面获取值                 
+    // //打开审核页面获取值                 
     $("td .shenhe").click(function(){
       applyid = $(this).attr("id");
       $("#time123").val($(this).parent().prev().prev().html());
