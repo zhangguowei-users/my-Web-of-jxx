@@ -6,8 +6,6 @@ var brry=0;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
-    //加载个人中心数据
-    jiazaigeren();
     $("#inf-namenow-time").html(newTime());
     tiaozhuan(); 
     $("#login").click(function(){
@@ -104,5 +102,38 @@ $("#gb-quanbu-bing").click(function(){
 });
 $("#gb-quanbu-zhu").click(function(){
   $(".quanbu-zhu").css("display","none");
+});
+//改变编辑地块按钮
+$("#yc").mousedown(function(ev){ //移除地块
+  $("#yc").removeClass("map30");
+  $("#yc").attr("src","./img/移除图像1.png");
+});
+$("#yc").mouseup(function(ev){
+  $("#yc").removeClass("map30");
+  $("#yc").attr("src","./img/移除图像.png");
+});
+$("#bj").click(function(){  //编辑地块
+  $("#bj").removeClass("map30");
+  if($("#bj").attr("src") == "./img/编辑.png"){
+      $("#bj").attr("src","./img/编辑1.png");
+  }else{
+      $("#bj").attr("src","./img/编辑.png");
+  };
+});
+$("#sf").click(function(){  //缩放地块
+  $("#sf").removeClass("map30");
+  if($("#sf").attr("src") == "./img/缩放地块.png"){
+      $("#sf").attr("src","./img/缩放地块1.png");
+  }else{
+      $("#sf").attr("src","./img/缩放地块.png");
+  };
+});
+$("#xz123").click(function(){  //缩放地块
+  $("#xz123").removeClass("map30");
+  if($("#xz123").attr("src") == "./img/旋转地块.png"){
+      $("#xz123").attr("src","./img/旋转地块1.png");
+  }else{
+      $("#xz123").attr("src","./img/旋转地块.png");
+  };
 });
 });

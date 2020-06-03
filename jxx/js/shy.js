@@ -7,10 +7,27 @@ $(document).ready(function(){
     tiaozhuan();
     huoquName();
     huakuaiMove(".btn-tree");
+    //部门tree下拉菜单
+    $('#bumen').bind('click',function(){
+      if($('#set-bumen').css('display') == 'none'){
+        $('#set-bumen').css('display','inline-block');
+      }else{
+        $('#set-bumen').css('display','none');
+      }
+    });
+    $(function(){
+      $("#bumen,#set-bumen").click(function(event){
+          event.stopPropagation();
+      });
+      $(document).click(function(){
+          $("#set-bumen").css("display","none");
+      });
+    });
     //操作菜单
     $(".btn-tree").click(function(){
-      $("#zy,#zy1,#zy2,#zy3,#delete,#myPage,#myPage2,#myPage3,#shenheyemian,.marge-down,.marge-down1").css("display","none");
+      $("#zy,#zy1,#zy2,#zy3,#delete,#myPage,#myPage2,#myPage3,#shenheyemian,.marge-down,.marge-down1,.marge-down2,#dlcs").css("display","none");
       if($(this).html() == "审核管理"){
+        $(".marge-down2").css("display","inline");
         $("#zy").css("display","table");
         $("#myPage").css("display","block");
         $(".middle1 div").html($(this).html());
@@ -18,6 +35,7 @@ $(document).ready(function(){
         $("#zy1").css("display","block");
         $(".middle1 div").html($(this).html());
       }else if($(this).html() == "浏览统计"){
+       $('#dlcs').css('display','inline-block');
        $("#zy2").css("display","table");
        $(".marge-down1").css("display","inline");
        $("#myPage2").css("display","block");
@@ -29,9 +47,19 @@ $(document).ready(function(){
       }
    });
     //table同步加载(管理员)
+    //个人资料查询与修改
+    $.ajax({
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPerInfo?userid='+zhanghu1,
+      type:'GET',
+      async:false,
+      success:function(data){
+       console.log(data.data);
+       
+      }
+    });
     //审核管理
     $.ajax({
-      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page=1&limit=16',
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page=1&limit=12',
       type: 'GET',
       async: false,
       success: function (data){
@@ -47,17 +75,6 @@ $(document).ready(function(){
             <td>已申请</td>
             <td><button class="shenhe" id="${data.data[i].applyid}">审核</button></td>
             </tr>`); 
-          }else if(data.data[i].states == 1){ //已通过
-            $("#zy").append(`<tr>
-            <td>${data.data[i].name}</td>
-            <td>${data.data[i].depname}</td>
-            <td>${data.data[i].postname}</td>
-            <td><div>${data.data[i].applyreason}</div></td>
-            <td>${data.data[i].phone}</td>
-            <td>${data.data[i].applytime.split("T")[0]}</td>
-            <td>已通过</td>
-            <td><a><button class='down1' id='${data.data[i].applyid}'>下载</button></a></td>
-            </tr>`);
           }else if(data.data[i].states == -1){ //已退回
             $("#zy").append(`<tr>
             <td>${data.data[i].name}</td>
@@ -71,14 +88,10 @@ $(document).ready(function(){
             </tr>`);
           };           
         };
-        $('.down1').bind('click',function(){
-          window.open(config.newip + config.newport+'/arcgis/PersonalCenter/Download?applyid='+$(this).attr('id'));
-          location.reload();
-        });
         $("#myPage").sPage({
           page:1,//当前页码，必填
           total:data.count,//数据总条数，必填
-          pageSize:16,//每页显示多少条数据，默认10条
+          pageSize:12,//每页显示多少条数据，默认10条
           totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
           showTotal:true,//是否显示总条数，默认关闭：false
           showSkip:true,//是否显示跳页，默认关闭：false
@@ -88,7 +101,7 @@ $(document).ready(function(){
           backFun:function(page){
               //点击分页按钮回调函数，返回当前页码
               $.ajax({
-                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page='+page+'&limit=16',
+                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page='+page+'&limit=12',
                 type: 'GET',
                 async: false,
                 success: function (data){
@@ -105,17 +118,6 @@ $(document).ready(function(){
                       <td>已申请</td>
                       <td><button class="shenhe" id="${data.data[i].applyid}">审核</button></td>
                       </tr>`); 
-                    }else if(data.data[i].states == 1){ //已通过
-                      $("#zy").append(`<tr>
-                      <td>${data.data[i].name}</td>
-                      <td>${data.data[i].depname}</td>
-                      <td>${data.data[i].postname}</td>
-                      <td><div>${data.data[i].applyreason}</div></td>
-                      <td>${data.data[i].phone}</td>
-                      <td>${data.data[i].applytime.split("T")[0]}</td>
-                      <td>已通过</td>
-                      <td><a><button class='down1' id='${data.data[i].applyid}'>下载</button></a></td>
-                      </tr>`);
                     }else if(data.data[i].states == -1){ //已退回
                       $("#zy").append(`<tr>
                       <td>${data.data[i].name}</td>
@@ -129,10 +131,18 @@ $(document).ready(function(){
                       </tr>`);
                     };           
                   };
-                  $('.down1').bind('click',function(){
-                    window.open(config.newip + config.newport+'/arcgis/PersonalCenter/Download?applyid='+$(this).attr('id'));
-                    location.reload();
-                  });
+                  $("td .shenhe").click(function(){
+                    applyid = $(this).attr("id");
+                    $("#time123").val($(this).parent().prev().prev().html());
+                    $("#phone123").val($(this).parent().prev().prev().prev().html());
+                    $("#shenqingyongtu123").val($(this).parent().prev().prev().prev().prev().children("div").html());
+                    $("#zhiwei123").val($(this).parent().prev().prev().prev().prev().prev().html());
+                    $("#shenqingbumen123").val($(this).parent().prev().prev().prev().prev().prev().prev().html());
+                    $("#shenqingren123").val($(this).parent().prev().prev().prev().prev().prev().prev().prev().html());
+                      $("#zy").css("display","none");
+                      $("#myPage").css("display","none");
+                      $("#shenheyemian").css("display","block");
+                   }); 
                 }
               });  
           }
@@ -143,7 +153,7 @@ $(document).ready(function(){
     
     //下载管理
     $.ajax({
-      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=2&page=1&limit=6&userid='+zhanghu1,
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=1&page=1&limit=6&userid='+zhanghu1,
       type: 'GET',
       async:false,
       success: function (data) {
@@ -155,7 +165,7 @@ $(document).ready(function(){
             $('#zy3 tbody').append(`<tr>
             <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
             <td>${data.data[i].resourcename}</td>
-            <td></td>
+            <td>${data.data[i].depname}</td>
             <td>${data.data[i].applytime.split('T')[0]}</td>
             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
             </tr>`);
@@ -163,7 +173,7 @@ $(document).ready(function(){
             $('#zy3 tbody').append(`<tr>
             <td><img src="./img/word.png" alt="" style="height:70px; width: 70px;"></td>
             <td>${data.data[i].resourcename}</td>
-            <td></td>
+            <td>${data.data[i].depname}</td>
             <td>${data.data[i].applytime.split('T')[0]}</td>
             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
             </tr>`);
@@ -171,7 +181,7 @@ $(document).ready(function(){
             $('#zy3 tbody').append(`<tr>
             <td><img src="./img/excal.png" alt="" style="height:70px; width: 70px;"></td>
             <td>${data.data[i].resourcename}</td>
-            <td></td>
+            <td>${data.data[i].depname}</td>
             <td>${data.data[i].applytime.split('T')[0]}</td>
             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
             </tr>`);
@@ -179,7 +189,7 @@ $(document).ready(function(){
             $('#zy3 tbody').append(`<tr>
             <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
             <td>${data.data[i].resourcename}</td>
-            <td></td>
+            <td>${data.data[i].depname}</td>
             <td>${data.data[i].applytime.split('T')[0]}</td>
             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
             </tr>`);
@@ -187,7 +197,7 @@ $(document).ready(function(){
             $('#zy3 tbody').append(`<tr>
             <td><img src="./img/txt.png" alt="" style="height:70px; width: 70px;"></td>
             <td>${data.data[i].resourcename}</td>
-            <td></td>
+            <td>${data.data[i].depname}</td>
             <td>${data.data[i].applytime.split('T')[0]}</td>
             <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
             </tr>`);
@@ -207,10 +217,10 @@ $(document).ready(function(){
                   //点击分页按钮回调函数，返回当前页码
                   $('#zy3 tbody').children().remove();
                   $.ajax({
-                    url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=2&page='+page+'&limit=6&userid='+zhanghu1,
+                    url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=1&page='+page+'&limit=6&userid='+zhanghu1,
                     type: 'GET',
+                    async: false,
                     success: function (data){
-                      console.log(data)
                          for(var i=0;i<data.data.length;i++){
                          var urlname = data.data[i].url.split('.');
                          var length = urlname.length;
@@ -219,7 +229,7 @@ $(document).ready(function(){
                            $('#zy3 tbody').append(`<tr>
                            <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
                            <td>${data.data[i].resourcename}</td>
-                           <td></td>
+                           <td>${data.data[i].depname}</td>
                            <td>${data.data[i].applytime.split('T')[0]}</td>
                            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
                            </tr>`);
@@ -227,7 +237,7 @@ $(document).ready(function(){
                            $('#zy3 tbody').append(`<tr>
                            <td><img src="./img/word.png" alt="" style="height:70px; width: 70px;"></td>
                            <td>${data.data[i].resourcename}</td>
-                           <td></td>
+                           <td>${data.data[i].depname}</td>
                            <td>${data.data[i].applytime.split('T')[0]}</td>
                            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
                            </tr>`);
@@ -235,7 +245,7 @@ $(document).ready(function(){
                            $('#zy3 tbody').append(`<tr>
                            <td><img src="./img/excal.png" alt="" style="height:70px; width: 70px;"></td>
                            <td>${data.data[i].resourcename}</td>
-                           <td></td>
+                           <td>${data.data[i].depname}</td>
                            <td>${data.data[i].applytime.split('T')[0]}</td>
                            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
                            </tr>`);
@@ -243,7 +253,7 @@ $(document).ready(function(){
                            $('#zy3 tbody').append(`<tr>
                            <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
                            <td>${data.data[i].resourcename}</td>
-                           <td></td>
+                           <td>${data.data[i].depname}</td>
                            <td>${data.data[i].applytime.split('T')[0]}</td>
                            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
                            </tr>`);
@@ -251,7 +261,7 @@ $(document).ready(function(){
                            $('#zy3 tbody').append(`<tr>
                            <td><img src="./img/txt.png" alt="" style="height:70px; width: 70px;"></td>
                            <td>${data.data[i].resourcename}</td>
-                           <td></td>
+                           <td>${data.data[i].depname}</td>
                            <td>${data.data[i].applytime.split('T')[0]}</td>
                            <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
                            </tr>`);
@@ -263,7 +273,7 @@ $(document).ready(function(){
                 });
             }
       });
-    //打开审核页面获取值                 
+    // //打开审核页面获取值                 
     $("td .shenhe").click(function(){
       applyid = $(this).attr("id");
       $("#time123").val($(this).parent().prev().prev().html());
@@ -307,31 +317,4 @@ $(document).ready(function(){
           }
         });
        });
-    //打开关闭个人中心
-    $("#login").bind("click",function(){
-        $("#css1").css('display','inline-block');
-    });
-    $("#gb-p1").bind("click",function(){
-        $("#css1").css('display','none');
-    });
-    //加载个人中心数据
-    jiazaigeren();
-    //操作个人中心的按钮选项
-    $(".btn-tree1").bind("click",function(){
-      $("#myyixiazai,#myyitongguo,#myshenheing,#shenheing,#yitongguo,#yixiazai,#myyituihui,#yituihui").css("display","none");
-      if($(this).html() == "审核中"){
-       $("#myshenheing").css("display","block");
-       $("#shenheing").css("display","table");
-      }else if($(this).html() == "已通过"){
-        $("#myyitongguo").css("display","block");
-        $("#yitongguo").css("display","table");
-      }else if($(this).html() == "已下载"){
-        $("#myyixiazai").css("display","block");
-        $("#yixiazai").css("display","table");
-      }else if($(this).html() == "已退回"){
-        $("#myyituihui").css("display","block");
-        $("#yituihui").css("display","table");
-      };
-    });
-    
     });

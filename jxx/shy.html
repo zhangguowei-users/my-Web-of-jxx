@@ -10,52 +10,6 @@
     <link rel="stylesheet" href="./css/shy.css"> 
 </head>
 <body>
-  <div id="css1">
-    <div id="gb-p1">X</div>
-    <div class="gr">
-      <div class="ce1">个人中心</div>
-      <div class="xianshi1">
-        <div class="left1">
-          <div class="btn-tree1">审核中</div>
-          <div class="btn-tree1">已通过</div>
-          <div class="btn-tree1">已下载</div>
-          <div class="btn-tree1">已退回</div>
-        </div><div class="right1">
-          <table id="shenheing">
-            <tr>
-               <th>文件名称</th>
-               <th>申请状态</th>
-            </tr>
-          </table>
-          <div id="myshenheing" style="position:absolute;bottom:1%;right:15%;"></div>
-          <table id="yitongguo">
-            <tr>
-               <th>文件名称</th>
-               <th>申请状态</th>
-               <th>操作</th>
-            </tr>
-          </table>
-          <div id="myyitongguo" style="position:absolute;bottom:1%;right:15%;display: none;"></div>
-          <table id="yixiazai">
-            <tr>
-               <th>文件名称</th>
-               <th>申请状态</th>
-               <th>操作</th>
-            </tr>
-          </table>
-          <div id="myyixiazai" style="position:absolute;bottom:1%;right:15%;display: none;"></div>
-          <table id="yituihui">
-            <tr>
-               <th>文件名称</th>
-               <th>申请状态</th>
-            </tr>
-          </table>
-          <div id="myyituihui" style="position:absolute;bottom:1%;right:15%;display: none;"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
     <div id="top">
         <div class="logo"></div>
         <div class="text"></div>
@@ -79,7 +33,7 @@
     </div>
     <div>
         <div class="dh-bottom sh1">
-            <div class="middle"><div class="middle-s"><input class="ser-c ffive" type="text"/><input class="ser-b sfive" type="button"></div></div><div class="middle1"><div>个人资料管理</div></div>
+            <div class="middle"><div class="middle-s"><input class="ser-c ffive" type="text" placeholder="搜索菜单..."/><input class="ser-b sfive" type="button"></div></div><div class="middle1"><div>个人资料管理</div></div>
             <div class="caidan dfive"><div class="gd"><div class="gd-n wone"></div></div><div class="caidan1 qfive">
                 <div class="qtwo filetree treeview-famfamfam" id="browser">
                     <br>
@@ -95,6 +49,7 @@
         </div>
         <div id="quanbu123" style="display:inline-block;width:1518px;height:93.6%;position: absolute;right:0.1%;bottom: 0;">
             <div class="xianshi jfive">
+              <span class='marge-down2'>审核管理</span>
                 <table id="zy">
                     <tr>
                       <th>申请人</th>
@@ -110,24 +65,25 @@
                   <div id="myPage" style="position: absolute;bottom:1%;left:20%;display: none;"></div>
                   <div id="zy1">
                   <span style="position: absolute;font-size:24px;font-family:Source Han Sans CN;font-weight:400;color:rgba(51,51,51,1);left:630px;top:42px;">个人资料管理</span>
-                  <span style='position: absolute;font-size:20px;;font-size:400;letter-spacing:35.88px;left:104px;top:143px;'>头像</span>
-                  <div style='display: inline-block;position: absolute;outline:none;left:225px;top:133.5px;width: 368px;height:50px;line-height: 50px;font-size:18px;' ><input id='sc' type="file" style="font-size:18px;margin-left: 5%;width: 90%;outline: none;" /></div>
-                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:59px;top:240px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:105px;top:239px;'>真实姓名</span>
-                  <input type="text" name="" id="realname" style="outline:none;position: absolute;width: 368px;height:50px;left:225px;top:224px;border:1px #d4d4d4 solid;font-size: 18px;" placeholder="请输入真实姓名" />
-                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:58px;top:331px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:106px;top:330px;'>身份证号</span>
-                  <input type="text" name="" id="shenfenzhneg" style="outline:none;position: absolute;width: 367.1px;height:50px;left:226px;top:315px;border:1px #d4d4d4 solid;font-size: 18px;" placeholder="请输入身份证号" />
-                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:59px;top:422px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:105px;top:421px;letter-spacing:35.88px;'>性别</span>
-                  <select type="text" name="" id="sex" style="outline:none;position: absolute;width: 367.3px;height:50px;left:226px;top:406px;border:1px #d4d4d4 solid;font-size: 18px;"><option value="nan">男</option><option value="nv">女</option></select>
-                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:59px;top:515px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:104px;top:513px;letter-spacing:8px;'>手机号</span>
-                  <input type="text" name="" id="phone6" style="outline:none;position: absolute;width: 367.3px;height:50px;left:225px;top:498px;border:1px #d4d4d4 solid;font-size: 18px;" placeholder="请输入手机号" />
-                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:775px;top:241px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:823px;top:240px;'>所在地区</span>
-                  <select type="text" name="" id="city" style="outline:none;position: absolute;width: 367.3px;height:50px;left:946px;top:225px;border:1px #d4d4d4 solid;font-size: 18px;"><option value="jxx">集贤县</option><option value="nv">荣兴镇</option></select>
-                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:775px;top:331px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:824px;top:330px;letter-spacing:35.88px;'>邮箱</span>
-                  <input type="text" name="" id="email" style="outline:none;position: absolute;width: 367.3px;height:50px;left:946px;top:315px;border:1px #d4d4d4 solid;font-size: 18px;" placeholder="请输入您常用的邮箱" />
-                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:775px;top:421px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:823px;top:419px;letter-spacing:35.88px;'>部门</span>
-                  <input type="text" name="" id="bumen" style="outline:none;position: absolute;width: 367.3px;height:50px;left:946px;top:404px;border:1px #d4d4d4 solid;font-size: 18px;" placeholder="请输入您的部门" />
-                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:775px;top:510px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:823px;top:509px;letter-spacing:35.88px;'>年龄</span>
-                  <select type="text" name="" id="age" style="outline:none;position: absolute;width:118px;height:50px;left:946px;top:494px;border:1px #d4d4d4 solid;font-size: 18px;">
+                  <!-- <span style='position: absolute;font-size:20px;;font-size:400;letter-spacing:35.88px;left:104px;top:143px;'>头像</span>
+                  <div style='display: inline-block;position: absolute;outline:none;left:225px;top:133.5px;width: 368px;height:50px;line-height: 50px;font-size:18px;' ><input id='sc' type="file" style="font-size:18px;margin-left: 5%;width: 90%;outline: none;" /></div> -->
+                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:59px;top:140px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:105px;top:139px;'>真实姓名</span>
+                  <input type="text" name="" id="realname" style="outline:none;position: absolute;width: 368px;height:50px;left:225px;top:124px;border:1px #d4d4d4 solid;font-size: 18px;" placeholder="请输入真实姓名" />
+                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:58px;top:231px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:106px;top:230px;'>身份证号</span>
+                  <input type="text" name="" id="shenfenzhneg" style="outline:none;position: absolute;width: 367.1px;height:50px;left:226px;top:215px;border:1px #d4d4d4 solid;font-size: 18px;" placeholder="请输入身份证号" />
+                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:59px;top:322px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:105px;top:321px;letter-spacing:35.88px;'>性别</span>
+                  <select type="text" name="" id="sex" style="outline:none;position: absolute;width: 367.3px;height:50px;left:226px;top:306px;border:1px #d4d4d4 solid;font-size: 18px;"><option value="男">男</option><option value="女">女</option></select>
+                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:59px;top:415px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:104px;top:413px;letter-spacing:8px;'>手机号</span>
+                  <input type="text" name="" id="phone6" style="outline:none;position: absolute;width: 367.3px;height:50px;left:225px;top:398px;border:1px #d4d4d4 solid;font-size: 18px;" placeholder="请输入手机号" />
+                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:775px;top:141px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:823px;top:140px;'>所在地区</span>
+                  <select type="text" name="" id="city" style="outline:none;position: absolute;width:109.1px;height:50px;left:946px;top:125px;border:1px #d4d4d4 solid;font-size: 18px;"><option value="集贤县">集贤县</option></select><select type="text" name="" id="city1" style="outline:none;position: absolute;width:109.1px;height:50px;left:1075.1px;top:125px;border:1px #d4d4d4 solid;font-size: 18px;"></select><select type="text" name="" id="city2" style="outline:none;position: absolute;width:109.1px;height:50px;left:1204.2px;top:125px;border:1px #d4d4d4 solid;font-size: 18px;"></select>
+                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:775px;top:231px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:824px;top:230px;letter-spacing:35.88px;'>邮箱</span>
+                  <input type="text" name="" id="email" style="outline:none;position: absolute;width: 367.3px;height:50px;left:946px;top:215px;border:1px #d4d4d4 solid;font-size: 18px;" placeholder="请输入您常用的邮箱" />
+                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:775px;top:321px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:823px;top:319px;letter-spacing:35.88px;'>部门</span>
+                  <div name="" id="bumen" style="outline:none;position: absolute;width: 367.3px;height:50px;left:946px;top:304px;border:1px #d4d4d4 solid;font-size: 18px;"></div>
+                  <div id='set-bumen' style='display:none;position: absolute;width: 367.3px;height:250px;left:946px;top:354px;border:1px #d4d4d4 solid;z-index: 1;background-color: white;overflow: auto;'></div>
+                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:775px;top:410px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:823px;top:409px;letter-spacing:35.88px;'>年龄</span>
+                  <select type="text" name="" id="age" style="outline:none;position: absolute;width:118px;height:50px;left:946px;top:394px;border:1px #d4d4d4 solid;font-size: 18px;">
                   <option value="20">20</option>
                   <option value="21">21</option>
                   <option value="22">22</option>
@@ -175,9 +131,12 @@
                   <option value="64">64</option>
                   <option value="65">65</option>
                   </select>
+                  <span style="color: #f94c24;font-size:xx-large;position: absolute;left:59px;top:501px;">*</span><span style='font-size: 20px;font-weight: 400;color:rgba(53,53,53,1);font-family:Source Han Sans CN;position: absolute;left:104px;top:500px;letter-spacing:35.88px;'>职位</span>
+                  <select name="" id="zhiwei" style="outline:none;position: absolute;width: 367.3px;height:50px;left:226px;top:485px;border:1px #d4d4d4 solid;font-size: 18px;"></select>
                   <div style="display: inline-block;width: 154px;height: 62px;background-color: #5aaffa;border-radius: 12px;color: white;font-size: 24px;line-height: 62px;text-align: center;position: absolute;left:625px;top:640px;">保存</div>
                   </div>
                   <span class='marge-down1'>浏览统计</span>
+                  <div id='dlcs' style="display:none;position: absolute;left:1169px;top:75px;font-size: 20px;">今日登录次数:<span id="denglucishu" style='font-size: 19px;'>3</span></div>
                     <table id="zy2">
                       <tr>
                         <th>时间</th>
@@ -196,7 +155,7 @@
                             <th>文档格式</th>
                             <th>名称</th>
                             <th>创建部门</th>
-                            <th>下载时间</th>
+                            <th>申请时间</th>
                             <th>操作</th>
                           </tr>
                         </thead>

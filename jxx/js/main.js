@@ -144,28 +144,7 @@ function caidanChangeColor(className){
             if(glorolename.indexOf("管理员") >= 0){
                 location.href = "./shy.html";
             }else{
-                //获取显示申请资源
-                $("#css2").css("display","inline-block");
-                $("#gb-p2").bind("click",function(){
-                $("#css2").css("display","none");
-                });
-                //操作个人中心的按钮选项
-                $(".btn-tree1").bind("click",function(){
-                    $("#myyixiazai,#myyitongguo,#myshenheing,#shenheing,#yitongguo,#yixiazai,#myyituihui,#yituihui").css("display","none");
-                    if($(this).html() == "审核中"){
-                     $("#myshenheing").css("display","block");
-                     $("#shenheing").css("display","table");
-                    }else if($(this).html() == "已通过"){
-                      $("#myyitongguo").css("display","block");
-                      $("#yitongguo").css("display","table");
-                    }else if($(this).html() == "已下载"){
-                      $("#myyixiazai").css("display","block");
-                      $("#yixiazai").css("display","table");
-                    }else if($(this).html() == "已退回"){
-                      $("#myyituihui").css("display","block");
-                      $("#yituihui").css("display","table");
-                    }
-                  });
+                location.href = "./geren.html"; 
             }
         },
         error:function(){
@@ -240,6 +219,7 @@ function caidanChangeColor(className){
         $(`${treeId}`).children().remove();
         tree(data,`${treeId}`);
         $(`${treeId}`).treeview();
+        table_wendang();
         var fone = $(`${queryInput}`).val();
         var sfqx = $(".file,.folder");
         huakuaiMove(".folder");
@@ -492,7 +472,7 @@ function caidanChangeColor(className){
         };
       };
 };
-//测试
+//select标签
 function option(data,classN){
     for(var i=0; i<data.length;i++){
         if(data[i].subAdministrations.length != 0){
@@ -503,8 +483,9 @@ function option(data,classN){
         }
     }
 };
-$("#setting").click(function(){
-    location.href = "bigscreen.html";
+//大屏幕
+$('#setting').bind('click',function(){
+  open('./bigscreen.html');
 });
 //退出登录
 $("#gb").click(function(){
@@ -521,178 +502,154 @@ $("#gb").click(function(){
         }
     });
 });
-//个人中心数据加载
-function jiazaigeren(){
-            $("#shenheing,#yitongguo,#yixiazai,#yituihui").children().children().not(':first-child').remove();
-            $.ajax({
-                url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=0&page=1&limit=12&userid='+zhanghu1,
-                type: 'GET',
-                async: false,
-                success: function (data) {
-                    $("#shenheing").children().children().not(':first-child');
-                    for(var i=0;i<data.data.length;i++){
-                    $("#shenheing").append(`<tr>
-                    <td><div>${data.data[i].resourcename}</div></td>
-                    <td>审核中</td>
-                    </tr>`);
-                    };
-                    $("#myshenheing").sPage({
-                    page:1,//当前页码，必填
-                    total:data.count,//数据总条数，必填
-                    pageSize:12,//每页显示多少条数据，默认10条
-                    totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-                    showTotal:true,//是否显示总条数，默认关闭：false
-                    showSkip:true,//是否显示跳页，默认关闭：false
-                    showPN:true,//是否显示上下翻页，默认开启：true
-                    prevPage:"上一页",//上翻页文字描述，默认“上一页”
-                    nextPage:"下一页",//下翻页文字描述，默认“下一页”
-                    backFun:function(page){
-                        //点击分页按钮回调函数，返回当前页码
-                        $.ajax({
-                            url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=0&page='+page+'&limit=12&userid='+zhanghu1,
-                            type: 'GET',
-                            success: function (data){
-                            $("#shenheing").children().children().not(':first-child').remove();
-                            for(var i=0;i<data.data.length;i++){
-                                $("#shenheing").append(`<tr>
-                                <td><div>${data.data[i].resourcename}</div></td>
-                                <td>审核中</td>
-                                </tr>`);
-                            };
-                            }
-                        });
-                    }
-                    });   
-                    
-                }
-            });
+//文档共享通过点击tree操作table
+function table_wendang(){
+    $('.folder,.file').bind('click',function(){
+        var menueid=$(this).attr('menueid');
+        $('#zx tbody').children().remove();
         $.ajax({
-          url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=1&page=1&limit=12&userid='+zhanghu1,
-          type: 'GET',
-          success: function (data) {
-              for(var i=0;i<data.data.length;i++){
-                 $("#yitongguo").append(`<tr>
-                 <td><div>${data.data[i].resourcename}</div></td>
-                 <td>已通过</td>
-                 <td><a><button class='down' id='${data.data[i].applyid}'>下载</button></a></td>
-                 </tr>`);
-              };
-              $('.down').click(function() {
-                 window.open(config.newip + config.newport+'/arcgis/PersonalCenter/Download?applyid='+$(this).attr('id'));
-                 location.reload(); 
-              });
-              $("#myyitongguo").sPage({
-                page:1,//当前页码，必填
-                total:data.count,//数据总条数，必填
-                pageSize:12,//每页显示多少条数据，默认10条
-                totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-                showTotal:true,//是否显示总条数，默认关闭：false
-                showSkip:true,//是否显示跳页，默认关闭：false
-                showPN:true,//是否显示上下翻页，默认开启：true
-                prevPage:"上一页",//上翻页文字描述，默认“上一页”
-                nextPage:"下一页",//下翻页文字描述，默认“下一页”
-                backFun:function(page){
-                    //点击分页按钮回调函数，返回当前页码
-                    $.ajax({
-                      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=1&page='+page+'&limit=12&userid='+zhanghu1,
-                      type: 'GET',
-                      success: function (data){
-                    $("#yitongguo").children().children().not(':first-child').remove();
-                    for(var i=0;i<data.data.length;i++){
-                      $("#yitongguo").append(`<tr>
-                      <td><div>${data.data[i].resourcename}</div></td>
-                      <td>已通过</td>
-                      <td><a><button class='down' id='${data.data[i].applyid}'>下载</button></a></td>
-                      </tr>`);
-                   };
-                   $('.down').click(function() {
-                    window.open(config.newip + config.newport+'/arcgis/PersonalCenter/Download?applyid='+$(this).attr('id'));
-                    location.reload(); 
-                  });
-                  }
-                });
-                }
-              });
-            }
-          });
-          $.ajax({
-            url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=2&page=1&limit=12&userid='+zhanghu1,
-            type: 'GET',
-            success: function (data) {
-                for(var i=0;i<data.data.length;i++){
-                   $("#yixiazai").append(`<tr>
-                   <td><div>${data.data[i].resourcename}</div></td>
-                   <td>已下载</td>
-                   <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button>下载</button></a></td>
-                   </tr>`);
-                };
-                $("#myyixiazai").sPage({
-                  page:1,//当前页码，必填
-                  total:data.count,//数据总条数，必填
-                  pageSize:12,//每页显示多少条数据，默认10条
-                  totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-                  showTotal:true,//是否显示总条数，默认关闭：false
-                  showSkip:true,//是否显示跳页，默认关闭：false
-                  showPN:true,//是否显示上下翻页，默认开启：true
-                  prevPage:"上一页",//上翻页文字描述，默认“上一页”
-                  nextPage:"下一页",//下翻页文字描述，默认“下一页”
-                  backFun:function(page){
-                      //点击分页按钮回调函数，返回当前页码
-                      $.ajax({
-                        url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=2&page='+page+'&limit=12&userid='+zhanghu1,
-                        type: 'GET',
-                        success: function (data){
-                      $("#yixiazai").children().children().not(':first-child').remove();
-                      for(var i=0;i<data.data.length;i++){
-                        $("#yixiazai").append(`<tr>
-                        <td><div>${data.data[i].resourcename}</div></td>
-                        <td>已下载</td>
-                        <td><a href='${config.newip + config.newport}/arcgis/PersonalCenter/Download?applyid=${data.data[i].applyid}'><button class='down'>下载</button></a></td>
-                        </tr>`);
-                     };
-                    }
-                  });
-                  }
-                });
-              }
-            });
-            $.ajax({
-              url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=-1&page=1&limit=12&userid='+zhanghu1,
-              type: 'GET',
-              success: function (data) {
-                  for(var i=0;i<data.data.length;i++){
-                     $("#yituihui").append(`<tr>
-                     <td><div>${data.data[i].resourcename}</div></td>
-                     <td>已退回</td>
-                     </tr>`);
-                  };
-                  $("#myyituihui").sPage({
-                    page:1,//当前页码，必填
-                    total:data.count,//数据总条数，必填
-                    pageSize:12,//每页显示多少条数据，默认10条
-                    totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-                    showTotal:true,//是否显示总条数，默认关闭：false
-                    showSkip:true,//是否显示跳页，默认关闭：false
-                    showPN:true,//是否显示上下翻页，默认开启：true
-                    prevPage:"上一页",//上翻页文字描述，默认“上一页”
-                    nextPage:"下一页",//下翻页文字描述，默认“下一页”
-                    backFun:function(page){
-                        //点击分页按钮回调函数，返回当前页码
-                        $.ajax({
-                          url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?states=-1&page='+page+'&limit=12&userid='+zhanghu1,
-                          type: 'GET',
-                          success: function (data){
-                        $("#yituihui").children().children().not(':first-child').remove();
-                        for(var i=0;i<data.data.length;i++){
-                          $("#yituihui").append(`<tr>
-                          <td><div>${data.data[i].resourcename}</div></td>
-                          <td>已退回</td>
-                          </tr>`);
+         url:config.newip + config.newport + '/arcgis/DocumentSharing/GetPageListByCondition?page=1&limit=6&typeid='+menueid,
+         type: 'get',
+         async: false,
+         success:function (data) {
+           for(var i=0;i<data.data.length;i++){
+             var urlname = data.data[i].url.split('.');
+             var length = urlname.length;
+             var format = urlname[length-1];
+             if(format == 'pdf'){
+               $('#zx tbody').append(`<tr>
+               <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+               <td>${data.data[i].resourcetypename}</td>
+               <td>${data.data[i].resourcename}</td>
+               <td>${data.data[i].sender}</td>
+               <td>${data.data[i].createtime.split('T')[0]}</td>
+               <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
+               </tr>`);
+             }else if(format == 'doc'|| format == 'docx'){
+               $('#zx tbody').append(`<tr>
+               <td><img src="./img/word.png" alt="" style="height:70px; width: 70px;"></td>
+               <td>${data.data[i].resourcetypename}</td>
+               <td>${data.data[i].resourcename}</td>
+               <td>${data.data[i].sender}</td>
+               <td>${data.data[i].createtime.split('T')[0]}</td>
+               <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
+               </tr>`);
+             }else if(format == 'xlsx' || format == 'xls'){
+               $('#zx tbody').append(`<tr>
+               <td><img src="./img/excal.png" alt="" style="height:70px; width: 70px;"></td>
+               <td>${data.data[i].resourcetypename}</td>
+               <td>${data.data[i].resourcename}</td>
+               <td>${data.data[i].sender}</td>
+               <td>${data.data[i].createtime.split('T')[0]}</td>
+               <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
+               </tr>`);
+             }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+               $('#zx tbody').append(`<tr>
+               <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
+               <td>${data.data[i].resourcetypename}</td>
+               <td>${data.data[i].resourcename}</td>
+               <td>${data.data[i].sender}</td>
+               <td>${data.data[i].createtime.split('T')[0]}</td>
+               <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
+               </tr>`);
+             }else{
+               $('#zx tbody').append(`<tr>
+               <td><img src="./img/txt.png" alt="" style="height:70px; width: 70px;"></td>
+               <td>${data.data[i].resourcetypename}</td>
+               <td>${data.data[i].resourcename}</td>
+               <td>${data.data[i].sender}</td>
+               <td>${data.data[i].createtime.split('T')[0]}</td>
+               <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
+               </tr>`);
+             };
+           };
+           
+           $("#myPage").sPage({
+             page:1,//当前页码，必填
+             total:data.count,//数据总条数，必填
+             pageSize:6,//每页显示多少条数据，默认10条
+             totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+             showTotal:true,//是否显示总条数，默认关闭：false
+             showSkip:true,//是否显示跳页，默认关闭：false
+             showPN:true,//是否显示上下翻页，默认开启：true
+             prevPage:"上一页",//上翻页文字描述，默认“上一页”
+             nextPage:"下一页",//下翻页文字描述，默认“下一页”
+             backFun:function(page){
+                 //点击分页按钮回调函数，返回当前页码
+                 console.log(page);
+                 $('#zx tbody').children().remove();
+                 $.ajax({
+                   url:config.newip + config.newport + '/arcgis/DocumentSharing/GetPageListByCondition?page='+page+'&limit=6&typeid='+menueid,
+                   type: 'get',
+                   async: false,
+                   success:function(data){
+                     $('#zx tbody').children().remove();
+                     for(var i=0;i<data.data.length;i++){
+                       var urlname = data.data[i].url.split('.');
+                       var length = urlname.length;
+                       var format = urlname[length-1];
+                       if(format == 'pdf'){
+                         $('#zx tbody').append(`<tr>
+                         <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
+                         <td>${data.data[i].resourcetypename}</td>
+                         <td>${data.data[i].resourcename}</td>
+                         <td>${data.data[i].sender}</td>
+                         <td>${data.data[i].createtime.split('T')[0]}</td>
+                         <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
+                         </tr>`);
+                       }else if(format == 'doc'|| format == 'docx'){
+                         $('#zx tbody').append(`<tr>
+                         <td><img src="./img/word.png" alt="" style="height:70px; width: 70px;"></td>
+                         <td>${data.data[i].resourcetypename}</td>
+                         <td>${data.data[i].resourcename}</td>
+                         <td>${data.data[i].sender}</td>
+                         <td>${data.data[i].createtime.split('T')[0]}</td>
+                         <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
+                         </tr>`);
+                       }else if(format == 'xlsx' || format == 'xls'){
+                         $('#zx tbody').append(`<tr>
+                         <td><img src="./img/excal.png" alt="" style="height:70px; width: 70px;"></td>
+                         <td>${data.data[i].resourcetypename}</td>
+                         <td>${data.data[i].resourcename}</td>
+                         <td>${data.data[i].sender}</td>
+                         <td>${data.data[i].createtime.split('T')[0]}</td>
+                         <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
+                         </tr>`);
+                       }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+                         $('#zx tbody').append(`<tr>
+                         <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
+                         <td>${data.data[i].resourcetypename}</td>
+                         <td>${data.data[i].resourcename}</td>
+                         <td>${data.data[i].sender}</td>
+                         <td>${data.data[i].createtime.split('T')[0]}</td>
+                         <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
+                         </tr>`);
+                       }else{
+                         $('#zx tbody').append(`<tr>
+                         <td><img src="./img/txt.png" alt="" style="height:70px; width: 70px;"></td>
+                         <td>${data.data[i].resourcetypename}</td>
+                         <td>${data.data[i].resourcename}</td>
+                         <td>${data.data[i].sender}</td>
+                         <td>${data.data[i].createtime.split('T')[0]}</td>
+                         <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
+                         </tr>`);
                        };
-                      }
-                    });
-                    }
-                  });
-                }
-              });
-};
+                     };
+                   }
+                 });
+             }
+           });
+         }
+        });
+        //文件的下载申请
+        $('.down').bind('click',function(){
+         $('#sq-b').children().remove();
+         $("#css1").css("display","inline-block");
+         var data = JSON.parse($(this).attr('id'));
+         console.log(data,zhanghu1,user,dep,depid);
+         resourceid=data.resourceid; 
+         $('#sq-p').val(user);
+         $('#sq-b').append(`<option value="${depid}">${dep}</option>`);
+       });
+      });
+}

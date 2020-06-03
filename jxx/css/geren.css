@@ -1,12 +1,544 @@
+html{
+    font-size:0.052083333333333336vw;
+}
 .dh{
     background: transparent;
 }
+.one{
+    background: #01b6e2;
+}
 .caidan1{
+background-color: white;
+}
+.xianshi{
+    overflow-y: auto;
     background-color: white;
 }
 table{
     border-collapse:collapse;
 }
+#zy{
+    display:none;
+    border: none;
+    width: 98%;
+    margin: 1% 1%;
+    text-align: center;
+    position: absolute;
+    top:109rem;
+}
+#zy tr:nth-child(1){
+    background-color:#D6E6F4;
+    height:50rem;
+    color: black;
+}
+#zy tr th {
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size: 20rem;  
+}
+#zy tr td{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size: 20rem;  
+}
+#zy tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 200rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+#zy tr{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size: 20rem;  
+}
+td button{
+    background-image: linear-gradient(#8dc5fa,#0e7ec0);
+    border: 1px #3399ff solid;
+    color:white;
+    width: 60rem;
+    height: 35rem;
+    line-height: 35rem;
+    text-align: center;
+    outline: none;
+    border-radius: 5rem;
+    font-family: "幼圆";
+    font-size:large;
+    margin-top:3rem;
+    margin-bottom: 3rem;
+}
+.tuihuione{
+    background-image: linear-gradient(#8dc5fa,#94CCFD);
+}
+#zy tr td a button{
+    background-image: linear-gradient(#8dc5fa,#0e7ec0);
+    border: 1px #3399ff solid;
+    color:white;
+    width: 60rem;
+    height: 35rem;
+    line-height: 35rem;
+    text-align: center;
+    outline: none;
+    border-radius: 5rem;
+    font-family: "幼圆";
+    font-size:large;
+    margin-top:3rem;
+    margin-bottom: 3rem;
+}
+#zy3{
+    display: none;
+    border: 1px #ABD2F2 solid;
+    width: 98%;
+    margin: 1% 1%;
+    text-align: center;
+    position: absolute;
+    top:109rem;
+}
+#zy3 thead tr th{
+    border: none;
+}
+#zy3 thead tr:nth-child(1){
+    background-color: #D6E6F4;
+    height:70rem;
+    color: #333333;
+    font-size: 24rem;
+    font-family:Source Han Sans CN;
+    border: 1px #ABD2F2 solid;
+}
+#zy3 tbody tr th {
+    border: 1px #ABD2F2 solid;
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size: 20rem;  
+}
+#zy3 tbody tr td{
+    border: 1px #ABD2F2 solid;
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size: 20rem; 
+}
+#zy3 tbody tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 200rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+#zy3 tbody tr{
+    border: 1px #ABD2F2 solid;
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    /* border-bottom: 0; */
+    font-size: 20rem; 
+}
+td a button{
+    background-image: linear-gradient(#8dc5fa,#0e7ec0);
+    border: 1px #3399ff solid;
+    color:white;
+    width: 50rem;
+    height: 35rem;
+    line-height: 35rem;
+    text-align: center;
+    outline: none;
+    border-radius: 5rem;
+    font-family: "幼圆";
+    font-size:large;
+    margin-top:3rem;
+    margin-bottom: 3rem;
+}
+.marge-down{
+    display: none;
+    font-size: 24rem;
+    font-family:Source Han Sans CN;
+    color:rgba(51,51,51,1);
+    position: absolute;
+    font-weight:400;
+    top:43rem;
+    left:626rem;
+}
+.marge-down1{
+    display: none;
+    font-size: 24rem;
+    font-family:Source Han Sans CN;
+    color:rgba(51,51,51,1);
+    position: absolute;
+    font-weight:400;
+    top:43rem;
+    left:626rem;
+}
+.marge-down2{
+    display: none;
+    font-size: 24rem;
+    font-family:Source Han Sans CN;
+    color:rgba(51,51,51,1);
+    position: absolute;
+    font-weight:400;
+    top:43rem;
+    left:626rem;
+}
+/* 测试 */
 #browser{
     text-align: center;
+}
+#zy1{
+    width: 100%;
+    height: 100%;
+}
+#zy3{
+    display: none;
+}
+#zy2{
+    display: none;
+    border: none;
+    width: 98%;
+    margin: 1% 1%;
+    text-align: center;
+    position: absolute;
+    top:109rem;
+}
+#zy2 tr:nth-child(1){
+    background-color: #d6e6f4;
+    height:70rem;
+    color: black;
+}
+#zy2 tr th {
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#zy2 tr td{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#zy2 tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 210rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+#zy2 tr{
+    height: 70rem;
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size: 20rem;  
+}
+#shenhetongguo{
+    background-image: linear-gradient(#8dc5fa,#0e7ec0);
+    border: 1px #3399ff solid;
+    color:white;
+    width: 100rem;
+    height: 35rem;
+    line-height: 35rem;
+    text-align: center;
+    outline: none;
+    border-radius: 5rem;
+    font-family: "幼圆";
+    font-size:large;
+    position: relative;
+    left:30%;
+}
+#tuihui{
+    background-image: linear-gradient(#ffc45e,#ff6802);
+    border: 1px #ff6802 solid;
+    color:white;
+    width: 100rem;
+    height: 35rem;
+    line-height: 35rem;
+    text-align: center;
+    outline: none;
+    border-radius: 5rem;
+    font-family: "幼圆";
+    font-size:20rem;
+    position: relative;
+    left:40%;
+}
+.btn-tree1{
+    display: inline-block;
+    width: 260rem;
+    height:35rem;
+    background: url(../img/btn_bg_01.png) no-repeat;
+    background-size:100% 100%;
+    color: #fff;
+    font-size: 20rem;
+    line-height: 35px;
+    text-align: center;
+    margin-left: 20rem;
+    margin-top: 20rem;
+    cursor: pointer;
+}
+#shenheing{
+    border:none;
+    width:98%;
+    margin:1% 1%;
+    text-align: center;
+    
+}
+#shenheing tr:nth-child(1){
+    background-color: #f1f1f1;
+    height:30rem;
+    color: black;
+}
+#shenheing tr th {
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#shenheing tr td{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#shenheing tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 145rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+#shenheing tr{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;
+}
+#yitongguo{
+    display:none;
+    border:none;
+    width:98%;
+    margin:1% 1%;
+    text-align: center;
+}
+#yitongguo tr:nth-child(1){
+    background-color: #f1f1f1;
+    height:30rem;
+    color: black;
+}
+#yitongguo tr th {
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#yitongguo tr td{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#yitongguo tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 100rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;  
+}
+#yitongguo tr{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;
+}
+#yixiazai{
+    display:none;
+    border:none;
+    width:98%;
+    margin:1% 1%;
+    text-align: center;
+}
+#yixiazai tr:nth-child(1){
+    background-color: #f1f1f1;
+    height:30rem;
+    color: black;
+}
+#yixiazai tr th {
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#yixiazai tr td{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#yixiazai tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 100rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;  
+}
+#yixiazai tr{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;
+}
+td a button{
+    background-image: linear-gradient(#8dc5fa,#0e7ec0);
+    border: 1px #3399ff solid;
+    color:white;
+    width: 50rem;
+    height: 35rem;
+    line-height: 35rem;
+    text-align: center;
+    outline: none;
+    border-radius: 5rem;
+    font-family: "幼圆";
+    font-size:large;
+    margin-top:3rem;
+    margin-bottom: 3rem;
+}
+#yituihui{
+    border:none;
+    width:98%;
+    margin:1% 1%;
+    text-align: center;
+    display: none;
+}
+#yituihui tr:nth-child(1){
+    background-color: #f1f1f1;
+    height:30rem;
+    color: black;
+}
+#yituihui tr th {
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#yituihui tr td{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;  
+}
+#yituihui tr td div{
+    display: inline-block;
+    height:36rem;
+    line-height:36rem;
+    width: 145rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+#yituihui tr{
+    border-left:0; 
+    border-right:0;
+    border-top: 0;
+    border-bottom: 0;
+    font-size:20rem;
+}
+.gr{
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 12rem;
+    height: 666rem;
+    width: 1300rem;
+    position: absolute;
+    top:165rem;
+    left:320rem;
+}
+#css1{
+    display:none;
+    width: 100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    position: fixed;
+    top:0;
+    z-index: 100000001;
+}
+.ce1{
+    background-image: linear-gradient(to right, #01b6fc , #1ce4ae);
+    height:60rem;
+    line-height: 60rem;
+    color:white;
+    font-size: 20rem;
+    padding-left: 80rem;
+}
+#gb-p1{
+    display: inline-block;
+    height:40rem;
+    width:40rem;
+    line-height: 40rem;
+    text-align: center;
+    border-radius:50%;
+    border:1px white solid;
+    background-color: #cccccc;
+    color: white;
+    font-size:35rem;
+    position: absolute;
+    top:120rem;
+    left:1625rem;
+}
+.xianshi1{
+    height:606rem;
+    background-color: white;
+}
+.left1{
+    display: inline-block;
+    width: 300rem;
+    height: 606rem;
+    border-right: 1px #dce1e5 solid;
+    vertical-align: top;
+}
+.right1{
+    display: inline-block;
+    width: 999rem;
+    height: 606rem;
+    vertical-align: top;
+    overflow: auto;
 }
