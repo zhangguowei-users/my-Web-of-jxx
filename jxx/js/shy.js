@@ -72,7 +72,53 @@ $(document).ready(function(){
       }
     });
     //获取修改个人资料信(村地区)
-    
+    var first = $('#city1').children().eq(0).val();
+    $.ajax({
+      url:config.newip + config.newport +'/arcgis/PersonalCenter/GetAreaInfo2?id='+first,
+      type:'GET',
+      async:false,
+      success:function(data){
+        $('#city2').children().remove();
+        var res = data.data;
+        for(var i=0;i<res.length;i++){
+          if(res.length == 0 || res == null) return;
+          else $('#city2').append(`<option value="${res[i].id}">${res[i].name}</option>`);
+          };
+      }
+    });
+    $('#city1').bind('change',function(){
+      var id = $(this).val();
+      $.ajax({
+        url:config.newip + config.newport +'/arcgis/PersonalCenter/GetAreaInfo2?id='+id,
+        type:'GET',
+        async:false,
+        success:function(data){
+          $('#city2').children().remove();
+          var res = data.data;
+          for(var i=0;i<res.length;i++){
+            if(res.length == 0 || res == null) return;
+            else $('#city2').append(`<option value="${res[i].id}">${res[i].name}</option>`);
+            };
+        }
+      });
+    });
+    //获取部门
+    $.ajax({
+      url:config.newip + config.newport+'/arcgis/PersonalCenter/GetDepList',
+      type:'GET',
+      async:false,
+      success:function(data){
+       var res  = data.data;
+       tree(res,"#set-bumen");
+       $("#set-bumen").treeview();
+       $('.file,.folder').bind('click',function(){
+        $('#bumen').html($(this).html());
+       });
+       $('.file').bind('click',function(){
+        $('#set-bumen').css('display','none');
+       });
+      }
+    })
     //个人资料查询与修改
     $.ajax({
       url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPerInfo?userid='+zhanghu1,
@@ -80,7 +126,6 @@ $(document).ready(function(){
       async:false,
       success:function(data){
        var res = data.data;
-       console.log(res);
        $('#realname').val(res.realname);
        $('#shenfenzheng').val(res.iDcard);
        for(var i=0;i<$('#sex').children().length;i++){
@@ -94,6 +139,40 @@ $(document).ready(function(){
             $('#zhiwei').children().eq(i).attr('selected',true);
          };
        };
+      if(res.xAreaId != null || ""){
+        for(var i=0;i<$('#city1').children().length;i++){
+          if($('#city1').children().eq(i).val() == res.xAreaId){
+             $('#city1').children().eq(i).attr('selected',true);
+          };
+        };
+        $.ajax({
+          url:config.newip + config.newport +'/arcgis/PersonalCenter/GetAreaInfo2?id='+res.xAreaId,
+          type:'GET',
+          async:false,
+          success:function(data){
+             $('#city2').children().remove();
+             var res = data.data;
+             for(var i=0;i<res.length;i++){
+             if(res.length == 0 || res == null) return;
+             else $('#city2').append(`<option value="${res[i].id}">${res[i].name}</option>`);
+             };
+          }
+        });
+        if(res.cAreaId !=null || ""){
+          for(var i=0;i<$('#city2').children().length;i++){
+            if($('#city2').children().eq(i).val() == res.cAreaId){
+               $('#city2').children().eq(i).attr('selected',true);
+            };
+          }; 
+        }; 
+      };
+      $('#email').val(res.mail);
+      for(var i=0;i<$('.file,.folder').length;i++){
+      if($('.file,.folder').eq(i).attr('menueid')==res.departmentid){
+         $('#bumen').html($('.file,.folder').eq(i).html());
+      };
+      };
+      $("#age").val(res.age);
       }
     });
     //审核管理
