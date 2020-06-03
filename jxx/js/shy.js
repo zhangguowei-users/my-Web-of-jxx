@@ -47,14 +47,53 @@ $(document).ready(function(){
       }
    });
     //table同步加载(管理员)
+    //获取修改个人资料信息(职位)
+    $.ajax({
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPostList',
+      type:'GET',
+      async:false,
+      success:function(data){
+        var res=data.data;
+        for(var i=0;i<res.length;i++){
+        $('#zhiwei').append(`<option value="${res[i].postid}">${res[i].postname}</option>`)
+        };
+      }
+    });
+    //获取修改个人资料信(乡镇地区)
+    $.ajax({
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetAreaInfo1',
+      type:'GET',
+      async:false,
+      success:function(data){
+        var res=data.data;
+        for(var i=0;i<res.length;i++){
+        $('#city1').append(`<option value="${res[i].id}">${res[i].name}</option>`)
+        };
+      }
+    });
+    //获取修改个人资料信(村地区)
+    
     //个人资料查询与修改
     $.ajax({
       url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPerInfo?userid='+zhanghu1,
       type:'GET',
       async:false,
       success:function(data){
-       console.log(data.data);
-       
+       var res = data.data;
+       console.log(res);
+       $('#realname').val(res.realname);
+       $('#shenfenzheng').val(res.iDcard);
+       for(var i=0;i<$('#sex').children().length;i++){
+         if($('#sex').children().eq(i).val() == res.gender){
+          $('#sex').children().eq(i).attr('selected',true);
+         };
+       };
+       $('#phone6').val(res.telephone);
+       for(var i=0;i<$('#zhiwei').children().length;i++){
+         if($('#zhiwei').children().eq(i).val() == res.postid){
+            $('#zhiwei').children().eq(i).attr('selected',true);
+         };
+       };
       }
     });
     //审核管理
