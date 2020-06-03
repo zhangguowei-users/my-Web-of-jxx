@@ -47,6 +47,16 @@ $(document).ready(function(){
       }
    });
     //table同步加载(管理员)
+    //个人资料查询与修改
+    $.ajax({
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPerInfo?userid='+zhanghu1,
+      type:'GET',
+      async:false,
+      success:function(data){
+       console.log(data.data);
+       
+      }
+    });
     //审核管理
     $.ajax({
       url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page=1&limit=12',
@@ -147,7 +157,6 @@ $(document).ready(function(){
       type: 'GET',
       async:false,
       success: function (data) {
-        console.log(data)
         for(var i=0;i<data.data.length;i++){
           var urlname = data.data[i].url.split('.');
           var length = urlname.length;
