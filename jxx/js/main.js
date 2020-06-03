@@ -498,6 +498,7 @@ $("#gb").click(function(){
         }
     });
 });
+//文档共享通过点击tree操作table
 function table_wendang(){
     $('.folder,.file').bind('click',function(){
         var menueid=$(this).attr('menueid');
