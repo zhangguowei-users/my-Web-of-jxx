@@ -5,6 +5,7 @@ $(document).ready(function(){
     $("#inf-namenow-time").html(newTime());
     huoquName();
     tiaozhuan();
+    tuichudenglu();
     huakuaiMove(".btn-tree");
        //部门tree下拉菜单
        $('#bumen').bind('click',function(){

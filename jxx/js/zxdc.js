@@ -9,6 +9,7 @@ $(document).ready(function(){
     $("#inf-namenow-time").html(newTime());
     $("#time1").html(newTime());
     tiaozhuan();
+    tuichudenglu();
     $("#login").click(function(){
         PDclick();
       });

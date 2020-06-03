@@ -6,6 +6,7 @@ $(document).ready(function(){
     $("#inf-namenow-time").html(newTime());
     huoquName();
     tiaozhuan();
+    tuichudenglu();
     huakuaiMove(".btn-tree");
     //部门tree下拉菜单
     $('#bumen').bind('click',function(){
@@ -175,6 +176,8 @@ $(document).ready(function(){
       $("#age").val(res.age);
       }
     });
+    //提交修改信息
+
     //审核管理
     $.ajax({
       url:config.newip + config.newport + '/arcgis/PersonalCenter/GetManageList?page=1&limit=12',
@@ -290,7 +293,14 @@ $(document).ready(function(){
       }
     });
     //浏览统计
-    
+    $.ajax({
+          url:config.newip + config.newport + '/arcgis/Other/GetLog?userid='+zhanghu1,
+          type:'GET',
+          async:false,
+          success:function(data){
+          console.log(data);
+          }
+        });
     //下载管理
     $.ajax({
       url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=1&page=1&limit=6&userid='+zhanghu1,

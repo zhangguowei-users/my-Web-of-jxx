@@ -7,7 +7,8 @@ $(document).ready(function(){
     dengluLocation();
     huoquName();
     $("#inf-namenow-time").html(newTime());
-    tiaozhuan(); 
+    tiaozhuan();
+    tuichudenglu(); 
     $("#login").click(function(){
       PDclick();
     });

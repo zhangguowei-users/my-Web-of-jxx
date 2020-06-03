@@ -44,20 +44,45 @@ function tiaozhuan(){
         $.ajax({
           url:config.newip + config.newport + '/arcgis/Other/PostLog',
           type:'POST',
-          
+          async:false,
+          data:{userid:zhanghu1,content:'点击首页'}
         });
         window.location.href = "./index.html";
     });
     $(".two").click(function () {
+        $.ajax({
+            url:config.newip + config.newport + '/arcgis/Other/PostLog',
+            type:'POST',
+            async:false,
+            data:{userid:zhanghu1,content:'点击资源共享'}
+          });
         window.location.href = "./zygx.html";
     });
     $(".three").click(function () {
+        $.ajax({
+            url:config.newip + config.newport + '/arcgis/Other/PostLog',
+            type:'POST',
+            async:false,
+            data:{userid:zhanghu1,content:'点击专项调查'}
+          });
         window.location.href = "./zxdc.html";
     });
     $(".four").click(function () {
+        $.ajax({
+            url:config.newip + config.newport + '/arcgis/Other/PostLog',
+            type:'POST',
+            async:false,
+            data:{userid:zhanghu1,content:'点击统计分析'}
+          });
         window.location.href = "./tjfx.html";
     });
     $(".five").click(function () {
+        $.ajax({
+            url:config.newip + config.newport + '/arcgis/Other/PostLog',
+            type:'POST',
+            async:false,
+            data:{userid:zhanghu1,content:'点击文档共享'}
+          });
         window.location.href = "./wdgx.html";
     });
 };
@@ -147,8 +172,20 @@ function caidanChangeColor(className){
                 glorolename.push(data[i].role.rolename);
             };
             if(glorolename.indexOf("管理员") >= 0){
+                $.ajax({
+                    url:config.newip + config.newport + '/arcgis/Other/PostLog',
+                    type:'POST',
+                    async:false,
+                    data:{userid:zhanghu1,content:'点击个人中心'}
+                  });
                 location.href = "./shy.html";
             }else{
+                $.ajax({
+                    url:config.newip + config.newport + '/arcgis/Other/PostLog',
+                    type:'POST',
+                    async:false,
+                    data:{userid:zhanghu1,content:'点击个人中心'}
+                  });
                 location.href = "./geren.html"; 
             }
         },
@@ -482,7 +519,14 @@ $('#setting').bind('click',function(){
   open('./bigscreen.html');
 });
 //退出登录
+function tuichudenglu(){
 $("#gb").click(function(){
+    $.ajax({
+        url:config.newip + config.newport + '/arcgis/Other/PostLog',
+        type:'POST',
+        async:false,
+        data:{userid:zhanghu1,content:'退出系统'}
+      });
     $.ajax({
         url:config.ip + config.port + '/logOut',
         type: 'POST',
@@ -496,6 +540,7 @@ $("#gb").click(function(){
         }
     });
 });
+};
 //文档共享通过点击tree操作table
 function table_wendang(){
     $('.folder,.file').bind('click',function(){

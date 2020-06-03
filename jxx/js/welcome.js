@@ -4,6 +4,7 @@ dengluLocation();
 huoquName();
 $("#inf-namenow-time").html(newTime());
 tiaozhuan();
+tuichudenglu();
 $("#login").click(function(){
     PDclick();
 });

@@ -1,4 +1,19 @@
+var zhanghu1;
 $(document).ready(function(){
+//获取userid
+$.ajax({
+    url:config.ip + config.port + '/getUserInfo',
+    type: 'POST',
+    async: false,
+    xhrFields:{withCredentials:true},
+    success:function(data){
+        if(data.length == 0 || data ==null) console.log('未登录无法获取userid');
+        else zhanghu1 = data[0].userid;  
+    },
+    error:function(){
+        console.log('未登录无法获取userid')
+    }
+});
 //登陆页面样式变化
 $(function name(){
 $(document).click(function(){
@@ -137,7 +152,6 @@ $("#input").click(function () {
        data: {username:name,password:value},
        xhrFields:{withCredentials:true},
        success:function (data) {
-           console.log(data);
            if(data.result == 'success'){
             window.location.href = "./go.html";
            }
