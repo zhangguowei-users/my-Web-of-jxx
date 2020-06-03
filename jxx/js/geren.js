@@ -113,6 +113,7 @@ $(document).ready(function(){
        $("#set-bumen").treeview();
        $('.file,.folder').bind('click',function(){
         $('#bumen').html($(this).html());
+        $('#bumen').attr('name',$(this).attr('menueid'));
        });
        $('.file').bind('click',function(){
         $('#set-bumen').css('display','none');
@@ -170,13 +171,36 @@ $(document).ready(function(){
       for(var i=0;i<$('.file,.folder').length;i++){
       if($('.file,.folder').eq(i).attr('menueid')==res.departmentid){
          $('#bumen').html($('.file,.folder').eq(i).html());
+         $('#bumen').attr('name',$('.file,.folder').eq(i).attr('menueid'));
       };
       };
       $("#age").val(res.age);
       }
     });
     //提交修改信息
-
+    $('#baocun').bind('click',function(){
+      var userid = zhanghu1;
+      var departmentid = $('#bumen').attr('name');
+      var postid =$('#zhiwei').val();
+      var realname = $('#realname').val();
+      var gender = $('#sex').val();
+      var telephone = $('#phone6').val();
+      var Age = $('#age').val();
+      var IDcard = $('#shenfenzheng').val();
+      var Mail = $('#email').val();
+      var XAreaId = $('#city1').val();
+      var CAreaId = $('#city2').val();
+      var postname = $('#zhiwei').children(':selected').html();
+      $.ajax({
+        url:config.newip + config.newport+'/arcgis/PersonalCenter/PostPerInfo',
+        type:'POST',
+        data:{userid:userid,departmentid:departmentid,postid:postid,realname:realname,gender:gender,telephone:telephone,Age:Age,IDcard:IDcard,Mail:Mail,XAreaId:XAreaId,CAreaId:CAreaId,postname:postname},
+        async:false,
+        success:function(data){
+          alert(data.msg);
+        }
+      });
+      });
       //浏览统计
       $.ajax({
         url:config.newip + config.newport + '/arcgis/Other/GetLog?page=1&limit=7&userid='+zhanghu1,
