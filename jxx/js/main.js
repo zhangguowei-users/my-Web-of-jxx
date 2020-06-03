@@ -41,6 +41,11 @@ function newTime(){
 //页面跳转
 function tiaozhuan(){
     $(".one").click(function () {
+        $.ajax({
+          url:config.newip + config.newport + '/arcgis/Other/PostLog',
+          type:'POST',
+          
+        });
         window.location.href = "./index.html";
     });
     $(".two").click(function () {
