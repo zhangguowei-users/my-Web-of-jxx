@@ -458,6 +458,7 @@ function caidanChangeColor(className){
         }else{
             $('#huizhi').css('display','none');
             $(".map01_37").attr("class","map_37");
+            removeToolbarDrao();//取消画图工具
         };
     });
     };
