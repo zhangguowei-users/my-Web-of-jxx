@@ -107,6 +107,7 @@ $("#gb-quanbu-zhu").click(function(){
 $("#yc").mousedown(function(ev){ //移除地块
   $("#yc").removeClass("map30");
   $("#yc").attr("src","./img/移除图像1.png");
+    removeGraphics(globalQueryClass.map, DRAWGRAPHICS);//移除画好的几何图形
 });
 $("#yc").mouseup(function(ev){
   $("#yc").removeClass("map30");
@@ -116,24 +117,31 @@ $("#bj").click(function(){  //编辑地块
   $("#bj").removeClass("map30");
   if($("#bj").attr("src") == "./img/编辑.png"){
       $("#bj").attr("src","./img/编辑1.png");
+      editPolygon(DRAWGRAPHICS,globalQueryClass.map,globalQueryClass.Edit,globalQueryClass.Point,globalQueryClass.TextSymbol,globalQueryClass.Font,globalQueryClass.Color,globalQueryClass.Graphic,globalQueryClass.graphicsLayer);//编辑地图
   }else{
       $("#bj").attr("src","./img/编辑.png");
+      removeEditToolbar();//取消地图编辑
   };
 });
 $("#sf").click(function(){  //缩放地块
   $("#sf").removeClass("map30");
   if($("#sf").attr("src") == "./img/缩放地块.png"){
       $("#sf").attr("src","./img/缩放地块1.png");
+
+      changeSizeGraphics(DRAWGRAPHICS,globalQueryClass.Edit);//缩放图形
   }else{
       $("#sf").attr("src","./img/缩放地块.png");
+      removeEditToolbar();//取消地图缩放
   };
 });
-$("#xz123").click(function(){  //缩放地块
+$("#xz123").click(function(){  //旋转地块
   $("#xz123").removeClass("map30");
   if($("#xz123").attr("src") == "./img/旋转地块.png"){
       $("#xz123").attr("src","./img/旋转地块1.png");
+      rotateGraphic(DRAWGRAPHICS, globalQueryClass.Edit);//旋转图形
   }else{
       $("#xz123").attr("src","./img/旋转地块.png");
+      removeEditToolbar();//取消地图缩放
   };
 });
 });

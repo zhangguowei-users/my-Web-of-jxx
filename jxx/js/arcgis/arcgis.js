@@ -4,18 +4,20 @@ var totalPages;
 var global_data=null, global_menue=null, global_rightMenue=null;//记录左侧菜单和右侧菜单
 
 
-require(["esri/map", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","esri/renderers/UniqueValueRenderer","esri/dijit/OverviewMap","esri/dijit/Scalebar","esri/layers/ArcGISImageServiceLayer","esri/tasks/PrintTask", "esri/tasks/PrintTemplate", "esri/tasks/PrintParameters","dojo/domReady!"], init);
+require(["esri/map","esri/layers/GraphicsLayer", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer", "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/Color", "esri/graphic", "esri/tasks/QueryTask", "esri/tasks/query","esri/geometry/Point","esri/graphicsUtils","esri/layers/FeatureLayer","esri/renderers/UniqueValueRenderer","esri/dijit/OverviewMap","esri/dijit/Scalebar","esri/layers/ArcGISImageServiceLayer","esri/tasks/PrintTask", "esri/tasks/PrintTemplate", "esri/tasks/PrintParameters","esri/toolbars/draw","esri/symbols/TextSymbol","esri/symbols/Font","esri/toolbars/edit","dojo/domReady!"], init);
 
-function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils,FeatureLayer,UniqueValueRenderer,OverviewMap,Scalebar,ArcGISImageServiceLayer,PrintTask,PrintTemplate,PrintParameters){
+function init(Map, GraphicsLayer,dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindParameters,SimpleLineSymbol, SimpleFillSymbol, Color, Graphic, QueryTask, Query, Point,graphicsUtils,FeatureLayer,UniqueValueRenderer,OverviewMap,Scalebar,ArcGISImageServiceLayer,PrintTask,PrintTemplate,PrintParameters,Draw,TextSymbol,Font,Edit){
 
     var map = new Map("map_div", {logo: false });
     var layer = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.DLTB_Dinamic);
     var layer_XZQ = new ArcGISDynamicMapServiceLayer(ARCGISCONFIG.XZQ_TAG_WITH_MAXSCALE_1_50000);
+    var graphicsLayer = new GraphicsLayer();
+    
     map.addLayer(layer);
     map.addLayer(layer_XZQ);
+    map.addLayer(graphicsLayer);
 
-
-    var queryClass =  new QueryClass(map,Map,ArcGISDynamicMapServiceLayer, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic,FeatureLayer,UniqueValueRenderer,ArcGISImageServiceLayer,PrintTask,PrintTemplate,PrintParameters);
+    var queryClass =  new QueryClass(map,Map,on,ArcGISDynamicMapServiceLayer, SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query,FindTask, FindParameters,Color, Graphic,FeatureLayer,UniqueValueRenderer,ArcGISImageServiceLayer,PrintTask,PrintTemplate,PrintParameters,Draw,Point,TextSymbol,Font,graphicsLayer,Edit);
     globalQueryClass = queryClass;
 
     myOverviewMap(map, dom, OverviewMap);//鹰眼
@@ -23,7 +25,7 @@ function init(Map, dom, on, ArcGISDynamicMapServiceLayer, query, FindTask, FindP
 
 }
 
-function QueryClass(map, Map,ArcGISDynamicMapServiceLayer,SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, FindTask, FindParameters,Color, Graphic, FeatureLayer,UniqueValueRenderer,ArcGISImageServiceLayer,PrintTask, PrintTemplate, PrintParameters){//查询类
+function QueryClass(map, Map,on,ArcGISDynamicMapServiceLayer,SimpleLineSymbol,SimpleFillSymbol, QueryTask, Query, FindTask, FindParameters,Color, Graphic, FeatureLayer,UniqueValueRenderer,ArcGISImageServiceLayer,PrintTask, PrintTemplate, PrintParameters,Draw,Point,TextSymbol,Font,graphicsLayer,Edit){//查询类
     this.map = map;
     this.SimpleLineSymbol = SimpleLineSymbol;
     this.SimpleFillSymbol = SimpleFillSymbol;
@@ -41,7 +43,14 @@ function QueryClass(map, Map,ArcGISDynamicMapServiceLayer,SimpleLineSymbol,Simpl
     this.PrintTask = PrintTask;
     this.PrintTemplate = PrintTemplate;
     this.PrintParameters = PrintParameters;
-    
+    this.Draw = Draw;
+    this.on = on;
+    this.Point = Point;
+    this.Font = Font;
+    this.graphicsLayer = graphicsLayer;
+    this.TextSymbol = TextSymbol;
+    this.Edit = Edit;
+
     this.queryTask = function(querySQL){//Query属性查询
         var queryTask = new QueryTask(ARCGISCONFIG.DLTB_Dinamic + ARCGISCONFIG.QueryLevel);
     

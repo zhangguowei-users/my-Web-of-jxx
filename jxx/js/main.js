@@ -411,18 +411,11 @@ function caidanChangeColor(className){
         if($(".map_37").attr("class") == "map_37"){
             $('#huizhi').css('display','inline-block');
             $(".map_37").attr("class","map01_37");
-            //编辑地块
-            $('#bj').click(function(){
-            
-            });
-            //移除地块
-            $('#yc').click(function(){
-              
-            });
+
+            drawPolygon(globalQueryClass.Draw,globalQueryClass.map,globalQueryClass.SimpleLineSymbol,globalQueryClass.SimpleFillSymbol,globalQueryClass.Color,globalQueryClass.Graphic,globalQueryClass.on,globalQueryClass.Point,globalQueryClass.TextSymbol,globalQueryClass.Font,globalQueryClass.graphicsLayer);//画面图形
         }else{
             $('#huizhi').css('display','none');
             $(".map01_37").attr("class","map_37");
-           
         };
     });
     };
