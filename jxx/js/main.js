@@ -407,26 +407,15 @@ function caidanChangeColor(className){
     });
     //绘制地块
     $(".map_37").click(function(){
-
         $(".map_37").removeClass("map30");
         if($(".map_37").attr("class") == "map_37"){
             $('#huizhi').css('display','inline-block');
             $(".map_37").attr("class","map01_37");
-            //编辑地块
-            $('#bj').click(function(){
-                editPolygon(DRAWGRAPHICS,globalQueryClass.map,globalQueryClass.Edit,globalQueryClass.Point,globalQueryClass.TextSymbol,globalQueryClass.Font,globalQueryClass.Color,globalQueryClass.Graphic,globalQueryClass.graphicsLayer);//编辑地图
-            });
-            //移除地块
-            $('#yc').click(function(){
-                removeGraphics(globalQueryClass.map, DRAWGRAPHICS);//移除画好的几何图形
-                //removeEditToolbar();
-            });
-            drawPolygon(globalQueryClass.Draw,globalQueryClass.map,globalQueryClass.SimpleLineSymbol,globalQueryClass.SimpleFillSymbol,globalQueryClass.Color,globalQueryClass.Graphic,globalQueryClass.on,globalQueryClass.Point,globalQueryClass.TextSymbol,globalQueryClass.Font,globalQueryClass.graphicsLayer);//画面图形
 
+            drawPolygon(globalQueryClass.Draw,globalQueryClass.map,globalQueryClass.SimpleLineSymbol,globalQueryClass.SimpleFillSymbol,globalQueryClass.Color,globalQueryClass.Graphic,globalQueryClass.on,globalQueryClass.Point,globalQueryClass.TextSymbol,globalQueryClass.Font,globalQueryClass.graphicsLayer);//画面图形
         }else{
             $('#huizhi').css('display','none');
             $(".map01_37").attr("class","map_37");
-            TOOLBAR.deactivate();//取消地图编辑
         };
     });
     };
