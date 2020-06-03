@@ -120,7 +120,7 @@ $("#bj").click(function(){  //编辑地块
       editPolygon(DRAWGRAPHICS,globalQueryClass.map,globalQueryClass.Edit,globalQueryClass.Point,globalQueryClass.TextSymbol,globalQueryClass.Font,globalQueryClass.Color,globalQueryClass.Graphic,globalQueryClass.graphicsLayer);//编辑地图
   }else{
       $("#bj").attr("src","./img/编辑.png");
-      TOOLBAR.removeEditToolbar();//取消地图编辑
+      removeEditToolbar();//取消地图编辑
   };
 });
 $("#sf").click(function(){  //缩放地块
