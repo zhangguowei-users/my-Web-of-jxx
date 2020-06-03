@@ -294,13 +294,48 @@ $(document).ready(function(){
     });
     //浏览统计
     $.ajax({
-          url:config.newip + config.newport + '/arcgis/Other/GetLog?userid='+zhanghu1,
+          url:config.newip + config.newport + '/arcgis/Other/GetLog?page=1&limit=7&userid='+zhanghu1,
           type:'GET',
           async:false,
           success:function(data){
-          console.log(data);
+          var res = data.data;
+          $('#denglucishu').html(data.loginCount)
+          for(var i=0;i<res.length;i++){
+            $('#zy2').append(`<tr>
+                              <td>${res[i].createtime.split('T')[0].split('-')[0]}年${res[i].createtime.split('T')[0].split('-')[1]}月${res[i].createtime.split('T')[0].split('-')[2]}日${res[i].createtime.split('T')[1]}</td>
+                              <td>${res[i].logcontent}</td>
+                              </tr>`);
+          };
+          $("#myPage2").sPage({
+            page:1,//当前页码，必填
+            total:data.count,//数据总条数，必填
+            pageSize:7,//每页显示多少条数据，默认10条
+            totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+            showTotal:true,//是否显示总条数，默认关闭：false
+            showSkip:true,//是否显示跳页，默认关闭：false
+            showPN:true,//是否显示上下翻页，默认开启：true
+            prevPage:"上一页",//上翻页文字描述，默认“上一页”
+            nextPage:"下一页",//下翻页文字描述，默认“下一页”
+            backFun:function(page){
+              $.ajax({
+                url:config.newip + config.newport + '/arcgis/Other/GetLog?page='+page+'&limit=7&userid='+zhanghu1,
+                type:'GET',
+                async:false,
+                success:function(data){
+                  $('#zy2').children().children().not(':first').remove();
+                  var res = data.data;
+                  for(var i=0;i<res.length;i++){
+                    $('#zy2').append(`<tr>
+                                      <td>${res[i].createtime.split('T')[0].split('-')[0]}年${res[i].createtime.split('T')[0].split('-')[1]}月${res[i].createtime.split('T')[0].split('-')[2]}日${res[i].createtime.split('T')[1]}</td>
+                                      <td>${res[i].logcontent}</td>
+                                      </tr>`);
+                  };
+                }
+              });
+            }
+          });
           }
-        });
+    });
     //下载管理
     $.ajax({
       url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPersonList?states=1&page=1&limit=6&userid='+zhanghu1,
