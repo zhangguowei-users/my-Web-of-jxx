@@ -46,6 +46,134 @@ $(document).ready(function(){
         }
      });
       //table同步加载(管理员)
+      //获取修改个人资料信息(职位)
+    $.ajax({
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPostList',
+      type:'GET',
+      async:false,
+      success:function(data){
+        var res=data.data;
+        for(var i=0;i<res.length;i++){
+        $('#zhiwei').append(`<option value="${res[i].postid}">${res[i].postname}</option>`)
+        };
+      }
+    });
+    //获取修改个人资料信(乡镇地区)
+    $.ajax({
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetAreaInfo1',
+      type:'GET',
+      async:false,
+      success:function(data){
+        var res=data.data;
+        for(var i=0;i<res.length;i++){
+        $('#city1').append(`<option value="${res[i].id}">${res[i].name}</option>`)
+        };
+      }
+    });
+    //获取修改个人资料信(村地区)
+    var first = $('#city1').children().eq(0).val();
+    $.ajax({
+      url:config.newip + config.newport +'/arcgis/PersonalCenter/GetAreaInfo2?id='+first,
+      type:'GET',
+      async:false,
+      success:function(data){
+        $('#city2').children().remove();
+        var res = data.data;
+        for(var i=0;i<res.length;i++){
+          if(res.length == 0 || res == null) return;
+          else $('#city2').append(`<option value="${res[i].id}">${res[i].name}</option>`);
+          };
+      }
+    });
+    $('#city1').bind('change',function(){
+      var id = $(this).val();
+      $.ajax({
+        url:config.newip + config.newport +'/arcgis/PersonalCenter/GetAreaInfo2?id='+id,
+        type:'GET',
+        async:false,
+        success:function(data){
+          $('#city2').children().remove();
+          var res = data.data;
+          for(var i=0;i<res.length;i++){
+            if(res.length == 0 || res == null) return;
+            else $('#city2').append(`<option value="${res[i].id}">${res[i].name}</option>`);
+            };
+        }
+      });
+    });
+    //获取部门
+    $.ajax({
+      url:config.newip + config.newport+'/arcgis/PersonalCenter/GetDepList',
+      type:'GET',
+      async:false,
+      success:function(data){
+       var res  = data.data;
+       tree(res,"#set-bumen");
+       $("#set-bumen").treeview();
+       $('.file,.folder').bind('click',function(){
+        $('#bumen').html($(this).html());
+       });
+       $('.file').bind('click',function(){
+        $('#set-bumen').css('display','none');
+       });
+      }
+    })
+    //个人资料查询与修改
+    $.ajax({
+      url:config.newip + config.newport + '/arcgis/PersonalCenter/GetPerInfo?userid='+zhanghu1,
+      type:'GET',
+      async:false,
+      success:function(data){
+       var res = data.data;
+       $('#realname').val(res.realname);
+       $('#shenfenzheng').val(res.iDcard);
+       for(var i=0;i<$('#sex').children().length;i++){
+         if($('#sex').children().eq(i).val() == res.gender){
+          $('#sex').children().eq(i).attr('selected',true);
+         };
+       };
+       $('#phone6').val(res.telephone);
+       for(var i=0;i<$('#zhiwei').children().length;i++){
+         if($('#zhiwei').children().eq(i).val() == res.postid){
+            $('#zhiwei').children().eq(i).attr('selected',true);
+         };
+       };
+      if(res.xAreaId != null || ""){
+        for(var i=0;i<$('#city1').children().length;i++){
+          if($('#city1').children().eq(i).val() == res.xAreaId){
+             $('#city1').children().eq(i).attr('selected',true);
+          };
+        };
+        $.ajax({
+          url:config.newip + config.newport +'/arcgis/PersonalCenter/GetAreaInfo2?id='+res.xAreaId,
+          type:'GET',
+          async:false,
+          success:function(data){
+             $('#city2').children().remove();
+             var res = data.data;
+             for(var i=0;i<res.length;i++){
+             if(res.length == 0 || res == null) return;
+             else $('#city2').append(`<option value="${res[i].id}">${res[i].name}</option>`);
+             };
+          }
+        });
+        if(res.cAreaId !=null || ""){
+          for(var i=0;i<$('#city2').children().length;i++){
+            if($('#city2').children().eq(i).val() == res.cAreaId){
+               $('#city2').children().eq(i).attr('selected',true);
+            };
+          }; 
+        }; 
+      };
+      $('#email').val(res.mail);
+      for(var i=0;i<$('.file,.folder').length;i++){
+      if($('.file,.folder').eq(i).attr('menueid')==res.departmentid){
+         $('#bumen').html($('.file,.folder').eq(i).html());
+      };
+      };
+      $("#age").val(res.age);
+      }
+    });
       //浏览统计
       
       //下载管理
@@ -54,7 +182,6 @@ $(document).ready(function(){
         type: 'GET',
         async:false,
         success: function (data) {
-          console.log(data)
           for(var i=0;i<data.data.length;i++){
             var urlname = data.data[i].url.split('.');
             var length = urlname.length;
