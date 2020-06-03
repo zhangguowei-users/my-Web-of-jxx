@@ -1,6 +1,7 @@
 var TOOLBAR;
 var DRAWGRAPHICS;
 var EDIT;
+var LABELPOINTGRAPHIC;
 
 function drawPolygon(Draw, map, SimpleLineSymbol, SimpleFillSymbol, Color, Graphic,on,Point, TextSymbol,Font,graphicsLayer) {//画面图形
     var toolbar = new Draw(map, {showTooltips: true});
@@ -50,8 +51,14 @@ function editPolygon(graphic, map, Edit, Point, TextSymbol, Font, Color,Graphic,
 
 function removeEditToolbar(){//取消编辑状态
     if(EDIT == null) return;
-    
+
     EDIT.deactivate();
+}
+
+function removeToolbarDrao(){//取消画图工具
+    if(TOOLBAR == null) return;
+    TOOLBAR.deactivate();
+
 }
 
 function calculatePolygonArea(geometry, Point, Font, Graphic,graphicsLayer,TextSymbol,Color){
@@ -67,10 +74,15 @@ function calculatePolygonArea(geometry, Point, Font, Graphic,graphicsLayer,TextS
     font.setWeight(Font.WEIGHT_BOLD);
     textSym.setFont(font);
     textSym.setColor(new Color([255, 0, 0, 0.8]));
-    var labelPointGraphic = new Graphic(point, textSym);
 
-    graphicsLayer.clear();
-    graphicsLayer.add(labelPointGraphic);
+    globalQueryClass.map.graphics.remove(LABELPOINTGRAPHIC);
+
+    var labelPointGraphic = new Graphic(point, textSym);
+    LABELPOINTGRAPHIC = labelPointGraphic;
+
+    //graphicsLayer.clear();
+    //graphicsLayer.add(labelPointGraphic);
+    globalQueryClass.map.graphics.add(labelPointGraphic);
 
 
 }
