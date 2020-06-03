@@ -78,6 +78,10 @@ td button{
     margin-bottom: 3rem;
 }
 .tuihuione{
+    background-image: linear-gradient(#ffc45e,#fe967b);
+    border:1px #fe967b solid;
+}
+.tongguoone{
     background-image: linear-gradient(#8dc5fa,#94CCFD);
 }
 #zy tr td a button{

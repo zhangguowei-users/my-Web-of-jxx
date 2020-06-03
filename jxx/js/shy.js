@@ -4,8 +4,8 @@ $(document).ready(function(){
     dengluLocation();
     shy();
     $("#inf-namenow-time").html(newTime());
-    tiaozhuan();
     huoquName();
+    tiaozhuan();
     huakuaiMove(".btn-tree");
     //部门tree下拉菜单
     $('#bumen').bind('click',function(){
@@ -204,6 +204,17 @@ $(document).ready(function(){
             <td>已退回</td>
             <td><button class='tuihuione' disabled>已退回</button></td>
             </tr>`);
+          }else if(data.data[i].states == 1){ //已通过
+            $("#zy").append(`<tr>
+            <td>${data.data[i].name}</td>
+            <td>${data.data[i].depname}</td>
+            <td>${data.data[i].postname}</td>
+            <td><div>${data.data[i].applyreason}</div></td>
+            <td>${data.data[i].phone}</td>
+            <td>${data.data[i].applytime.split("T")[0]}</td>
+            <td>已通过</td>
+            <td><button class='tongguoone' disabled>已通过</button></td>
+            </tr>`);
           };           
         };
         $("#myPage").sPage({
@@ -246,6 +257,17 @@ $(document).ready(function(){
                       <td>${data.data[i].applytime.split("T")[0]}</td>
                       <td>已退回</td>
                       <td><button class='tuihuione' disabled>已退回</button></td>
+                      </tr>`);
+                    }else if(data.data[i].states == 1){ //已通过
+                      $("#zy").append(`<tr>
+                      <td>${data.data[i].name}</td>
+                      <td>${data.data[i].depname}</td>
+                      <td>${data.data[i].postname}</td>
+                      <td><div>${data.data[i].applyreason}</div></td>
+                      <td>${data.data[i].phone}</td>
+                      <td>${data.data[i].applytime.split("T")[0]}</td>
+                      <td>已通过</td>
+                      <td><button class='tongguoone' disabled>已通过</button></td>
                       </tr>`);
                     };           
                   };
