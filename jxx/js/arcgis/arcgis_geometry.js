@@ -70,6 +70,7 @@ function calculatePolygonArea(geometry, Point, Font, Graphic,graphicsLayer,TextS
     graphicsLayer.clear();
     graphicsLayer.add(labelPointGraphic);
 
+
 }
 
 function removeGraphics(map, removeGraphics){//移除画好的几何图形
