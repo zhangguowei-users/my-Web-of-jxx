@@ -127,16 +127,21 @@ $("#sf").click(function(){  //缩放地块
   $("#sf").removeClass("map30");
   if($("#sf").attr("src") == "./img/缩放地块.png"){
       $("#sf").attr("src","./img/缩放地块1.png");
+
+      changeSizeGraphics(DRAWGRAPHICS,globalQueryClass.Edit);//缩放图形
   }else{
       $("#sf").attr("src","./img/缩放地块.png");
+      removeEditToolbar();//取消地图缩放
   };
 });
 $("#xz123").click(function(){  //旋转地块
   $("#xz123").removeClass("map30");
   if($("#xz123").attr("src") == "./img/旋转地块.png"){
       $("#xz123").attr("src","./img/旋转地块1.png");
+      rotateGraphic(DRAWGRAPHICS, globalQueryClass.Edit);//旋转图形
   }else{
       $("#xz123").attr("src","./img/旋转地块.png");
+      removeEditToolbar();//取消地图缩放
   };
 });
 });

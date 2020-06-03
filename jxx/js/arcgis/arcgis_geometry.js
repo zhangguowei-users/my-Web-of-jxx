@@ -27,6 +27,7 @@ function drawPolygon(Draw, map, SimpleLineSymbol, SimpleFillSymbol, Color, Graph
 
 function editPolygon(graphic, map, Edit, Point, TextSymbol, Font, Color,Graphic,graphicsLayer){//编辑面图形
     if(graphic == null){return;}
+    if(EDIT != null) {removeEditToolbar();}//取消编辑状态
 
     var edit = new Edit(map);
     EDIT = edit;
@@ -76,5 +77,29 @@ function removeGraphics(map, removeGraphics){//移除画好的几何图形
     globalQueryClass.graphicsLayer.clear();
     //map.graphics.remove(DRAWGRAPHICS);
     map.graphics.clear();
+}
+
+function changeSizeGraphics(graphic, Edit){//缩放图形
+
+    if(EDIT != null) {removeEditToolbar();}//取消编辑状态
+
+    var edit = new Edit(globalQueryClass.map);
+    EDIT = edit;
+
+    var options = {
+        uniformScaling:true
+    };
+
+    edit.activate(Edit.SCALE, graphic, options)
+
+}
+
+function rotateGraphic(graphic, Edit){//旋转图形
+    if(EDIT != null) {removeEditToolbar();}//取消编辑状态
+
+    var edit = new Edit(globalQueryClass.map);
+    EDIT = edit;
+
+    edit.activate(Edit.ROTATE, graphic)
 }
 
