@@ -49,6 +49,8 @@ function editPolygon(graphic, map, Edit, Point, TextSymbol, Font, Color,Graphic,
 }
 
 function removeEditToolbar(){//取消编辑状态
+    if(EDIT == null) return;
+    
     EDIT.deactivate();
 }
 
@@ -81,6 +83,7 @@ function removeGraphics(map, removeGraphics){//移除画好的几何图形
 }
 
 function changeSizeGraphics(graphic, Edit){//缩放图形
+    if(graphic == null){return;}
 
     if(EDIT != null) {removeEditToolbar();}//取消编辑状态
 
@@ -96,6 +99,7 @@ function changeSizeGraphics(graphic, Edit){//缩放图形
 }
 
 function rotateGraphic(graphic, Edit){//旋转图形
+    if(graphic == null){return;}
     if(EDIT != null) {removeEditToolbar();}//取消编辑状态
 
     var edit = new Edit(globalQueryClass.map);
