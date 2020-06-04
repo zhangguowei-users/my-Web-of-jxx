@@ -464,7 +464,7 @@ table,tr,th,td{
     top:42px;
 }
 .bing{
-    z-index: 1000;
+    z-index: 9999;
     background:white;
     position: absolute;
     right: 0;
@@ -482,7 +482,7 @@ table,tr,th,td{
     z-index: 100;
 }
 .zhu{
-    z-index: 1000;
+    z-index: 9999;
     background:white;
     position: absolute;
     right: 0;
@@ -611,7 +611,7 @@ table,tr,th,td{
     display: none;
 }
 .quanbu-bing{
-    z-index: 1000;
+    z-index: 9999;
     background:white;
     position: absolute;
     left:0%;
@@ -629,7 +629,7 @@ table,tr,th,td{
     z-index: 100; 
 }
 .quanbu-zhu{
-    z-index: 1000;
+    z-index: 9999;
     background:white;
     position: absolute;
     left:0%;
