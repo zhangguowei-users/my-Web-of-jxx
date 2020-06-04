@@ -27,6 +27,8 @@ function drawPolygon(Draw, map, SimpleLineSymbol, SimpleFillSymbol, Color, Graph
 }
 
 function drawPolyline(Draw, map, SimpleLineSymbol, SimpleFillSymbol, Color, Graphic,on,Point, TextSymbol,Font,graphicsLayer) {//画线图形
+    TOOLBAR.deactivate();
+
     var toolbar = new Draw(map, {showTooltips: true});
     TOOLBAR = toolbar;
 
@@ -67,7 +69,11 @@ function editPolygon(graphic, map, Edit, Point, TextSymbol, Font, Color,Graphic,
     edit.on("vertex-move",function(e){//拖动图形边缘小圆点
 		var geometry = e.graphic.geometry;
 
-        calculatePolygonArea(geometry, Point, Font, Graphic,graphicsLayer,TextSymbol,Color);//计算面积
+		if(geometry.type == "polygon") {
+            calculatePolygonArea(geometry, Point, Font, Graphic, graphicsLayer, TextSymbol, Color);//计算面积
+        }else {
+            calculateLength(geometry, Point, Font, Graphic,graphicsLayer,TextSymbol,Color);//计算长度
+        }
         
     });
     
