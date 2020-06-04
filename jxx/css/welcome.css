@@ -309,7 +309,7 @@ table,tr,th,td{
      right:2%;
      top:5.5%;
 }
-.map_12,.map_14,.map_16,.map_18,.map_20,.map_22,.map_24,.map_26,.map_28,.map_30,.map_07,.map_33,.map_09,.map_36,.map_37,.map_38{
+.map_12,.map_14,.map_16,.map_18,.map_20,.map_22,.map_24,.map_26,.map_28,.map_30,.map_07,.map_33,.map_09,.map_36,.map_37,.map_38,.map_39{
     display: inline-block;
     height:20px;
     width: 20px;
@@ -396,6 +396,10 @@ table,tr,th,td{
 }
 .map_38{
     background: url(../img/map__38.png) no-repeat;
+    background-size: 20px 20px;
+}
+.map_39{
+    background: url(../img/map__39.png) no-repeat;
     background-size: 20px 20px;
 }
 #bottom{
@@ -563,11 +567,15 @@ table,tr,th,td{
     background: url(../img/map01__38.png) no-repeat;
     background-size: 20px 20px;
 }
+.map01_39{
+    background: url(../img/map01__39.png) no-repeat;
+    background-size: 20px 20px;
+}
 .map01_09{
     background: url(../img/map01__09.png) no-repeat;
     background-size: 20px 20px;
 }
-.map01_12,.map01_14,.map01_16,.map01_18,.map01_20,.map01_22,.map01_24,.map01_26,.map01_28,.map01_30,.map01_07,.map01_33,.map01_09,.map01_36,.map01_37,.map01_38{
+.map01_12,.map01_14,.map01_16,.map01_18,.map01_20,.map01_22,.map01_24,.map01_26,.map01_28,.map01_30,.map01_07,.map01_33,.map01_09,.map01_36,.map01_37,.map01_38,.map01_39{
     display: inline-block;
     height:20px;
     width: 20px;
