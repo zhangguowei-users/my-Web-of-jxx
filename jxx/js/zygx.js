@@ -128,7 +128,7 @@ $("#sf").click(function(){  //缩放地块
   $("#sf").removeClass("map30");
   if($("#sf").attr("src") == "./img/缩放地块.png"){
       $("#sf").attr("src","./img/缩放地块1.png");
-
+      
       changeSizeGraphics(DRAWGRAPHICS,globalQueryClass.Edit);//缩放图形
   }else{
       $("#sf").attr("src","./img/缩放地块.png");
