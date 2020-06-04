@@ -145,4 +145,14 @@ $("#xz123").click(function(){  //旋转地块
       removeEditToolbar();//取消地图缩放
   };
 });
+$("#jlcl").click(function(){  //测量距离
+  $("#jlcl").removeClass("map30");
+  if($("#jlcl").attr("src") == "./img/测量.png"){
+      $("#jlcl").attr("src","./img/测量1.png");
+      
+  }else{
+      $("#jlcl").attr("src","./img/测量.png");
+      
+  };
+});
 });
