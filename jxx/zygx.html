@@ -94,6 +94,7 @@
             </div>
             </div>
             <div id="quanbu123" style="display:inline-block;width:1518px;height:93.6%;position: absolute;right:0.1%;bottom: 0;">
+                <!-- 操作图标 -->
                 <div class="xgj">
                     <div class="map_12" title="放大"></div>
                     <div class="map_14" title="缩小"></div>
@@ -110,60 +111,63 @@
                     <div class="map_37" title="绘制地块"></div>
                     <!-- <div class="map_38" title='地类面积筛选'></div> -->
                 </div>
+                <!-- 地区选择 -->
                 <div class="select-background">
                 <div class="fg1">▼</div>
                 <div class="xz">&nbsp;集贤县</div>
                 <div class="filetree treeview-famfamfam cc1" style="width: 250px;height:450px;background-color: white;z-index:10004;overflow-y: auto;position: relative;top:39px;display: none;">
                 </div>
                 </div>
-    <div class="information1 theone">
-        <div id="gb-p1">X</div>
-        <div class="glb">
-        <div class="tilte2 mone"></div>
-        <div class="nr lone"></div>
-        </div>
-    </div>
-    <div class="bing"><input id="gb-bing" type="button" value="X"><div id="bing" style="width: 570px;height:300px;"></div></div>
-    <div class="zhu"><input id="gb-zhu" type="button" value="X"><div id="zhu" style="width: 570px;height:300px;"></div></div>
-    <div class="quanbu-bing"><input id="gb-quanbu-bing" type="button" value="X"><div id="quanbu-bing" style="width: 850px;height:300px;"></div></div>
-    <div class="quanbu-zhu"><input id="gb-quanbu-zhu" type="button" value="X"><div id="quanbu-zhu" style="width: 850px;height:300px;"></div></div>
-    <!-- 指南针 -->
-    <div class="south"></div>
-    <!-- 比例尺 -->
-    <div class="bili-ruler" id="sca"></div>
-    <!-- 鹰眼图 -->
-    <div class="yingyan"><div style="width:94%;height:93.3%;background-color: white;z-index: 10000;margin-top: 2%;margin-left: 3%;"><div id="xx"></div></div></div>
-    <!-- 显示影像 -->
-    <div id="left-yingxiang"></div><div id="map_div" class="xianshi jone"></div>
-    <!-- 打印地图 -->
-    <div id="dayin-map" style='display:none;width:322px;height:340px;position: absolute;background: white;top:200px;left: 400px;border-radius: 5px;overflow: hidden;'>
-      <div style="height:56px;font-size:22px;color:rgba(255,255,255,1);padding-left:22px;background:linear-gradient(to right,#03b8f8,#1ae3b1);line-height: 56px;font-family:SourceHanSansCN-Regular;font-weight: 400;">打印地图</div>
-      <span style="position: absolute;top:98px;left:20px;">地图标题</span><input id="ditubiaoti" style='width:190px;height:36px;position: absolute;top:88px;left:110px;border:1px black dashed;font-size: 18px;color:#333333;outline: none;' type="text" placeholder="请输入地图标题">
-      <span style="position: absolute;top:162px;left:20px;">布局</span><select name="bj" id="buju" style="width:190px;height:36px;position: absolute;top:152px;left:110px;border:1px #E4E7ED solid;font-size: 18px;color:#333333;outline: none;">
-      <option value="A4 Portrait">A4 Portrait</option>
-      <option value="Tabloid ANSI B Portrait">Tabloid ANSI B Portrait</option>
-      </select>
-      <span style="position: absolute;top:219px;left:20px;">格式</span><select name="gs" id="geshi" style="width:190px;height:36px;position: absolute;top:208px;left:110px;border:1px #E4E7ED solid;font-size: 18px;color:#333333;outline: none;">
-      <option value="pdf">pdf</option>
-      </select>
-      <div id="quxiao321" style="display: inline-block;width: 70px;height: 34px;border: 1px #d3d6db solid;color: #5AAFFA;font-size: 16px;text-align: center;line-height: 34px;position:absolute;top:273px;left:124px;border-radius:10px;;">取消</div>
-      <div id="dayin" style="display: inline-block;width: 70px;height: 34px;border: 1px #5aaffa solid;background:#5aaffa;color: #FFFFFF;font-size: 16px;text-align: center;line-height: 34px;position:absolute;top:273px;left:230px;border-radius:10px;;">打印</div>
-    </div>
-    <!-- 绘制地块 -->
-    <div id='huizhi' style='display:none;background-color: #04c4db;width:30px;height:150px;position: absolute;left:0.5%;top:15%;border-radius:30px;'>
-    <img id='bj' src="./img/编辑.png" alt="" style='height:19px;width:18px;position: absolute;left:6px;top:14.8px' title='编辑地块' /><img id='yc' src="./img/移除图像.png" alt="" style='height:19px;width:18px;position: absolute;left:6px;top:48.6px' title='移除地块' /><img id='sf' src="./img/缩放地块.png" alt="" title='缩放地块' style='height:19px;width:18px;position: absolute;left:6px;top:82.4px'><img id='xz123' src="./img/旋转地块.png" alt="" title='旋转地块' style='height:19px;width:18px;position: absolute;left:6px;top:116.2px'>
-    </div>
-    <!-- 面积筛选 -->
-    <!-- <div id='mianjishaixuan' style=''></div> -->
-    </div>       
-    </div>
-    <div id="bottom">© 2020 版权所有 黑龙江文图测绘地理信息责任公司</div>
-    </body>
-    <script src="./js/jquery-1.7.1.min.js"></script>
-    <script src="./js/jquery.treeview.js"></script>
-    <script type="text/javascript" src="./js/jquery.sPage.js"></script>
-    <script src="./js/config.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/zygx.js"></script>
+                <!-- 地区信息弹出框 -->
+                <div class="information1 theone">
+                    <div id="gb-p1">X</div>
+                    <div class="glb">
+                    <div class="tilte2 mone"></div>
+                    <div class="nr lone"></div>
+                    </div>
+                </div>
+                <!-- 柱形图，饼形图 -->
+                <div class="bing"><input id="gb-bing" type="button" value="X"><div id="bing" style="width: 570px;height:300px;"></div></div>
+                <div class="zhu"><input id="gb-zhu" type="button" value="X"><div id="zhu" style="width: 570px;height:300px;"></div></div>
+                <div class="quanbu-bing"><input id="gb-quanbu-bing" type="button" value="X"><div id="quanbu-bing" style="width: 850px;height:300px;"></div></div>
+                <div class="quanbu-zhu"><input id="gb-quanbu-zhu" type="button" value="X"><div id="quanbu-zhu" style="width: 850px;height:300px;"></div></div>
+                <!-- 指南针 -->
+                <div class="south"></div>
+                <!-- 比例尺 -->
+                <div class="bili-ruler" id="sca"></div>
+                <!-- 鹰眼图 -->
+                <div class="yingyan"><div style="width:94%;height:93.3%;background-color: white;z-index: 10000;margin-top: 2%;margin-left: 3%;"><div id="xx"></div></div></div>
+                <!-- 显示影像 -->
+                <div id="left-yingxiang"></div><div id="map_div" class="xianshi jone"></div>
+                <!-- 打印地图 -->
+                <div id="dayin-map" style='display:none;width:322px;height:340px;position: absolute;background: white;top:200px;left: 400px;border-radius: 5px;overflow: hidden;'>
+                  <div style="height:56px;font-size:22px;color:rgba(255,255,255,1);padding-left:22px;background:linear-gradient(to right,#03b8f8,#1ae3b1);line-height: 56px;font-family:SourceHanSansCN-Regular;font-weight: 400;">打印地图</div>
+                  <span style="position: absolute;top:98px;left:20px;">地图标题</span><input id="ditubiaoti" style='width:190px;height:36px;position: absolute;top:88px;left:110px;border:1px black dashed;font-size: 18px;color:#333333;outline: none;' type="text" placeholder="请输入地图标题">
+                  <span style="position: absolute;top:162px;left:20px;">布局</span><select name="bj" id="buju" style="width:190px;height:36px;position: absolute;top:152px;left:110px;border:1px #E4E7ED solid;font-size: 18px;color:#333333;outline: none;">
+                  <option value="A4 Portrait">A4 Portrait</option>
+                  <option value="Tabloid ANSI B Portrait">Tabloid ANSI B Portrait</option>
+                  </select>
+                  <span style="position: absolute;top:219px;left:20px;">格式</span><select name="gs" id="geshi" style="width:190px;height:36px;position: absolute;top:208px;left:110px;border:1px #E4E7ED solid;font-size: 18px;color:#333333;outline: none;">
+                  <option value="pdf">pdf</option>
+                  </select>
+                  <div id="quxiao321" style="display: inline-block;width: 70px;height: 34px;border: 1px #d3d6db solid;color: #5AAFFA;font-size: 16px;text-align: center;line-height: 34px;position:absolute;top:273px;left:124px;border-radius:10px;;">取消</div>
+                  <div id="dayin" style="display: inline-block;width: 70px;height: 34px;border: 1px #5aaffa solid;background:#5aaffa;color: #FFFFFF;font-size: 16px;text-align: center;line-height: 34px;position:absolute;top:273px;left:230px;border-radius:10px;;">打印</div>
+                </div>
+                <!-- 绘制地块 -->
+                <div id='huizhi' style='display:none;background-color: #04c4db;width:30px;height:150px;position: absolute;left:0.5%;top:15%;border-radius:30px;'>
+                <img id='bj' src="./img/编辑.png" alt="" style='height:19px;width:18px;position: absolute;left:6px;top:14.8px' title='编辑地块' /><img id='yc' src="./img/移除图像.png" alt="" style='height:19px;width:18px;position: absolute;left:6px;top:48.6px' title='移除地块' /><img id='sf' src="./img/缩放地块.png" alt="" title='缩放地块' style='height:19px;width:18px;position: absolute;left:6px;top:82.4px'><img id='xz123' src="./img/旋转地块.png" alt="" title='旋转地块' style='height:19px;width:18px;position: absolute;left:6px;top:116.2px'>
+                </div>
+                <!-- 面积筛选 -->
+                <!-- <div id='mianjishaixuan' style=''></div> -->
+                </div>       
+                </div>
+                <div id="bottom">© 2020 版权所有 黑龙江文图测绘地理信息责任公司</div>
+                </body>
+                <script src="./js/jquery-1.7.1.min.js"></script>
+                <script src="./js/jquery.treeview.js"></script>
+                <script type="text/javascript" src="./js/jquery.sPage.js"></script>
+                <script src="./js/config.js"></script>
+                <script src="./js/main.js"></script>
+                <script src="./js/zygx.js"></script>
 </body>
 </html>
