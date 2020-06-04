@@ -10,52 +10,6 @@
     <link rel="stylesheet" type="text/css" href="./css/jquery.sPage.css">
 </head>
 <body>
-    <!-- 普通用户显示 -->
-    <div id="css2">
-      <div id="gb-p2">X</div>
-      <div class="gr">
-        <div class="ce2">个人中心</div>
-        <div class="xianshi2">
-          <div class="left2">
-            <div class="btn-tree1">审核中</div>
-            <div class="btn-tree1">已通过</div>
-            <div class="btn-tree1">已下载</div>
-            <div class="btn-tree1">已退回</div>
-          </div><div class="right2">
-            <table id="shenheing">
-              <tr>
-                 <th>文件名称</th>
-                 <th>申请状态</th>
-              </tr>
-            </table>
-            <div id="myshenheing" style="position:absolute;bottom:1%;right:15%;"></div>
-            <table id="yitongguo">
-              <tr>
-                 <th>文件名称</th>
-                 <th>申请状态</th>
-                 <th>操作</th>
-              </tr>
-            </table>
-            <div id="myyitongguo" style="position:absolute;bottom:1%;right:15%;display: none;"></div>
-            <table id="yixiazai">
-              <tr>
-                 <th>文件名称</th>
-                 <th>申请状态</th>
-                 <th>操作</th>
-              </tr>
-            </table>
-            <div id="myyixiazai" style="position:absolute;bottom:1%;right:15%;display: none;"></div>
-            <table id="yituihui">
-              <tr>
-                 <th>文件名称</th>
-                 <th>申请状态</th>
-              </tr>
-            </table>
-            <div id="myyituihui" style="position:absolute;bottom:1%;right:15%;display: none;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- 正文 -->
     <div id="top">
         <div class="logo"></div>
@@ -89,10 +43,22 @@
             </div>
             </div>
             <div id="quanbu123" style="display:inline-block;width:1518px;height:93.6%;position: absolute;right:0.1%;bottom: 0;">
-            <div class="xianshi jtwo">
-              
-             
-            </div>
+              <!-- 操作图标 -->
+              <div class="xgj">
+                <div class="map_12" title="放大"></div>
+                <div class="map_14" title="缩小"></div>
+                <div class="map_24" title="鹰眼图"></div>
+                <div class="map_26" title="指北针"></div>
+                <div class="map_28" title="测量"></div>
+              </div>
+              <!-- 指南针 -->
+              <div class="south1"></div>
+              <!-- 比例尺 -->
+              <div class="bili-ruler1" id="sca"></div>
+              <!-- 地图 -->
+              <div class="xianshi jtwo"></div>
+              <!-- 鹰眼 -->
+              <div class="yingyan1"><div style="width:94%;height:93.3%;background-color: white;z-index: 10000;margin-top: 2%;margin-left: 3%;"><div id="xx"></div></div></div>
           </div>
         </div>
     </div>
