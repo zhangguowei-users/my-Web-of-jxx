@@ -21,6 +21,7 @@
 
 .xianshi{
     overflow-y: auto;
+    background-color: thistle;
 }
 table{
     border-collapse:collapse;
@@ -52,7 +53,7 @@ table{
 }
 .bili-ruler1{
     position: absolute;
-    bottom:5%;
+    bottom:3%;
     left:1%;
     display:none;
     width:8%;
