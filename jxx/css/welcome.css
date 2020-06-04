@@ -421,8 +421,9 @@ table,tr,th,td{
     left:37%;
     opacity: 0.9;
 }
-.theone{display: none}
-
+.theone{
+    display: none;
+}
 #gb-p1{
     display: inline-block;
     height:40px;
