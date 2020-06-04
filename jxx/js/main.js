@@ -466,6 +466,7 @@ function caidanChangeColor(className){
         $(".map_38").removeClass("map30");
         if($(".map_38").attr("class") == "map_38"){
             $(".map_38").attr("class","map01_38");
+            
         }else{
             $(".map01_38").attr("class","map_38");
         };
