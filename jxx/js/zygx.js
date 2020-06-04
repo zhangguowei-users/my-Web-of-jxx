@@ -149,10 +149,10 @@ $("#jlcl").click(function(){  //测量距离
   $("#jlcl").removeClass("map30");
   if($("#jlcl").attr("src") == "./img/测量.png"){
       $("#jlcl").attr("src","./img/测量1.png");
-      
+      drawPolyline(globalQueryClass.Draw,globalQueryClass.map,globalQueryClass.SimpleLineSymbol,globalQueryClass.SimpleFillSymbol,globalQueryClass.Color,globalQueryClass.Graphic,globalQueryClass.on,globalQueryClass.Point,globalQueryClass.TextSymbol,globalQueryClass.Font,globalQueryClass.graphicsLayer);//画线图形
   }else{
       $("#jlcl").attr("src","./img/测量.png");
-      
+      removeToolbarDrao();
   };
 });
 });
