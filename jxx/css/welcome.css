@@ -156,7 +156,7 @@ table,tr,th,td{
     display: inline-block;
     height:100%;
     width:100%;
-    background:white;
+    background:#e6edf5;
     border: 1px #9fccf0 solid;
     position: absolute;
     bottom: 0px;
