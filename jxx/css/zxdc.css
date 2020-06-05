@@ -26,6 +26,25 @@
 table{
     border-collapse:collapse;
 }
+#tudi{
+    width:100%;
+    text-align: center;
+    border: 0px;
+}
+#tudi thead tr{
+    height:46px ;
+    border: 0px;
+}
+#tudi thead tr td{
+    border: 0px;
+}
+#tudi tbody tr{
+    height: 46px;
+    border: 0px;
+}
+#tudi tbody tr td{
+    border: 0px;
+}
 .xgj{
     width:285px;
 }
