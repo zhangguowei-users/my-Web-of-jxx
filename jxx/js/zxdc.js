@@ -138,6 +138,5 @@ $("#jlcl").click(function(){  //测量距离
       $("#jlcl").attr("src","./img/测量.png");
     
   };
-});
-    
+});    
 });
