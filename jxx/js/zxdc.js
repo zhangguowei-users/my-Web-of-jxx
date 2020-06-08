@@ -138,5 +138,128 @@ $("#jlcl").click(function(){  //测量距离
       $("#jlcl").attr("src","./img/测量.png");
     
   };
-});    
+});
+//生成随机色
+function rgb(){//rgb颜色随机
+    var r = Math.floor(Math.random()*256);
+    var g = Math.floor(Math.random()*256);
+    var b = Math.floor(Math.random()*256);
+    var rgb = '('+r+','+g+','+b+')';
+    return rgb;
+};
+//echart图
+var zhu = echarts.init(document.querySelector('.zhu321'));
+option = {
+    title: {
+        text: '某站点用户访问来源',
+        top:0,
+        left: 'center',
+        textStyle:{
+            color:'#333333',
+            fontSize:18,
+            fontFamily:'SourceHanSansCN-',
+            fontStyle :'normal',
+            fontWeight:400
+        }
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        orient: 'horizontal',  //vertical
+        bottom: 'bottom',
+        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'],
+        textStyle:{
+            color:'#333333',
+            fontFamily:'SourceHanSansCN-',
+            fontStyle :'normal',
+            fontWeight:400
+        },
+        itemHeight:9,
+        itemWidth:9
+    },
+    series: [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '45%'],
+            data: [
+                {value: 335, name: '直接访问'},
+                {value: 310, name: '邮件营销'},
+                {value: 234, name: '联盟广告'},
+                {value: 135, name: '视频广告'},
+                {value: 1548, name: '搜索引擎'}
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+zhu.setOption(option);
+//echarts图2
+var bing = echarts.init(document.querySelector('.bing321'));
+option = {
+    title: {
+        text: '某站点用户访问来源',
+        top:0,
+        left: 'center',
+        textStyle:{
+            color:'#333333',
+            fontSize:18,
+            fontFamily:'SourceHanSansCN-',
+            fontStyle :'normal',
+            fontWeight:400
+        }
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        orient: 'horizontal',  //vertical
+        bottom: 'bottom',
+        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎','dsa','123'],
+        textStyle:{
+            color:'#333333',
+            fontFamily:'SourceHanSansCN-',
+            fontStyle :'normal',
+            fontWeight:400
+        },
+        itemHeight:9,
+        itemWidth:9
+    },
+    series: [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '45%'],
+            data: [
+                {value: 335, name: '直接访问'},
+                {value: 310, name: '邮件营销'},
+                {value: 234, name: '联盟广告'},
+                {value: 135, name: '视频广告'},
+                {value: 1548, name: '搜索引擎'},
+                {value: 1548, name: 'dsa'},
+                {value: 1548, name: '123'},
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            },
+        }
+    ]
+};
+bing.setOption(option);
+//  
 });
