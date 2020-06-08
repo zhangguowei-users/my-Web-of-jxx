@@ -139,14 +139,6 @@ $("#jlcl").click(function(){  //测量距离
     
   };
 });
-//生成随机色
-function rgb(){//rgb颜色随机
-    var r = Math.floor(Math.random()*256);
-    var g = Math.floor(Math.random()*256);
-    var b = Math.floor(Math.random()*256);
-    var rgb = '('+r+','+g+','+b+')';
-    return rgb;
-};
 //echart图
 var zhu = echarts.init(document.querySelector('.zhu321'));
 option = {
