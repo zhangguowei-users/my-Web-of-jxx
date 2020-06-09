@@ -21,29 +21,39 @@
 
 .xianshi{
     overflow-y: auto;
+    background-color: thistle;
 }
 table{
     border-collapse:collapse;
 }
-.xgj{
-    width:210px;
+#tudi{
+    width:100%;
+    text-align: center;
+    border: 0px;
 }
-.bili-ruler{
-    position: absolute;
-    bottom:5%;
-    left:1%;
-    display:none;
-    width:8%;
-    height:2%;
-    background-size:100% 100%;
-    z-index: 9999;
+#tudi thead tr{
+    height:46px ;
+    border: 0px;
+}
+#tudi thead tr td{
+    border: 0px;
+}
+#tudi tbody tr{
+    height: 46px;
+    border: 0px;
+}
+#tudi tbody tr td{
+    border: 0px;
+}
+.xgj{
+    width:285px;
 }
 .yingyan1{
     background: url(../img/鹰眼图.png) no-repeat;
     position: absolute;
     bottom:1%;
     right:1%;
-    display:inline-block;
+    display:none;
     width:20%;
     height:25%;
     background-size:100% 100%;
@@ -54,7 +64,7 @@ table{
     position: absolute;
     top:1%;
     left:1%;
-    display:inline-block;
+    display:none;
     width:5%;
     height:10%;
     background-size:100% 100%;
@@ -62,9 +72,9 @@ table{
 }
 .bili-ruler1{
     position: absolute;
-    bottom:5%;
+    bottom:3%;
     left:1%;
-    display:inline-block;
+    display:none;
     width:8%;
     height:2%;
     background-size:100% 100%;

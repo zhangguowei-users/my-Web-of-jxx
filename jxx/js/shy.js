@@ -209,6 +209,7 @@ $(document).ready(function(){
       async: false,
       success: function (data){
         for(var i=0;i<data.data.length;i++){
+          if(data.data[i].applyreason == null) data.data[i].applyreason="未填写申请用途";
           if(data.data[i].states == 0){ //审核中
             $("#zy").append(`<tr>
             <td>${data.data[i].name}</td>
@@ -263,6 +264,7 @@ $(document).ready(function(){
                 success: function (data){
                   $("#zy").children().children().not(':first-child').remove();
                   for(var i=0;i<data.data.length;i++){
+                    if(data.data[i].applyreason == null) data.data[i].applyreason="未填写申请用途";
                     if(data.data[i].states == 0){ //审核中
                       $("#zy").append(`<tr>
                       <td>${data.data[i].name}</td>

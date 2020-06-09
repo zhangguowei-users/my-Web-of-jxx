@@ -211,6 +211,10 @@ body {
 }
 #inf-namenow-name{
     color: white;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+
 }
 #inf-namenow-time{
     color: white;
