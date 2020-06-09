@@ -47,7 +47,7 @@ function addMap(layer)//添加地图
 }
 
 function myOverviewMap(){//鹰眼
-    var overviewMapDijit = new this.OverviewMap({map:MAP, visible:true}, this.dom.byId("zxdc_overview"));
+    var overviewMapDijit = new this.OverviewMap({map:MAP, visible:true}, this.dom.byId("xx"));
     overviewMapDijit.startup();
 }
 

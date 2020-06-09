@@ -19,6 +19,7 @@ $(document).ready(function(){
     $(".map_12").mousedown(function(ev){
       $(".map_12").removeClass("map30");
       $(".map_12").attr("class","map01_12");
+      $(".esriSimpleSliderIncrementButton").click();//地图放大按钮
     });
     $(".map_12").mouseup(function(ev){
        $(".map_12").removeClass("map30");
@@ -28,6 +29,7 @@ $(document).ready(function(){
     $(".map_14").mousedown(function(ev){
         $(".map_14").removeClass("map30");
         $(".map_14").attr("class","map01_14");
+        $(".esriSimpleSliderDecrementButton").click();//地图缩小按钮
      });
      $(".map_14").mouseup(function(ev){
         $(".map_14").removeClass("map30");
