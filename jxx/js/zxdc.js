@@ -52,6 +52,8 @@ $(document).ready(function(){
         if($(".map_24").attr("class") == "map_24"){
            $(".yingyan1").css("display","inline-block");
             $(".map_24").attr("class","map01_24");
+
+            TOOLSCLASS.myOverviewMap();
         }else{
             $(".map01_24").attr("class","map_24");
             $(".yingyan1").css("display","none");
@@ -75,6 +77,8 @@ $(document).ready(function(){
         if($(".map_28").attr("class") == "map_28"){
             $(".bili-ruler1").css("display","inline-block");
             $(".map_28").attr("class","map01_28");
+
+            TOOLSCLASS.myScalebar();
         }else{
             $(".map01_28").attr("class","map_28");
             $(".bili-ruler1").css("display","none");

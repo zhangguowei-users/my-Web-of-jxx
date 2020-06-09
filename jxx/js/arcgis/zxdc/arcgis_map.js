@@ -16,6 +16,7 @@ function init(Map, GraphicsLayer,dom,on, ArcGISDynamicMapServiceLayer,query,Find
     TOOLSCLASS = toolsClass;
 
     esriPojo.addMap(ARCGISCONFIG.XZQ_TAG_WITH_MAXSCALE_1_50000);
+
 }
 
 function EsriPojo(Map, on, ArcGISDynamicMapServiceLayer)//地图类
@@ -59,7 +60,7 @@ function myOverviewMap(){//鹰眼
     overviewMapDijit.startup();
 }
 
-function myScalebar(dom, Scalebar) {//比例尺
+function myScalebar() {//比例尺
     var scalebar = new this.Scalebar({ map: MAP, attachTo:"top-left", scalebarUnit: "metric"}, dojo.byId("sca"));
 }
 
