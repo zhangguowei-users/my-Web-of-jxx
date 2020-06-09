@@ -144,7 +144,7 @@ function caidanChangeColor(className){
          for(var j=0;j<data[i].subSpecialMenue.length;j++){
               if(data[i].subSpecialMenue[j].subSpecialMenue != 0){
                  $(`.${data[i].menueid}`).append(`<ul><li class="closed ${data[i].subSpecialMenue[j].menueid}"><span class="folder dcd1" menueid="${data[i].subSpecialMenue[j].menueid}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
-                 tree(data[i].subSpecialMenue[j].subSpecialMenue,`.${data[i].subSpecialMenue[j].menueid}`);
+                 tree1(data[i].subSpecialMenue[j].subSpecialMenue,`.${data[i].subSpecialMenue[j].menueid}`);
               }else{
                  $(`.${data[i].menueid}`).append(`<ul><li><span class="file dcd" menueid="${data[i].subSpecialMenue[j].menueid}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
               };

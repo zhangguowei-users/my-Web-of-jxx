@@ -25,6 +25,16 @@ $(document).ready(function(){
             $("#browser").treeview();
         }
     });
+    // $.ajax({
+    //     url:config.ip + config.port + '/getSpecialMenueUpdate',
+    //     type: 'POST',
+    //     async: false,
+    //     xhrFields:{withCredentials:true},
+    //     success:function(data){
+    //         tree1(data,"#browserone");
+    //         $("#browserone").treeview();
+    //     }
+    // });
     //小图标操作按钮
     //放大
     $(".map_12").mousedown(function(ev){
