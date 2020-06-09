@@ -73,12 +73,12 @@
               <!-- 鹰眼 -->
               <div id="zxdc_overview" class="yingyan1"><div style="width:94%;height:93.3%;background-color: white;z-index: 10000;margin-top: 2%;margin-left: 3%;"><div id="xx"></div></div></div>
               <!-- 柱形图、饼形图 -->
-              <div class='zhu321' style='display: inline-block;width: 356px;height:250px;background-color: white;position: absolute;right: 4px;top:10px;z-index: 9999;'></div>
-              <div class='bing321' style='display: inline-block;width: 356px;height:250px;background-color: white;position: absolute;right: 4px;top:278px;z-index: 9999;'></div>
+              <div class='zhu321' style='display:none;width: 356px;height:250px;background-color: white;position: absolute;right: 4px;top:10px;z-index: 9999;'></div>
+              <div class='bing321' style='display:none;width: 356px;height:250px;background-color: white;position: absolute;right: 4px;top:278px;z-index: 9999;'></div>
               <!-- 表格 -->
               <div id='table' style='border-radius:12px;overflow:hidden;display: inline-block;width: 388px;height:550px;position: absolute;background-color: white;left:14px;top:110px;z-index: 9999;'>
               <div style='height:60px;background: linear-gradient(to right,#02b7fa,#1ce4af);line-height: 60px;'><span style="color: white;margin-left:25px;font-size:22px;">表格</span><span id='gb-table' style='color: white;margin-left:288px;font-size:22px;'>X</span></div>
-              <div style='height:60px;line-height: 60px;'><img src="./img/查询1.png" alt="" style='width: 26px;height:24px;margin-left: 40px;' title='点击打开搜索框' /><img src="./img/关闭图表.png" alt="" style='width: 26px;height:24px;margin-left:26px;' title="关闭所有图表"/><img src="./img/报表.png" alt="" style='width: 26px;height:24px;margin-left:26px;' title='打开报表' /><span style="margin-left:58px;vertical-align:center;">(<span id='yixuanze'>10</span>/<span id='zongtiaoshu'>300</span>已选择)</span></div>
+              <div style='height:60px;line-height: 60px;'><img id='select' src="./img/查询1.png" alt="" style='width: 26px;height:24px;margin-left: 40px;' title='点击打开搜索框' /><img id='tb-gb' src="./img/关闭图表.png" alt="" style='width: 26px;height:24px;margin-left:26px;' title="关闭所有图表"/><img id='tb-dk' src="./img/报表.png" alt="" style='width: 26px;height:24px;margin-left:26px;' title='打开报表' /><span style="margin-left:58px;vertical-align:center;">(<span id='yixuanze'>10</span>/<span id='zongtiaoshu'>300</span>已选择)</span></div>
               <hr style="height:1px;background-color:#f1f3f6;" />
               <div style="height: 479px;overflow-y: auto;">
               <table id='tudi'>
@@ -100,8 +100,8 @@
               </div>
               </div>
               <!-- 搜索 -->
-              <div id='sousuo' style='position:absolute;display:inline-block;width:462px;height:163px;left:491px;top:197px;background-color: white;border-radius:8px;'>
-              <span style='font-size:18px;position:absolute;left:213px;top:13px;color: #333333;'>搜索</span><span style='position: absolute;font-size: 17.89px;left:430px;top:15px;color:#CBCBCB;'>X</span>
+              <div id='sousuo' style='position:absolute;display:none;width:462px;height:163px;left:491px;top:197px;background-color: white;border-radius:8px;'>
+              <span style='font-size:18px;position:absolute;left:213px;top:13px;color: #333333;'>搜索</span><span id='gb-select' style='position: absolute;font-size: 17.89px;left:430px;top:15px;color:#CBCBCB;'>X</span>
               <select name="" id="" style='width:80px;height:40px;position:absolute;left:11px;top:71px;border:1px #CBCBCB solid; border-radius: 4px;font-size:14px;outline: none;'>
                   <option value="null" disabled selected hidden>请选择</option>
                   <option value="" style='font-size: 18px;text-align: center;'>名称</option>

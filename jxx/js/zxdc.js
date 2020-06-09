@@ -139,6 +139,26 @@ $("#jlcl").click(function(){  //测量距离
     
   };
 });
+//打开搜索
+$('#select').bind('click',function(){
+  $('#sousuo').css('display','inline-block');
+});
+//关闭搜索
+$('#gb-select').bind('click',function(){
+  $('#sousuo').css('display','none');
+});
+//关闭图表
+$('#tb-gb').bind('click',function(){
+  $('.bing321,.zhu321').css('display','none');
+});
+//打开图表
+$('#tb-dk').bind('click',function(){
+    $('.bing321,.zhu321').css('display','inline-block');
+});
+//关闭表格
+$('#gb-table').bind('click',function(){
+    $('#table').css('display','none');
+});
 //echart图
 var zhu = echarts.init(document.querySelector('.zhu321'));
 option = {
