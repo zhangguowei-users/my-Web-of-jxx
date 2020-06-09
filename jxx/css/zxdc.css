@@ -81,3 +81,8 @@ table{
     z-index: 9999;
     background-color: pink;
 }
+
+/* 隐藏缩放按钮 */
+#zxdc_map_div_zoom_slider {
+    display:none;
+}
