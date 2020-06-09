@@ -79,7 +79,6 @@ table{
     background-size:100% 100%;
     z-index: 9999;
 }
-
 /* 隐藏缩放按钮 */
 #zxdc_map_div_zoom_slider {
     display:none;
