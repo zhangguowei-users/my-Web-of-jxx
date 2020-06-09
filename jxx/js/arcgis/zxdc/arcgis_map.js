@@ -1,5 +1,6 @@
 var MAP = null;
 var ESRIPOJO = null;
+var TOOLSCLASS = null;
 
 require(["esri/map","esri/layers/GraphicsLayer", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer",
          "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol",
@@ -12,10 +13,9 @@ function init(Map, GraphicsLayer,dom,on, ArcGISDynamicMapServiceLayer,query,Find
     var esriPojo = new EsriPojo(Map, on, ArcGISDynamicMapServiceLayer);
     var toolsClass = new ToolsClass(dom, OverviewMap, Scalebar);
     ESRIPOJO = esriPojo;
+    TOOLSCLASS = toolsClass;
 
     esriPojo.addMap(ARCGISCONFIG.XZQ_TAG_WITH_MAXSCALE_1_50000);
-    toolsClass.myOverviewMap();
-    toolsClass.myScalebar();
 }
 
 function EsriPojo(Map, on, ArcGISDynamicMapServiceLayer)//地图类
@@ -25,6 +25,7 @@ function EsriPojo(Map, on, ArcGISDynamicMapServiceLayer)//地图类
     this.ArcGISDynamicMapServiceLayer = ArcGISDynamicMapServiceLayer;
 
     this.addMap = addMap;//添加地图
+    this.removeLayer = removeLayer;//移除地图
 }
 
 function ToolsClass(dom, OverviewMap, Scalebar)//地图工具类
@@ -41,10 +42,17 @@ function addMap(layer)//添加地图
 {
     var map = new this.Map("zxdc_map_div", {logo: false });
     MAP = map;
-    var layer_XZQ = new this.ArcGISDynamicMapServiceLayer(layer);
+    var layer_XZQ = new this.ArcGISDynamicMapServiceLayer(layer, {id:'layer_XZQ'});
 
     map.addLayer(layer_XZQ);
 }
+
+function removeLayer(layerId)//移除图层
+{
+    var removeLayer = map.getLayer(id);
+    MAP.removeLayer(removeLayer);
+}
+
 
 function myOverviewMap(){//鹰眼
     var overviewMapDijit = new this.OverviewMap({map:MAP, visible:true}, this.dom.byId("xx"));
