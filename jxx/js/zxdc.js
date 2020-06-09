@@ -13,7 +13,18 @@ $(document).ready(function(){
     $("#login").click(function(){
         PDclick();
       });
-      $("#time1").html(newTime());
+    $("#time1").html(newTime());
+    //形成tree菜单
+    $.ajax({
+        url:config.ip + config.port + '/getSpecialMenue',
+        type: 'POST',
+        async: false,
+        xhrFields:{withCredentials:true},
+        success:function(data){
+            tree1(data,"#browser");
+            $("#browser").treeview();
+        }
+    });
     //小图标操作按钮
     //放大
     $(".map_12").mousedown(function(ev){
