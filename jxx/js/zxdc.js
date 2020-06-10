@@ -82,7 +82,7 @@ $(document).ready(function(){
         //点击获取id
         $('.dcd,.dcd1').bind('click',function(){
             var data = JSON.parse($(this).attr('cd'));
-            
+            $('#table').css('display','inline-block');
         });
         var glo = [];
         sfqx.css("color","black");
