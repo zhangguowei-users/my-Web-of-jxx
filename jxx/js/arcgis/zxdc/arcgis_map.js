@@ -87,8 +87,6 @@ function myScalebar() {//比例尺
     var scalebar = new this.Scalebar({ map: MAP, attachTo:"top-left", scalebarUnit: "metric"}, dojo.byId("sca"));
 }
 
-//sadfdsf
-
 
 
 
