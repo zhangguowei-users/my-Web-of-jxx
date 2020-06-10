@@ -86,3 +86,9 @@ table{
 #xx_zoom_slider {
     display:none;
 }
+#xx{
+    width:100%!important; 
+    height:100%!important; 
+    display: block!important;
+    z-index: 10001!important;
+}
