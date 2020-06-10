@@ -66,7 +66,8 @@ $(document).ready(function(){
            $(".yingyan1").css("display","inline-block");
             $(".map_24").attr("class","map01_24");
 
-            TOOLSCLASS.myOverviewMap();
+            //TOOLSCLASS.myOverviewMap();
+            IMAGECLASS.addImageLayer();
         }else{
             $(".map01_24").attr("class","map_24");
             $(".yingyan1").css("display","none");
