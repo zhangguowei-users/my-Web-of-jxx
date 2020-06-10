@@ -301,7 +301,7 @@ table,tr,th,td{
 }
 .select-background{
      display: inline-block;
-     z-index: 9999;
+     z-index:10000;
      background-color: white;
      position: absolute;
      width: 250px;
