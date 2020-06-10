@@ -21,7 +21,6 @@ $(document).ready(function(){
         async: false,
         xhrFields:{withCredentials:true},
         success:function(data){
-            console.log(data)
             tree1(data,"#browser");
             $("#browser").treeview();
         }
@@ -33,11 +32,76 @@ $(document).ready(function(){
         async: false,
         xhrFields:{withCredentials:true},
         success:function(data){
-            console.log(data)
             tree2(data,"#browserone");
             $("#browserone").treeview();
         }
     });
+    //滑块移动事件
+    huakuaiMove(".dcd1");
+    //点击变色事件
+    caidanChangeColor(".dcd");
+    //点击获取id
+    $('.dcd,.dcd1').bind('click',function(){
+        var data = JSON.parse($(this).attr('cd'));
+        
+    });
+    //查询菜单
+    function queryCdo(queryInput,queryButton,tree1Id,tree2Id){
+    $(`${queryButton}`).click(function(){
+        $(`${tree1Id}`).children().remove();
+        //形成tree1菜单
+        $.ajax({
+        url:config.ip + config.port + '/getSpecialMenue',
+        type: 'POST',
+        async: false,
+        xhrFields:{withCredentials:true},
+        success:function(data){
+            tree1(data,"#browser");
+            $("#browser").treeview();
+        }
+        });
+        $(`${tree2Id}`).children().remove();
+        //形成更新tree菜单
+        $.ajax({
+        url:config.ip + config.port + '/getSpecialMenueUpdate',
+        type: 'POST',
+        async: false,
+        xhrFields:{withCredentials:true},
+        success:function(data){
+            tree2(data,"#browserone");
+            $("#browserone").treeview();
+        }
+        });
+        var fone = $(`${queryInput}`).val();
+        var sfqx = $(".file,.folder");
+        huakuaiMove(".dcd1");
+        caidanChangeColor(".dcd");
+        //点击获取id
+        $('.dcd,.dcd1').bind('click',function(){
+            var data = JSON.parse($(this).attr('cd'));
+            
+        });
+        var glo = [];
+        sfqx.css("color","black");
+        if(fone == ""){
+            confirm("搜索字符为空，请重新填写");
+        }else{
+            for(var i=0;i<sfqx.length;i++){
+                glo.push(sfqx.eq(i).html());
+                var Sumsfqx = sfqx.eq(i).html();
+                if(Sumsfqx.indexOf(fone) >= 0){
+                   sfqx.eq(i).css("color","red");
+                   sfqx.eq(i).parents().siblings(".expandable-hitarea").click(); 
+                };
+               };
+               var a = glo.toString().replace(/\,/g,"");
+               if(a.indexOf(fone) < 0){
+                   confirm("搜索字符不存在");    
+               };
+        };
+     });
+    };
+    queryCdo('.ftwo','.stwo','#browser','#browserone');
     //小图标操作按钮
     //放大
     $(".map_12").mousedown(function(ev){
