@@ -30,6 +30,7 @@ function EsriPojo(Map, on, ArcGISDynamicMapServiceLayer)//地图类
 
     this.addMap = addMap;//添加地图
     this.removeLayer = removeLayer;//移除地图
+    this.addDynamicLayer = addDynamicLayer;//添加动态图层
 }
 
 function ToolsClass(dom, OverviewMap, Scalebar)//地图工具类
@@ -53,8 +54,27 @@ function addMap(layer)//添加地图
 
 function removeLayer(layerId)//移除图层
 {
-    var removeLayer = map.getLayer(id);
-    MAP.removeLayer(removeLayer);
+    if(MAP.getLayer(layerId) != undefined) 
+    {
+        MAP.removeLayer(MAP.getLayer(layerId));
+    }
+}
+
+function addDynamicLayer(obj)//添加动态图层
+{
+    if(obj.serverpath==null || obj.subSpecialMenue.length!=0)
+    {
+        return;
+    }
+    else
+    {
+        this.removeLayer("newLayer");//移除
+
+        var newLayerURL = "http://"+ARCGISCONFIG.ARCSERVER + ARCGISCONFIG.ARCSERVERPORT+ obj.serverpath;//构建左侧图层
+        var newLayer = new this.ArcGISDynamicMapServiceLayer(newLayerURL, {id:'newLayer'});
+        MAP.addLayer(newLayer);
+    }
+
 }
 
 
