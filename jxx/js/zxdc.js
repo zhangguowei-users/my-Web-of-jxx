@@ -21,6 +21,7 @@ $(document).ready(function(){
         async: false,
         xhrFields:{withCredentials:true},
         success:function(data){
+            console.log(data)
             tree1(data,"#browser");
             $("#browser").treeview();
         }
@@ -32,6 +33,7 @@ $(document).ready(function(){
         async: false,
         xhrFields:{withCredentials:true},
         success:function(data){
+            console.log(data)
             tree2(data,"#browserone");
             $("#browserone").treeview();
         }

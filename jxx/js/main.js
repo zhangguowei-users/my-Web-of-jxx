@@ -140,17 +140,17 @@ function caidanChangeColor(className){
    function tree1(data,className){
     for(var i=0;i<data.length;i++){
       if(data[i].subSpecialMenue.length != 0){
-         $(`${className}`).append(`<ul><li class="closed a${data[i].menueid}"><span class="folder dcd1" menueid="${data[i].menueid}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
+         $(`${className}`).append(`<ul><li class="closed a${data[i].id}"><span class="folder dcd1" menueid="${data[i].id}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
          for(var j=0;j<data[i].subSpecialMenue.length;j++){
               if(data[i].subSpecialMenue[j].subSpecialMenue != 0){
-                 $(`.a${data[i].menueid}`).append(`<ul><li class="closed a${data[i].subSpecialMenue[j].menueid}"><span class="folder dcd1" menueid="${data[i].subSpecialMenue[j].menueid}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
-                 tree1(data[i].subSpecialMenue[j].subSpecialMenue,`.a${data[i].subSpecialMenue[j].menueid}`);
+                 $(`.a${data[i].id}`).append(`<ul><li class="closed a${data[i].subSpecialMenue[j].id}"><span class="folder dcd1" menueid="${data[i].subSpecialMenue[j].menueid}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
+                 tree1(data[i].subSpecialMenue[j].subSpecialMenue,`.a${data[i].subSpecialMenue[j].id}`);
               }else{
-                 $(`.a${data[i].menueid}`).append(`<ul><li><span class="file dcd" menueid="${data[i].subSpecialMenue[j].menueid}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
+                 $(`.a${data[i].id}`).append(`<ul><li><span class="file dcd" menueid="${data[i].subSpecialMenue[j].id}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
               };
           };
       }else{
-         $(`${className}`).append(`<ul><li><span class="file dcd" menueid="${data[i].menueid}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
+         $(`${className}`).append(`<ul><li><span class="file dcd" menueid="${data[i].id}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
       };
     };
 };
@@ -158,17 +158,17 @@ function caidanChangeColor(className){
    function tree2(data,className){
     for(var i=0;i<data.length;i++){
       if(data[i].subSpecialMenue.length != 0){
-         $(`${className}`).append(`<ul><li class="closed b${data[i].menueid}"><span class="folder dcd1" menueid="${data[i].menueid}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
+         $(`${className}`).append(`<ul><li class="closed b${data[i].id}"><span class="folder dcd1" menueid="${data[i].id}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
          for(var j=0;j<data[i].subSpecialMenue.length;j++){
               if(data[i].subSpecialMenue[j].subSpecialMenue != 0){
-                 $(`.b${data[i].menueid}`).append(`<ul><li class="closed b${data[i].subSpecialMenue[j].menueid}"><span class="folder dcd1" menueid="${data[i].subSpecialMenue[j].menueid}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
-                 tree1(data[i].subSpecialMenue[j].subSpecialMenue,`.b${data[i].subSpecialMenue[j].menueid}`);
+                 $(`.b${data[i].id}`).append(`<ul><li class="closed b${data[i].subSpecialMenue[j].id}"><span class="folder dcd1" menueid="${data[i].subSpecialMenue[j].id}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
+                 tree1(data[i].subSpecialMenue[j].subSpecialMenue,`.b${data[i].subSpecialMenue[j].id}`);
               }else{
-                 $(`.b${data[i].menueid}`).append(`<ul><li><span class="file dcd" menueid="${data[i].subSpecialMenue[j].menueid}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
+                 $(`.b${data[i].id}`).append(`<ul><li><span class="file dcd" menueid="${data[i].subSpecialMenue[j].id}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
               };
           };
       }else{
-         $(`${className}`).append(`<ul><li><span class="file dcd" menueid="${data[i].menueid}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
+         $(`${className}`).append(`<ul><li><span class="file dcd" menueid="${data[i].id}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
       };
     };
 };
