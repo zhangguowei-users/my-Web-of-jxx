@@ -45,7 +45,7 @@ $(document).ready(function(){
         var data = JSON.parse($(this).attr('cd'));
         ESRIPOJO.addDynamicLayer(data);//添加图层
         if(data.serverpath==null || data.subSpecialMenue.length!=0){ $('#table').css('display','none'); return;}
-        $('#table').css('display','inline-block');//隐藏
+        $('#table').css('display','inline-block');//打开
         
     });
     //查询菜单
