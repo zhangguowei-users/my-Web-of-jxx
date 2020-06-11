@@ -83,7 +83,7 @@ var zhexian = echarts.init(document.querySelector('#zhexian'));
 option = {
   title: {
       text: '土地利用情况',
-        top:0,
+        top:'3%',
         left: 'center',
         textStyle:{
             color:'#333333',
