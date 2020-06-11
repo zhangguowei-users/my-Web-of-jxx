@@ -99,7 +99,6 @@ function getLayerData(jsonObj)//获取图层类
 {
     $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getLayerData', type: 'POST', data:{"jsonTree":JSON.stringify(jsonObj)}, xhrFields:{withCredentials:true}, success:function(result)
     {
-        alert(result);
     }});
 }
 
