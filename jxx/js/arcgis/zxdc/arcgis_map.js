@@ -43,6 +43,11 @@ function ToolsClass(dom, OverviewMap, Scalebar)//地图工具类
     this.myScalebar = myScalebar;//比例尺
 }
 
+function QueryClass()//查询类
+{
+    this.getLayerData = getLayerData;//获取图层类
+}
+
 function addMap(layer)//添加地图
 {
     var map = new this.Map("zxdc_map_div", {logo: false });
@@ -73,6 +78,8 @@ function addDynamicLayer(obj)//添加动态图层
         var newLayerURL = "http://"+ARCGISCONFIG.ARCSERVER + ARCGISCONFIG.ARCSERVERPORT+ obj.serverpath;//构建左侧图层
         var newLayer = new this.ArcGISDynamicMapServiceLayer(newLayerURL, {id:'newLayer'});
         MAP.addLayer(newLayer);
+
+        new QueryClass().getLayerData(obj);
     }
 
 }
@@ -88,6 +95,12 @@ function myScalebar() {//比例尺
 }
 
 
-
+function getLayerData(jsonObj)//获取图层类
+{
+    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getLayerData', type: 'POST', data:{"jsonTree":JSON.stringify(jsonObj)}, xhrFields:{withCredentials:true}, success:function(result)
+    {
+        alert(result);
+    }});
+}
 
 
