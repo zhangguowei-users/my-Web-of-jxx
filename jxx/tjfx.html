@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>三调资源服务共享平台</title>
     <link rel="stylesheet" href="./css/jquery.treeview.css">
+    <link rel="stylesheet" type="text/css" href="./css/jquery.sPage.css">
     <link rel="stylesheet" href="./css/welcome.css">
     <link rel="stylesheet" href="./css/tjfx.css">
-    <link rel="stylesheet" href="./css/jquery-ui.css">
-    
+    <script src="./js/echarts.min.js"></script>
 </head>
 <body>  
     <div id="top">
@@ -34,36 +34,99 @@
     </div>
     <div>
         <div class="dh-bottom four4">
-            <div class="middle"><div class="middle-s"><input class="ser-c fthree" type="text" placeholder="搜索菜单..."/><input class="ser-b sthree" type="button"></div></div><div class="middle1"><div>福利镇湿地情况对比</div></div>
+            <div class="middle"><div class="middle-s"><input class="ser-c fthree" type="text" placeholder="搜索菜单..."/><input class="ser-b sthree" type="button"></div></div><div class="middle1"><div>统计分析</div></div>
             <div class="caidan dthree"><div class="gd"><div class="gd-n wone"></div></div><div class="caidan1">
-                
                 <div class="qtwo filetree treeview-famfamfam" id="browser">
-                    <ul><li class="closed" id="jxx2"><span class="folder cd1" id="jxx1" menueid='{"id":0, "subAdministrations":null, "name": "集贤县", "parentId": 0, "treeCode": "000000"}'>专项调查统计分析</span></li></ul>
+                    <ul><li class="closed" id="jxx3"><span class="folder cd1" id="jxx1" menueid='{"id":0, "subAdministrations":null, "name": "集贤县", "parentId": 0, "treeCode": "000000"}'>专项调查统计分析</span></li></ul>
                 </div>
             </div>
             </div>
-            <div id="quanbu123" style="display:inline-block;width:1518px;height:93.6%;position: absolute;right:0.1%;bottom: 0;">
-            <div class="xianshi jthree">
-                <div id="duibi1">
-                    <div style="position:absolute;width:30%;left:15%;bottom: 10%; border:1px solid #000;height:9%;">
-                      <p>
-                        <label for="amount">当前年份</label>
-                        <input type="text" id="amount" readonly style="border:0;color:red;font-weight:bold;">
-                      </p>
-                      <br>
-                      <div id="slider" style="width: 94%;margin-left:3%;"></div>
-                    </div>
-                </div><div id="duibi2">
-                    <div style="position:absolute;width:30%;right:15%;bottom:10%;border:1px solid #000;height:9%;">
-                        <p>
-                          <label for="amount1">当前年份</label>
-                          <input type="text" id="amount1" readonly style="border:0;color:red;font-weight:bold;">
-                        </p>
-                        <br>
-                        <div id="slider1" style="width: 94%;margin-left:3%;"></div>
-                      </div>
+            <div id="quanbu123" style="display:inline-block;width:1518px;height:93.6%;position: absolute;right:0.1%;bottom: 0;overflow-y: auto;background:#e6edf5;">
+            <!-- 地图 -->
+            <!-- <div class="xianshi jthree"></div> -->
+            <!-- 地区 -->
+            <div class="select-background">
+                <div class="fg1">▼</div>
+                <div class="xz">&nbsp;集贤县</div>
+                <div class="filetree treeview-famfamfam cc1" style="width: 250px;height:450px;background-color: white;z-index:9999;overflow-y: auto;position: relative;top:39px;display: none;">
                 </div>
             </div>
+            <!-- table -->
+            <div style='position: absolute;width: 1395px;height: 546px;background-color: white;top:77px;left:61.5px;box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.09);border-radius:10px;'>
+            <div style='font-size:18px;font-family:Source Han Sans CN;font-weight:400;color:rgba(51,51,51,1);position: absolute;left: 617px;top:25px;'>拆除未尽区数据统计</div>
+            <div id='dcsj'>导出数据</div>
+            <select name="" id="leibie">
+                <option value="null" disabled selected hidden>请选择</option>
+                <option value="">名称</option>
+                <option value="">标识码</option>
+                <option value="">要素代码</option>
+                <option value="">面积</option>
+            </select>
+            <input type="text" name="" id="shuru" placeholder="请输入..." />
+            <div id='cx'>查询</div>
+            <div id='gjcx'>高级查询</div>
+            <table id='tj'>
+                <thead>
+                    <tr>
+                        <th><input class='checked' type="checkbox" name="" id=""></th>
+                        <th>名称</th>
+                        <th>标识码</th>
+                        <th>要素代码</th>
+                        <th>占地面积</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class='checked' type="checkbox" name="" id=""></td>
+                        <td>拆除未尽区1</td>
+                        <td>30521299100000001</td>
+                        <td>2099090100</td>
+                        <td>27301.26</td>
+                        <td>已拆</td>
+                    </tr>
+                    <tr>
+                        <td><input class='checked' type="checkbox" name="" id=""></td>
+                        <td>拆除未尽区2</td>
+                        <td>30521299100000001</td>
+                        <td>2099090100</td>
+                        <td>27301.26</td>
+                        <td>已拆</td>
+                    </tr>
+                    <tr>
+                        <td><input class='checked' type="checkbox" name="" id=""></td>
+                        <td>拆除未尽区3</td>
+                        <td>30521299100000001</td>
+                        <td>2099090100</td>
+                        <td>27301.26</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input class='checked' type="checkbox" name="" id=""></td>
+                        <td>拆除未尽区4</td>
+                        <td>30521299100000001</td>
+                        <td>2099090100</td>
+                        <td>27301.26</td>
+                        <td>已拆</td>
+                    </tr>
+                    <tr>
+                        <td><input class='checked' type="checkbox" name="" id=""></td>
+                        <td>拆除未尽区5</td>
+                        <td>30521299100000001</td>
+                        <td>2099090100</td>
+                        <td>27301.26</td>
+                        <td>已拆</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="myPage" style="position: absolute;bottom:1%;left:20%;"></div>
+            </div>
+            <!-- 折线图 -->
+            <div id='zhexian' style='height:325px;width:1395px;position: absolute;top:643px;left:61.5px;background-color: white;box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.09);border-radius:8px;'></div>
+            <!-- 饼状图 -->
+            <div id='bing1' style='position: absolute;top:988px;height: 419px;width: 440px;background-color: white;left: 61.5px;box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.09);border-radius:8px;margin-bottom: 20px;'></div>
+            <div id='bing2' style='position: absolute;top:988px;height: 419px;width: 440px;background-color: white;left: 539px;box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.09);border-radius:8px;'></div>
+            <div id='bing3' style='position: absolute;top:988px;height: 419px;width: 440px;background-color: white;left: 1016.5px;box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0.09);border-radius:8px;'></div>
             </div>
         </div>
         
@@ -72,7 +135,7 @@
     </body>
     <script src="./js/jquery-1.7.1.min.js"></script>
     <script src="./js/jquery.treeview.js"></script>
-    <script src="./js/jquery-ui.js"></script>
+    <script type="text/javascript" src="./js/jquery.sPage.js"></script>
     <script src="./js/config.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/tifx.js"></script> 
