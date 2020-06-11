@@ -31,9 +31,6 @@
 .caidan1{
     background-color: white;
 }
-.xianshi{
-    background-color: #fff;
-}
 #duibi1{
     background: url(../img/2020-05-11140538.png);
     background-size: 100% 100%;
@@ -55,5 +52,111 @@
     border-left: 0;
     margin-left: 0;
     margin-top: 2%;
+    background-color: white;
+}
+.select-background{
+    display: inline-block;
+    z-index:10000;
+    background-color: white;
+    position: absolute;
+    width: 250px;
+    height: 37px;
+    right:3%;
+    top:1.5%;
+}
+table{
+    border-collapse:collapse;
+}
+#dcsj{
+    width:112px;
+    height:42px;
+    background:rgba(54,153,255,1);
+    border-radius:4px;
+    line-height: 42px;
+    text-align: center;
+    color: #FFFFFF;
+    position: absolute;
+    left:50px;
+    top:79px;
+}
+#leibie{
+    height: 40px;
+    width: 98px; 
+    border:1px solid rgba(185,217,244,1);
+    border-radius:4px;
+    color: #999999;
+    font-size: 14px;
+    position: absolute;
+    left: 810px;
+    top:79px;
+    outline:none;
+}
+#shuru{
+    width:226px;
+    height:40px;
+    border:1px solid rgba(185,217,244,1);
+    border-radius:4px;
+    font-size:16px;
+    font-family:Source Han Sans CN;
+    font-weight:400;
+    color:#999999;
+    outline: none;
+    position: absolute;
+    top:79px;
+    left: 922px;
+}
+#cx{
+    width:76px;
+    height:40px;
+    background:rgba(54,153,255,1);
+    border-radius:4px;
+    line-height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+    position: absolute;
+    left: 1165px;
+    top:79px;
+}
+#gjcx{
+    width:98px;
+    height:40px;
+    background:rgba(54,153,255,1);
+    border-radius:4px;
+    line-height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+    position: absolute;
+    left:1255px;
+    top:79px;
+}
+#tj{
+    width:1302px;
+    border:1px solid rgba(185,217,244,1);
+    border-radius:8px;
+    position: absolute;
+    top:142px;
+    left:51px;
+    text-align:center;
+}
+#tj thead tr{
+    border:1px solid rgba(185,217,244,1);
+    height: 50px;
+}
+#tj thead tr th{
+    border:1px solid rgba(185,217,244,1);
+    border-left:0; 
+    border-right:0;
+}
+#tj tbody tr td{
+    border:1px solid rgba(185,217,244,1);
+    border-left:0; 
+    border-right:0;
+}
+#tj tbody tr{
+    border:1px solid rgba(185,217,244,1);
+    height: 50px;
+}
+.checked{
+    border: 1px #B9D9F4 solid;
     background-color: white;
 }

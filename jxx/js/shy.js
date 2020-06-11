@@ -486,6 +486,7 @@ $(document).ready(function(){
       });
     // //打开审核页面获取值                 
     $("td .shenhe").click(function(){
+      $(".marge-down2").css("display","none");
       applyid = $(this).attr("id");
       $("#time123").val($(this).parent().prev().prev().html());
       $("#phone123").val($(this).parent().prev().prev().prev().html());
