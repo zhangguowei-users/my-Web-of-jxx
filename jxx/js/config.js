@@ -5,8 +5,6 @@ config={
     port: ':8081',
     newip: 'http://192.168.1.107',
     newport:':5050',
-    imgip: 'http://192.168.1.107',
-    imgport:':6060'
 };
 
 //地图服务
