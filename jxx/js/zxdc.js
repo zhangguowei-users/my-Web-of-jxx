@@ -43,13 +43,15 @@ $(document).ready(function(){
     //点击获取id
     $('.dcd,.dcd1').bind('click',function(){
         var data = JSON.parse($(this).attr('cd'));
+
         ESRIPOJO.addDynamicLayer(data);//添加图层
         if(data.serverpath==null || data.subSpecialMenue.length!=0){ $('#table').css('display','none'); return;}
-        $('#table').css('display','inline-block');//打开
 
         var xx = new QueryClass().getLayerData(data);
         console.log(xx);
 
+
+        $('#table').css('display','inline-block');//打开
     });
     //查询菜单
     function queryCdo(queryInput,queryButton,tree1Id,tree2Id){
