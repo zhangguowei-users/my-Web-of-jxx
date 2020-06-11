@@ -45,7 +45,7 @@ function ToolsClass(dom, OverviewMap, Scalebar)//地图工具类
 
 function QueryClass()//查询类
 {
-    this.getLayerData = getLayerData;//获取图层类
+    this.getLayerData = getLayerData;//获取图层所有属性
 }
 
 function addMap(layer)//添加地图
@@ -79,7 +79,6 @@ function addDynamicLayer(obj)//添加动态图层
         var newLayer = new this.ArcGISDynamicMapServiceLayer(newLayerURL, {id:'newLayer'});
         MAP.addLayer(newLayer);
 
-        new QueryClass().getLayerData(obj);
     }
 
 }
@@ -97,9 +96,14 @@ function myScalebar() {//比例尺
 
 function getLayerData(jsonObj)//获取图层类
 {
-    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getLayerData', type: 'POST', data:{"jsonTree":JSON.stringify(jsonObj)}, xhrFields:{withCredentials:true}, success:function(result)
+    var value ;
+
+    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getLayerData', type: 'POST',async: false, data:{"jsonTree":JSON.stringify(jsonObj)}, xhrFields:{withCredentials:true}, success:function(result)
     {
+        value = result;
     }});
+
+    return value;
 }
 
 
