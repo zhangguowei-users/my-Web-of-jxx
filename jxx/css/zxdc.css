@@ -56,7 +56,7 @@ table{
 }
 #tudi tbody tr td .text-width{
     display: inline-block;
-    width:30px;    
+    width:50.px;    
     overflow: hidden;    
     text-overflow:ellipsis;    
     white-space: nowrap;
