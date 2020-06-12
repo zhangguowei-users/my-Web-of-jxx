@@ -278,7 +278,21 @@ $('#gb-table').bind('click',function(){
     $('#table').css('display','none');
 });
 //echart图
-var zhu = echarts.init(document.querySelector('.zhu321'));
+
+
+var domElement = document.querySelector('.zhu321');
+var domElement2 = document.querySelector('.bing321');
+var title = "这是标题";
+var seriesName = "某块内容的标题"
+var legendData = ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'];
+var seriesData = [{value: 335, name: '直接访问'}, {value: 310, name: '邮件营销'}, {value: 234, name: '联盟广告'}, {value: 135, name: '视频广告'}, {value: 1548, name: '搜索引擎'}];
+
+new ReportClass(legendData, seriesData).createBingChar(domElement, title, seriesName);//创建饼形图
+new ReportClass(legendData, seriesData).createBingChar(domElement2, title, seriesName);
+
+
+
+/*var zhu = echarts.init(document.querySelector('.zhu321'));
 option = {
     title: {
         text: '某站点用户访问来源',
@@ -332,9 +346,9 @@ option = {
         }
     ]
 };
-zhu.setOption(option);
+zhu.setOption(option);*/
 //echarts图2
-var bing = echarts.init(document.querySelector('.bing321'));
+/*var bing = echarts.init(document.querySelector('.bing321'));
 option = {
     title: {
         text: '某站点用户访问来源',
@@ -390,6 +404,7 @@ option = {
         }
     ]
 };
-bing.setOption(option);
-//  
+bing.setOption(option);*/
+//
+
 });
