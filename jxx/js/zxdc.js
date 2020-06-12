@@ -47,9 +47,24 @@ $(document).ready(function(){
         ESRIPOJO.addDynamicLayer(data);//添加图层
         if(data.serverpath==null || data.subSpecialMenue.length!=0){ $('#table').css('display','none'); return;}
 
-        var xx = new QueryClass().getLayerData(data);
-        console.log(xx);
-
+        var number = new QueryClass().getLayerData(data);
+        var xx = number.result;
+        console.log(xx[2]);
+        $('#tudi tbody').children().remove();
+        for(var i=0;i<xx.length;i++){
+            $('#zongtiaoshu').html(xx.length);
+            if(xx[i].name == null||undefined||""){
+                xx[i].name = '无';
+            };
+            if(xx[i].bsm == null||undefined||""){
+                xx[i].bsm = '无';
+            };
+            $('#tudi tbody').append(`<tr bsm='${xx[i].bsm}' name='${xx[i].name}'>
+            <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}'/></td>
+            <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
+            <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
+            </tr>`);
+        }
 
         $('#table').css('display','inline-block');//打开
     });

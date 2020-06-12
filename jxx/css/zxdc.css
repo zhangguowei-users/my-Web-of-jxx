@@ -37,12 +37,29 @@ table{
 #tudi thead tr td{
     border: 0px;
 }
+#tudi tbody tr td{
+    text-align: center;
+}
 #tudi tbody tr{
     height: 46px;
     border: 0px;
 }
 #tudi tbody tr td{
     border: 0px;
+}
+#tudi tbody tr td .num-width{
+    display: inline-block;
+    width:130px;    
+    overflow: hidden;    
+    text-overflow:ellipsis;    
+    white-space: nowrap;
+}
+#tudi tbody tr td .text-width{
+    display: inline-block;
+    width:30px;    
+    overflow: hidden;    
+    text-overflow:ellipsis;    
+    white-space: nowrap;
 }
 .xgj{
     width:285px;
