@@ -64,9 +64,9 @@ $(document).ready(function(){
             <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
             <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
             </tr>`);
-        }
-
+        };
         $('#table').css('display','inline-block');//打开
+        
     });
     //查询菜单
     function queryCdo(queryInput,queryButton,tree1Id,tree2Id){
