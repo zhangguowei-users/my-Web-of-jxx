@@ -73,7 +73,8 @@ $(document).ready(function(){
                 <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
                 </tr>`);
                 $('#table').css('display','inline-block');//打开
-            }else{   
+            }else{  
+                $('#tb-gb,#tb-dk').css('display','inline-block'); 
             if(xx[i].name == null||undefined||""){
                 xx[i].name = '无';
             };
