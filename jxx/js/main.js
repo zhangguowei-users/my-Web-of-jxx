@@ -876,18 +876,51 @@ function table_wendang(){
       });
 };
 //改变echarts
-function changeecharts(){
+function changeecharts(num_b){
+    var legendData = new Array();
+    var num;
+    //echart图
+    console.log(num_b);
+    var domElement = document.querySelector('.zhu321');
+    // var domElement2 = document.querySelector('.bing321');
+    var title = "选中与总面积对比";
+    var seriesName = "所占面积比例";
+    var legendData = ['总面积'];
+    var seriesData = [{value:num_b, name: '总面积'}];
+    
+    new ReportClass(legendData, seriesData).createBingChar(domElement, title, seriesName);//创建饼形图
+    // new ReportClass(legendData, seriesData).createBingChar(domElement2, title, seriesName);
+
     $('.quanxuan').bind('change',function(){
+        num = 0;
         //获取被选中的数量
         $('#yixuanze').html($('.quanxuan:checked').length);
         //选择之后改变样式
        for(var i=0;i<$('.quanxuan').length;i++){
           if($('.quanxuan').eq(i).prop('checked')){
             $('.quanxuan').eq(i).parent().parent().css('color','#04BBF4');
+            var name_tudi = $('.quanxuan').eq(i).attr('name_tudi');
+            num = num + Number($('.quanxuan').eq(i).attr('area'));
+            legendData.push(name_tudi);
           }else{
             $('.quanxuan').eq(i).parent().parent().css('color',''); 
           };
        };
        //改变echarts
-    });
+       // console.log(legendData)
+       console.log(num);
+       console.log(num_b-num)
+       var no = num_b - num;
+       //echart图
+       var domElement = document.querySelector('.zhu321');
+       // var domElement2 = document.querySelector('.bing321');
+       var title = "选中与总面积对比";
+       var seriesName = "所占面积比例";
+       var legendData1 = ['剩余面积','选中面积'];
+       var seriesData = [{value:no, name: '剩余面积'},{value:num, name: '选中面积'}];
+       
+       new ReportClass(legendData1, seriesData).createBingChar(domElement, title, seriesName);//创建饼形图
+       // new ReportClass(legendData, seriesData).createBingChar(domElement2, title, seriesName);
+       });
+       // 
 };

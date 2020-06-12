@@ -3,6 +3,7 @@ var user;
 var dep;
 var depid;
 var resourceid;
+var num_b;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
@@ -51,27 +52,33 @@ $(document).ready(function(){
         var xx = number.result;
         // console.log(xx);
         //table添加数据
+        var num_b = 0;
         $('#tudi tbody').children().remove();
         $('#zongtiaoshu').html(xx.length);
+        $('#yixuanze').html(0);
         for(var i=0;i<xx.length;i++){
             if(data.type == 'polyline'){
                 $('#table').css('display','none');//关闭
-            }else{
-                
+            }else{   
             if(xx[i].name == null||undefined||""){
                 xx[i].name = '无';
             };
             if(xx[i].bsm == null||undefined||""){
                 xx[i].bsm = '无';
             };
-            $('#tudi tbody').append(`<tr bsm='${xx[i].bsm}' name='${xx[i].name}'>
+            if(xx[i].area == null||undefined||""){
+                xx[i].area = 0;
+            };
+            num_b = num_b + Number(xx[i].area);
+            $('#tudi tbody').append(`<tr>
             <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}'/></td>
             <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
             <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
             </tr>`);
             $('#table').css('display','inline-block');//打开
             };
-            };   
+        }; 
+          
         //搜索
         $('#search_button').bind('click',function(){
           var sousuoleibie = $('#sousuoleibie').val();
@@ -88,7 +95,10 @@ $(document).ready(function(){
                 if(xx[i].bsm == null||undefined||""){
                     xx[i].bsm = '无';
                 };
-                $('#tudi tbody').append(`<tr bsm='${xx[i].bsm}' name='${xx[i].name}'>
+                if(xx[i].area == null||undefined||""){
+                    xx[i].area = 0;
+                };
+                $('#tudi tbody').append(`<tr>
                 <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}'/></td>
                 <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
                 <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
@@ -122,10 +132,10 @@ $(document).ready(function(){
               alert('无结果,请选择查询项');
           };
         $('#zongtiaoshu').html(n);
-        changeecharts();
+        changeecharts(num_b);
         });
         //改变echarts
-        changeecharts();
+        changeecharts(num_b);
     });
     //查询菜单
     function queryCdo(queryInput,queryButton,tree1Id,tree2Id){
@@ -336,134 +346,4 @@ $('#tb-dk').bind('click',function(){
 $('#gb-table').bind('click',function(){
     $('#table').css('display','none');
 });
-//echart图
-
-
-var domElement = document.querySelector('.zhu321');
-var domElement2 = document.querySelector('.bing321');
-var title = "这是标题";
-var seriesName = "某块内容的标题"
-var legendData = ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'];
-var seriesData = [{value: 335, name: '直接访问'}, {value: 310, name: '邮件营销'}, {value: 234, name: '联盟广告'}, {value: 135, name: '视频广告'}, {value: 1548, name: '搜索引擎'}];
-
-new ReportClass(legendData, seriesData).createBingChar(domElement, title, seriesName);//创建饼形图
-new ReportClass(legendData, seriesData).createBingChar(domElement2, title, seriesName);
-
-
-
-/*var zhu = echarts.init(document.querySelector('.zhu321'));
-option = {
-    title: {
-        text: '某站点用户访问来源',
-        top:0,
-        left: 'center',
-        textStyle:{
-            color:'#333333',
-            fontSize:18,
-            fontFamily:'SourceHanSansCN-',
-            fontStyle :'normal',
-            fontWeight:400
-        }
-    },
-    tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b} : {c} ({d}%)'
-    },
-    legend: {
-        orient: 'horizontal',  //vertical
-        bottom: 'bottom',
-        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'],
-        textStyle:{
-            color:'#333333',
-            fontFamily:'SourceHanSansCN-',
-            fontStyle :'normal',
-            fontWeight:400
-        },
-        itemHeight:9,
-        itemWidth:9
-    },
-    series: [
-        {
-            name: '访问来源',
-            type: 'pie',
-            radius: '55%',
-            center: ['50%', '45%'],
-            data: [
-                {value: 335, name: '直接访问'},
-                {value: 310, name: '邮件营销'},
-                {value: 234, name: '联盟广告'},
-                {value: 135, name: '视频广告'},
-                {value: 1548, name: '搜索引擎'}
-            ],
-            emphasis: {
-                itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            }
-        }
-    ]
-};
-zhu.setOption(option);*/
-//echarts图2
-/*var bing = echarts.init(document.querySelector('.bing321'));
-option = {
-    title: {
-        text: '某站点用户访问来源',
-        top:0,
-        left: 'center',
-        textStyle:{
-            color:'#333333',
-            fontSize:18,
-            fontFamily:'SourceHanSansCN-',
-            fontStyle :'normal',
-            fontWeight:400
-        }
-    },
-    tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b} : {c} ({d}%)'
-    },
-    legend: {
-        orient: 'horizontal',  //vertical
-        bottom: 'bottom',
-        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎','dsa','123'],
-        textStyle:{
-            color:'#333333',
-            fontFamily:'SourceHanSansCN-',
-            fontStyle :'normal',
-            fontWeight:400
-        },
-        itemHeight:9,
-        itemWidth:9
-    },
-    series: [
-        {
-            name: '访问来源',
-            type: 'pie',
-            radius: '55%',
-            center: ['50%', '45%'],
-            data: [
-                {value: 335, name: '直接访问'},
-                {value: 310, name: '邮件营销'},
-                {value: 234, name: '联盟广告'},
-                {value: 135, name: '视频广告'},
-                {value: 1548, name: '搜索引擎'},
-                {value: 1548, name: 'dsa'},
-                {value: 1548, name: '123'},
-            ],
-            emphasis: {
-                itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            },
-        }
-    ]
-};
-bing.setOption(option);*/
-//
-
 });
