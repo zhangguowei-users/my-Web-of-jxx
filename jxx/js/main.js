@@ -917,14 +917,14 @@ function changeecharts(num_b){
        var no = num_b - num;
        //echart图1
        var domElement = document.querySelector('.zhu321');
-       var title = "选中面积对比";
+       var title = "选中与总面积对比";
        var seriesName = "所占面积比例";
        var legendData1 = ['剩余面积','选中面积'];
        var seriesData = [{value:no, name: '剩余面积',itemStyle:{color:'#FAD03E'}},{value:num, name: '选中面积',itemStyle:{color:'#F9AB15'}}];
        new ReportClass(eval(legendData1), eval(seriesData)).createBingChar(domElement, title, seriesName);//创建饼形图
        //echart图2
        var domElement2 = document.querySelector('.bing321');
-       var title1 = "选中与总面积对比";
+       var title1 = "选中面积对比";
        var seriesName1 = "所占面积比例";
        new ReportClass(legendData,eval(seriesData1)).createBingChar(domElement2, title1, seriesName1);
        });
