@@ -56,8 +56,23 @@ $(document).ready(function(){
         $('#yixuanze').html(0);
         for(var i=0;i<xx.length;i++){
             if(data.type == 'polyline'){
-                $('#table').css('display','none');//关闭
-                $('.zhu321,.bing321').css('display','none');
+                $('#tb-gb,#tb-dk').css('display','none');
+                if(xx[i].name == null||undefined||""){
+                    xx[i].name = '无';
+                };
+                if(xx[i].bsm == null||undefined||""){
+                    xx[i].bsm = '无';
+                };
+                if(xx[i].area == null||undefined||""){
+                    xx[i].area = 0;
+                };
+                num_b = num_b + Number(xx[i].area);
+                $('#tudi tbody').append(`<tr>
+                <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}' bsm_tudi='${xx[i].bsm}'/></td>
+                <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
+                <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
+                </tr>`);
+                $('#table').css('display','inline-block');//打开
             }else{   
             if(xx[i].name == null||undefined||""){
                 xx[i].name = '无';
