@@ -43,11 +43,6 @@ function ToolsClass(dom, OverviewMap, Scalebar)//地图工具类
     this.myScalebar = myScalebar;//比例尺
 }
 
-function QueryClass()//查询类
-{
-    this.getLayerData = getLayerData;//获取图层所有属性
-}
-
 function addMap(layer)//添加地图
 {
     var map = new this.Map("zxdc_map_div", {logo: false });
@@ -83,7 +78,6 @@ function addDynamicLayer(obj)//添加动态图层
 
 }
 
-
 function myOverviewMap(){//鹰眼
     var overviewMapDijit = new this.OverviewMap({map:MAP, visible:true}, this.dom.byId("xx"));
     overviewMapDijit.startup();
@@ -94,16 +88,6 @@ function myScalebar() {//比例尺
 }
 
 
-function getLayerData(jsonObj)//获取图层类
-{
-    var value ;
 
-    $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getLayerData', type: 'POST',async:false, data:{"jsonTree":JSON.stringify(jsonObj)}, xhrFields:{withCredentials:true}, success:function(result)
-    {
-        value = result;
-    }});
-
-    return value;
-}
 
 
