@@ -878,8 +878,6 @@ function table_wendang(){
 //改变echarts
 function changeecharts(num_b){
     var legendData = new Array();
-    //var seriesData1 = new Array();
-    //var seriesData1 = "[";
     var seriesData1 = [];
     var num;
     //echart图
@@ -887,7 +885,7 @@ function changeecharts(num_b){
     var title = "选中与总面积对比";
     var seriesName = "所占面积比例";
     var legendData1 = ['总面积'];
-    var seriesData = [{value:num_b, name: '总面积'}];
+    var seriesData = [{value:num_b, name: '总面积',itemStyle:{color:'#FAD03E'}}];
     new ReportClass(legendData1, seriesData).createBingChar(domElement, title, seriesName);//创建饼形图
     $('.quanxuan').bind('change',function(){
         seriesData1 = [];
@@ -901,6 +899,9 @@ function changeecharts(num_b){
             $('.quanxuan').eq(i).parent().parent().css('color','#04BBF4');
             var name_tudi = $('.quanxuan').eq(i).attr('name_tudi');
             num = num + Number($('.quanxuan').eq(i).attr('area'));
+            if($('.quanxuan').eq(i).attr('name_tudi') == '无'){
+                name_tudi = $('.quanxuan').eq(i).attr('bsm_tudi');
+            };
             legendData.push(name_tudi);
             seriesData1.push({"value":Number($('.quanxuan').eq(i).attr('area')),"name":name_tudi});
           }else{
@@ -919,7 +920,7 @@ function changeecharts(num_b){
        var title = "选中与总面积对比";
        var seriesName = "所占面积比例";
        var legendData1 = ['剩余面积','选中面积'];
-       var seriesData = [{value:no, name: '剩余面积'},{value:num, name: '选中面积'}];
+       var seriesData = [{value:no, name: '剩余面积',itemStyle:{color:'#FAD03E'}},{value:num, name: '选中面积',itemStyle:{color:'#F9AB15'}}];
        new ReportClass(eval(legendData1), eval(seriesData)).createBingChar(domElement, title, seriesName);//创建饼形图
        //echart图2
        var domElement2 = document.querySelector('.bing321');

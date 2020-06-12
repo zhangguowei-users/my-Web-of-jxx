@@ -70,7 +70,7 @@ $(document).ready(function(){
             };
             num_b = num_b + Number(xx[i].area);
             $('#tudi tbody').append(`<tr>
-            <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].bsm}'/></td>
+            <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}' bsm_tudi='${xx[i].bsm}'/></td>
             <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
             <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
             </tr>`);
@@ -97,7 +97,7 @@ $(document).ready(function(){
                     xx[i].area = 0;
                 };
                 $('#tudi tbody').append(`<tr>
-                <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}'/></td>
+                <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}' bsm_tudi='${xx[i].bsm}'/></td>
                 <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
                 <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
                 </tr>`); 
@@ -117,7 +117,7 @@ $(document).ready(function(){
                      xx[i].bsm = '无';
                  };
                  $('#tudi tbody').append(`<tr bsm='${xx[i].bsm}' name='${xx[i].name}'>
-                 <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}'/></td>
+                 <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}' bsm_tudi='${xx[i].bsm}'/></td>
                  <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
                  <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
                  </tr>`); 
