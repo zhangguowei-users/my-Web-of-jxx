@@ -43,16 +43,20 @@ $(document).ready(function(){
     //点击获取id
     $('.dcd,.dcd1').bind('click',function(){
         var data = JSON.parse($(this).attr('cd'));
-
+         console.log(data)
         ESRIPOJO.addDynamicLayer(data);//添加图层
         if(data.serverpath==null || data.subSpecialMenue.length!=0){ $('#table').css('display','none'); return;}
 
         var number = new QueryClass().getLayerData(data);
         var xx = number.result;
-        console.log(xx[2]);
+        // console.log(xx);
+        //table添加数据
         $('#tudi tbody').children().remove();
         for(var i=0;i<xx.length;i++){
-            $('#zongtiaoshu').html(xx.length);
+            if(data.type == 'polyline'){
+                $('#table').css('display','none');
+            }else{
+                $('#zongtiaoshu').html(xx.length);
             if(xx[i].name == null||undefined||""){
                 xx[i].name = '无';
             };
@@ -60,13 +64,18 @@ $(document).ready(function(){
                 xx[i].bsm = '无';
             };
             $('#tudi tbody').append(`<tr bsm='${xx[i].bsm}' name='${xx[i].name}'>
-            <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}'/></td>
+            <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}'/></td>
             <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
             <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
             </tr>`);
-        };
-        $('#table').css('display','inline-block');//打开
-        
+            };
+            $('#table').css('display','inline-block');//打开
+            };
+            
+        //搜索
+
+        //改变echarts
+
     });
     //查询菜单
     function queryCdo(queryInput,queryButton,tree1Id,tree2Id){
