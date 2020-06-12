@@ -286,9 +286,12 @@ $(document).ready(function(){
         $(".map_39").removeClass("map30");
         if($(".map_39").attr("class") == "map_39"){
             $(".map_39").attr("class","map01_39");
-            
+            $('.jtwo').css('width',"50%");
+            $('#fp').css('display','inline-block');
         }else{
             $(".map01_39").attr("class","map_39");
+            $('.jtwo').css('width',"");
+            $('#fp').css('display','none');
         };
     });
  //改变编辑地块按钮
