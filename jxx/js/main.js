@@ -917,7 +917,7 @@ function changeecharts(num_b){
        var no = num_b - num;
        //echart图1
        var domElement = document.querySelector('.zhu321');
-       var title = "选中与总面积对比";
+       var title = "选中面积对比";
        var seriesName = "所占面积比例";
        var legendData1 = ['剩余面积','选中面积'];
        var seriesData = [{value:no, name: '剩余面积',itemStyle:{color:'#FAD03E'}},{value:num, name: '选中面积',itemStyle:{color:'#F9AB15'}}];
