@@ -46,11 +46,9 @@ $(document).ready(function(){
         var data = JSON.parse($(this).attr('cd'));
         //  console.log(data)
         ESRIPOJO.addDynamicLayer(data);//添加图层
-        if(data.serverpath==null || data.subSpecialMenue.length!=0){ $('#table').css('display','none'); return;}
-
+        if(data.serverpath==null || data.subSpecialMenue.length!=0){ $('#table').css('display','none');$('.zhu321,.bing321').css('display','none'); return;}
         var number = new QueryClass().getLayerData(data);
         var xx = number.result;
-        // console.log(xx);
         //table添加数据
         var num_b = 0;
         $('#tudi tbody').children().remove();
@@ -59,6 +57,7 @@ $(document).ready(function(){
         for(var i=0;i<xx.length;i++){
             if(data.type == 'polyline'){
                 $('#table').css('display','none');//关闭
+                $('.zhu321,.bing321').css('display','none');
             }else{   
             if(xx[i].name == null||undefined||""){
                 xx[i].name = '无';
@@ -71,14 +70,13 @@ $(document).ready(function(){
             };
             num_b = num_b + Number(xx[i].area);
             $('#tudi tbody').append(`<tr>
-            <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}'/></td>
+            <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].bsm}'/></td>
             <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
             <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
             </tr>`);
             $('#table').css('display','inline-block');//打开
             };
-        }; 
-          
+        };  
         //搜索
         $('#search_button').bind('click',function(){
           var sousuoleibie = $('#sousuoleibie').val();
