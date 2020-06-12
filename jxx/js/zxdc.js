@@ -43,7 +43,7 @@ $(document).ready(function(){
     //点击获取id
     $('.dcd,.dcd1').bind('click',function(){
         var data = JSON.parse($(this).attr('cd'));
-         console.log(data)
+        //  console.log(data)
         ESRIPOJO.addDynamicLayer(data);//添加图层
         if(data.serverpath==null || data.subSpecialMenue.length!=0){ $('#table').css('display','none'); return;}
 
@@ -52,11 +52,12 @@ $(document).ready(function(){
         // console.log(xx);
         //table添加数据
         $('#tudi tbody').children().remove();
+        $('#zongtiaoshu').html(xx.length);
         for(var i=0;i<xx.length;i++){
             if(data.type == 'polyline'){
                 $('#table').css('display','none');//关闭
             }else{
-                $('#zongtiaoshu').html(xx.length);
+                
             if(xx[i].name == null||undefined||""){
                 xx[i].name = '无';
             };
@@ -72,9 +73,59 @@ $(document).ready(function(){
             };
             };   
         //搜索
+        $('#search_button').bind('click',function(){
+          var sousuoleibie = $('#sousuoleibie').val();
+          var search_text = $('#search_text').val();
+          var n= 0;
+          if(sousuoleibie == '标识码'){
+           $('#tudi tbody').children().remove();
+           for(var i=0;i<xx.length;i++){
+               if(xx[i].bsm.indexOf(search_text)>=0){
+                   n++;
+                if(xx[i].name == null||undefined||""){
+                    xx[i].name = '无';
+                };
+                if(xx[i].bsm == null||undefined||""){
+                    xx[i].bsm = '无';
+                };
+                $('#tudi tbody').append(`<tr bsm='${xx[i].bsm}' name='${xx[i].name}'>
+                <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}'/></td>
+                <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
+                <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
+                </tr>`); 
+               }else{
 
+               }
+           };
+          }else if(sousuoleibie == '名称'){
+            $('#tudi tbody').children().remove();
+            for(var i=0;i<xx.length;i++){
+                if(xx[i].name.indexOf(search_text)>=0){
+                    n++;
+                 if(xx[i].name == null||undefined||""){
+                     xx[i].name = '无';
+                 };
+                 if(xx[i].bsm == null||undefined||""){
+                     xx[i].bsm = '无';
+                 };
+                 $('#tudi tbody').append(`<tr bsm='${xx[i].bsm}' name='${xx[i].name}'>
+                 <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}'/></td>
+                 <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
+                 <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
+                 </tr>`); 
+                }else{
+                   
+                }
+            };  
+          }else{
+              $('#tudi tbody').children().remove();
+              alert('无结果,请选择查询项');
+          };
+        $('#zongtiaoshu').html(n);
+        changeecharts();
+        });
         //改变echarts
-
+        changeecharts();
     });
     //查询菜单
     function queryCdo(queryInput,queryButton,tree1Id,tree2Id){

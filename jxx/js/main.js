@@ -874,4 +874,20 @@ function table_wendang(){
             $('#sq-b').append(`<option value="${depid}">${dep}</option>`);
           });
       });
-}
+};
+//改变echarts
+function changeecharts(){
+    $('.quanxuan').bind('change',function(){
+        //获取被选中的数量
+        $('#yixuanze').html($('.quanxuan:checked').length);
+        //选择之后改变样式
+       for(var i=0;i<$('.quanxuan').length;i++){
+          if($('.quanxuan').eq(i).prop('checked')){
+            $('.quanxuan').eq(i).parent().parent().css('color','#04BBF4');
+          }else{
+            $('.quanxuan').eq(i).parent().parent().css('color',''); 
+          };
+       };
+       //改变echarts
+    });
+};
