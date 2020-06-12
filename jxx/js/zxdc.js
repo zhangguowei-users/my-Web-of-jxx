@@ -54,7 +54,7 @@ $(document).ready(function(){
         $('#tudi tbody').children().remove();
         for(var i=0;i<xx.length;i++){
             if(data.type == 'polyline'){
-                $('#table').css('display','none');
+                $('#table').css('display','none');//关闭
             }else{
                 $('#zongtiaoshu').html(xx.length);
             if(xx[i].name == null||undefined||""){
@@ -68,10 +68,9 @@ $(document).ready(function(){
             <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
             <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
             </tr>`);
-            };
             $('#table').css('display','inline-block');//打开
             };
-            
+            };   
         //搜索
 
         //改变echarts
