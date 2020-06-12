@@ -56,7 +56,7 @@ $(document).ready(function(){
         $('#yixuanze').html(0);
         for(var i=0;i<xx.length;i++){
             if(data.type == 'polyline'){
-                $('#tb-gb,#tb-dk').css('display','none');
+                $('#tb-gb,#tb-dk,.bing321,.zhu321').css('display','none');
                 if(xx[i].name == null||undefined||""){
                     xx[i].name = '无';
                 };
@@ -73,8 +73,8 @@ $(document).ready(function(){
                 <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
                 </tr>`);
                 $('#table').css('display','inline-block');//打开
-            }else{  
-                $('#tb-gb,#tb-dk').css('display','inline-block'); 
+            }else{
+                $('#tb-gb,#tb-dk').css('display','inline-block');
             if(xx[i].name == null||undefined||""){
                 xx[i].name = '无';
             };
@@ -362,5 +362,7 @@ $('#tb-dk').bind('click',function(){
 //关闭表格
 $('#gb-table').bind('click',function(){
     $('#table').css('display','none');
+    $('.bing321').css('display','none');
+    $('.zhu321').css('display','none');
 });
 });
