@@ -878,9 +878,7 @@ function table_wendang(){
 //改变echarts
 function changeecharts(num_b){
     var legendData = new Array();
-    //var seriesData1 = new Array();
-    //var seriesData1 = "[";
-    var seriesData1 = [];
+    var seriesData1;
     var num;
     //echart图
     var domElement = document.querySelector('.zhu321');
@@ -890,9 +888,9 @@ function changeecharts(num_b){
     var seriesData = [{value:num_b, name: '总面积'}];
     new ReportClass(legendData1, seriesData).createBingChar(domElement, title, seriesName);//创建饼形图
     $('.quanxuan').bind('change',function(){
-        seriesData1 = [];
+        seriesData1 = "";
         num = 0;
-        legendData.splice(0);
+        legendData.splice(0,legendData.length);;
         //获取被选中的数量
         $('#yixuanze').html($('.quanxuan:checked').length);
         //选择之后改变样式
@@ -902,16 +900,19 @@ function changeecharts(num_b){
             var name_tudi = $('.quanxuan').eq(i).attr('name_tudi');
             num = num + Number($('.quanxuan').eq(i).attr('area'));
             legendData.push(name_tudi);
-            seriesData1.push({"value":Number($('.quanxuan').eq(i).attr('area')),"name":name_tudi});
+            if(i == $('.quanxuan:checked').length-1){
+                console.log('1');
+                seriesData1 += '{value:'+Number($('.quanxuan').eq(i).attr('area'))+',name:"'+name_tudi+'"}]';    
+            }else if(i == 0){
+                console.log('2');
+                seriesData1 += '[{value:'+Number($('.quanxuan').eq(i).attr('area'))+',name:"'+name_tudi+'"},';    
+            }else{
+                seriesData1 += '{value:'+Number($('.quanxuan').eq(i).attr('area'))+',name:"'+name_tudi+'"},';
+            };
           }else{
             $('.quanxuan').eq(i).parent().parent().css('color',''); 
           };
        };
-        let obj2 = {}
-        seriesData1.forEach(item => {
-            obj2["value"] = item.value,
-            obj2["name"] = item.name
-        });
        //改变echarts
        var no = num_b - num;
        //echart图1
@@ -925,6 +926,8 @@ function changeecharts(num_b){
        var domElement2 = document.querySelector('.bing321');
        var title1 = "选中与总面积对比";
        var seriesName1 = "所占面积比例";
+    //    console.log(legendData);
+       console.log(eval(seriesData1));
        new ReportClass(legendData,eval(seriesData1)).createBingChar(domElement2, title1, seriesName1);
        });
 };
