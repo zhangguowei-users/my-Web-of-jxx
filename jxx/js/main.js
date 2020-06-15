@@ -877,9 +877,6 @@ function table_wendang(){
 };
 //改变echarts
 function changeecharts(num_b){
-    var legendData = new Array();
-    var seriesData1 = [];
-    var num;
     //echart图
     var domElement = document.querySelector('.zhu321');
     var title = "选中与总面积对比";
@@ -896,7 +893,7 @@ function changeecharts(num_b){
         //获取被选中的数量
         $('#yixuanze').html($('.quanxuan:checked').length);
         //选择之后改变样式
-       for(var i=0;i<$('.quanxuan').length;i++){
+       for(var i=0,len=$('.quanxuan').length;i<len;i++){
           if($('.quanxuan').eq(i).prop('checked')){
             $('.quanxuan').eq(i).parent().parent().css('color','#04BBF4');
             var name_tudi = $('.quanxuan').eq(i).attr('name_tudi');

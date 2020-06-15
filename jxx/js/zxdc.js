@@ -5,6 +5,9 @@ var depid;
 var resourceid;
 var num_b;
 var str;
+var legendData = new Array();
+var seriesData1 = [];
+var num;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
@@ -56,7 +59,7 @@ $(document).ready(function(){
         str='';
         $('#zongtiaoshu').html(xx.length);
         $('#yixuanze').html(0);
-        for(var i=0;i<xx.length;i++){
+        for(var i=0,len = xx.length;i<len;i++){
             if(data.type == 'polyline'){
                 $('#tb-gb,#tb-dk,.bing321,.zhu321').css('display','none');
                 if(xx[i].name == null||undefined||""){
@@ -103,7 +106,7 @@ $(document).ready(function(){
           var n= 0;
           if(sousuoleibie == '标识码'){
            $('#tudi tbody').children().remove();
-           for(var i=0;i<xx.length;i++){
+           for(var i=0,len=xx.length;i<len;i++){
                if(xx[i].bsm.indexOf(search_text)>=0){
                    n++;
                 if(xx[i].name == null||undefined||""){
