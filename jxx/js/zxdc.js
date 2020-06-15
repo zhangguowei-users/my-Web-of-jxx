@@ -8,6 +8,10 @@ var str;
 var legendData = new Array();
 var seriesData1 = [];
 var num;
+var name_tudichecked= new Array();
+var name_tudiuncheck = new Array();
+var bsm_tudichecked= new Array();
+var bsm_tudiuncheck = new Array();
 $(document).ready(function(){
     dengluLocation();
     huoquName();
@@ -55,7 +59,11 @@ $(document).ready(function(){
         if(data.serverpath==null || data.subSpecialMenue.length!=0){ $('#table').css('display','none');$('.zhu321,.bing321').css('display','none'); return;}
         var number = new QueryClass().getLayerData(data);
         var xx = number.result;
+        console.log(number);
         //table添加数据
+        num = 0;
+        legendData.splice(0);
+        seriesData1.splice(0);
         var num_b = 0;
         $('#tudi tbody').children().remove();
         str='';

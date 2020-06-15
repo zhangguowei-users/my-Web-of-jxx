@@ -886,39 +886,61 @@ function changeecharts(num_b){
     new ReportClass(legendData1, seriesData).createBingChar(domElement, title, seriesName);//创建饼形图
     $('.quanxuan').bind('change',function(){
         //----------------------console.log($(this).attr("bsm_tudi"));-------------------------------
-
-        if($(this).prop("checked"))
-        {
+        var name_tudi = $(this).attr('name_tudi');//名称
+        var bsm_tudi = $(this).attr('bsm_tudi');//标识码
+        if($(this).prop("checked")){
             GEOQUERYCLASS.queryGeometryByBSM($(this).attr("bsm_tudi"));//地理查询类
-        }
-        else
-        {
+            $(this).parent().parent().css('color','#04BBF4');//变色
+            num = num + Number($(this).attr('area'));//选中总和
+            if($(this).attr('name_tudi') == '无'){
+                legendData.push(bsm_tudi);
+                seriesData1.push({"value":Number($(this).attr('area')),"name":bsm_tudi});
+            }else{
+                legendData.push(name_tudi+bsm_tudi.substring(bsm_tudi.length-10));
+                seriesData1.push({"value":Number($(this).attr('area')),"name":name_tudi+bsm_tudi.substring(bsm_tudi.length-10)});
+            };
+              
+        }else{
             GEOQUERYCLASS.clearGraphics(MAP);
-        }
-
-
-
-        seriesData1 = [];
-        num = 0;
-        legendData.splice(0);
+            $(this).parent().parent().css('color','');//颜色变回来
+            num = num - Number($(this).attr('area'));//选中总和
+            if($(this).attr('name_tudi') == '无'){
+                for(var i=0,len=legendData.length;i<len;i++){
+                    if(legendData[i] == bsm_tudi){
+                        legendData.splice(i,1);
+                        seriesData1.splice(i,1);
+                    };
+                };
+            }else{
+                for(var i=0,len=legendData.length;i<len;i++){
+                    if(legendData[i] == name_tudi+bsm_tudi.substring(bsm_tudi.length-10)){
+                        legendData.splice(i,1);
+                        seriesData1.splice(i,1);
+                    };
+                };
+            };  
+        };
+        // seriesData1 = [];
+        // num = 0;
+        // legendData.splice(0);
         //获取被选中的数量
         $('#yixuanze').html($('.quanxuan:checked').length);
         //选择之后改变样式
-       for(var i=0,len=$('.quanxuan').length;i<len;i++){
-          if($('.quanxuan').eq(i).prop('checked')){
-            $('.quanxuan').eq(i).parent().parent().css('color','#04BBF4');
-            var name_tudi = $('.quanxuan').eq(i).attr('name_tudi');
-            var bsm_tudi = $('.quanxuan').eq(i).attr('bsm_tudi');
-            num = num + Number($('.quanxuan').eq(i).attr('area'));
-            if($('.quanxuan').eq(i).attr('name_tudi') == '无'){
-                name_tudi = $('.quanxuan').eq(i).attr('bsm_tudi');
-            };
-            legendData.push(name_tudi+bsm_tudi.substring(bsm_tudi.length-10));
-            seriesData1.push({"value":Number($('.quanxuan').eq(i).attr('area')),"name":name_tudi+bsm_tudi.substring(bsm_tudi.length-10)});
-          }else{
-            $('.quanxuan').eq(i).parent().parent().css('color',''); 
-          };
-       };
+    //    for(var i=0,len=$('.quanxuan').length;i<len;i++){
+    //       if($('.quanxuan').eq(i).prop('checked')){
+        // $('.quanxuan').eq(i).parent().parent().css('color','#04BBF4');
+    //         var name_tudi = $('.quanxuan').eq(i).attr('name_tudi');
+    //         var bsm_tudi = $('.quanxuan').eq(i).attr('bsm_tudi');
+    //         num = num + Number($('.quanxuan').eq(i).attr('area'));
+    //         if($('.quanxuan').eq(i).attr('name_tudi') == '无'){
+    //             name_tudi = $('.quanxuan').eq(i).attr('bsm_tudi');
+    //         };
+    //         legendData.push(name_tudi+bsm_tudi.substring(bsm_tudi.length-10));
+    //         seriesData1.push({"value":Number($('.quanxuan').eq(i).attr('area')),"name":name_tudi+bsm_tudi.substring(bsm_tudi.length-10)});
+    //       }else{
+    //         $('.quanxuan').eq(i).parent().parent().css('color',''); 
+    //       };
+    //    };
        //改变echarts
        var no = num_b - num;
        //echart图1
