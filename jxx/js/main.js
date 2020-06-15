@@ -891,6 +891,10 @@ function changeecharts(num_b){
         {
             GEOQUERYCLASS.queryGeometryByBSM($(this).attr("bsm_tudi"));//地理查询类
         }
+        else
+        {
+            GEOQUERYCLASS.clearGraphics(MAP);
+        }
 
 
 
