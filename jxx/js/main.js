@@ -886,6 +886,7 @@ function changeecharts(num_b){
     new ReportClass(legendData1, seriesData).createBingChar(domElement, title, seriesName);//创建饼形图
     $('.quanxuan').bind('change',function(){
         //----------------------console.log($(this).attr("bsm_tudi"));-------------------------------
+        //广搜
         var name_tudi = $(this).attr('name_tudi');//名称
         var bsm_tudi = $(this).attr('bsm_tudi');//标识码
         if($(this).prop("checked")){
@@ -920,6 +921,7 @@ function changeecharts(num_b){
                 };
             };  
         };
+        //深度搜索
         // seriesData1 = [];
         // num = 0;
         // legendData.splice(0);
