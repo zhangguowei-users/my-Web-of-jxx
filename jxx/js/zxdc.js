@@ -4,6 +4,7 @@ var dep;
 var depid;
 var resourceid;
 var num_b;
+var str;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
@@ -52,6 +53,7 @@ $(document).ready(function(){
         //table添加数据
         var num_b = 0;
         $('#tudi tbody').children().remove();
+        str='';
         $('#zongtiaoshu').html(xx.length);
         $('#yixuanze').html(0);
         for(var i=0;i<xx.length;i++){
@@ -67,11 +69,11 @@ $(document).ready(function(){
                     xx[i].area = 0;
                 };
                 num_b = num_b + Number(xx[i].area);
-                $('#tudi tbody').append(`<tr>
+                str+=`<tr>
                 <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}' bsm_tudi='${xx[i].bsm}'/></td>
                 <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
                 <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
-                </tr>`);
+                </tr>`;
                 $('#table').css('display','inline-block');//打开
             }else{
                 $('#tb-gb,#tb-dk').css('display','inline-block');
@@ -85,14 +87,15 @@ $(document).ready(function(){
                 xx[i].area = 0;
             };
             num_b = num_b + Number(xx[i].area);
-            $('#tudi tbody').append(`<tr>
+            str+=`<tr>
             <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}' bsm_tudi='${xx[i].bsm}'/></td>
             <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
             <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
-            </tr>`);
+            </tr>`;
             $('#table').css('display','inline-block');//打开
             };
-        };  
+        };
+        $('#tudi tbody').append(str);  
         //搜索
         $('#search_button').bind('click',function(){
           var sousuoleibie = $('#sousuoleibie').val();

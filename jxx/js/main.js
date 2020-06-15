@@ -910,13 +910,6 @@ function changeecharts(num_b){
             $('.quanxuan').eq(i).parent().parent().css('color',''); 
           };
        };
-
-
-        let obj2 = {}
-        seriesData1.forEach(item => {
-            obj2["value"] = item.value,
-            obj2["name"] = item.name
-        });
        //改变echarts
        var no = num_b - num;
        //echart图1
