@@ -59,7 +59,6 @@ $(document).ready(function(){
         if(data.serverpath==null || data.subSpecialMenue.length!=0){ $('#table').css('display','none');$('.zhu321,.bing321').css('display','none'); return;}
         var number = new QueryClass().getLayerData(data);
         var xx = number.result;
-        console.log(number);
         //table添加数据
         num = 0;
         legendData.splice(0);
