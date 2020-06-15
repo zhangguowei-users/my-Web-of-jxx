@@ -2,6 +2,7 @@ var MAP = null;
 var ESRIPOJO = null;
 var TOOLSCLASS = null;
 var IMAGECLASS = null;
+var GEOQUERYCLASS = null;
 
 require(["esri/map","esri/layers/GraphicsLayer", "dojo/dom", "dojo/on","esri/layers/ArcGISDynamicMapServiceLayer",
          "dojo/query", "esri/tasks/FindTask", "esri/tasks/FindParameters", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol",
@@ -14,9 +15,12 @@ function init(Map, GraphicsLayer,dom,on, ArcGISDynamicMapServiceLayer,query,Find
     var esriPojo = new EsriPojo(Map, on, ArcGISDynamicMapServiceLayer);
     var toolsClass = new ToolsClass(dom, OverviewMap, Scalebar);
     var imageClass = new ImageClass(ArcGISDynamicMapServiceLayer, Map, ArcGISImageServiceLayer);
+    var geoQueryClass = new GeoQueryClass(QueryTask, query, SimpleLineSymbol, SimpleFillSymbol, null);
+
     ESRIPOJO = esriPojo;
     TOOLSCLASS = toolsClass;
     IMAGECLASS = imageClass;
+    GEOQUERYCLASS = geoQueryClass;
 
     esriPojo.addMap(ARCGISCONFIG.XZQ_TAG_WITH_MAXSCALE_1_50000);
 

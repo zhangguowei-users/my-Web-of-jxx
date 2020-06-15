@@ -887,6 +887,13 @@ function changeecharts(num_b){
     $('.quanxuan').bind('change',function(){
         //----------------------console.log($(this).attr("bsm_tudi"));-------------------------------
 
+        if($(this).prop("checked"))
+        {
+            GEOQUERYCLASS.queryGeometryByBSM($(this).attr("bsm_tudi"));//地理查询类
+        }
+
+
+
         seriesData1 = [];
         num = 0;
         legendData.splice(0);
