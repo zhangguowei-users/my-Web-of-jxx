@@ -8,10 +8,6 @@ var str;
 var legendData = new Array();
 var seriesData1 = [];
 var num;
-var name_tudichecked= new Array();
-var name_tudiuncheck = new Array();
-var bsm_tudichecked= new Array();
-var bsm_tudiuncheck = new Array();
 $(document).ready(function(){
     dengluLocation();
     huoquName();
