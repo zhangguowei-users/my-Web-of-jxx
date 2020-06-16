@@ -7,11 +7,11 @@ $.ajax({
     async: false,
     xhrFields:{withCredentials:true},
     success:function(data){
-        if(data.length == 0 || data ==null) console.log('未登录无法获取userid');
+        if(data.length == 0 || data ==null) return '未登录无法获取userid';
         else zhanghu1 = data[0].userid;  
     },
     error:function(){
-        console.log('未登录无法获取userid')
+        return '未登录无法获取userid';
     }
 });
 //登陆页面样式变化

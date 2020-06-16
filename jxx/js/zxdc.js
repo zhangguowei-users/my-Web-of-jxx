@@ -48,7 +48,6 @@ $(document).ready(function(){
     //点击获取id
     $('.dcd,.dcd1').bind('click',function(){
         var data = JSON.parse($(this).attr('cd'));
-        //  console.log(data)
         ESRIPOJO.addDynamicLayer(data);//添加图层
         GEOQUERYCLASS.setServerPath(data);//设置地理查询类
 

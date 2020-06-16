@@ -868,7 +868,6 @@ function table_wendang(){
             $('#sq-b').children().remove();
             $("#css1").css("display","inline-block");
             var data = JSON.parse($(this).attr('id'));
-            console.log(data,zhanghu1,user,dep,depid);
             resourceid=data.resourceid; 
             $('#sq-p').val(user);
             $('#sq-b').append(`<option value="${depid}">${dep}</option>`);
@@ -901,10 +900,8 @@ function changeecharts(num_b){
             num = num + Number($('.quanxuan').eq(i).attr('area'));
             legendData.push(name_tudi);
             if(i == $('.quanxuan:checked').length-1){
-                console.log('1');
                 seriesData1 += '{value:'+Number($('.quanxuan').eq(i).attr('area'))+',name:"'+name_tudi+'"}]';    
             }else if(i == 0){
-                console.log('2');
                 seriesData1 += '[{value:'+Number($('.quanxuan').eq(i).attr('area'))+',name:"'+name_tudi+'"},';    
             }else{
                 seriesData1 += '{value:'+Number($('.quanxuan').eq(i).attr('area'))+',name:"'+name_tudi+'"},';
@@ -926,8 +923,6 @@ function changeecharts(num_b){
        var domElement2 = document.querySelector('.bing321');
        var title1 = "选中与总面积对比";
        var seriesName1 = "所占面积比例";
-    //    console.log(legendData);
-       console.log(eval(seriesData1));
        new ReportClass(legendData,eval(seriesData1)).createBingChar(domElement2, title1, seriesName1);
        });
 };

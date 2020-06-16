@@ -143,6 +143,15 @@ $(document).ready(function(){
            });
          }
         });
+        //文件的下载申请
+        $('.down').bind('click',function(){
+          $('#sq-b').children().remove();
+          $("#css1").css("display","inline-block");
+          var data = JSON.parse($(this).attr('id'));
+          resourceid=data.resourceid; 
+          $('#sq-p').val(user);
+          $('#sq-b').append(`<option value="${depid}">${dep}</option>`);
+        });
     //点击菜单获取文档
       $.ajax({
         url:config.newip + config.newport + '/arcgis/DocumentSharing/GetDocumentTypeList',
@@ -173,7 +182,6 @@ $(document).ready(function(){
         type: 'post',
         data:{resourceid:resourceid,userid:zhanghu1,username:user,depid:depid,depname:dep,applyreason:val},
         success:function(data){
-          console.log(data);
           alert(data.msg);
           $("#css1").css("display","none");
         }

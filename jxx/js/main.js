@@ -868,7 +868,6 @@ function table_wendang(){
             $('#sq-b').children().remove();
             $("#css1").css("display","inline-block");
             var data = JSON.parse($(this).attr('id'));
-            console.log(data,zhanghu1,user,dep,depid);
             resourceid=data.resourceid; 
             $('#sq-p').val(user);
             $('#sq-b').append(`<option value="${depid}">${dep}</option>`);
