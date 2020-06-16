@@ -114,8 +114,12 @@ function huakuaiMove(IdName){
 //点击变色事件
 function caidanChangeColor(className){
     $(`${className}`).click(function(){
-        $(`${className}`).css("color","black");
+        $(`${className},.folder`).css("color","black");
         $(this).css("color","red");
+    });
+    $(`.folder`).click(function(){
+        $(`.folder`).css("color","black");
+        $(`${className},.folder`).css("color","black");
     });
 };
 //形成树菜单 无限层级
