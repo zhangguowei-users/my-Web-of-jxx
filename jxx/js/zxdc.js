@@ -58,7 +58,7 @@ $(document).ready(function(){
         num = 0;
         legendData.splice(0);
         seriesData1.splice(0);
-        var num_b = 0;
+        num_b = 0;
         $('#tudi tbody').children().remove();
         str='';
         $('#zongtiaoshu').html(xx.length);
@@ -105,6 +105,10 @@ $(document).ready(function(){
         $('#tudi tbody').append(str);  
         //搜索
         $('#search_button').bind('click',function(){
+          num = 0;
+          legendData.splice(0);
+          seriesData1.splice(0);
+        //   num_b = 0;
           var sousuoleibie = $('#sousuoleibie').val();
           var search_text = $('#search_text').val();
           var n= 0;

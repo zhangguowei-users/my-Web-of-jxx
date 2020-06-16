@@ -167,7 +167,8 @@ option = {
             fontWeight:400
         },
         itemHeight:9,
-        itemWidth:9
+        itemWidth:9,
+        type:'scroll',
     },
     series: [
         {
@@ -213,7 +214,7 @@ option = {
     },
     legend: {
         orient: 'horizontal',  //vertical
-        bottom: 'bottom',
+        bottom: 0,
         data: ['拆除未尽区1面积', '拆除未尽区2面积', '拆除未尽区1面积', '拆除未尽区2面积','拆除未尽区3面积','拆除未尽区4面积','拆除未尽区3面积','拆除未尽区4面积'],
         textStyle:{
             color:'#333333',
@@ -222,7 +223,8 @@ option = {
             fontWeight:400
         },
         itemHeight:9,
-        itemWidth:9
+        itemWidth:9,
+        type:'scroll',
     },
     series: [
         {
