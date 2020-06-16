@@ -23,7 +23,7 @@ $(document).ready(function(){
                 //点击变色事件
                caidanChangeColor(".file");
                 //点击查询
-               queryCd(".ftwo",".stwo","#browser",data);
+               queryCd(".fthree",".sthree","#browser",data);
         }
     });
     //地区信息
