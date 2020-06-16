@@ -199,7 +199,122 @@ $(document).ready(function(){
         //点击获取id
         $('.dcd,.dcd1').bind('click',function(){
             var data = JSON.parse($(this).attr('cd'));
-            $('#table').css('display','inline-block');
+        ESRIPOJO.addDynamicLayer(data);//添加图层
+        GEOQUERYCLASS.setServerPath(data);//设置地理查询类
+
+        if(data.serverpath==null || data.subSpecialMenue.length!=0){ $('#table').css('display','none');$('.zhu321,.bing321').css('display','none'); return;}
+        var number = new QueryClass().getLayerData(data);
+        var xx = number.result;
+        //table添加数据
+        num = 0;
+        legendData.splice(0);
+        seriesData1.splice(0);
+        num_b = 0;
+        $('#tudi tbody').children().remove();
+        str='';
+        $('#zongtiaoshu').html(xx.length);
+        $('#yixuanze').html(0);
+        for(var i=0,len = xx.length;i<len;i++){
+            if(data.type == 'polyline'){
+                $('#tb-gb,#tb-dk,.bing321,.zhu321').css('display','none');
+                if(xx[i].name == null||undefined||""){
+                    xx[i].name = '无';
+                };
+                if(xx[i].bsm == null||undefined||""){
+                    xx[i].bsm = '无';
+                };
+                if(xx[i].area == null||undefined||""){
+                    xx[i].area = 0;
+                };
+                num_b = num_b + Number(xx[i].area);
+                str+=`<tr>
+                <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}' bsm_tudi='${xx[i].bsm}'/></td>
+                <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
+                <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
+                </tr>`;
+                $('#table').css('display','inline-block');//打开
+            }else{
+                $('#tb-gb,#tb-dk').css('display','inline-block');
+            if(xx[i].name == null||undefined||""){
+                xx[i].name = '无';
+            };
+            if(xx[i].bsm == null||undefined||""){
+                xx[i].bsm = '无';
+            };
+            if(xx[i].area == null||undefined||""){
+                xx[i].area = 0;
+            };
+            num_b = num_b + Number(xx[i].area);
+            str+=`<tr>
+            <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}' bsm_tudi='${xx[i].bsm}'/></td>
+            <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
+            <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
+            </tr>`;
+            $('#table').css('display','inline-block');//打开
+            };
+        };
+        $('#tudi tbody').append(str);  
+        //搜索
+        $('#search_button').bind('click',function(){
+          num = 0;
+          legendData.splice(0);
+          seriesData1.splice(0);
+        //   num_b = 0;
+          var sousuoleibie = $('#sousuoleibie').val();
+          var search_text = $('#search_text').val();
+          var n= 0;
+          if(sousuoleibie == '标识码'){
+           $('#tudi tbody').children().remove();
+           for(var i=0,len=xx.length;i<len;i++){
+               if(xx[i].bsm.indexOf(search_text)>=0){
+                   n++;
+                if(xx[i].name == null||undefined||""){
+                    xx[i].name = '无';
+                };
+                if(xx[i].bsm == null||undefined||""){
+                    xx[i].bsm = '无';
+                };
+                if(xx[i].area == null||undefined||""){
+                    xx[i].area = 0;
+                };
+                $('#tudi tbody').append(`<tr>
+                <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}' bsm_tudi='${xx[i].bsm}'/></td>
+                <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
+                <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
+                </tr>`); 
+               }else{
+
+               }
+           };
+          }else if(sousuoleibie == '名称'){
+            $('#tudi tbody').children().remove();
+            for(var i=0;i<xx.length;i++){
+                if(xx[i].name.indexOf(search_text)>=0){
+                    n++;
+                 if(xx[i].name == null||undefined||""){
+                     xx[i].name = '无';
+                 };
+                 if(xx[i].bsm == null||undefined||""){
+                     xx[i].bsm = '无';
+                 };
+                 $('#tudi tbody').append(`<tr bsm='${xx[i].bsm}' name='${xx[i].name}'>
+                 <td><input type="checkbox" name="tudi" class="quanxuan" area='${xx[i].area}' name_tudi='${xx[i].name}' bsm_tudi='${xx[i].bsm}'/></td>
+                 <td title='${xx[i].bsm}'><div class='num-width'>${xx[i].bsm}</div></td>
+                 <td title='${xx[i].name}'><div class='text-width'>${xx[i].name}</div></td>
+                 </tr>`); 
+                }else{
+                   
+                }
+            };  
+          }else{
+              $('#tudi tbody').children().remove();
+              alert('无结果,请选择查询项');
+          };
+        $('#zongtiaoshu').html(n);
+        changeecharts(num_b);
+        });
+        //改变echarts
+        changeecharts(num_b);
         });
         var glo = [];
         sfqx.css("color","black");
