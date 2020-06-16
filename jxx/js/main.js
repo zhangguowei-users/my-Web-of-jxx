@@ -922,28 +922,8 @@ function changeecharts(num_b){
                 };
             };  
         };
-        //深度搜索
-        // seriesData1 = [];
-        // num = 0;
-        // legendData.splice(0);
         //获取被选中的数量
         $('#yixuanze').html($('.quanxuan:checked').length);
-        //选择之后改变样式
-        //    for(var i=0,len=$('.quanxuan').length;i<len;i++){
-        //       if($('.quanxuan').eq(i).prop('checked')){
-            // $('.quanxuan').eq(i).parent().parent().css('color','#04BBF4');
-        //         var name_tudi = $('.quanxuan').eq(i).attr('name_tudi');
-        //         var bsm_tudi = $('.quanxuan').eq(i).attr('bsm_tudi');
-        //         num = num + Number($('.quanxuan').eq(i).attr('area'));
-        //         if($('.quanxuan').eq(i).attr('name_tudi') == '无'){
-        //             name_tudi = $('.quanxuan').eq(i).attr('bsm_tudi');
-        //         };
-        //         legendData.push(name_tudi+bsm_tudi.substring(bsm_tudi.length-10));
-        //         seriesData1.push({"value":Number($('.quanxuan').eq(i).attr('area')),"name":name_tudi+bsm_tudi.substring(bsm_tudi.length-10)});
-        //       }else{
-        //         $('.quanxuan').eq(i).parent().parent().css('color',''); 
-        //       };
-        //    };
        //改变echarts
        var no = num_b - num;
        //echart图1
