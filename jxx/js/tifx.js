@@ -64,6 +64,23 @@ $(document).ready(function(){
       });
       }
   });
+//click tree 创建table
+$('.folder,.file').on('click',function(){
+    // if($(this).attr('typeid') =='polyline'){
+      
+    // }
+     console.log($(this).attr('cd'));
+    $.ajax({
+        url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
+        type: 'POST',
+        async: false,
+        data:{jsonTree:$(this).attr('cd')},
+        xhrFields:{withCredentials:true},
+        success:function(data){
+           console.log(data);
+        }
+    });
+});
 //echart图
 //折线
 var zhexian = echarts.init(document.querySelector('#zhexian'));
