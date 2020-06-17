@@ -147,7 +147,7 @@ function caidanChangeColor(className){
          $(`${className}`).append(`<ul><li class="closed a${data[i].id}"><span class="folder dcd1" menueid="${data[i].id}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
          for(var j=0;j<data[i].subSpecialMenue.length;j++){
               if(data[i].subSpecialMenue[j].subSpecialMenue != 0){
-                 $(`.a${data[i].id}`).append(`<ul><li class="closed a${data[i].subSpecialMenue[j].id}"><span class="folder dcd1" menueid="${data[i].subSpecialMenue[j].menueid}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
+                 $(`.a${data[i].id}`).append(`<ul><li class="closed a${data[i].subSpecialMenue[j].id}"><span class="folder dcd1" menueid="${data[i].subSpecialMenue[j].id}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
                  tree1(data[i].subSpecialMenue[j].subSpecialMenue,`.a${data[i].subSpecialMenue[j].id}`);
               }else{
                  $(`.a${data[i].id}`).append(`<ul><li><span class="file dcd" menueid="${data[i].subSpecialMenue[j].id}" cd='${JSON.stringify(data[i].subSpecialMenue[j])}'>${data[i].subSpecialMenue[j].menuename}</span></li></ul>`);
@@ -173,6 +173,24 @@ function caidanChangeColor(className){
           };
       }else{
          $(`${className}`).append(`<ul><li><span class="file dcd" menueid="${data[i].id}" cd='${JSON.stringify(data[i])}'>${data[i].menuename}</span></li></ul>`);
+      };
+    };
+};
+//统计分析形成tree菜单
+function treetjfx(data,className){
+    for(var i=0;i<data.length;i++){
+      if(data[i].subAnalysisMenue.length != 0){
+         $(`${className}`).append(`<ul><li class="closed a${data[i].id}"><span class="folder dcd1" menueid="${data[i].id}" cd='${JSON.stringify(data[i])}' typeid='${data[i].type}'>${data[i].menuename}</span></li></ul>`);
+         for(var j=0;j<data[i].subAnalysisMenue.length;j++){
+              if(data[i].subAnalysisMenue[j].subAnalysisMenue != 0){
+                 $(`.a${data[i].id}`).append(`<ul><li class="closed a${data[i].subAnalysisMenue[j].id}"><span class="folder dcd1" menueid="${data[i].subAnalysisMenue[j].id}" cd='${JSON.stringify(data[i].subAnalysisMenue[j])}' typeid='${data[i].subAnalysisMenue[j].type}'>${data[i].subAnalysisMenue[j].menuename}</span></li></ul>`);
+                 treetjfx(data[i].subAnalysisMenue[j].subAnalysisMenue,`.a${data[i].subAnalysisMenue[j].id}`);
+              }else{
+                 $(`.a${data[i].id}`).append(`<ul><li><span class="file dcd" menueid="${data[i].subAnalysisMenue[j].id}" cd='${JSON.stringify(data[i].subAnalysisMenue[j])}' typeid='${data[i].subAnalysisMenue[j].type}'>${data[i].subAnalysisMenue[j].menuename}</span></li></ul>`);
+              };
+          };
+      }else{
+         $(`${className}`).append(`<ul><li><span class="file dcd" menueid="${data[i].id}" cd='${JSON.stringify(data[i])}' typeid='${data[i].type}'>${data[i].menuename}</span></li></ul>`);
       };
     };
 };

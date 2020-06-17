@@ -10,13 +10,13 @@ $(document).ready(function(){
       });
       $("#time1").html(newTime());
       $.ajax({
-        url:config.ip + config.port + '/getMenue',
+        url:config.ip + config.port + '/getAnalysisMenue',
         type: 'POST',
         async: false,
         xhrFields:{withCredentials:true},
         success:function(data){
                //形成树菜单
-               tree(data,".qtwo");
+               treetjfx(data,".qtwo");
                $("#browser").treeview();
                 //滑块移动事件
                huakuaiMove(".folder");
@@ -64,19 +64,6 @@ $(document).ready(function(){
       });
       }
   });
-//table 分页
-$("#myPage").sPage({
-  page:1,//当前页码，必填
-  total:5,//数据总条数，必填
-  pageSize:5,//每页显示多少条数据，默认10条
-  totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-  showTotal:true,//是否显示总条数，默认关闭：false
-  showSkip:true,//是否显示跳页，默认关闭：false
-  showPN:true,//是否显示上下翻页，默认开启：true
-  prevPage:"上一页",//上翻页文字描述，默认“上一页”
-  nextPage:"下一页",//下翻页文字描述，默认“下一页”
-  backFun:function(page){}
-});
 //echart图
 //折线
 var zhexian = echarts.init(document.querySelector('#zhexian'));
