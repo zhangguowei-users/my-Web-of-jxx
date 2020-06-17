@@ -254,58 +254,58 @@ option = {
 };
 bing2.setOption(option);
 //饼图3
-var bing3 = echarts.init(document.querySelector('#bing3'));
-option = {
-    title: {
-        text: '拆除未尽区现状',
-        top:'3%',
-        left: 'center',
-        textStyle:{
-            color:'#333333',
-            fontSize:17,
-            fontFamily:'SourceHanSansCN-',
-            fontStyle :'normal',
-            fontWeight:400
-        }
-    },
-    tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b} : {c} ({d}%)'
-    },
-    legend: {
-        orient: 'horizontal',  //vertical
-        bottom: 'bottom',
-        data: ['已拆除', '已推土', '现为', '空'],
-        textStyle:{
-            color:'#333333',
-            fontFamily:'SourceHanSansCN-',
-            fontStyle :'normal',
-            fontWeight:400
-        },
-        itemHeight:9,
-        itemWidth:9
-    },
-    series: [
-        {
-            name: '访问来源',
-            type: 'pie',
-            radius: '55%',
-            center: ['50%', '48%'],
-            data: [
-                {value: 335, name: '已拆除'},
-                {value: 310, name: '已推土'},
-                {value: 234, name: '现为'},
-                {value: 135, name: '空'}
-            ],
-            emphasis: {
-                itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            }
-        }
-    ]
-};
-bing3.setOption(option);
+// var bing3 = echarts.init(document.querySelector('#bing3'));
+// option = {
+//     title: {
+//         text: '拆除未尽区现状',
+//         top:'3%',
+//         left: 'center',
+//         textStyle:{
+//             color:'#333333',
+//             fontSize:17,
+//             fontFamily:'SourceHanSansCN-',
+//             fontStyle :'normal',
+//             fontWeight:400
+//         }
+//     },
+//     tooltip: {
+//         trigger: 'item',
+//         formatter: '{a} <br/>{b} : {c} ({d}%)'
+//     },
+//     legend: {
+//         orient: 'horizontal',  //vertical
+//         bottom: 'bottom',
+//         data: ['已拆除', '已推土', '现为', '空'],
+//         textStyle:{
+//             color:'#333333',
+//             fontFamily:'SourceHanSansCN-',
+//             fontStyle :'normal',
+//             fontWeight:400
+//         },
+//         itemHeight:9,
+//         itemWidth:9
+//     },
+//     series: [
+//         {
+//             name: '访问来源',
+//             type: 'pie',
+//             radius: '55%',
+//             center: ['50%', '48%'],
+//             data: [
+//                 {value: 335, name: '已拆除'},
+//                 {value: 310, name: '已推土'},
+//                 {value: 234, name: '现为'},
+//                 {value: 135, name: '空'}
+//             ],
+//             emphasis: {
+//                 itemStyle: {
+//                     shadowBlur: 10,
+//                     shadowOffsetX: 0,
+//                     shadowColor: 'rgba(0, 0, 0, 0.5)'
+//                 }
+//             }
+//         }
+//     ]
+// };
+// bing3.setOption(option);
 });
