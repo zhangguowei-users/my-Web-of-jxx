@@ -78,6 +78,7 @@ table{
     position: absolute;
     left:50px;
     top:79px;
+    cursor: pointer;
 }
 #leibie{
     height: 40px;
@@ -90,6 +91,7 @@ table{
     left: 922px;
     top:79px;
     outline:none;
+    cursor: pointer;
 }
 #shuru{
     width:226px;
@@ -116,6 +118,7 @@ table{
     position: absolute;
     left: 1277px;
     top:79px;
+    cursor: pointer;
 }
 /* #gjcx{
     width:98px;
@@ -128,6 +131,7 @@ table{
     position: absolute;
     left:1255px;
     top:79px;
+    cursor: pointer;
 } */
 #tj{
     width:1302px;
