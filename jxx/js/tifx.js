@@ -1,4 +1,7 @@
 var zhanghu1;
+var str;
+var str_child;
+var str_parent;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
@@ -71,17 +74,38 @@ $('.dcd1,.dcd').on('click',function(){
     }else{
       $('#bing2').css('display','inline-block');
     };
-    console.log($(this).attr('cd'));
-    $.ajax({
-        url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
-        type: 'POST',
-        async: false,
-        data:{jsonTree:$(this).attr('cd')},
-        xhrFields:{withCredentials:true},
-        success:function(data){
-           console.log(data);
-        }
-    });
+    //点击非根节点
+    if($(this).attr('class') == 'file dcd'){
+      //clear
+      $('#tj thead tr').children().not(':first-child').remove();
+      str = '';
+      $('#tj tbody').children().remove();
+      str_child = '';
+      str_parent = '';
+      $.ajax({
+          url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
+          type: 'POST',
+          async: false,
+          data:{jsonTree:$(this).attr('cd')},
+          xhrFields:{withCredentials:true},
+          success:function(data){
+             console.log(data.result);
+             //加载thead
+             for(key in data.result[0]){
+                 str+=`<th>${key}</th>`;
+             };
+             $('#tj thead tr').append(str);
+             //加载tbody
+             for(var i=0,len=data.result.length;i<len;i++){
+                for(key in data.result[i]){
+                    str_child+=`<td>${data.result[i][key]}</td>`;
+                };
+                str_parent+=`<tr><td><input class='checked' type="checkbox" name="" id=""></td>${str_child}</tr>`; 
+             };
+             $('#tj tbody').append(str_parent)
+          }
+      });
+    };
 });
 //echart图
 //折线
