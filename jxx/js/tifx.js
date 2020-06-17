@@ -65,11 +65,13 @@ $(document).ready(function(){
       }
   });
 //click tree 创建table
-$('.folder,.file').on('click',function(){
-    // if($(this).attr('typeid') =='polyline'){
-      
-    // }
-     console.log($(this).attr('cd'));
+$('.dcd1,.dcd').on('click',function(){
+    if($(this).attr('typeid') =='polyline'){
+      $('#bing2').css('display','none');
+    }else{
+      $('#bing2').css('display','inline-block');
+    };
+    console.log($(this).attr('cd'));
     $.ajax({
         url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
         type: 'POST',
