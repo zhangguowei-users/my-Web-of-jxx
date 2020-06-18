@@ -47,7 +47,7 @@ $(document).ready(function(){
                <td>${data.data[i].createtime.split('T')[0]}</td>
                <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
                </tr>`);
-             }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+             }else if(format == 'jpg'||format =='png'||format =='bmp'||format =='gif'){
                $('#zx tbody').append(`<tr>
                <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
                <td>${data.data[i].resourcetypename}</td>
@@ -117,7 +117,7 @@ $(document).ready(function(){
                          <td>${data.data[i].createtime.split('T')[0]}</td>
                          <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
                          </tr>`);
-                       }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+                       }else if(format == 'jpg'||format =='png'||format =='bmp'||format =='gif'){
                          $('#zx tbody').append(`<tr>
                          <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
                          <td>${data.data[i].resourcetypename}</td>
@@ -227,7 +227,7 @@ $(document).ready(function(){
               <td>${data.data[i].createtime.split('T')[0]}</td>
               <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
               </tr>`);
-            }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+            }else if(format == 'png'||format =='bmp'||format =='gif'||format =='jpg'){
               $('#zx tbody').append(`<tr>
               <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
               <td>${data.data[i].resourcetypename}</td>
@@ -297,7 +297,7 @@ $(document).ready(function(){
                         <td>${data.data[i].createtime.split('T')[0]}</td>
                         <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
                         </tr>`);
-                      }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+                      }else if(format == 'jpg'||format =='png'||format =='bmp'||format =='gif'){
                         $('#zx tbody').append(`<tr>
                         <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
                         <td>${data.data[i].resourcetypename}</td>
