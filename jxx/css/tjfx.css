@@ -152,9 +152,13 @@ table{
     border:1px solid rgba(185,217,244,1);
     border-left:0; 
     border-right:0;
+    text-align: center;
+    width:20px;
 }
 #tj tbody tr td div{
-    width:249px;    
+    display: inline-block;
+    text-align: center;
+    width:150px;    
     overflow: hidden;    
     text-overflow:ellipsis;    
     white-space:nowrap;
@@ -162,6 +166,7 @@ table{
 #tj tbody tr{
     border:1px solid rgba(185,217,244,1);
     height: 50px;
+    text-align: center;
 }
 .checked{
     border: 1px #B9D9F4 solid;
