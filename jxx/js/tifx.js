@@ -26,7 +26,7 @@ $(document).ready(function(){
                 //点击变色事件
                caidanChangeColor(".file");
                 //点击查询
-               queryCd(".fthree",".sthree","#browser",data);
+            //    queryCd(".fthree",".sthree","#browser",data);
         }
     });
     //地区信息
@@ -77,11 +77,12 @@ $('.dcd1,.dcd').on('click',function(){
     //点击非根节点
     if($(this).attr('class') == 'file dcd'){
       //clear
-      $('#tj thead tr').children().not(':first-child').remove();
+      $('#tj thead tr').children().remove();
       str = '';
       $('#tj tbody').children().remove();
       str_child = '';
       str_parent = '';
+      $('#tj thead tr').append(`<th><input class='checked_one' type="checkbox" name="" id=""></th>`)
       $.ajax({
           url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
           type: 'POST',
@@ -96,13 +97,14 @@ $('.dcd1,.dcd').on('click',function(){
              };
              $('#tj thead tr').append(str);
              //加载tbody
-             for(var i=0,len=data.result.length;i<len;i++){
-                for(key in data.result[i]){
-                    str_child+=`<td>${data.result[i][key]}</td>`;
+             for(var j=0,len=data.result.length;j<len;j++){
+                str_child='';
+                for(key in data.result[j]){
+                    str_child+=`<td title='${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
                 };
-                str_parent+=`<tr><td><input class='checked' type="checkbox" name="" id=""></td>${str_child}</tr>`; 
+                str_parent+=`<tr><td><input class='checked' type="checkbox" name=""></td>${str_child}</tr>`; 
              };
-             $('#tj tbody').append(str_parent)
+             $('#tj tbody').append(str_parent);
           }
       });
     };
