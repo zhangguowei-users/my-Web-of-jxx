@@ -313,6 +313,112 @@ function treetjfx(data,className){
         };
      });
  };
+ //点击查询拼接的树型菜单(统计分析)
+ function queryCdtj(queryInput,queryButton,treeId,data){
+    $(`${queryButton}`).click(function(){
+        $(`${treeId}`).children().remove();
+        treetjfx(data,`${treeId}`);
+        $(`${treeId}`).treeview();
+        var fone = $(`${queryInput}`).val();
+        var sfqx = $(".file,.folder");
+        huakuaiMove(".folder");
+        caidanChangeColor(".dcd");
+        clitree();
+        var glo = [];
+        sfqx.css("color","black");
+        if(fone == ""){
+            confirm("搜索字符为空，请重新填写");
+        }else{
+            for(var i=0;i<sfqx.length;i++){
+                glo.push(sfqx.eq(i).html());
+                var Sumsfqx = sfqx.eq(i).html();
+                if(Sumsfqx.indexOf(fone) >= 0){
+                   sfqx.eq(i).css("color","red");
+                   sfqx.eq(i).parents().siblings(".expandable-hitarea").click(); 
+                };
+               };
+               var a = glo.toString().replace(/\,/g,"");
+               if(a.indexOf(fone) < 0){
+                   confirm("搜索字符不存在");    
+               };
+        };
+     });
+ };
+ //click tree 创建table
+ function clitree(){
+$('.dcd1,.dcd').on('click',function(){
+    if($(this).attr('typeid') =='polyline'){
+      $('#bing2').css('display','none');
+    }else{
+      $('#bing2').css('display','inline-block');
+    };
+    //点击非根节点
+    if($(this).attr('class') == 'file dcd'){
+      //clear
+      $('#tj thead tr').children().remove();
+      str = '';
+      $('#tj tbody').children().remove();
+      str_child = '';
+      str_parent = '';
+      zhexian_yiliyong.splice(0);
+      zhexian1_weiliyong.splice(0);
+      legendArry1.splice(0);
+      seriesArry1.splice(0);
+      legendArry2.splice(0);
+      seriesArry2.splice(0);
+      option = '';
+      $('#leibie').children().not(':first-child').remove();
+      var title = $(this).html();
+      $.ajax({
+          url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
+          type: 'POST',
+          async: false,
+          data:{jsonTree:$(this).attr('cd')},
+          xhrFields:{withCredentials:true},
+          success:function(data){
+              if(data == null||data.length == 0||data.result.length == 0||data.result == null || data.result == undefined){
+
+              }else{
+                //加载table名
+                $('#area').html(title+'数据统计');
+                //加载thead与option
+                $('#tj thead tr').append(`<th><input class='checked_one' type="checkbox" name="" id=""></th>`);
+                for(key in data.result[0]){
+                    str+=`<th>${key}</th>`;
+                    option+=`<option value="${key}">${key}</option>`
+                };
+                $('#tj thead tr').append(str);
+                $('#leibie').append(option);
+                //加载tbody
+                for(var j=0,len=data.result.length;j<len;j++){
+                   area = Number(data.result[j].area);
+                   nameone = data.result[j].name+data.result[j].bsm.substring(data.result[j].bsm.length-10);
+                   if(data.result[j].name == undefined|| nameone == null|| nameone == ""){
+                       nameone =  data.result[j].bsm;
+                   };
+                   legendArry1.push(nameone);
+                   seriesArry1.push({'value':1,'name':nameone});
+                   legendArry2.push(nameone);
+                   seriesArry2.push({'value':area,'name':nameone});
+                   str_child='';
+                   for(key in data.result[j]){
+                       str_child+=`<td title='详细:${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
+                   };
+                   str_parent+=`<tr><td><input class='checked' type="checkbox" name=""></td>${str_child}</tr>`; 
+                };
+                $('#tj tbody').append(str_parent);
+                //获取折线图数据,生成折线图
+                zhexian_yiliyong.push(data.result.length);
+                zhexian(title,zhexian_yiliyong,zhexian1_weiliyong);
+                //生成饼形图
+                bing("#bing1",bing1,title+'数量','标识码/名字:块数',legendArry1,seriesArry1);
+                bing("#bing2",bing2,title+'面积','标识码/名字:面积',legendArry2,seriesArry2);
+              };
+          }
+      });
+    };
+});
+ };
  //点击查询拼接的树型菜单(文档共享)
  function queryCd1(queryInput,queryButton,treeId,data){
     $(`${queryButton}`).click(function(){
