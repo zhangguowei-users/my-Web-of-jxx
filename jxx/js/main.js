@@ -376,6 +376,7 @@ $('.dcd1,.dcd').on('click',function(){
           data:{jsonTree:$(this).attr('cd')},
           xhrFields:{withCredentials:true},
           success:function(data){
+              console.log(data.result)
               if(data == null||data.length == 0||data.result.length == 0||data.result == null || data.result == undefined){
 
               }else{
@@ -384,8 +385,8 @@ $('.dcd1,.dcd').on('click',function(){
                 //加载thead与option
                 $('#tj thead tr').append(`<th><input class='checked_one' type="checkbox" name="" id=""></th>`);
                 for(key in data.result[0]){
-                    str+=`<th>${key}</th>`;
-                    option+=`<option value="${key}">${key}</option>`
+                    str+=`<th>${dic[key.toUpperCase()]}</th>`;
+                    option+=`<option value="${dic[key.toUpperCase()]}">${dic[key.toUpperCase()]}</option>`
                 };
                 $('#tj thead tr').append(str);
                 $('#leibie').append(option);
