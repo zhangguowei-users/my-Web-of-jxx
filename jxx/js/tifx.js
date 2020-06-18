@@ -2,12 +2,6 @@ var zhanghu1;
 var str;
 var str_child;
 var str_parent;
-var zhexian_yiliyong = new Array(22);
-var zhexian1_weiliyong = new Array(22);
-var legendArry1 = new Array();
-var seriesArry1 = new Array();
-var legendArry2 = new Array();
-var seriesArry2 = new Array();
 var nameone;
 var area;
 var option;
@@ -21,19 +15,7 @@ $(document).ready(function(){
         PDclick();
       });
       $("#time1").html(newTime());
-      //分页
-      $("#myPage").sPage({
-        page:1,//当前页码，必填
-        total:10,//数据总条数，必填
-        pageSize:6,//每页显示多少条数据，默认10条
-        totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-        showTotal:true,//是否显示总条数，默认关闭：false
-        showSkip:true,//是否显示跳页，默认关闭：false
-        showPN:true,//是否显示上下翻页，默认开启：true
-        prevPage:"上一页",//上翻页文字描述，默认“上一页”
-        nextPage:"下一页",//下翻页文字描述，默认“下一页”
-        backFun:function(page){}
-    });
+      
       $.ajax({
         url:config.ip + config.port + '/getAnalysisMenue',
         type: 'POST',
@@ -95,4 +77,5 @@ $(document).ready(function(){
      var a = $('.checked_one').attr('type');
      alert(a);
   });
+  
 });

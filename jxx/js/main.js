@@ -346,10 +346,10 @@ function treetjfx(data,className){
  };
  //click tree 创建table
  function clitree(){
-    zhexian("",zhexian_yiliyong,zhexian1_weiliyong);
+    zhexian("",[],[]);
     //生成饼形图
-    bing("#bing1",bing1,'数量','标识码/名字:块数',legendArry1,seriesArry1);
-    bing("#bing2",bing2,'面积','标识码/名字:面积',legendArry2,seriesArry2);
+    bing("#bing1",bing1,'数量','数量',['总数'],[{value:0,name:'总数',itemStyle:{color:'#FAD03E'}}]);
+    bing("#bing2",bing2,'面积','总面积',['总面积'],[{value:0,name:'总面积',itemStyle:{color:'#F9AB15'}}]);
 $('.dcd1,.dcd').on('click',function(){
     if($(this).attr('typeid') =='polyline'){
       $('#bing2').css('display','none');
@@ -364,15 +364,43 @@ $('.dcd1,.dcd').on('click',function(){
       $('#tj tbody').children().remove();
       str_child = '';
       str_parent = '';
-      zhexian_yiliyong.splice(0);
-      zhexian1_weiliyong.splice(0);
-      legendArry1.splice(0);
-      seriesArry1.splice(0);
-      legendArry2.splice(0);
-      seriesArry2.splice(0);
       option = '';
       $('#leibie').children().not(':first-child').remove();
       var title = $(this).html();
+      //取bing1数量
+      $.ajax({
+        url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisTotalRecord',
+        type: 'POST',
+        data:{jsonTree:$(this).attr('cd')},
+        xhrFields:{withCredentials:true},
+        success:function(data){
+            console.log(data);
+            bing("#bing1",bing1,title+'数量','总数',['总数'],[{value:data.result,name:'总数',itemStyle:{color:'#FAD03E'}}]);
+        }
+      });
+      //取bing2数量
+      $.ajax({
+          url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisTotalArea',
+          type: 'POST',
+          data:{jsonTree:$(this).attr('cd')},
+          xhrFields:{withCredentials:true},
+          success:function(data){
+              console.log(data);
+              bing("#bing2",bing2,title+'面积','总面积',['总面积'],[{value:data.result,name:'总面积',itemStyle:{color:'#F9AB15'}}]);
+          }
+        });
+      //折线
+      $.ajax({
+        url:GEOSERVER.IP + GEOSERVER.PORT + '',
+        type: 'POST',
+        data:{jsonTree:$(this).attr('cd')},
+        xhrFields:{withCredentials:true},
+        success:function(data){
+            console.log(data);
+            //获取折线图数据,生成折线图
+            zhexian(title,data.result,[]);
+        }
+      });
       $.ajax({
           url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
           type: 'POST',
@@ -383,6 +411,7 @@ $('.dcd1,.dcd').on('click',function(){
               if(data == null||data.length == 0||data.result.length == 0||data.result == null || data.result == undefined){
 
               }else{
+                
                 //加载table名
                 $('#area').html(title+'数据统计');
                 //加载thead与option
@@ -404,10 +433,6 @@ $('.dcd1,.dcd').on('click',function(){
                    if(data.result[j].name == undefined|| nameone == null|| nameone == ""){
                        nameone =  data.result[j].bsm;
                    };
-                   legendArry1.push(nameone);
-                   seriesArry1.push({'value':1,'name':nameone});
-                   legendArry2.push(nameone);
-                   seriesArry2.push({'value':area,'name':nameone});
                    str_child='';
                    for(key in data.result[j]){
                     if(key == 'objectid'||key =='shape'||key =='area'){
@@ -418,17 +443,35 @@ $('.dcd1,.dcd').on('click',function(){
                    };
                    str_parent+=`<tr><td><input class='checked' type="checkbox" name=""></td>${str_child}</tr>`; 
                 };
-                
-                //获取折线图数据,生成折线图
-                zhexian_yiliyong.push(data.result.length);
-                zhexian(title,zhexian_yiliyong,zhexian1_weiliyong);
-                //生成饼形图
-                bing("#bing1",bing1,title+'数量','标识码/名字:块数',legendArry1,seriesArry1);
-                bing("#bing2",bing2,title+'面积','标识码/名字:面积',legendArry2,seriesArry2);
+                //分页
+                $("#myPage").sPage({
+                  page:1,//当前页码，必填
+                  total:10,//数据总条数，必填
+                  pageSize:6,//每页显示多少条数据，默认10条
+                  totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                  showTotal:true,//是否显示总条数，默认关闭：false
+                  showSkip:true,//是否显示跳页，默认关闭：false
+                  showPN:true,//是否显示上下翻页，默认开启：true
+                  prevPage:"上一页",//上翻页文字描述，默认“上一页”
+                  nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                  backFun:function(page){}
+                });
               };
             $('#tj tbody').append(str_parent);
+            seleted();
           }
       });
+    };
+});
+};
+//全选与反选
+function seleted(){
+//table全选与反选
+$('.checked_one').on('change',function(){
+    if($(this).prop('checked')){
+        $('.checked').attr('checked','checked');
+    }else{
+        $('.checked').removeAttr('checked');
     };
 });
 };
@@ -1115,7 +1158,7 @@ option = {
   xAxis: {
       type: 'category',
       boundaryGap: false,
-      data: ['2009', '2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026','2027','2028','2029','2030']
+      data: ['2019','2020','2021','2022','2023','2024','2025','2026','2027','2028','2029','2030']
   },
   yAxis: {
       type: 'value'
@@ -1177,16 +1220,13 @@ function bing(element,name,title,series_name,legendArry,seriesArry){
             {
                 name: `${series_name}`,
                 type: 'pie',
-                radius: '55%',
                 center: ['50%', '48%'],
                 data:seriesArry,
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {show: false,position: 'center'},
+                emphasis: {label: {show: true,fontSize: '30',fontWeight: 'bold'}},
+                labelLine: {show: false},
             }
         ]
     };
