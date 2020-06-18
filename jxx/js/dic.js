@@ -1,7 +1,7 @@
 var dic =
     {
-        area: "面积",
-        name: "名称",
+        AREA: "面积",
+        NAME: "名称",
 
 
         //CCWJQ
