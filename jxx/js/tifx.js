@@ -9,6 +9,7 @@ var seriesArry1 = new Array();
 var legendArry2 = new Array();
 var seriesArry2 = new Array();
 var nameone;
+var area;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
@@ -89,7 +90,6 @@ $('.dcd1,.dcd').on('click',function(){
       $('#tj tbody').children().remove();
       str_child = '';
       str_parent = '';
-      $('#tj thead tr').append(`<th><input class='checked_one' type="checkbox" name="" id=""></th>`);
       zhexian_yiliyong.splice(0);
       zhexian1_weiliyong.splice(0);
       legendArry1.splice(0);
@@ -104,37 +104,43 @@ $('.dcd1,.dcd').on('click',function(){
           data:{jsonTree:$(this).attr('cd')},
           xhrFields:{withCredentials:true},
           success:function(data){
-             console.log(data.result);
-             //加载table名
-             $('#area').html(title+'数据统计');
-             //加载thead
-             for(key in data.result[0]){
-                 str+=`<th>${key}</th>`;
-             };
-             $('#tj thead tr').append(str);
-             //加载tbody
-             for(var j=0,len=data.result.length;j<len;j++){
-                nameone = data.result[j].name;
-                if(nameone == undefined|| nameone == null|| nameone == ""){
-                    nameone =  data.result[j].bsm;
+              if(data == null||data.length == 0||data.result.length == 0||data.result == null || data.result == undefined){
+
+              }else{
+                console.log(data);
+                //加载table名
+                $('#area').html(title+'数据统计');
+                //加载thead
+                $('#tj thead tr').append(`<th><input class='checked_one' type="checkbox" name="" id=""></th>`);
+                for(key in data.result[0]){
+                    str+=`<th>${key}</th>`;
                 };
-                console.log(data.result[j].bsm)
-                legendArry1.push(nameone);
-                seriesArry1.push({'value':1,'name':nameone});
-                str_child='';
-                for(key in data.result[j]){
-                    str_child+=`<td title='详细:${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
+                $('#tj thead tr').append(str);
+                //加载tbody
+                for(var j=0,len=data.result.length;j<len;j++){
+                   area = Number(data.result[j].area);
+                   nameone = data.result[j].name+data.result[j].bsm.substring(data.result[j].bsm.length-10);
+                   if(data.result[j].name == undefined|| nameone == null|| nameone == ""){
+                       nameone =  data.result[j].bsm;
+                   };
+                   legendArry1.push(nameone);
+                   seriesArry1.push({'value':1,'name':nameone});
+                   legendArry2.push(nameone);
+                   seriesArry2.push({'value':area,'name':nameone});
+                   str_child='';
+                   for(key in data.result[j]){
+                       str_child+=`<td title='详细:${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
+                   };
+                   str_parent+=`<tr><td><input class='checked' type="checkbox" name=""></td>${str_child}</tr>`; 
                 };
-                str_parent+=`<tr><td><input class='checked' type="checkbox" name=""></td>${str_child}</tr>`; 
-             };
-             $('#tj tbody').append(str_parent);
-             //获取折线图数据,生成折线图
-             zhexian_yiliyong.push(data.result.length);
-             zhexian(title,zhexian_yiliyong,zhexian1_weiliyong);
-             //生成饼形图
-             console.log(legendArry1,seriesArry1)
-             bing("#bing1",bing1,title+'数量','块数',legendArry1,seriesArry1);
-             bing("#bing2",bing2,title+'面积','面积',legendArry2,seriesArry2);
+                $('#tj tbody').append(str_parent);
+                //获取折线图数据,生成折线图
+                zhexian_yiliyong.push(data.result.length);
+                zhexian(title,zhexian_yiliyong,zhexian1_weiliyong);
+                //生成饼形图
+                bing("#bing1",bing1,title+'数量','标识码/名字:块数',legendArry1,seriesArry1);
+                bing("#bing2",bing2,title+'面积','标识码/名字:面积',legendArry2,seriesArry2);
+              };
           }
       });
     };
