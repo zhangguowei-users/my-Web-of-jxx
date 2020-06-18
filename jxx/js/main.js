@@ -651,7 +651,7 @@ function table_wendang(){
                <td>${data.data[i].createtime.split('T')[0]}</td>
                <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
                </tr>`);
-             }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+             }else if(format == 'jpg'||format =='png'||format =='bmp'||format =='gif'){
                $('#zx tbody').append(`<tr>
                <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
                <td>${data.data[i].resourcetypename}</td>
@@ -722,7 +722,7 @@ function table_wendang(){
                          <td>${data.data[i].createtime.split('T')[0]}</td>
                          <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
                          </tr>`);
-                       }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+                       }else if(format == 'jpg'||format =='png'||format =='bmp'||format =='gif'){
                          $('#zx tbody').append(`<tr>
                          <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
                          <td>${data.data[i].resourcetypename}</td>
@@ -788,7 +788,7 @@ function table_wendang(){
                   <td>${data.data[i].createtime.split('T')[0]}</td>
                   <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
                   </tr>`);
-                }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+                }else if(format == 'jpg'||format =='png'||format =='bmp'||format =='gif'){
                   $('#zx tbody').append(`<tr>
                   <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
                   <td>${data.data[i].resourcetypename}</td>
@@ -858,7 +858,7 @@ function table_wendang(){
                             <td>${data.data[i].createtime.split('T')[0]}</td>
                             <td><button class='down' id='${JSON.stringify(data.data[i])}'>下载</button></td>
                             </tr>`);
-                          }else if(format == 'jpg'||'png'||'bmp'||'gif'){
+                          }else if(format == 'jpg'||format =='png'||format =='bmp'||format =='gif'){
                             $('#zx tbody').append(`<tr>
                             <td><img src="./img/img.png" alt="" style="height:70px; width: 70px;"></td>
                             <td>${data.data[i].resourcetypename}</td>
@@ -957,4 +957,119 @@ function changeecharts(num_b){
        var seriesName1 = "所占面积比例";
        new ReportClass(legendData,eval(seriesData1)).createBingChar(domElement2, title1, seriesName1);
        });
+};
+//echart
+//折线
+function zhexian(title,zhexian_yiliyong,zhexian1_weiliyong){
+var zhexian = echarts.init(document.querySelector('#zhexian'));
+option = {
+  title: {
+      text: `${title}土地利用情况`,
+        top:'3%',
+        left: 'center',
+        textStyle:{
+            color:'#333333',
+            fontSize:18,
+            fontFamily:'Source Han Sans CN',
+            fontStyle :'normal',
+            fontWeight:400
+        }
+  },
+  tooltip: {
+      trigger: 'axis',
+  },
+  legend: {
+      data: ['已利用地','未利用地'],
+      right: 'top',
+  },
+  grid: {
+      left: '3%',
+      right: '3%',
+      bottom: '3%',
+      containLabel: true
+  },
+  toolbox: {
+      feature: {
+          saveAsImage: {}
+      }
+  },
+  xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['2009', '2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026','2027','2028','2029','2030']
+  },
+  yAxis: {
+      type: 'value'
+  },
+  series: [
+      {
+          name: '已利用地',
+          type: 'line',
+          stack: '总量',
+          data: zhexian_yiliyong,
+          color: '#E2EF12'
+      },
+      {
+          name: '未利用地',
+          type: 'line',
+          stack: '总量',
+          data: zhexian1_weiliyong,
+          color:'#3A98FA'
+      }
+  ]
+};
+zhexian.setOption(option);
+};
+//饼形图
+function bing(element,name,title,series_name,legendArry,seriesArry){
+    var name = echarts.init(document.querySelector(`${element}`));
+    option = {
+        title: {
+            text: `${title}`,
+            top:'3%',
+            left: 'center',
+            textStyle:{
+                color:'#333333',
+                fontSize:17,
+                fontFamily:'SourceHanSansCN-',
+                fontStyle :'normal',
+                fontWeight:400
+            }
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: {
+            orient: 'horizontal',  //vertical
+            bottom: 'bottom',
+            data: legendArry,
+            textStyle:{
+                color:'#333333',
+                fontFamily:'SourceHanSansCN-',
+                fontStyle :'normal',
+                fontWeight:400
+            },
+            itemHeight:9,
+            itemWidth:9,
+            type:'scroll',
+        },
+        series: [
+            {
+                name: `${series_name}`,
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '48%'],
+                data:seriesArry,
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    name.setOption(option);
 };

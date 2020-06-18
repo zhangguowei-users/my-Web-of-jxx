@@ -67,13 +67,13 @@ $(document).ready(function(){
         for(var i=0,len = xx.length;i<len;i++){
             if(data.type == 'polyline'){
                 $('#tb-gb,#tb-dk,.bing321,.zhu321').css('display','none');
-                if(xx[i].name == null||undefined||""){
+                if(xx[i].name == null||xx[i].name ==undefined||xx[i].name ==""){
                     xx[i].name = '无';
                 };
-                if(xx[i].bsm == null||undefined||""){
+                if(xx[i].bsm == null||xx[i].bsm ==undefined||xx[i].bsm ==""){
                     xx[i].bsm = '无';
                 };
-                if(xx[i].area == null||undefined||""){
+                if(xx[i].area == null||xx[i].area ==undefined||xx[i].area ==""){
                     xx[i].area = 0;
                 };
                 num_b = num_b + Number(xx[i].area);
@@ -85,13 +85,13 @@ $(document).ready(function(){
                 $('#table').css('display','inline-block');//打开
             }else{
                 $('#tb-gb,#tb-dk').css('display','inline-block');
-            if(xx[i].name == null||undefined||""){
+            if(xx[i].name == null||xx[i].name ==undefined||xx[i].name ==""){
                 xx[i].name = '无';
             };
-            if(xx[i].bsm == null||undefined||""){
+            if(xx[i].bsm == null||xx[i].bsm ==undefined||xx[i].bsm ==""){
                 xx[i].bsm = '无';
             };
-            if(xx[i].area == null||undefined||""){
+            if(xx[i].area == null||xx[i].area ==undefined||xx[i].area ==""){
                 xx[i].area = 0;
             };
             num_b = num_b + Number(xx[i].area);
@@ -118,13 +118,13 @@ $(document).ready(function(){
            for(var i=0,len=xx.length;i<len;i++){
                if(xx[i].bsm.indexOf(search_text)>=0){
                    n++;
-                if(xx[i].name == null||undefined||""){
+                if(xx[i].name == null||xx[i].name ==undefined||xx[i].name ==""){
                     xx[i].name = '无';
                 };
-                if(xx[i].bsm == null||undefined||""){
+                if(xx[i].bsm == null||xx[i].bsm ==undefined||xx[i].bsm ==""){
                     xx[i].bsm = '无';
                 };
-                if(xx[i].area == null||undefined||""){
+                if(xx[i].area == null||xx[i].area ==undefined||xx[i].area ==""){
                     xx[i].area = 0;
                 };
                 $('#tudi tbody').append(`<tr>
@@ -141,10 +141,10 @@ $(document).ready(function(){
             for(var i=0;i<xx.length;i++){
                 if(xx[i].name.indexOf(search_text)>=0){
                     n++;
-                 if(xx[i].name == null||undefined||""){
+                 if(xx[i].name == null||xx[i].name ==undefined||xx[i].name ==""){
                      xx[i].name = '无';
                  };
-                 if(xx[i].bsm == null||undefined||""){
+                 if(xx[i].bsm == null||xx[i].bsm ==undefined||xx[i].bsm ==""){
                      xx[i].bsm = '无';
                  };
                  $('#tudi tbody').append(`<tr bsm='${xx[i].bsm}' name='${xx[i].name}'>
@@ -218,13 +218,13 @@ $(document).ready(function(){
         for(var i=0,len = xx.length;i<len;i++){
             if(data.type == 'polyline'){
                 $('#tb-gb,#tb-dk,.bing321,.zhu321').css('display','none');
-                if(xx[i].name == null||undefined||""){
+                if(xx[i].name == null||xx[i].name ==undefined||xx[i].name ==""){
                     xx[i].name = '无';
                 };
-                if(xx[i].bsm == null||undefined||""){
+                if(xx[i].bsm == null||xx[i].bsm ==undefined||xx[i].bsm ==""){
                     xx[i].bsm = '无';
                 };
-                if(xx[i].area == null||undefined||""){
+                if(xx[i].area == null||xx[i].area ==undefined||xx[i].area ==""){
                     xx[i].area = 0;
                 };
                 num_b = num_b + Number(xx[i].area);
@@ -236,13 +236,13 @@ $(document).ready(function(){
                 $('#table').css('display','inline-block');//打开
             }else{
                 $('#tb-gb,#tb-dk').css('display','inline-block');
-            if(xx[i].name == null||undefined||""){
+            if(xx[i].name == null||xx[i].name ==undefined||xx[i].name ==""){
                 xx[i].name = '无';
             };
-            if(xx[i].bsm == null||undefined||""){
+            if(xx[i].bsm == null||xx[i].bsm ==undefined||xx[i].bsm ==""){
                 xx[i].bsm = '无';
             };
-            if(xx[i].area == null||undefined||""){
+            if(xx[i].area == null||xx[i].area ==undefined||xx[i].area ==""){
                 xx[i].area = 0;
             };
             num_b = num_b + Number(xx[i].area);
@@ -269,13 +269,13 @@ $(document).ready(function(){
            for(var i=0,len=xx.length;i<len;i++){
                if(xx[i].bsm.indexOf(search_text)>=0){
                    n++;
-                if(xx[i].name == null||undefined||""){
+                if(xx[i].name == null||xx[i].name ==undefined||xx[i].name ==""){
                     xx[i].name = '无';
                 };
-                if(xx[i].bsm == null||undefined||""){
+                if(xx[i].bsm == null||xx[i].bsm ==undefined||xx[i].bsm ==""){
                     xx[i].bsm = '无';
                 };
-                if(xx[i].area == null||undefined||""){
+                if(xx[i].area == null||xx[i].area ==undefined||xx[i].area ==""){
                     xx[i].area = 0;
                 };
                 $('#tudi tbody').append(`<tr>
@@ -292,10 +292,10 @@ $(document).ready(function(){
             for(var i=0;i<xx.length;i++){
                 if(xx[i].name.indexOf(search_text)>=0){
                     n++;
-                 if(xx[i].name == null||undefined||""){
+                 if(xx[i].name == null||xx[i].name ==undefined||xx[i].name ==""){
                      xx[i].name = '无';
                  };
-                 if(xx[i].bsm == null||undefined||""){
+                 if(xx[i].bsm == null||xx[i].bsm ==undefined||xx[i].bsm ==""){
                      xx[i].bsm = '无';
                  };
                  $('#tudi tbody').append(`<tr bsm='${xx[i].bsm}' name='${xx[i].name}'>

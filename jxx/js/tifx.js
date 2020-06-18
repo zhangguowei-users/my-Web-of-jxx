@@ -2,6 +2,13 @@ var zhanghu1;
 var str;
 var str_child;
 var str_parent;
+var zhexian_yiliyong = new Array(22);
+var zhexian1_weiliyong = new Array(22);
+var legendArry1 = new Array();
+var seriesArry1 = new Array();
+var legendArry2 = new Array();
+var seriesArry2 = new Array();
+var nameone;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
@@ -82,7 +89,14 @@ $('.dcd1,.dcd').on('click',function(){
       $('#tj tbody').children().remove();
       str_child = '';
       str_parent = '';
-      $('#tj thead tr').append(`<th><input class='checked_one' type="checkbox" name="" id=""></th>`)
+      $('#tj thead tr').append(`<th><input class='checked_one' type="checkbox" name="" id=""></th>`);
+      zhexian_yiliyong.splice(0);
+      zhexian1_weiliyong.splice(0);
+      legendArry1.splice(0);
+      seriesArry1.splice(0);
+      legendArry2.splice(0);
+      seriesArry2.splice(0);
+      var title = $(this).html();
       $.ajax({
           url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
           type: 'POST',
@@ -91,6 +105,8 @@ $('.dcd1,.dcd').on('click',function(){
           xhrFields:{withCredentials:true},
           success:function(data){
              console.log(data.result);
+             //加载table名
+             $('#area').html(title+'数据统计');
              //加载thead
              for(key in data.result[0]){
                  str+=`<th>${key}</th>`;
@@ -98,246 +114,29 @@ $('.dcd1,.dcd').on('click',function(){
              $('#tj thead tr').append(str);
              //加载tbody
              for(var j=0,len=data.result.length;j<len;j++){
+                nameone = data.result[j].name;
+                if(nameone == undefined|| nameone == null|| nameone == ""){
+                    nameone =  data.result[j].bsm;
+                };
+                console.log(data.result[j].bsm)
+                legendArry1.push(nameone);
+                seriesArry1.push({'value':1,'name':nameone});
                 str_child='';
                 for(key in data.result[j]){
-                    str_child+=`<td title='${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
+                    str_child+=`<td title='详细:${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
                 };
                 str_parent+=`<tr><td><input class='checked' type="checkbox" name=""></td>${str_child}</tr>`; 
              };
              $('#tj tbody').append(str_parent);
+             //获取折线图数据,生成折线图
+             zhexian_yiliyong.push(data.result.length);
+             zhexian(title,zhexian_yiliyong,zhexian1_weiliyong);
+             //生成饼形图
+             console.log(legendArry1,seriesArry1)
+             bing("#bing1",bing1,title+'数量','块数',legendArry1,seriesArry1);
+             bing("#bing2",bing2,title+'面积','面积',legendArry2,seriesArry2);
           }
       });
     };
 });
-//echart图
-//折线
-var zhexian = echarts.init(document.querySelector('#zhexian'));
-option = {
-  title: {
-      text: '土地利用情况',
-        top:'3%',
-        left: 'center',
-        textStyle:{
-            color:'#333333',
-            fontSize:18,
-            fontFamily:'Source Han Sans CN',
-            fontStyle :'normal',
-            fontWeight:400
-        }
-  },
-  tooltip: {
-      trigger: 'axis',
-  },
-  legend: {
-      data: ['已利用地','未利用地'],
-      right: 'top',
-  },
-  grid: {
-      left: '3%',
-      right: '3%',
-      bottom: '3%',
-      containLabel: true
-  },
-  toolbox: {
-      feature: {
-          saveAsImage: {}
-      }
-  },
-  xAxis: {
-      type: 'category',
-      boundaryGap: false,
-      data: ['2009', '2010', '2011', '2012', '2013', '2014', '2015','2016','2017','2018','2019','2020']
-  },
-  yAxis: {
-      type: 'value'
-  },
-  series: [
-      {
-          name: '已利用地',
-          type: 'line',
-          stack: '总量',
-          data: [120, 132, 101, 134, 90, 230, 210, 191, 234, 290, 330, 310],
-          color: '#E2EF12'
-      },
-      {
-          name: '未利用地',
-          type: 'line',
-          stack: '总量',
-          data: [220, 182, 191, 234, 290, 330, 310, 101, 134, 90, 230, 210],
-          color:'#3A98FA'
-      }
-  ]
-};
-zhexian.setOption(option);
-//饼图1
-var bing1 = echarts.init(document.querySelector('#bing1'));
-option = {
-    title: {
-        text: '拆除未尽区数量',
-        top:'3%',
-        left: 'center',
-        textStyle:{
-            color:'#333333',
-            fontSize:17,
-            fontFamily:'SourceHanSansCN-',
-            fontStyle :'normal',
-            fontWeight:400
-        }
-    },
-    tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b} : {c} ({d}%)'
-    },
-    legend: {
-        orient: 'horizontal',  //vertical
-        bottom: 'bottom',
-        data: ['拆除未尽区1', '拆除未尽区3', '拆除未尽区2', '拆除未尽区4'],
-        textStyle:{
-            color:'#333333',
-            fontFamily:'SourceHanSansCN-',
-            fontStyle :'normal',
-            fontWeight:400
-        },
-        itemHeight:9,
-        itemWidth:9,
-        type:'scroll',
-    },
-    series: [
-        {
-            name: '访问来源',
-            type: 'pie',
-            radius: '55%',
-            center: ['50%', '48%'],
-            data: [
-                {value: 335, name: '拆除未尽区1'},
-                {value: 310, name: '拆除未尽区3'},
-                {value: 234, name: '拆除未尽区2'},
-                {value: 135, name: '拆除未尽区4'}
-            ],
-            emphasis: {
-                itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            }
-        }
-    ]
-};
-bing1.setOption(option);
-//饼图2
-var bing2 = echarts.init(document.querySelector('#bing2'));
-option = {
-    title: {
-        text: '拆除未尽区面积',
-        top:'3%',
-        left: 'center',
-        textStyle:{
-            color:'#333333',
-            fontSize:17,
-            fontFamily:'SourceHanSansCN-',
-            fontStyle :'normal',
-            fontWeight:400
-        }
-    },
-    tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b} : {c} ({d}%)'
-    },
-    legend: {
-        orient: 'horizontal',  //vertical
-        bottom: 0,
-        data: ['拆除未尽区1面积', '拆除未尽区2面积', '拆除未尽区1面积', '拆除未尽区2面积','拆除未尽区3面积','拆除未尽区4面积','拆除未尽区3面积','拆除未尽区4面积'],
-        textStyle:{
-            color:'#333333',
-            fontFamily:'SourceHanSansCN-',
-            fontStyle :'normal',
-            fontWeight:400
-        },
-        itemHeight:9,
-        itemWidth:9,
-        type:'scroll',
-    },
-    series: [
-        {
-            name: '访问来源',
-            type: 'pie',
-            radius: '55%',
-            center: ['50%', '48%'],
-            data: [
-                {value: 335, name: '拆除未尽区1面积'},
-                {value: 310, name: '拆除未尽区2面积'},
-                {value: 234, name: '拆除未尽区1面积'},
-                {value: 135, name: '拆除未尽区2面积'},
-                {value: 535, name: '拆除未尽区3面积'},
-                {value: 110, name: '拆除未尽区4面积'},
-                {value: 224, name: '拆除未尽区3面积'},
-                {value: 235, name: '拆除未尽区4面积'}
-            ],
-            emphasis: {
-                itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            }
-        }
-    ]
-};
-bing2.setOption(option);
-//饼图3
-// var bing3 = echarts.init(document.querySelector('#bing3'));
-// option = {
-//     title: {
-//         text: '拆除未尽区现状',
-//         top:'3%',
-//         left: 'center',
-//         textStyle:{
-//             color:'#333333',
-//             fontSize:17,
-//             fontFamily:'SourceHanSansCN-',
-//             fontStyle :'normal',
-//             fontWeight:400
-//         }
-//     },
-//     tooltip: {
-//         trigger: 'item',
-//         formatter: '{a} <br/>{b} : {c} ({d}%)'
-//     },
-//     legend: {
-//         orient: 'horizontal',  //vertical
-//         bottom: 'bottom',
-//         data: ['已拆除', '已推土', '现为', '空'],
-//         textStyle:{
-//             color:'#333333',
-//             fontFamily:'SourceHanSansCN-',
-//             fontStyle :'normal',
-//             fontWeight:400
-//         },
-//         itemHeight:9,
-//         itemWidth:9
-//     },
-//     series: [
-//         {
-//             name: '访问来源',
-//             type: 'pie',
-//             radius: '55%',
-//             center: ['50%', '48%'],
-//             data: [
-//                 {value: 335, name: '已拆除'},
-//                 {value: 310, name: '已推土'},
-//                 {value: 234, name: '现为'},
-//                 {value: 135, name: '空'}
-//             ],
-//             emphasis: {
-//                 itemStyle: {
-//                     shadowBlur: 10,
-//                     shadowOffsetX: 0,
-//                     shadowColor: 'rgba(0, 0, 0, 0.5)'
-//                 }
-//             }
-//         }
-//     ]
-// };
-// bing3.setOption(option);
 });
