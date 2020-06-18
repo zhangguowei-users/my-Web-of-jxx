@@ -426,28 +426,6 @@ $('.dcd1,.dcd').on('click',function(){
                 bing("#bing1",bing1,title+'数量','标识码/名字:块数',legendArry1,seriesArry1);
                 bing("#bing2",bing2,title+'面积','标识码/名字:面积',legendArry2,seriesArry2);
               };
-              //查询数据
-              $('#cx').on('click',function(){
-               var type = $('#leibie').val();
-               var text = $('#shuru').val();
-               console.log(type,text);
-               $('#tj tbody').children().remove();
-               str_child = '';
-               str_parent = '';
-               for(var j=0,len=data.result.length;j<len;j++){
-                 str_child='';
-                 for(key in data.result[j]){
-                    console.log(key == type)
-                    if(key == type && data.result[j][key].indexOf(text)>=0){
-                        if(key == 'objectid'||key =='shape'||key =='area'){
-                        }else{
-                            str_child+=`<td title='详细:${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
-                        };
-                    };
-                 };
-                str_parent+=`<tr><td><input class='checked' type="checkbox" name=""></td>${str_child}</tr>`;
-               };
-              });
             $('#tj tbody').append(str_parent);
           }
       });
