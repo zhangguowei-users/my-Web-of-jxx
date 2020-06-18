@@ -50,6 +50,7 @@ $(document).ready(function(){
         var data = JSON.parse($(this).attr('cd'));
         ESRIPOJO.addDynamicLayer(data);//添加图层
         GEOQUERYCLASS.setServerPath(data);//设置地理查询类
+        GEOQUERYCLASS.clearGraphics(MAP);
 
         if(data.serverpath==null || data.subSpecialMenue.length!=0){ $('#table').css('display','none');$('.zhu321,.bing321').css('display','none'); return;}
         var number = new QueryClass().getLayerData(data);
