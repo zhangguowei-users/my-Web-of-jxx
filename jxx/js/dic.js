@@ -1,5 +1,7 @@
 var dic =
     {
+        area: "面积",
+
         //CCWJQ
         BSM: "标识码",
         YSDM: "要素代码",
