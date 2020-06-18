@@ -157,7 +157,6 @@ table{
 }
 #tj tbody tr td div{
     display: inline-block;
-    text-align: center;
     width:150px;    
     overflow: hidden;    
     text-overflow:ellipsis;    
@@ -166,7 +165,6 @@ table{
 #tj tbody tr{
     border:1px solid rgba(185,217,244,1);
     height: 50px;
-    text-align: center;
 }
 .checked{
     border: 1px #B9D9F4 solid;

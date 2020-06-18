@@ -77,4 +77,9 @@ $(document).ready(function(){
       }
   });
   clitree();
+  //导出数据
+  $('#dcsj').on('click',function(){
+     var a = $('.checked_one').attr('type');
+     alert(a);
+  });
 });

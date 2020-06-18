@@ -24,7 +24,7 @@ function dengluLocation(){
             }else{
                 window.location.href = "./index.html";
             }
-        },10000);
+        },30000);
     }else{
         window.location.href = "./index.html";
     };
@@ -346,6 +346,10 @@ function treetjfx(data,className){
  };
  //click tree 创建table
  function clitree(){
+    zhexian("",zhexian_yiliyong,zhexian1_weiliyong);
+    //生成饼形图
+    bing("#bing1",bing1,'数量','标识码/名字:块数',legendArry1,seriesArry1);
+    bing("#bing2",bing2,'面积','标识码/名字:面积',legendArry2,seriesArry2);
 $('.dcd1,.dcd').on('click',function(){
     if($(this).attr('typeid') =='polyline'){
       $('#bing2').css('display','none');
@@ -414,7 +418,7 @@ $('.dcd1,.dcd').on('click',function(){
                    };
                    str_parent+=`<tr><td><input class='checked' type="checkbox" name=""></td>${str_child}</tr>`; 
                 };
-                $('#tj tbody').append(str_parent);
+                
                 //获取折线图数据,生成折线图
                 zhexian_yiliyong.push(data.result.length);
                 zhexian(title,zhexian_yiliyong,zhexian1_weiliyong);
@@ -422,11 +426,34 @@ $('.dcd1,.dcd').on('click',function(){
                 bing("#bing1",bing1,title+'数量','标识码/名字:块数',legendArry1,seriesArry1);
                 bing("#bing2",bing2,title+'面积','标识码/名字:面积',legendArry2,seriesArry2);
               };
+              //查询数据
+              $('#cx').on('click',function(){
+               var type = $('#leibie').val();
+               var text = $('#shuru').val();
+               console.log(type,text);
+               $('#tj tbody').children().remove();
+               str_child = '';
+               str_parent = '';
+               for(var j=0,len=data.result.length;j<len;j++){
+                 str_child='';
+                 for(key in data.result[j]){
+                    console.log(key == type)
+                    if(key == type && data.result[j][key].indexOf(text)>=0){
+                        if(key == 'objectid'||key =='shape'||key =='area'){
+                        }else{
+                            str_child+=`<td title='详细:${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
+                        };
+                    };
+                 };
+                str_parent+=`<tr><td><input class='checked' type="checkbox" name=""></td>${str_child}</tr>`;
+               };
+              });
+            $('#tj tbody').append(str_parent);
           }
       });
     };
 });
- };
+};
  //点击查询拼接的树型菜单(文档共享)
  function queryCd1(queryInput,queryButton,treeId,data){
     $(`${queryButton}`).click(function(){
