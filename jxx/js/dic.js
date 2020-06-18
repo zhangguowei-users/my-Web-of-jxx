@@ -1,6 +1,8 @@
 var dic =
     {
         area: "面积",
+        name: "名称",
+
 
         //CCWJQ
         BSM: "标识码",
