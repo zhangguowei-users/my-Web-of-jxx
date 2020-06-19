@@ -76,7 +76,6 @@ $(document).ready(function(){
   clitree();
 //导出数据
 $('#dcsj').on('click',function(){
-  // location.href = config.newip+config.newport+'/arcgis/Other/Export?jsontree='+json+'&exclename='+nameche;
-  window.open(config.newip+config.newport+'/arcgis/Other/Export?jsontree='+json+'&exclename='+nameche);
+  location.href = config.newip+config.newport+'/arcgis/Other/Export?jsontree='+json+'&exclename='+nameche;
 });  
 });
