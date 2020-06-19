@@ -468,7 +468,6 @@ $('.dcd1,.dcd').on('click',function(){
                         data:{jsonTree:json,currentPage:page,pageSize:6,serchFileName:'',serchFileValue:''},
                         xhrFields:{withCredentials:true},
                         success:function(data){
-                            console.log(data)
                              //clear
                               $('#tj thead tr').children().remove();
                               str = '';
@@ -517,6 +516,23 @@ $('.dcd1,.dcd').on('click',function(){
             $('#cx').on('click',function(){
                 var leibie = $('#leibie').val();
                 var textValue = $('#shuru').val();
+                //获取总数
+                $.ajax({
+                    url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisTotalRecord',
+                    type: 'POST',
+                    async:false,
+                    data:{jsonTree:json,serchFileName:leibie,serchFileValue:textValue},
+                    xhrFields:{withCredentials:true},
+                    success:function(data){
+                        count = data.result;
+                    }
+                  });
+                //clear
+                 $('#tj thead tr').children().remove();
+                 str = '';
+                 $('#tj tbody').children().remove();
+                 str_child = '';
+                 str_parent = '';
                 $.ajax({
                     url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
                     type: 'POST',
