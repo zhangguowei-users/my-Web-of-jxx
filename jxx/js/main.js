@@ -367,8 +367,6 @@ $('.dcd1,.dcd').on('click',function(){
       $('#tj tbody').children().remove();
       str_child = '';
       str_parent = '';
-      option = '';
-      $('#leibie').children().not(':first-child').remove();
       var title = $(this).html();
       //取bing1数量
       $.ajax({
@@ -401,29 +399,37 @@ $('.dcd1,.dcd').on('click',function(){
             zhexian(title,[data.result],[0]);
         }
       });
+      //获取总数
+      $.ajax({
+        url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisTotalRecord',
+        type: 'POST',
+        async:false,
+        data:{jsonTree:json,serchFileName:'',serchFileValue:''},
+        xhrFields:{withCredentials:true},
+        success:function(data){
+            count = data.result;
+        }
+      });
+      //加载table
       $.ajax({
           url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
           type: 'POST',
           async: false,
-          data:{jsonTree:$(this).attr('cd'),currentPage:1,pageSize:6,serchFileName:'',serchFileValue:''},
+          data:{jsonTree:json,currentPage:1,pageSize:6,serchFileName:'',serchFileValue:''},
           xhrFields:{withCredentials:true},
           success:function(data){
               if(data == null||data.length == 0||data.result.length == 0||data.result == null || data.result == undefined){
               }else{
                 //加载table名
                 $('#area').html(title+'数据统计');
-                //加载thead与option
-                $('#tj thead tr').append(`<th><input class='checked_one' type="checkbox" name="" id=""></th>`);
+                //加载thead
                 for(key in data.result[0]){
                     if(key == 'objectid'||key =='shape'||key =='area'){
                     }else{
                         str+=`<th>${dic[key.toUpperCase()]}</th>`;
-                        if(dic[key.toUpperCase()] == '备注'||dic[key.toUpperCase()] == '占地面积') return '不需要';
-                        else option+=`<option value="${dic[key.toUpperCase()]}">${dic[key.toUpperCase()]}</option>`;
                     };
                 };
                 $('#tj thead tr').append(str);
-                $('#leibie').append(option);
                 //加载tbody
                 for(var j=0,len=data.result.length;j<len;j++){
                    area = Number(data.result[j].area);
@@ -439,37 +445,180 @@ $('.dcd1,.dcd').on('click',function(){
                         str_child+=`<td title='详细:${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
                     };
                    };
-                   str_parent+=`<tr><td><input class='checked' type="checkbox" name=""></td>${str_child}</tr>`; 
+                   str_parent+=`<tr>${str_child}</tr>`; 
                 };
               };
             $('#tj tbody').append(str_parent);
-            seleted();
             //分页
-            // $("#myPage").sPage({
-            //     page:1,//当前页码，必填
-            //     total:10,//数据总条数，必填
-            //     pageSize:6,//每页显示多少条数据，默认10条
-            //     totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-            //     showTotal:true,//是否显示总条数，默认关闭：false
-            //     showSkip:true,//是否显示跳页，默认关闭：false
-            //     showPN:true,//是否显示上下翻页，默认开启：true
-            //     prevPage:"上一页",//上翻页文字描述，默认“上一页”
-            //     nextPage:"下一页",//下翻页文字描述，默认“下一页”
-            //     backFun:function(page){}
-            //   });
+            $("#myPage").sPage({
+                page:1,//当前页码，必填
+                total:count,//数据总条数，必填
+                pageSize:6,//每页显示多少条数据，默认10条
+                totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                showTotal:true,//是否显示总条数，默认关闭：false
+                showSkip:true,//是否显示跳页，默认关闭：false
+                showPN:true,//是否显示上下翻页，默认开启：true
+                prevPage:"上一页",//上翻页文字描述，默认“上一页”
+                nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                backFun:function(page){
+                    $.ajax({
+                        url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
+                        type: 'POST',
+                        async: false,
+                        data:{jsonTree:json,currentPage:page,pageSize:6,serchFileName:'',serchFileValue:''},
+                        xhrFields:{withCredentials:true},
+                        success:function(data){
+                            console.log(data)
+                             //clear
+                              $('#tj thead tr').children().remove();
+                              str = '';
+                              $('#tj tbody').children().remove();
+                              str_child = '';
+                              str_parent = '';
+                            if(data == null||data.length == 0||data.result.length == 0||data.result == null || data.result == undefined){
+                            }else{
+                              //加载table名
+                              $('#area').html(title+'数据统计');
+                              //加载thead
+                              for(key in data.result[0]){
+                                  if(key == 'objectid'||key =='shape'||key =='area'){
+                                  }else{
+                                      str+=`<th>${dic[key.toUpperCase()]}</th>`;
+                                  };
+                              };
+                              $('#tj thead tr').append(str);
+                              //加载tbody
+                              for(var j=0,len=data.result.length;j<len;j++){
+                                 area = Number(data.result[j].area);
+                                 nameone = data.result[j].name+data.result[j].bsm.substring(data.result[j].bsm.length-10);
+                                 if(data.result[j].name == undefined|| nameone == null|| nameone == ""){
+                                     nameone =  data.result[j].bsm;
+                                 };
+                                 str_child='';
+                                 for(key in data.result[j]){
+                                  if(key == 'objectid'||key =='shape'||key =='area'){
+              
+                                  }else{
+                                      str_child+=`<td title='详细:${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
+                                  };
+                                 };
+                                 str_parent+=`<tr>${str_child}</tr>`; 
+                              };
+                            };
+                          $('#tj tbody').append(str_parent);
+                          
+                        }
+                    });
+                }
+              });
           }
       });
-    };
-});
-};
-//全选与反选
-function seleted(){
-//table全选与反选
-$('.checked_one').on('change',function(){
-    if($(this).prop('checked')){
-        $('.checked').attr('checked','checked');
-    }else{
-        $('.checked').removeAttr('checked');
+            //查询加载table
+            $('#cx').on('click',function(){
+                var leibie = $('#leibie').val();
+                var textValue = $('#shuru').val();
+                $.ajax({
+                    url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
+                    type: 'POST',
+                    async: false,
+                    data:{jsonTree:json,currentPage:1,pageSize:6,serchFileName:leibie,serchFileValue:textValue},
+                    xhrFields:{withCredentials:true},
+                    success:function(data){
+                        if(data == null||data.length == 0||data.result.length == 0||data.result == null || data.result == undefined){
+                        }else{
+                          //加载table名
+                          $('#area').html(title+'数据统计');
+                          //加载thead
+                          for(key in data.result[0]){
+                              if(key == 'objectid'||key =='shape'||key =='area'){
+                              }else{
+                                  str+=`<th>${dic[key.toUpperCase()]}</th>`;
+                              };
+                          };
+                          $('#tj thead tr').append(str);
+                          //加载tbody
+                          for(var j=0,len=data.result.length;j<len;j++){
+                             area = Number(data.result[j].area);
+                             nameone = data.result[j].name+data.result[j].bsm.substring(data.result[j].bsm.length-10);
+                             if(data.result[j].name == undefined|| nameone == null|| nameone == ""){
+                                 nameone =  data.result[j].bsm;
+                             };
+                             str_child='';
+                             for(key in data.result[j]){
+                              if(key == 'objectid'||key =='shape'||key =='area'){
+          
+                              }else{
+                                  str_child+=`<td title='详细:${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
+                              };
+                             };
+                             str_parent+=`<tr>${str_child}</tr>`; 
+                          };
+                        };
+                      $('#tj tbody').append(str_parent);
+                      //分页
+                      $("#myPage").sPage({
+                          page:1,//当前页码，必填
+                          total:count,//数据总条数，必填
+                          pageSize:6,//每页显示多少条数据，默认10条
+                          totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                          showTotal:true,//是否显示总条数，默认关闭：false
+                          showSkip:true,//是否显示跳页，默认关闭：false
+                          showPN:true,//是否显示上下翻页，默认开启：true
+                          prevPage:"上一页",//上翻页文字描述，默认“上一页”
+                          nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                          backFun:function(page){
+                              $.ajax({
+                                  url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisData',
+                                  type: 'POST',
+                                  async: false,
+                                  data:{jsonTree:json,currentPage:page,pageSize:6,serchFileName:leibie,serchFileValue:textValue},
+                                  xhrFields:{withCredentials:true},
+                                  success:function(data){
+                                       //clear
+                                        $('#tj thead tr').children().remove();
+                                        str = '';
+                                        $('#tj tbody').children().remove();
+                                        str_child = '';
+                                        str_parent = '';
+                                      if(data == null||data.length == 0||data.result.length == 0||data.result == null || data.result == undefined){
+                                      }else{
+                                        //加载table名
+                                        $('#area').html(title+'数据统计');
+                                        //加载thead
+                                        for(key in data.result[0]){
+                                            if(key == 'objectid'||key =='shape'||key =='area'){
+                                            }else{
+                                                str+=`<th>${dic[key.toUpperCase()]}</th>`;
+                                            };
+                                        };
+                                        $('#tj thead tr').append(str);
+                                        //加载tbody
+                                        for(var j=0,len=data.result.length;j<len;j++){
+                                           area = Number(data.result[j].area);
+                                           nameone = data.result[j].name+data.result[j].bsm.substring(data.result[j].bsm.length-10);
+                                           if(data.result[j].name == undefined|| nameone == null|| nameone == ""){
+                                               nameone =  data.result[j].bsm;
+                                           };
+                                           str_child='';
+                                           for(key in data.result[j]){
+                                            if(key == 'objectid'||key =='shape'||key =='area'){
+                        
+                                            }else{
+                                                str_child+=`<td title='详细:${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
+                                            };
+                                           };
+                                           str_parent+=`<tr>${str_child}</tr>`; 
+                                        };
+                                      };
+                                    $('#tj tbody').append(str_parent);
+                                    
+                                  }
+                              });
+                          }
+                        });
+                    }
+                });
+            });
     };
 });
 };

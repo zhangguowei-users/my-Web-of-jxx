@@ -7,6 +7,7 @@ var area;
 var option;
 var json;
 var nameche;
+var count;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
