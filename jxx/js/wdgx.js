@@ -12,7 +12,7 @@ $(document).ready(function(){
     //首次进入展示文档
     $('#zx tbody').children().remove();
         $.ajax({
-         url:config.newip + config.newport + '/arcgis/DocumentSharing/GetPageListByCondition?page=1&limit=6&typeid=0',
+         url:config.newip + config.newport + '/arcgis/DocumentSharing/GetPageListByCondition?page=1&limit=6&typeid=1',
          type: 'get',
          async: false,
          success:function (data) {
@@ -81,7 +81,7 @@ $(document).ready(function(){
                  //点击分页按钮回调函数，返回当前页码
                  $('#zx tbody').children().remove();
                  $.ajax({
-                   url:config.newip + config.newport + '/arcgis/DocumentSharing/GetPageListByCondition?page='+page+'&limit=6&typeid='+menueid,
+                   url:config.newip + config.newport + '/arcgis/DocumentSharing/GetPageListByCondition?page='+page+'&limit=6&typeid=1',
                    type: 'get',
                    async: false,
                    success:function(data){
