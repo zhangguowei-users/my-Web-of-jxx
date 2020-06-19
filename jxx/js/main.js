@@ -408,20 +408,17 @@ $('.dcd1,.dcd').on('click',function(){
           xhrFields:{withCredentials:true},
           success:function(data){
               if(data == null||data.length == 0||data.result.length == 0||data.result == null || data.result == undefined){
-
               }else{
-                
                 //加载table名
                 $('#area').html(title+'数据统计');
                 //加载thead与option
                 $('#tj thead tr').append(`<th><input class='checked_one' type="checkbox" name="" id=""></th>`);
                 for(key in data.result[0]){
                     if(key == 'objectid'||key =='shape'||key =='area'){
-
                     }else{
                         str+=`<th>${dic[key.toUpperCase()]}</th>`;
                         option+=`<option value="${dic[key.toUpperCase()]}">${dic[key.toUpperCase()]}</option>`;
-                    }
+                    };
                 };
                 $('#tj thead tr').append(str);
                 $('#leibie').append(option);
@@ -442,22 +439,22 @@ $('.dcd1,.dcd').on('click',function(){
                    };
                    str_parent+=`<tr><td><input class='checked' type="checkbox" name=""></td>${str_child}</tr>`; 
                 };
-                //分页
-                $("#myPage").sPage({
-                  page:1,//当前页码，必填
-                  total:10,//数据总条数，必填
-                  pageSize:6,//每页显示多少条数据，默认10条
-                  totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-                  showTotal:true,//是否显示总条数，默认关闭：false
-                  showSkip:true,//是否显示跳页，默认关闭：false
-                  showPN:true,//是否显示上下翻页，默认开启：true
-                  prevPage:"上一页",//上翻页文字描述，默认“上一页”
-                  nextPage:"下一页",//下翻页文字描述，默认“下一页”
-                  backFun:function(page){}
-                });
               };
             $('#tj tbody').append(str_parent);
             seleted();
+            //分页
+            // $("#myPage").sPage({
+            //     page:1,//当前页码，必填
+            //     total:10,//数据总条数，必填
+            //     pageSize:6,//每页显示多少条数据，默认10条
+            //     totalTxt:"共{total}条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+            //     showTotal:true,//是否显示总条数，默认关闭：false
+            //     showSkip:true,//是否显示跳页，默认关闭：false
+            //     showPN:true,//是否显示上下翻页，默认开启：true
+            //     prevPage:"上一页",//上翻页文字描述，默认“上一页”
+            //     nextPage:"下一页",//下翻页文字描述，默认“下一页”
+            //     backFun:function(page){}
+            //   });
           }
       });
     };
@@ -1199,22 +1196,22 @@ function bing(element,name,title,series_name,legendArry,seriesArry){
         },
         tooltip: {
             trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
+            formatter: '{a} <br/>{b} : {c} '
         },
-        legend: {
-            orient: 'horizontal',  //vertical
-            bottom: 'bottom',
-            data: legendArry,
-            textStyle:{
-                color:'#333333',
-                fontFamily:'SourceHanSansCN-',
-                fontStyle :'normal',
-                fontWeight:400
-            },
-            itemHeight:9,
-            itemWidth:9,
-            type:'scroll',
-        },
+        // legend: {
+        //     orient: 'horizontal',  //vertical
+        //     bottom: 'bottom',
+        //     data: legendArry,
+        //     textStyle:{
+        //         color:'#333333',
+        //         fontFamily:'SourceHanSansCN-',
+        //         fontStyle :'normal',
+        //         fontWeight:400
+        //     },
+        //     itemHeight:9,
+        //     itemWidth:9,
+        //     type:'scroll',
+        // },
         series: [
             {
                 name: `${series_name}`,
