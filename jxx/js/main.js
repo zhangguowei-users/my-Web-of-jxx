@@ -347,7 +347,7 @@ function treetjfx(data,className){
  //click tree 创建table
  function clitree(){
     //生成折线图
-    zhexian("",[0],[0]);
+    zhexian("",[0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0]);
     //生成饼形图
     bing("#bing1",bing1,'数量','数量',['总数'],[{value:0,name:'总数',itemStyle:{color:'#FAD03E'}}]);
     bing("#bing2",bing2,'面积','面积',['总面积'],[{value:0,name:'总面积',itemStyle:{color:'#5cd1fa'}}]);
@@ -396,7 +396,7 @@ $('.dcd1,.dcd').on('click',function(){
         xhrFields:{withCredentials:true},
         success:function(data){
             //获取折线图数据,生成折线图
-            zhexian(title,[data.result],[0]);
+            zhexian(title,[data.result,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0]);
         }
       });
       //获取总数
@@ -1330,14 +1330,14 @@ option = {
       {
           name: '已利用地',
           type: 'line',
-          stack: '总量',
+          stack: '已利用地总量',
           data: zhexian_yiliyong,
           color: 'purple'
       },
       {
           name: '未利用地',
           type: 'line',
-          stack: '总量',
+          stack: '未利用地总量',
           data: zhexian1_weiliyong,
           color:'green'
       }
