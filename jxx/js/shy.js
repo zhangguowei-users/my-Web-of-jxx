@@ -368,7 +368,6 @@ $(document).ready(function(){
       type: 'GET',
       async:false,
       success: function (data) {
-        console.log(data.data)
         for(var i=0;i<data.data.length;i++){
                var urlname = data.data[i].resourcedir.split('.');
                var length = urlname.length;
