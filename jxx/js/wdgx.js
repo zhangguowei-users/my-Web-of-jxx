@@ -137,6 +137,15 @@ $(document).ready(function(){
                          </tr>`);
                        };
                      };
+                     //文件的下载申请
+                     $('.down').bind('click',function(){
+                       $('#sq-b').children().remove();
+                       $("#css1").css("display","inline-block");
+                       var data = JSON.parse($(this).attr('id'));
+                       resourceid=data.resourceid; 
+                       $('#sq-p').val(user);
+                       $('#sq-b').append(`<option value="${depid}">${dep}</option>`);
+                     });
                    }
                  });
              }
@@ -247,6 +256,15 @@ $(document).ready(function(){
               </tr>`);
             };
           };
+          //文件的下载申请
+          $('.down').bind('click',function(){
+            $('#sq-b').children().remove();
+            $("#css1").css("display","inline-block");
+            var data = JSON.parse($(this).attr('id'));
+            resourceid=data.resourceid; 
+            $('#sq-p').val(user);
+            $('#sq-b').append(`<option value="${depid}">${dep}</option>`);
+          });
           $("#myPage").sPage({
             page:1,//当前页码，必填
             total:data.count,//数据总条数，必填
@@ -317,6 +335,15 @@ $(document).ready(function(){
                         </tr>`);
                       };
                     };
+                    //文件的下载申请
+                    $('.down').bind('click',function(){
+                      $('#sq-b').children().remove();
+                      $("#css1").css("display","inline-block");
+                      var data = JSON.parse($(this).attr('id'));
+                      resourceid=data.resourceid; 
+                      $('#sq-p').val(user);
+                      $('#sq-b').append(`<option value="${depid}">${dep}</option>`);
+                    });
                   }
                 });
             }
