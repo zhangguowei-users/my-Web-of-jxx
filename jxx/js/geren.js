@@ -252,7 +252,7 @@ $(document).ready(function(){
         async:false,
         success: function (data) {
           for(var i=0;i<data.data.length;i++){
-            var urlname = data.data[i].url.split('.');
+            var urlname = data.data[i].resourcedir.split('.');
             var length = urlname.length;
             var format = urlname[length-1];
             if(format == 'pdf'){
@@ -315,7 +315,7 @@ $(document).ready(function(){
                       type: 'GET',
                       success: function (data){
                            for(var i=0;i<data.data.length;i++){
-                           var urlname = data.data[i].url.split('.');
+                           var urlname = data.data[i].resourcedir.split('.');
                            var length = urlname.length;
                            var format = urlname[length-1];
                            if(format == 'pdf'){
