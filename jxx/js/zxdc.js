@@ -105,7 +105,7 @@ $(document).ready(function(){
         };
         $('#tudi tbody').append(str);  
         //搜索
-        $('#search_button').bind('click',function(){
+        $('#search_button').unbind('click').bind('click',function(){
           num = 0;
           legendData.splice(0);
           seriesData1.splice(0);
@@ -256,7 +256,7 @@ $(document).ready(function(){
         };
         $('#tudi tbody').append(str);  
         //搜索
-        $('#search_button').bind('click',function(){
+        $('#search_button').unbind('click').bind('click',function(){
           num = 0;
           legendData.splice(0);
           seriesData1.splice(0);
