@@ -346,6 +346,7 @@ function treetjfx(data,className){
  };
  //click tree 创建table
  function clitree(){
+    //生成折线图
     zhexian("",[],[]);
     //生成饼形图
     bing("#bing1",bing1,'数量','数量',['总数'],[{value:0,name:'总数',itemStyle:{color:'#FAD03E'}}]);
