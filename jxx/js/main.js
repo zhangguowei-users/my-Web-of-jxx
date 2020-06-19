@@ -350,7 +350,7 @@ function treetjfx(data,className){
     zhexian("",[],[]);
     //生成饼形图
     bing("#bing1",bing1,'数量','数量',['总数'],[{value:0,name:'总数',itemStyle:{color:'#FAD03E'}}]);
-    bing("#bing2",bing2,'面积','面积',['总面积'],[{value:0,name:'总面积',itemStyle:{color:'#F9AB15'}}]);
+    bing("#bing2",bing2,'面积','面积',['总面积'],[{value:0,name:'总面积',itemStyle:{color:'blue'}}]);
 $('.dcd1,.dcd').on('click',function(){
     if($(this).attr('typeid') =='polyline'){
       $('#bing2').css('display','none');
@@ -387,7 +387,7 @@ $('.dcd1,.dcd').on('click',function(){
           data:{jsonTree:$(this).attr('cd')},
           xhrFields:{withCredentials:true},
           success:function(data){
-              bing("#bing2",bing2,title+'面积','面积',['总面积'],[{value:data.result,name:'总面积',itemStyle:{color:'#F9AB15'}}]);
+              bing("#bing2",bing2,title+'面积','面积',['总面积'],[{value:data.result,name:'总面积',itemStyle:{color:'blue'}}]);
           }
         });
       //折线
@@ -1166,14 +1166,14 @@ option = {
           type: 'line',
           stack: '总量',
           data: zhexian_yiliyong,
-          color: '#E2EF12'
+          color: 'purple'
       },
       {
           name: '未利用地',
           type: 'line',
           stack: '总量',
           data: zhexian1_weiliyong,
-          color:'#3A98FA'
+          color:'green'
       }
   ]
 };
