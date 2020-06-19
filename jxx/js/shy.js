@@ -369,9 +369,10 @@ $(document).ready(function(){
       async:false,
       success: function (data) {
         for(var i=0;i<data.data.length;i++){
-          var urlname = data.data[i].url.split('.');
-          var length = urlname.length;
-          var format = urlname[length-1];
+          if(urlname ==null||urlname==undefined||urlname ==''){return'无值';}
+          else{var urlname = data.data[i].url.split('.');
+               var length = urlname.length;
+               var format = urlname[length-1];}
           if(format == 'pdf'){
             $('#zy3 tbody').append(`<tr>
             <td><img src="./img/pdf.png" alt="" style="height:70px; width: 70px;"></td>
