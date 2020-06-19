@@ -5,6 +5,8 @@ var str_parent;
 var nameone;
 var area;
 var option;
+var json;
+var nameche;
 $(document).ready(function(){
     dengluLocation();
     huoquName();
@@ -72,10 +74,8 @@ $(document).ready(function(){
       }
   });
   clitree();
-  //导出数据
-  $('#dcsj').on('click',function(){
-     var a = $('.checked_one').attr('type');
-     alert(a);
-  });
-  
+//导出数据
+$('#dcsj').on('click',function(){
+  location.href = config.newip+config.newport+'/arcgis/Other/Export?jsontree='+json+'&exclename='+nameche;
+});  
 });

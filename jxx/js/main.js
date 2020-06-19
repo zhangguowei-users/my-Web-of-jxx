@@ -358,6 +358,8 @@ $('.dcd1,.dcd').on('click',function(){
     };
     //点击非根节点
     if($(this).attr('class') == 'file dcd'){
+       json = $(this).attr('cd');
+       nameche = $(this).html(); 
       //clear
       $('#tj thead tr').children().remove();
       str = '';
@@ -374,7 +376,6 @@ $('.dcd1,.dcd').on('click',function(){
         data:{jsonTree:$(this).attr('cd')},
         xhrFields:{withCredentials:true},
         success:function(data){
-            console.log(data);
             bing("#bing1",bing1,title+'数量','总数',['总数'],[{value:data.result,name:'总数',itemStyle:{color:'#FAD03E'}}]);
         }
       });
@@ -385,20 +386,18 @@ $('.dcd1,.dcd').on('click',function(){
           data:{jsonTree:$(this).attr('cd')},
           xhrFields:{withCredentials:true},
           success:function(data){
-              console.log(data);
               bing("#bing2",bing2,title+'面积','总面积',['总面积'],[{value:data.result,name:'总面积',itemStyle:{color:'#F9AB15'}}]);
           }
         });
       //折线
       $.ajax({
-        url:GEOSERVER.IP + GEOSERVER.PORT + '',
+        url:GEOSERVER.IP + GEOSERVER.PORT + '/getAnalysisTotalRecord',
         type: 'POST',
         data:{jsonTree:$(this).attr('cd')},
         xhrFields:{withCredentials:true},
         success:function(data){
-            console.log(data);
             //获取折线图数据,生成折线图
-            zhexian(title,data.result,[]);
+            zhexian(title,[data.result],[]);
         }
       });
       $.ajax({
@@ -1220,13 +1219,23 @@ function bing(element,name,title,series_name,legendArry,seriesArry){
             {
                 name: `${series_name}`,
                 type: 'pie',
-                center: ['50%', '48%'],
-                data:seriesArry,
                 radius: ['50%', '70%'],
                 avoidLabelOverlap: false,
-                label: {show: false,position: 'center'},
-                emphasis: {label: {show: true,fontSize: '30',fontWeight: 'bold'}},
-                labelLine: {show: false},
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: seriesArry
             }
         ]
     };
