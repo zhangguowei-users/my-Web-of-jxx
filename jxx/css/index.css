@@ -11,13 +11,23 @@ body {
     user-select: none;
     overflow-x: hidden;
 }
+body,html{
+    height: 100%;
+}
 #img{
     height:786px;
-    width: 1903px;
-    background:url(../img/home__04.png) no-repeat;
+    width:1903px;
     position: absolute;
-    top:107px;
+    top:0px;
     z-index: -10;
+}
+.top_img{
+    height:100%;
+    width:100%;
+    position: absolute;
+    top:0px;
+    z-index: -10;
+    cursor: pointer;
 }
 #top{
     margin-top: 3px;
@@ -85,7 +95,8 @@ body {
     display: inline-block;
     width: 394px;
     height:280px; 
-    display: none; 
+    display: none;
+    cursor: pointer; 
 }
 #time-pc{  
     display: inline-block;
@@ -131,6 +142,7 @@ body {
 .sum{
     height: 100px;
     width: 610px;
+    cursor: pointer;
 }
 .sum-img{
     margin-left: 10px;
@@ -148,7 +160,11 @@ body {
     display: inline-block;
     color: #333333;
     font-size:large;
+    width:450px;
     font-weight: bold;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
 }
 .inf-con{
     display: inline-block;

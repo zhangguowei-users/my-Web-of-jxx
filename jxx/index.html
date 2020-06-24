@@ -7,6 +7,18 @@
     <title>三调资源服务共享平台</title>
 </head>
 <body>
+    <!-- news弹窗 -->
+    <div id='news' style='position: fixed;height: 100%;width: 100%;background:rgba(0,0,0,0.4);z-index:20;top:0;display: none;'>
+        <div style="display: inline-block;height:80%;width: 1123.1px;position: absolute;background:#fff;top:10%;left:20%;">
+            <div style='background:linear-gradient(to right,#03B8F7,#1BE2B2);display: inline-block;height:58.1px;width: 100%;position: absolute;top:0;'>
+               <span style='position: absolute;font-size:x-large;color: #fff;top:22%;left:5%;'>通知内容</span>
+               <span id='off' style='position: absolute;font-size:x-large;color: #fff;top:28%;right:2%;cursor: pointer;'>X</span>
+            </div>
+            <div style='position: absolute;top:58.1px;height:93.2%;display: inline-block;width: 100%;'>
+            <!-- news内容 -->
+            </div>
+        </div>
+    </div>
     <div id="top">
         <img src="./img/home__07.png" alt="logo">
         <img src="./img/home__08.png" alt="">
@@ -22,7 +34,9 @@
         <div id="setting" title="大屏展示"></div>
         <div id="gb" title="退出登录"></div>
     </div>
-    <div id="img"></div>
+    <div id="img">
+        <img class='top_img' src="./img/home__04.png" alt="">
+    </div>
     <div id="control">
         <div class="control one"><img src="./img/one.png" alt=""><img class="text" src="./img/one-text.png" alt=""></div><div class="control two"><img src="./img/home_btn__08.png" alt=""><img class="text" src="./img/home_btn__18.png" alt=""></div><div class="control three"><img src="./img/home_btn__10.png" alt=""><img class="text" src="./img/home_btn__24.png" alt=""></div><div class="control four"><img src="./img/home_btn__12.png" alt=""><img class="text" src="./img/home_btn__21.png" alt=""></div>
     </div>

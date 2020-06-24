@@ -38,26 +38,6 @@ $("#login1").click(function () {
     window.location.href = "./login.html";
 });
 $("#time1").html(newTime());
-//获取新闻列表
-$.ajax({
-    url:config.newip + config.newport + '/arcgis/Other/GetNoticeList?istitle=1',
-    type: 'GET',
-    async: false,
-    success:function(data){
-       console.log(data.data);
-       let str='';
-       let tr = '';
-       for(let i=0,len=data.data.length;i<len;i++){
-         if(data.data[i].istitle == 0){
-            str+=`<div class="sum"><div class="data"><div class="day">${data.data[i].createtime.split('T')[0].split('-')[2]}</div><div class="year">${data.data[i].createtime.split('T')[0].split('-')[0]}-${data.data[i].createtime.split('T')[0].split('-')[1]}</div></div><img class="sum-img" src="./img/home__19.png" alt=""><div class="inf"><div class="inf-tilte">${data.data[i].title}</div><div class="inf-con">${data.data[i].content}</div></div></div>`;
-         }else{
-            tr+=`<img class='time-pc' src="./img/time.png"/>`;
-         }; 
-       };
-       $('#time-r').append(str);
-       $('#time-pc').append(tr);
-    }
-});
 $(".control").click(function(){
     if(jiancelogin()){
         if(this.className == "control one"){
@@ -97,9 +77,33 @@ $(".control").click(function(){
         window.location.href = "./login.html";
     }    
 });
+//获取新闻列表
+$.ajax({
+    url:config.newip + config.newport + '/arcgis/Other/GetNoticeList?istitle=1',
+    type: 'GET',
+    async: false,
+    success:function(data){
+       let str='';
+       let tr = '';
+       for(let i=0,len=data.data.length;i<len;i++){
+         if(data.data[i].titleimage == null){
+             data.data[i].titleimage = './img/time.png';
+         };
+         if(data.data[i].createtime == null){
+            data.data[i].createtime = '0000-00-00T00:00:00';
+         };
+         if(data.data[i].istitle == 0){
+            str+=`<div class="sum" Inhtml=''><div class="data"><div class="day">${data.data[i].createtime.split('T')[0].split('-')[2]}</div><div class="year">${data.data[i].createtime.split('T')[0].split('-')[0]}-${data.data[i].createtime.split('T')[0].split('-')[1]}</div></div><img class="sum-img" src="./img/home__19.png" alt=""><div class="inf"><div class="inf-tilte" title='${data.data[i].title}'>${data.data[i].title}</div><div class="inf-con" title='${data.data[i].content}'>${data.data[i].content}</div></div></div>`;
+         }else{
+            tr+=`<img class='time-pc' title='${data.data[i].title}' src="${data.data[i].titleimage}" inhtml=''/>`;
+         }; 
+       };
+       $('#time-r').append(str);
+       $('#time-pc').append(tr);
+    }
+});
 //头条新闻轮播图
 let len = $('.time-pc').length;
-console.log(len);
 let i = 0;
 $(".time-pc").eq(0).fadeIn(3000);
 setInterval(function(){
@@ -112,16 +116,24 @@ setInterval(function(){
         $(".time-pc").eq(i).fadeOut(3000);
         i=0;
     };
-},6000);
-
-
-
-
-
-
-
-
-
+},6005);
+//top轮播图
+$.ajax({
+    url:config.newip + config.newport + '/arcgis/Other/GetBannerList',
+    type: 'GET',
+    async: false,
+    success:function(data){
+        console.log(data)
+    }
+});
+//点击新闻打开
+$('.time-pc,.sum').on('click',function(){
+   $('#news').css('display','block');
+});
+//点击新闻关闭
+$('#off').on('click',function(){
+   $('#news').css('display','none');
+});
 });
 
 
