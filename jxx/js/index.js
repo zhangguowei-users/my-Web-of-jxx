@@ -83,7 +83,6 @@ $.ajax({
     type: 'GET',
     async: false,
     success:function(data){
-       Error('213');
        let str='';
        let tr = '';
        for(let i=0,len=data.data.length;i<len;i++){
