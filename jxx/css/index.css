@@ -73,12 +73,24 @@ body {
     vertical-align:top;
 }
 #time-p{
-    background: url(../img/time.png) no-repeat;
+    background:transparent;
     margin-top: 18px;
     margin-left: 17px;  
     display: inline-block;
     width: 394px;
-    height:280px;  
+    height:280px; 
+    overflow: hidden; 
+}
+.time-pc{  
+    display: inline-block;
+    width: 394px;
+    height:280px; 
+    display: none; 
+}
+#time-pc{  
+    display: inline-block;
+    width: 394px;
+    height:280px; 
 }
 .text{
     margin-bottom: 29.5px;
@@ -104,6 +116,7 @@ body {
     text-align: center;
     color:#999999;
     font-size: 40px;
+    overflow: hidden;
 }
 .year{
     display: inline-block;

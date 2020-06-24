@@ -234,7 +234,7 @@ function queryDLTB(data, menue, rightMenue){//点击左侧树
         $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getDLTB', type: 'POST', data:{"jsonMenue":JSON.stringify(data), "proviceCode":getCountryCode(rightMenue)}, xhrFields:{withCredentials:true}, success:function(resultData){
             queryDltbByObjectID(resultData);//根据OBJECTID查询图斑并高亮
         }});
-
+         
         createBingReport(data, menue.menuename,rightMenue);
         creatZhuReport(data, menue.menuename, rightMenue)
 
@@ -286,6 +286,7 @@ function queryDltbByObjectID(result){//根据OBJECTID查询图斑并高亮
 
 function createBingReport(data, menuename, rightMenue){
     $.ajax({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data), "proviceCode":getCountryCode(rightMenue)}, xhrFields:{withCredentials:true}, success:function(result) {
+        console.log({url:GEOSERVER.IP + GEOSERVER.PORT + '/getSecondCategoryCode', type: 'POST', data:{"jsonMenue":JSON.stringify(data), "proviceCode":getCountryCode(rightMenue)}})
         var legendData = "[";
         var seriesData = "["
 
