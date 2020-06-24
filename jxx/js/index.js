@@ -83,19 +83,20 @@ $.ajax({
     type: 'GET',
     async: false,
     success:function(data){
+       Error('213');
        let str='';
        let tr = '';
        for(let i=0,len=data.data.length;i<len;i++){
          if(data.data[i].titleimage == null){
-             data.data[i].titleimage = './img/time.png';
+            data.data[i].titleimage = './img/time.png';
          };
          if(data.data[i].createtime == null){
             data.data[i].createtime = '0000-00-00T00:00:00';
          };
          if(data.data[i].istitle == 0){
-            str+=`<div class="sum" Inhtml=''><div class="data"><div class="day">${data.data[i].createtime.split('T')[0].split('-')[2]}</div><div class="year">${data.data[i].createtime.split('T')[0].split('-')[0]}-${data.data[i].createtime.split('T')[0].split('-')[1]}</div></div><img class="sum-img" src="./img/home__19.png" alt=""><div class="inf"><div class="inf-tilte" title='${data.data[i].title}'>${data.data[i].title}</div><div class="inf-con" title='${data.data[i].content}'>${data.data[i].content}</div></div></div>`;
+            str+=`<div class="sum" Inhtml='${data.data[i].content}'><div class="data"><div class="day">${data.data[i].createtime.split('T')[0].split('-')[2]}</div><div class="year">${data.data[i].createtime.split('T')[0].split('-')[0]}-${data.data[i].createtime.split('T')[0].split('-')[1]}</div></div><img class="sum-img" src="./img/home__19.png" alt=""><div class="inf"><div class="inf-tilte" title='${data.data[i].title}'>${data.data[i].title}</div><div class="inf-con" title='${data.data[i].content}'>${data.data[i].content}</div></div></div>`;
          }else{
-            tr+=`<img class='time-pc' title='${data.data[i].title}' src="${data.data[i].titleimage}" inhtml=''/>`;
+            tr+=`<img class='time-pc' title='${data.data[i].title}' src="${data.data[i].titleimage}" inhtml='${data.data[i].content}'/>`;
          }; 
        };
        $('#time-r').append(str);
@@ -123,7 +124,7 @@ $.ajax({
     type: 'GET',
     async: false,
     success:function(data){
-        console.log(data)
+
     }
 });
 //点击新闻打开
