@@ -129,6 +129,7 @@ $.ajax({
 //点击新闻打开
 $('.time-pc,.sum').on('click',function(){
    $('#news').css('display','block');
+   $('#content').html($(this).attr('inhtml'));
 });
 //点击新闻关闭
 $('#off').on('click',function(){
