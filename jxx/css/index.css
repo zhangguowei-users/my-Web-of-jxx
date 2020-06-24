@@ -112,7 +112,7 @@ body,html{
     height: 313px;
     width: 611px;
     margin-left: 57px;
-    overflow: hidden;
+    overflow: auto;
 }
 .data{
     display: inline-block;
