@@ -83,7 +83,6 @@ $.ajax({
     type: 'GET',
     async: false,
     success:function(data){
-        console.log(data)
        let str='';
        let tr = '';
        for(let i=0,len=data.data.length;i<len;i++){
@@ -108,7 +107,6 @@ $.ajax({
     type: 'GET',
     async: false,
     success:function(data){
-        console.log(data)
        let str='';
        let tr = '';
        for(let i=0,len=data.data.length;i<len;i++){
