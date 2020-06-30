@@ -442,7 +442,7 @@ $('.dcd1,.dcd').on('click',function(){
                     if(key == 'objectid'||key =='shape'||key =='area'){
 
                     }else{
-                        str_child+=`<td title='详细:${data.result[j][key]}'><div>${data.result[j][key]}</div></td>`;
+                        str_child+=`<td title='详细:${data.result[j][key].toString().replace(/'/g, '‘')}'><div>${data.result[j][key]}</div></td>`;
                     };
                    };
                    str_parent+=`<tr>${str_child}</tr>`; 
