@@ -93,9 +93,9 @@ $.ajax({
             data.data[i].createtime = '0000-00-00T00:00:00';
          };
          if(data.data[i].istitle == 0){
-            str+=`<div class="sum" Inhtml='${data.data[i].content}'  title='${data.data[i].title}'><div class="data"><div class="day">${data.data[i].createtime.split('T')[0].split('-')[2]}</div><div class="year">${data.data[i].createtime.split('T')[0].split('-')[0]}-${data.data[i].createtime.split('T')[0].split('-')[1]}</div></div><img class="sum-img" src="./img/home__19.png" alt=""><div class="inf"><div class="inf-tilte">${data.data[i].title}</div><div class="inf-con">${data.data[i].content}</div></div></div>`;
+            str+=`<div class="sum" Intime='${data.data[i].createtime}' Inhtml='${data.data[i].content}'  title='${data.data[i].title}'><div class="data"><div class="day">${data.data[i].createtime.split('T')[0].split('-')[2]}</div><div class="year">${data.data[i].createtime.split('T')[0].split('-')[0]}-${data.data[i].createtime.split('T')[0].split('-')[1]}</div></div><img class="sum-img" src="./img/home__19.png" alt=""><div class="inf"><div class="inf-tilte">${data.data[i].title}</div><div class="inf-con">${data.data[i].content}</div></div></div>`;
          }else{
-            tr+=`<img class='time-pc' title='${data.data[i].title}' src="${data.data[i].titleimage}" inhtml='${data.data[i].content}'/>`;
+            tr+=`<img class='time-pc' Intime='${data.data[i].createtime}' title='${data.data[i].title}' src="${data.data[i].titleimage}" inhtml='${data.data[i].content}'/>`;
          }; 
        };
        $('#time-r').append(str);
@@ -117,9 +117,9 @@ $.ajax({
             data.data[i].createtime = '0000-00-00T00:00:00';
          };
          if(data.data[i].istitle == 0){
-            str+=`<div class="sum" Inhtml='${data.data[i].content}'  title='${data.data[i].title}'><div class="data"><div class="day">${data.data[i].createtime.split('T')[0].split('-')[2]}</div><div class="year">${data.data[i].createtime.split('T')[0].split('-')[0]}-${data.data[i].createtime.split('T')[0].split('-')[1]}</div></div><img class="sum-img" src="./img/home__19.png" alt=""><div class="inf"><div class="inf-tilte">${data.data[i].title}</div><div class="inf-con">${data.data[i].content}</div></div></div>`;
+            str+=`<div class="sum" Intime='${data.data[i].createtime}' Inhtml='${data.data[i].content}'  title='${data.data[i].title}'><div class="data"><div class="day">${data.data[i].createtime.split('T')[0].split('-')[2]}</div><div class="year">${data.data[i].createtime.split('T')[0].split('-')[0]}-${data.data[i].createtime.split('T')[0].split('-')[1]}</div></div><img class="sum-img" src="./img/home__19.png" alt=""><div class="inf"><div class="inf-tilte">${data.data[i].title}</div><div class="inf-con">${data.data[i].content}</div></div></div>`;
          }else{
-            tr+=`<img class='time-pc' title='${data.data[i].title}' src="${data.data[i].titleimage}" inhtml='${data.data[i].content}'/>`;
+            tr+=`<img class='time-pc' Intime='${data.data[i].createtime}' title='${data.data[i].title}' src="${data.data[i].titleimage}" inhtml='${data.data[i].content}'/>`;
          }; 
        };
        $('#time-r').append(str);
@@ -153,6 +153,8 @@ $.ajax({
 //点击新闻打开
 $('.time-pc,.sum').on('click',function(){
    $('#news').css('display','block');
+   $('#title').html($(this).attr('title'));
+   $('#time_7').html($(this).attr('Intime').split('T')[0].split('-')[0]+'年'+$(this).attr('Intime').split('T')[0].split('-')[1]+'月'+$(this).attr('Intime').split('T')[0].split('-')[2]+'日')
    $('#content').html($(this).attr('inhtml'));
 });
 //点击新闻关闭
