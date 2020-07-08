@@ -115,6 +115,20 @@ body,html{
     overflow-y: auto;
     overflow-x: hidden;
 }
+#time-r::-webkit-scrollbar{
+    width:3px;
+}
+#time-r::-webkit-scrollbar-track{
+    background: rgb(239, 239, 239);
+    border-radius:2px;
+}
+#time-r::-webkit-scrollbar-thumb{
+    background: #bfbfbf;
+    border-radius:10px;
+}
+#time-r::-webkit-scrollbar-thumb:hover{
+    background: #888;
+}
 .data{
     display: inline-block;
     width:61px;
