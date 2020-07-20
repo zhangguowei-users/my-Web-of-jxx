@@ -3,7 +3,7 @@ var config;
 config={
     ip: 'http://192.168.11.235',
     port: ':8081',
-    newip: 'http://192.168.11.237',
+    newip: 'http://192.168.11.235',
     newport:':5050',
 };
 
